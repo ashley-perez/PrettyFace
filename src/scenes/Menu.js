@@ -28,7 +28,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         this.fakeTimer += 0.01;
-        if (this.fakeTimer >= 4) {
+        if (this.fakeTimer >= 3) {
             this.scene.start("filterGame");
         }
     }
