@@ -7,6 +7,7 @@ class Filter extends Phaser.Scene {
     preload() {
         this.load.image('player', './assets/placeholderCharacter.png');
         this.load.image('filter', './assets/placeholderFilter.png');
+        this.load.image('sad', './assets/sadCharacter.png');
     }
 
     create() {
@@ -24,12 +25,23 @@ class Filter extends Phaser.Scene {
         // collisoin detection
         this.physics.add.overlap(this.player, this.filter, null, function() {
             console.log("hello");
+            this.player.setTexture('sad');
+            this.filter.destroy();
         }, this);
+
+        //just a fake timer for now
+        this.time = 0;
 
     }
 
     update() {
 
+        this.time += 0.01;
+        console.log(this.time);
+
+        if (this.time >= 3) {
+            this.scene.start("narrOne");
+        }
     }
 
 }
