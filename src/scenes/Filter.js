@@ -14,6 +14,8 @@ class Filter extends Phaser.Scene {
         this.player = this.physics.add.sprite(config.width/2, config.height/2, 'player', 0);
         this.filter = this.physics.add.sprite(config.width/2+200, config.height/2, 'filter', 0).setInteractive();
 
+        this.complete = false;
+
         this.input.setDraggable(this.filter); // allow object to be draggable
 
         // if input then move, updates the location of object to the pointer("mouse")
@@ -27,6 +29,7 @@ class Filter extends Phaser.Scene {
             console.log("hello");
             this.player.setTexture('sad');
             this.filter.destroy();
+            this.complete = true;
         }, this);
 
         //just a fake timer for now
@@ -35,9 +38,10 @@ class Filter extends Phaser.Scene {
     }
 
     update() {
-
+        if(this.complete == true) {
         this.time += 0.01;
         console.log(this.time);
+        }
 
         if (this.time >= 3) {
             this.scene.start("narrOne");
