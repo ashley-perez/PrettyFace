@@ -1,7 +1,7 @@
-class Filter extends Phaser.Scene {
+class Comment extends Phaser.Scene {
 
     constructor() {
-        super("filterGame")
+        super("commentGame")
     }
 
     preload() {
@@ -9,8 +9,8 @@ class Filter extends Phaser.Scene {
         this.load.image('filter', './assets/placeholderFilter.png');
         this.load.image('sad', './assets/sadCharacter.png');
 
-        // this.load.image('background', './assets/testBackGround.png');
-        this.load.image('filterbackground', './assets/testFilterBackGround.png');
+        this.load.image('background', './assets/testBackGround.png');
+        // this.load.image('filterbackground', './assets/testFilterBackGround.png');
 
         // this.load.image('fingerPoint', './assets/testFingerPointer.png');
     }
@@ -70,7 +70,7 @@ class Filter extends Phaser.Scene {
         }
 
         if (this.time >= 3) {
-            this.scene.start("commentGame");
+            this.scene.start("narrOne");
         }
     }
 

@@ -41,7 +41,12 @@ class Menu extends Phaser.Scene {
     }
 
     update() {
+<<<<<<< HEAD
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
+=======
+        this.fakeTimer += 0.01;
+        if (this.fakeTimer >= 3) {
+>>>>>>> c565fd1deacbdca41769c0c641cb45ec58d8b658
             this.scene.start("filterGame");
         }
     }
