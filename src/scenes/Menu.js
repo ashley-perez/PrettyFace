@@ -12,7 +12,7 @@ class Menu extends Phaser.Scene {
         let menuConfig = {
             fontFamily: 'Horror',
             fontSize: '50px',
-            color: '#eeeeee',
+            color: '#FFFFFF',
             align: 'right',
             padding: {
                 top: 5,
@@ -22,10 +22,14 @@ class Menu extends Phaser.Scene {
         }
         this.add.text(game.config.width/2, game.config.height/2, 'Put on Your Pretty Face', menuConfig).setOrigin(0.5, 2.5);
 
-        this.scene.start("filterGame");
+        
+        this.fakeTimer = 0
     }
 
     update() {
-        // even more stuff
+        this.fakeTimer += 0.01;
+        if (this.fakeTimer >= 4) {
+            this.scene.start("filterGame");
+        }
     }
 }
