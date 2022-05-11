@@ -20,14 +20,14 @@ class Filter extends Phaser.Scene {
         // this.input.mouse.capture = true;
         this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
  
-        this.normbackground = this.add.tileSprite
-        (
-            0,
-            0,
-            1280,
-            720,
-            "background"
-        ).setOrigin(0, 0);
+        // this.normbackground = this.add.tileSprite
+        // (
+        //     0,
+        //     0,
+        //     1280,
+        //     720,
+        //     "background"
+        // ).setOrigin(0, 0);
         this.filterbackground = this.add.tileSprite
         (
             0,
