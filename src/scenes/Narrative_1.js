@@ -14,7 +14,6 @@ class Cutscene extends Phaser.Scene {
 
     update() {
         // final stuff
-        console.log("penis");
 
     }
     
