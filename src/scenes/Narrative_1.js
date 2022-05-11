@@ -14,6 +14,8 @@ class Cutscene extends Phaser.Scene {
 
     update() {
         // final stuff
+        console.log("penis");
+
     }
     
     // credit for this function: https://tinyurl.com/typewritephaser3
