@@ -28,14 +28,14 @@ class Comment extends Phaser.Scene {
             720,
             "background"
         ).setOrigin(0, 0);
-        this.filterbackground = this.add.tileSprite
-        (
-            0,
-            0,
-            1280,
-            720,
-            "filterbackground"
-        ).setOrigin(0, 0);
+        // this.filterbackground = this.add.tileSprite
+        // (
+        //     0,
+        //     0,
+        //     1280,
+        //     720,
+        //     "filterbackground"
+        // ).setOrigin(0, 0);
 
         this.player = this.physics.add.sprite(config.width/2.71, config.height/1.96185286104, 'player', 0);
         this.filter = this.physics.add.sprite(config.width/1.17647058824, config.height/4.86486486486, 'filter', 0).setInteractive();
