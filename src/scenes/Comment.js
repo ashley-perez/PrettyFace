@@ -64,6 +64,7 @@ class Comment extends Phaser.Scene {
     }
 
     update() {
+        console.log("awfd");
         if(this.complete == true) {
         this.time += 0.01;
         console.log(this.time);
