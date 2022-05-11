@@ -37,8 +37,8 @@ class Filter extends Phaser.Scene {
             "filterbackground"
         ).setOrigin(0, 0);
 
-        this.player = this.physics.add.sprite(config.width/2.71, config.height/1.96185286104, 'player', 0);
-        this.filter = this.physics.add.sprite(config.width/1.17647058824, config.height/4.86486486486, 'filter', 0).setInteractive();
+        this.player = this.physics.add.sprite(config.width/3, config.height/2, 'player', 0);
+        this.filter = this.physics.add.sprite(config.width/1.2, config.height/4.8, 'filter', 0).setInteractive();
 
         this.complete = false;
 
