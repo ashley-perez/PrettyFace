@@ -4,8 +4,11 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
+<<<<<<< HEAD
         //this.load.spritesheet('button', './assets/playButton.png');
         //this.load.image('mouse', './assets/mouse.png');
+=======
+>>>>>>> de49285fe920cb829dbac31b3826c930c8ce8dca
         this.load.image('play1', './assets/play1.png');
         this.load.image('play2', './assets/play2.png');
     }
@@ -23,6 +26,7 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+
         let keyConfig = {
             fontFamily: 'Horror',
             fontSize: '35px',
@@ -34,9 +38,10 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
-        this.add.text(game.config.width/2, game.config.height/2, 'Put on Your Pretty Face', menuConfig).setOrigin(0.5, 3);
-        this.add.text(game.config.width/2, game.config.height/2, 'Press S to Start', keyConfig).setOrigin(0.5,0.7);
 
+        this.add.text(game.config.width/2, game.config.height/2, 'Put on Your Pretty Face', menuConfig).setOrigin(0.5, 2.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Press S to Start', keyConfig).setOrigin(0.5,0.7);
+        
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     }
 
