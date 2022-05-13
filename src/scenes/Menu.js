@@ -4,14 +4,17 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
-        // stuff
+        //this.load.spritesheet('button', './assets/playButton.png');
+        this.load.image('mouse', './assets/mouse.png');
+        this.load.image('play1', './assets/play1.png');
+        this.load.image('play2', './assets/play2.png');
     }
 
     create() {
         // more stuff
         let menuConfig = {
             fontFamily: 'Horror',
-            fontSize: '50px',
+            fontSize: '80px',
             color: '#FFFFFF',
             align: 'right',
             padding: {

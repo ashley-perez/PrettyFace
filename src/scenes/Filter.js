@@ -16,7 +16,6 @@ class Filter extends Phaser.Scene {
     create() {
         // mouse stuff
         this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
-
         this.filterbackground = this.add.tileSprite
         (
             0,
