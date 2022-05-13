@@ -10,13 +10,21 @@ class Cutscene extends Phaser.Scene {
     create() {
         this.testBox = this.add.text(100, 100, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 	    this.typewriteText('really good writing goes here', this.testBox, 70);
+
+        this.time = 0;
+        this.complete = true;
     }
 
     update() {
-        // final stuff
-
+        if(this.complete == true) {
+            this.time += 0.01;
+            console.log(this.time);
+        }
+        if (this.time >= 1) {
+            this.scene.start("eyesGame");
+        }
     }
-    
+
     // credit for this function: https://tinyurl.com/typewritephaser3
     // allows text to slowly be written like in other rpg games
     typewriteText(text, textbox, speed) {

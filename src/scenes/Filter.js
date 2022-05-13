@@ -19,7 +19,7 @@ class Filter extends Phaser.Scene {
         // mouse stuff
         // this.input.mouse.capture = true;
         this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
- 
+
         // this.normbackground = this.add.tileSprite
         // (
         //     0,
@@ -69,7 +69,7 @@ class Filter extends Phaser.Scene {
         console.log(this.time);
         }
 
-        if (this.time >= 3) {
+        if (this.time >= 1) {
             this.scene.start("commentGame");
         }
     }
