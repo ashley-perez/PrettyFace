@@ -16,7 +16,7 @@ class Filter extends Phaser.Scene {
     create() {
         // mouse stuff
         this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
-<<<<<<< HEAD
+
 
         // this.normbackground = this.add.tileSprite
         // (
@@ -26,8 +26,7 @@ class Filter extends Phaser.Scene {
         //     720,
         //     "background"
         // ).setOrigin(0, 0);
-=======
->>>>>>> de49285fe920cb829dbac31b3826c930c8ce8dca
+
         this.filterbackground = this.add.tileSprite
         (
             0,
@@ -84,10 +83,10 @@ class Filter extends Phaser.Scene {
             this.time += 0.01;
         }
 
-<<<<<<< HEAD
+
         if (this.time >= 1) {
             this.scene.start("commentGame");
-=======
+
         if (this.time >= 3) {
             // pass data to new scene
             // will affect the comments
@@ -97,8 +96,8 @@ class Filter extends Phaser.Scene {
             else if (this.heartFilter == true) {
                 this.scene.start('commentGame', {dog:false, heart:true});
             }
->>>>>>> de49285fe920cb829dbac31b3826c930c8ce8dca
+
         }
     }
-
+    }
 }

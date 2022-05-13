@@ -6,33 +6,15 @@ class Cutscene extends Phaser.Scene {
     }
 
     preload() {
-        // loading player texture atlas
+        // stuff
         this.load.atlas('link_atlas', './assets/linksheet.png', './assets/link.json');
     }
 
     create() {
-<<<<<<< HEAD
         this.testBox = this.add.text(100, 100, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 	    this.typewriteText('really good writing goes here', this.testBox, 70);
-
-        this.time = 0;
-        this.complete = true;
-    }
-
-    update() {
-        if(this.complete == true) {
-            this.time += 0.01;
-            console.log(this.time);
-        }
-        if (this.time >= 1) {
-            this.scene.start("eyesGame");
-        }
-    }
-
-    // credit for this function: https://tinyurl.com/typewritephaser3
-=======
-        // array of dialogue 
-        this.wordArray = ['really good writing goes here', 'hello', 'have you ever been to sukandi?', 'suk on deez nutz', 'bye'];
+        // array of dialogue
+        this.wordArray = ['really good writing goes here', 'hello', 'bye'];
         this.index = 0;
 
         // text boxes that "write themselves"
@@ -159,22 +141,31 @@ class Cutscene extends Phaser.Scene {
             repeat: -1,
         });
 
+        this.time = 0;
+        this.complete = true;
+
+
     }
 
     update() {
-        
+        // switch scene to eyes
+        if(this.complete == true) {
+            this.time += 0.01;
+        }
+        if (this.time >= 1) {
+            this.scene.start("eyesGame");
+        }
         // click for more text to be written
         if (this.input.activePointer.isDown && textDone == true) {
-            this.index += 1; 
+            this.index += 1;
 
-            // so out of index error doesn't happen (clicked through all the dialogue)
             if (this.index >= this.wordArray.length) {
                 textDone = false;
                 return;
             }
 
-            this.testBox.text = ''; // reset the text
-            this.typewriteText(this.wordArray[this.index], this.testBox, 70); 
+            this.testBox.text = '';
+            this.typewriteText(this.wordArray[this.index], this.testBox, 70);
             console.log('SLAYYYYYY');
             textDone = false;
 
@@ -200,7 +191,7 @@ class Cutscene extends Phaser.Scene {
         }
         // idle animations
         else if (!keyRIGHT.isDown && !keyLEFT.isDown && !keyUP.isDown && !keyDOWN.isDown) {
-            
+
             if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_left') {
                 this.player.anims.play('idle_left');
             }
@@ -216,21 +207,19 @@ class Cutscene extends Phaser.Scene {
 
         }
     }
-    
-    // credit for the base of this function: https://tinyurl.com/typewritephaser3
->>>>>>> de49285fe920cb829dbac31b3826c930c8ce8dca
+
+    // credit for this function: https://tinyurl.com/typewritephaser3
     // allows text to slowly be written like in other rpg games
-    // has been modified to better suit our needs :)
     typewriteText(text, textbox, speed) {
-        const length = text.length; // how many times the loop should repeat (based on sentence length)
+        const length = text.length; // how many times the loop should repeat (based on string length)
         let i = 0;
-        //textDone = false;
+        textDone = false;
         this.time.addEvent({
             callback: () => {
                 textbox.text += text[i]
                 ++i
+                console.log('hi: ', i);
 
-                // when there is no more to write set bool to false
                 if (i == length) {
                     textDone = true;
                 }
@@ -238,5 +227,5 @@ class Cutscene extends Phaser.Scene {
             repeat: length - 1,
             delay: speed // typing speed, big numbers = slower text, small = faster
         });
+        }
     }
-}
