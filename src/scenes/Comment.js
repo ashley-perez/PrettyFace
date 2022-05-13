@@ -10,14 +10,11 @@ class Comment extends Phaser.Scene {
         this.load.image('sad', './assets/sadCharacter.png');
 
         this.load.image('background', './assets/testBackGround.png');
-        // this.load.image('filterbackground', './assets/testFilterBackGround.png');
 
-        // this.load.image('fingerPoint', './assets/testFingerPointer.png');
     }
 
     create() {
         // mouse stuff
-        // this.input.mouse.capture = true;
         this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
  
         this.normbackground = this.add.tileSprite
@@ -28,48 +25,59 @@ class Comment extends Phaser.Scene {
             720,
             "background"
         ).setOrigin(0, 0);
-        this.filterbackground = this.add.tileSprite
-        (
-            0,
-            0,
-            1280,
-            720,
-            "filterbackground"
-        ).setOrigin(0, 0);
-
+        
         this.player = this.physics.add.sprite(config.width/2.71, config.height/1.96185286104, 'player', 0);
-        this.filter = this.physics.add.sprite(config.width/1.17647058824, config.height/4.86486486486, 'filter', 0).setInteractive();
+        // this.filter = this.physics.add.sprite(config.width/1.17647058824, config.height/4.86486486486, 'filter', 0).setInteractive();
 
-        this.complete = false;
+        this.complete = true;
+        
 
-        this.input.setDraggable(this.filter); // allow object to be draggable
+        //this.input.setDraggable(this.filter); // allow object to be draggable
 
         // if input then move, updates the location of object to the pointer("mouse")
-        this.input.on('drag', function(pointer, gameObject, dragX, dragY) {
-            gameObject.x = dragX;
-            gameObject.y = dragY;
-        });
+        // this.input.on('drag', function(pointer, gameObject, dragX, dragY) {
+        //     gameObject.x = dragX;
+        //     gameObject.y = dragY;
+        // });
 
-        // collisoin detection
-        this.physics.add.overlap(this.player, this.filter, null, function() {
-            console.log("hello");
-            this.player.setTexture('sad');
-            this.filter.destroy();
-            this.complete = true;
-        }, this);
+        // collision detection
+        // this.physics.add.overlap(this.player, this.filter, null, function() {
+        //     console.log("hello");
+        //     this.player.setTexture('sad');
+        //     this.filter.destroy();
+        //     this.complete = true;
+        // }, this);
 
         //just a fake timer for now
         this.time = 0;
 
+
+    }
+
+    // getting data from old scene
+    init(data) {
+        this.heart = data.heart;
+        this.dog = data.dog;
+
+        console.log(this.heart + " THIS IS HEART BOOLEAN");
+        console.log(this.dog + ' THIS IS THE DOG BOOLEAN');
     }
 
     update() {
+
+        if (this.heart == true) {
+            this.add.text(game.config.width/2, game.config.height/2, 'the hearts are so cute',  {color: '#000000'});
+        }
+        else if (this.dog == true) {
+            this.add.text(game.config.width/2.5, game.config.height/2, 'the dog filter is not slayful',  {color: '#000000'});
+        }
+       
         if(this.complete == true) {
-        this.time += 0.01;
-        console.log(this.time);
+            this.time += 0.01;
+            //console.log(this.time);
         }
 
-        if (this.time >= 3) {
+        if (this.time >= 5.5) {
             this.scene.start("narrOne");
         }
     }
