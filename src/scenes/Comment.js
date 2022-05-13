@@ -65,7 +65,7 @@ class Comment extends Phaser.Scene {
         if (this.heart == true) {
             this.add.text(game.config.width/2, game.config.height/2, 'the hearts are so cute',  {color: '#000000'});
         }
-        else if (this.dog == true) {
+        if (this.dog == true) {
             this.add.text(game.config.width/2.5, game.config.height/2, 'the dog filter is not slayful',  {color: '#000000'});
         }
 

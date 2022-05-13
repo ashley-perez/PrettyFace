@@ -152,7 +152,7 @@ class Cutscene extends Phaser.Scene {
         if(this.complete == true) {
             this.time += 0.01;
         }
-        if (this.time >= 1) {
+        if (this.time >= 5) {
             this.scene.start("eyesGame");
         }
         // click for more text to be written

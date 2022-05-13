@@ -84,8 +84,8 @@ class Filter extends Phaser.Scene {
         }
 
 
-        if (this.time >= 1) {
-            this.scene.start("commentGame");
+        // if (this.time >= 1) {
+        //     this.scene.start("commentGame");
 
         if (this.time >= 3) {
             // pass data to new scene
@@ -100,4 +100,4 @@ class Filter extends Phaser.Scene {
         }
     }
     }
-}
+// }
