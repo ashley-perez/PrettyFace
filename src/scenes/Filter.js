@@ -44,7 +44,7 @@ class Filter extends Phaser.Scene {
         });
 
         // collision detection
-        this.physics.add.overlap(this.player, this.filter, null, function() {
+        this.physics.add.collider(this.player, this.filter, null, function() {
             this.player.setTexture('sad');
             this.filter.destroy();
             this.complete = true;

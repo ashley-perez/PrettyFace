@@ -6,13 +6,13 @@ class Cutscene extends Phaser.Scene {
     }
 
     preload() {
-        // stuff
+        // loading player texture atlas
         this.load.atlas('link_atlas', './assets/linksheet.png', './assets/link.json');
     }
 
     create() {
         // array of dialogue 
-        this.wordArray = ['really good writing goes here', 'hello', 'bye'];
+        this.wordArray = ['really good writing goes here', 'hello', 'have you ever been to sukandi?', 'suk on deez nutz', 'bye'];
         this.index = 0;
 
         // text boxes that "write themselves"
@@ -139,8 +139,6 @@ class Cutscene extends Phaser.Scene {
             repeat: -1,
         });
 
-
-
     }
 
     update() {
@@ -149,13 +147,14 @@ class Cutscene extends Phaser.Scene {
         if (this.input.activePointer.isDown && textDone == true) {
             this.index += 1; 
 
+            // so out of index error doesn't happen (clicked through all the dialogue)
             if (this.index >= this.wordArray.length) {
                 textDone = false;
                 return;
             }
 
-            this.testBox.text = '';
-            this.typewriteText(this.wordArray[this.index], this.testBox, 70);
+            this.testBox.text = ''; // reset the text
+            this.typewriteText(this.wordArray[this.index], this.testBox, 70); 
             console.log('SLAYYYYYY');
             textDone = false;
 
@@ -198,18 +197,19 @@ class Cutscene extends Phaser.Scene {
         }
     }
     
-    // credit for this function: https://tinyurl.com/typewritephaser3
+    // credit for the base of this function: https://tinyurl.com/typewritephaser3
     // allows text to slowly be written like in other rpg games
+    // has been modified to better suit our needs :)
     typewriteText(text, textbox, speed) {
-        const length = text.length; // how many times the loop should repeat (based on string length)
+        const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
-        textDone = false;
+        //textDone = false;
         this.time.addEvent({
             callback: () => {
                 textbox.text += text[i]
                 ++i
-                console.log('hi: ', i);
 
+                // when there is no more to write set bool to false
                 if (i == length) {
                     textDone = true;
                 }

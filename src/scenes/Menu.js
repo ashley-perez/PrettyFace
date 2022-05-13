@@ -4,8 +4,6 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
-        //this.load.spritesheet('button', './assets/playButton.png');
-        this.load.image('mouse', './assets/mouse.png');
         this.load.image('play1', './assets/play1.png');
         this.load.image('play2', './assets/play2.png');
     }
