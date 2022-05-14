@@ -76,6 +76,7 @@ class Filter extends Phaser.Scene {
         this.time = 0;
     }//end gamephase 1
 
+
     }
 
     update() {
