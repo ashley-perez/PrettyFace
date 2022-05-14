@@ -39,7 +39,7 @@ class Cutscene extends Phaser.Scene {
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 15,
+            frameRate: 4,
             repeat: -1,
         });
 
@@ -52,7 +52,7 @@ class Cutscene extends Phaser.Scene {
                 suffix: '',
                 zeroPad: 4
             }),
-            frameRate: 15,
+            frameRate: 4,
             repeat: -1,
         });
 
@@ -68,7 +68,8 @@ class Cutscene extends Phaser.Scene {
             this.timer += 0.01;
         }
         if (this.timer >= 7) {
-            this.scene.start("eyesGame");
+            this.scene.start("filterGame");//eyesgame
+            gamePhase = 2;
         }
         
         // click for more text to be written

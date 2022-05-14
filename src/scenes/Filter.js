@@ -14,6 +14,7 @@ class Filter extends Phaser.Scene {
     }
 
     create() {
+        if(gamePhase == 1) {
         // mouse stuff
         this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -73,11 +74,13 @@ class Filter extends Phaser.Scene {
 
         //just a fake timer for now
         this.time = 0;
-
+    }//end gamephase 1
 
     }
 
     update() {
+
+        if(gamePhase==1) {
 
         if(this.complete == true) {
             this.time += 0.01;
@@ -98,6 +101,7 @@ class Filter extends Phaser.Scene {
             }
 
         }
+    }//end gamephase 1
     }
     }
 // }

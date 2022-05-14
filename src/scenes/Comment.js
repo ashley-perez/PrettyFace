@@ -14,6 +14,7 @@ class Comment extends Phaser.Scene {
     }
 
     create() {
+        if(gamePhase==1) {
         // mouse stuff
         this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -51,7 +52,7 @@ class Comment extends Phaser.Scene {
         //just a fake timer for now
         this.time = 0;
 
-
+        }//end Gamephase1
     }
 
     // getting data from old scene
@@ -60,7 +61,9 @@ class Comment extends Phaser.Scene {
         this.dog = data.dog;
     }
 
+
     update() {
+        if(gamePhase==1) {
 
         if (this.heart == true) {
             this.add.text(game.config.width/2, game.config.height/2, 'the hearts are so cute',  {color: '#000000'});
@@ -81,5 +84,8 @@ class Comment extends Phaser.Scene {
             this.scene.start("narrOne");
         }
     }
-    }
+    }//end gamePhase 1
+
+    
+}
 }
