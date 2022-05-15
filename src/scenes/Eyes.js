@@ -1,4 +1,3 @@
-var player, cursors, eyes;
 class Eyes extends Phaser.Scene {
     constructor() {
         super("eyesGame")
@@ -10,39 +9,40 @@ class Eyes extends Phaser.Scene {
     }
 
     create() {
-        // movement cursors
-        cursors = this.input.keyboard.createCursorKeys();
+        // movement this.cursors
+        this.cursors = this.input.keyboard.createCursorKeys();
 
-        player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heart').setScale(0.4);
-        eyes = this.physics.add.sprite(300,400,'eye');
+        this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heart').setScale(0.4);
+        this.eye = this.physics.add.sprite(300,400,'eye');
 
-        player.body.collideWorldBounds = true;
-
-        // eyes follow player ?
-        //this.physics.moveToObject(this.eyes, this.player, 60);
-
+        this.player.body.collideWorldBounds = true;
     }
 
     update() {
-        player.setVelocity(0);
+        this.player.setVelocity(0);
+        this.eyeFollow(this.eye, this.player, 120);
 
-        if (cursors.left.isDown)
+        if (this.cursors.left.isDown)
         {
-            player.setVelocityX(-200);
+            this.player.setVelocityX(-200);
         }
-        else if (cursors.right.isDown)
+        else if (this.cursors.right.isDown)
         {
-            player.setVelocityX(200);
+            this.player.setVelocityX(200);
         }
 
-        if (cursors.up.isDown)
+        if (this.cursors.up.isDown)
         {
-            player.setVelocityY(-200);
+            this.player.setVelocityY(-200);
         }
-        else if (cursors.down.isDown)
+        else if (this.cursors.down.isDown)
         {
-            player.setVelocityY(200);
+            this.player.setVelocityY(200);
         }
+    }
+
+    eyeFollow(eye, player, speed) {
+        this.physics.moveToObject(eye, player, speed);
     }
 
 }
