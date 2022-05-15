@@ -1,27 +1,48 @@
+var player, cursors, eyes;
 class Eyes extends Phaser.Scene {
     constructor() {
         super("eyesGame")
     }
 
     preload() {
-        this.load.image('pupil', './assets/pupil.png');
-
-        this.load.image('eye', './assets/placeHolderEye.png');
+        this.load.image('heart', './assets/heart.png');
+        this.load.image('eye', './assets/eye.png');
     }
 
     create() {
-        // var eyeLeft = this.add.ellipse(480, 110, 230, 90, 0xFFFFFF);
-        // var eyeRight = this.add.ellipse(790, 110, 230, 90, 0xFFFFFF);
-        // var pupilLeft = this.add.sprite(480,110, 'pupil');
-        // var pupilRight = this.physics.add.image(790, 110, 'pupil');
+        // movement cursors
+        cursors = this.input.keyboard.createCursorKeys();
 
-        this.eye = this.physics.add.sprite(480, 110, 'eye');
+        player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heart').setScale(0.4);
+        eyes = this.physics.add.sprite(300,400,'eye');
 
-        // pupil follow to mouse object
-        this.input.on('pointermove', function (pointer) {
-            this.physics.moveToObject(this.eye, pointer, 200);
-        }, this);
+        player.body.collideWorldBounds = true;
 
+        // eyes follow player ?
+        //this.physics.moveToObject(this.eyes, this.player, 60);
+
+    }
+
+    update() {
+        player.setVelocity(0);
+
+        if (cursors.left.isDown)
+        {
+            player.setVelocityX(-200);
+        }
+        else if (cursors.right.isDown)
+        {
+            player.setVelocityX(200);
+        }
+
+        if (cursors.up.isDown)
+        {
+            player.setVelocityY(-200);
+        }
+        else if (cursors.down.isDown)
+        {
+            player.setVelocityY(200);
+        }
     }
 
 }

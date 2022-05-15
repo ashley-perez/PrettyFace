@@ -11,7 +11,7 @@ class Cutscene extends Phaser.Scene {
     }
 
     create() {
-        // array of dialogue 
+        // array of dialogue
         this.wordArray = ['really good writing goes here', 'hello', 'bruh', 'bye'];
         this.index = 0;
 
@@ -68,13 +68,13 @@ class Cutscene extends Phaser.Scene {
             this.timer += 0.01;
         }
         if (this.timer >= 7) {
-            this.scene.start("filterGame");//eyesgame
+            this.scene.start("eyesGame");//eyesgame
             gamePhase = 2;
         }
-        
+
         // click for more text to be written
         if (this.input.activePointer.isDown && textDone == true) {
-            this.index += 1; 
+            this.index += 1;
 
             // so out of index error doesn't happen (clicked through all the dialogue)
             if (this.index >= this.wordArray.length) {
@@ -83,7 +83,7 @@ class Cutscene extends Phaser.Scene {
             }
 
             this.testBox.text = ''; // reset the text
-            this.typewriteText(this.wordArray[this.index], this.testBox, 60); 
+            this.typewriteText(this.wordArray[this.index], this.testBox, 60);
             console.log('SLAYYYYYY');
             textDone = false;
 
@@ -109,7 +109,7 @@ class Cutscene extends Phaser.Scene {
         // }
         // idle animations
         // else if (!keyRIGHT.isDown && !keyLEFT.isDown && !keyUP.isDown && !keyDOWN.isDown) {
-            
+
         //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_left') {
         //         this.player.anims.play('idle_left');
         //     }
@@ -125,7 +125,7 @@ class Cutscene extends Phaser.Scene {
 
         // }
     }
-    
+
     // credit for the base of this function: https://tinyurl.com/typewritephaser3
     // allows text to slowly be written like in other rpg games
     // has been modified to better suit our needs :)
