@@ -13,7 +13,6 @@ class Menu extends Phaser.Scene {
 
     create() {
         gamePhase = 1;
-        console.log(gamePhase);
         // more stuff
         let menuConfig = {
             fontFamily: 'Horror',
