@@ -108,7 +108,6 @@ class Comment extends Phaser.Scene {
             }
 
             if (this.timer >= 5.5) {
-
                 this.scene.start("narrOne");
             }
         }//end gamePhase 1
