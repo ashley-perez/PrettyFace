@@ -11,6 +11,20 @@ class Cutscene extends Phaser.Scene {
     }
 
     create() {
+<<<<<<< HEAD
+=======
+        // array of dialogue
+        this.wordArray = ['really good writing goes here', 'hello', 'bruh', 'bye'];
+        this.index = 0;
+
+        // text boxes that "write themselves"
+        this.testBox = this.add.text(100, 600, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+	    this.typewriteText(this.wordArray[this.index], this.testBox, 70);
+
+        // player stuff
+        this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
+        this.charMoveSpeed = 2.5;
+>>>>>>> f952bfacc3c330b6f21f3468a334d534cc274246
 
         // key inputs
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
@@ -100,10 +114,30 @@ class Cutscene extends Phaser.Scene {
 
     update() {
 
+<<<<<<< HEAD
         if (gamePhase == 1) {
             // switch scene to eyes
             if (this.complete == true) {
                 this.timer += 0.01
+=======
+        // switch scene to eyes
+        if(this.complete == true) {
+            this.timer += 0.01;
+        }
+        if (this.timer >= 7) {
+            this.scene.start("eyesGame");//eyesgame
+            gamePhase = 2;
+        }
+
+        // click for more text to be written
+        if (this.input.activePointer.isDown && textDone == true) {
+            this.index += 1;
+
+            // so out of index error doesn't happen (clicked through all the dialogue)
+            if (this.index >= this.wordArray.length) {
+                textDone = false;
+                return;
+>>>>>>> f952bfacc3c330b6f21f3468a334d534cc274246
             }
             if (this.timer >= 3) {
                 gamePhase = 2
@@ -197,7 +231,7 @@ class Cutscene extends Phaser.Scene {
         
 
     }
-    
+
     // credit for the base of this function: https://tinyurl.com/typewritephaser3
     // allows text to slowly be written like in other rpg games
     // has been modified to better suit our needs :)
