@@ -7,6 +7,7 @@ class Eyes extends Phaser.Scene {
         this.load.image('player', './assets/noFilterFace.png');
         this.load.image('eye2', './assets/eyeP2.png');
         this.load.image('eye3', './assets/placeHolderEye.png');
+        // this.load.image('eye4', './assets/eyeP4.png');       // use later
 
     }
 
