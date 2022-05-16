@@ -16,9 +16,18 @@ class Eyes extends Phaser.Scene {
         this.eye = this.physics.add.sprite(300,400,'eye');
 
         this.player.body.collideWorldBounds = true;
+        this.complete = true;
+        this.timer = 0;
     }
 
     update() {
+        if(this.complete == true) {
+            this.timer += 0.01;
+        }
+        if (this.timer >= 1) {
+            this.scene.start("restaurantGame");// restaurant game
+            gamePhase = 2;
+        }
         this.player.setVelocity(0);
         this.eyeFollow(this.eye, this.player, 120);
 

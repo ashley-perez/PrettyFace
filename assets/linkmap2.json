@@ -1,0 +1,94 @@
+{
+    "frames": {
+        "idle_down": {
+            "frame": {
+                "x": 5,
+                "y": 3,
+                "w": 24,
+                "h": 72
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 24,
+                "h": 72
+            },
+            "sourceSize": {
+                "w": 24,
+                "h": 72
+            }
+        },
+        "idle_up": {
+            "frame": {
+                "x": 73,
+                "y": 3,
+                "w": 24,
+                "h": 72
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 24,
+                "h": 72
+            },
+            "sourceSize": {
+                "w": 24,
+                "h": 72
+            }
+        },
+        "idle_left": {
+            "frame": {
+                "x": 38,
+                "y": 6,
+                "w": 26,
+                "h": 69
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 26,
+                "h": 69
+            },
+            "sourceSize": {
+                "w": 26,
+                "h": 69
+            }
+        },
+        "idle_right": {
+            "frame": {
+                "x": 106,
+                "y": 6,
+                "w": 26,
+                "h": 69
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 26,
+                "h": 69
+            },
+            "sourceSize": {
+                "w": 26,
+                "h": 69
+            }
+        }
+    },
+    "meta": {
+        "app": "https://www.leshylabs.com/apps/sstool/",
+        "version": "Leshy SpriteSheet Tool v0.8.4",
+        "image": "spritesheet.png",
+        "size": {
+            "w": 136,
+            "h": 76
+        },
+        "scale": 1
+    }
+}

@@ -4,9 +4,10 @@ let config = {
     type: Phaser.AUTO,
     width: 1280,          // game resolution rn is 720p
     height: 720,
-    scene: [Menu, Filter, Comment, Cutscene, Eyes], // the scenes we will be using
+    scene: [Menu, Filter, Comment, Cutscene, Eyes, Restaurant], // the scenes we will be using
     object_delay: 100,
     autoCenter: true,
+    render:{pixelArt: true},
 
     // phaser arcade physic engine
     physics: {
