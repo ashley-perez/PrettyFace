@@ -56,9 +56,20 @@ class Restaurant extends Phaser.Scene {
             frameRate: 1,
         });
 
+            this.complete = true;
+            this.timer = 0;
+
     }
 
     update() {
+        // switch scene to eyes
+        if(this.complete == true) {
+            this.timer += 0.01;
+        }
+        if (this.timer >= 1) {
+            this.scene.start("mazeGame");//eyesgame
+            gamePhase = 2;
+        }
         /*
         if (keyRIGHT.isDown) {
             this.player.x += this.charMoveSpeed;

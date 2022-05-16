@@ -4,11 +4,8 @@ let config = {
     type: Phaser.AUTO,
     width: 1280,          // game resolution rn is 720p
     height: 720,
-<<<<<<< HEAD
-    scene: [Menu, Filter, Comment, Cutscene, Eyes, Restaurant], // the scenes we will be using
-=======
-    scene: [Menu, Filter, Comment, Cutscene, Eyes, Maze], // the scenes we will be using
->>>>>>> e141434bc720803a5df257988d8d6ecfc2e3efe3
+    scene: [Menu, Filter, Comment, Cutscene, Eyes, Maze, Restaurant], // the scenes we will be using
+
     object_delay: 100,
     autoCenter: true,
     render:{pixelArt: true},

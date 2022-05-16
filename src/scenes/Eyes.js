@@ -14,27 +14,9 @@ class Eyes extends Phaser.Scene {
             this.cursors = this.input.keyboard.createCursorKeys();
 
             this.eyeGroup = this.add.group();
-
-<<<<<<< HEAD
-        this.player.body.collideWorldBounds = true;
-        this.complete = true;
-        this.timer = 0;
-    }
-
-    update() {
-        if(this.complete == true) {
-            this.timer += 0.01;
-        }
-        if (this.timer >= 1) {
-            this.scene.start("restaurantGame");// restaurant game
-            gamePhase = 2;
-        }
-        this.player.setVelocity(0);
-        this.eyeFollow(this.eye, this.player, 120);
-=======
             this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
             this.eye = this.physics.add.sprite(300,400,'eye');
-            this.eye2 = this.physics.add.sprite(950,400,'eye'); 
+            this.eye2 = this.physics.add.sprite(950,400,'eye');
 
             this.eyeGroup.add(this.eye);
             this.eyeGroup.add(this.eye2);
@@ -56,9 +38,9 @@ class Eyes extends Phaser.Scene {
 
             this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
             this.eye = this.physics.add.sprite(300,100,'eye');
-            this.eye2 = this.physics.add.sprite(950,100,'eye'); 
-            this.eye3 = this.physics.add.sprite(950,600,'eye'); 
-            this.eye4 = this.physics.add.sprite(300,600,'eye'); 
+            this.eye2 = this.physics.add.sprite(950,100,'eye');
+            this.eye3 = this.physics.add.sprite(950,600,'eye');
+            this.eye4 = this.physics.add.sprite(300,600,'eye');
 
             this.eyeGroup.add(this.eye);
             this.eyeGroup.add(this.eye2);
@@ -81,7 +63,6 @@ class Eyes extends Phaser.Scene {
             this.player.setVelocity(0);
             this.eyeFollow(this.eye, this.player, 70);
             this.eyeFollow(this.eye2, this.player, 70);
->>>>>>> e141434bc720803a5df257988d8d6ecfc2e3efe3
 
             if (this.cursors.left.isDown)
             {
@@ -133,7 +114,7 @@ class Eyes extends Phaser.Scene {
 
             this.timer += 0.01;
             if (this.timer >= 9) {
-                this.scene.start('mazeGame');
+                this.scene.start('restaurantGame'); // restaurant game
             }
         }
     }

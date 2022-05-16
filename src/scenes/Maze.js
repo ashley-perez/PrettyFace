@@ -6,7 +6,7 @@ class Maze extends Phaser.Scene {
     preload() {
         this.load.image('heart', './assets/heart.png');
         // this.load.atlas('girl_atlas', './assets/testAtlas.png', './assets/testWalk.json');
-        this.load.image('maze1', './assets/testMaze1.png'); 
+        this.load.image('maze1', './assets/testMaze1.png');
         this.load.image('maze2', './assets/testMaze2.png');
         this.load.image('maze3', './assets/testMaze3.png');
         this.load.image('maze4', './assets/testMaze1.png');
@@ -27,7 +27,7 @@ class Maze extends Phaser.Scene {
         this.maze2.body.immovable = true; this.maze2.body.allowGravity = false;
         this.maze3.body.immovable = true; this.maze3.body.allowGravity = false;
         this.maze4.body.immovable = true; this.maze4.body.allowGravity = false;
-         
+
 
         this.maze = this.add.group();
         this.maze.add(this.maze1); this.maze.add(this.maze2); this.maze.add(this.maze3); this.maze.add(this.maze4);
@@ -35,6 +35,7 @@ class Maze extends Phaser.Scene {
         this.player.body.collideWorldBounds = true;
 
         this.physics.add.collider(this.player, this.maze);
+
     }
 
     update() {
