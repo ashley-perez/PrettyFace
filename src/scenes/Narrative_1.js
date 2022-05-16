@@ -11,17 +11,6 @@ class Cutscene extends Phaser.Scene {
     }
 
     create() {
-        // array of dialogue 
-        this.wordArray = ['really good writing goes here', 'hello', 'bruh', 'bye'];
-        this.index = 0;
-
-        // text boxes that "write themselves"
-        this.testBox = this.add.text(100, 600, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
-	    this.typewriteText(this.wordArray[this.index], this.testBox, 70);
-
-        // player stuff
-        this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
-        this.charMoveSpeed = 2.5;
 
         // key inputs
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
@@ -56,41 +45,147 @@ class Cutscene extends Phaser.Scene {
             repeat: -1,
         });
 
-        this.complete = true;
-        this.timer = 0;
+        if (gamePhase == 1) {
+            // player stuff
+            this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
+            this.charMoveSpeed = 1.5;
+
+            // array of dialogue 
+            this.wordArray = ['really good writing goes here', 'wow nice, i keep getting more followers', 'i need to post more', 'hmmm how many people saw my story today...'];
+            this.index = 0;
+
+            // text boxes that "write themselves"
+            this.testBox = this.add.text(100, 600, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+            this.typewriteText(this.wordArray[this.index], this.testBox, 35);
+
+            this.complete = false;
+            this.timer = 0;
+        }
+
+        if (gamePhase == 2) {
+            // player stuff
+            this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
+            this.charMoveSpeed = 1.5;
+
+            // array of dialogue 
+            this.wordArray = ['phase 2!!!!', 'god i looked awful in my last post...', 'i just have to keep posting', 'i am not a good writer', 'bye'];
+            this.index = 0;
+
+            // text boxes that "write themselves"
+            this.testBox = this.add.text(100, 600, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+            this.typewriteText(this.wordArray[this.index], this.testBox, 35);
+
+            this.complete = false;
+            this.timer = 0;
+        }
+
+        if (gamePhase == 3) {
+            // player stuff
+            this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
+            this.charMoveSpeed = 1.5;
+
+            // array of dialogue 
+            this.wordArray = ['phase 3!!!!', 'sorry kate i dont have time to hangout today', '(literally spends 5 hours on tiktok', '(still thinking about that one negative comment)', '(bruh)'];
+            this.index = 0;
+
+            // text boxes that "write themselves"
+            this.testBox = this.add.text(100, 600, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+            this.typewriteText(this.wordArray[this.index], this.testBox, 35);
+
+            this.complete = false;
+            this.timer = 0;
+        }
 
     }
 
     update() {
 
-        // switch scene to eyes
-        if(this.complete == true) {
-            this.timer += 0.01;
-        }
-        if (this.timer >= 7) {
-            this.scene.start("filterGame");//eyesgame
-            gamePhase = 2;
-        }
-        
-        // click for more text to be written
-        if (this.input.activePointer.isDown && textDone == true) {
-            this.index += 1; 
-
-            // so out of index error doesn't happen (clicked through all the dialogue)
-            if (this.index >= this.wordArray.length) {
-                textDone = false;
-                return;
+        if (gamePhase == 1) {
+            // switch scene to eyes
+            if (this.complete == true) {
+                this.timer += 0.01
             }
+            if (this.timer >= 3) {
+                gamePhase = 2
+                this.scene.start("filterGame");
+            }
+            
+            // click for more text to be written
+            if (this.input.activePointer.isDown && textDone == true) {
+                this.index += 1; 
 
-            this.testBox.text = ''; // reset the text
-            this.typewriteText(this.wordArray[this.index], this.testBox, 60); 
-            console.log('SLAYYYYYY');
-            textDone = false;
+                // so out of index error doesn't happen (clicked through all the dialogue)
+                if (this.index >= this.wordArray.length) {
+                    textDone = false;
+                    this.complete = true;
+                    return;
+                }
 
-        }
+                this.testBox.text = ''; // reset the text
+                this.typewriteText(this.wordArray[this.index], this.testBox, 35); 
+                //console.log('SLAYYYYYY');
+                textDone = false;
+            }
+        } // end of phase 1
+
+        else if (gamePhase == 2) {
+            // switch scene to eyes
+            if (this.complete == true) {
+                this.timer += 0.01
+            }
+            if (this.timer >= 3) {
+                this.scene.start("filterGame");
+                gamePhase = 3;
+            }
+            
+            // click for more text to be written
+            if (this.input.activePointer.isDown && textDone == true) {
+                this.index += 1; 
+
+                // so out of index error doesn't happen (clicked through all the dialogue)
+                if (this.index >= this.wordArray.length) {
+                    textDone = false;
+                    this.complete = true;
+                    return;
+                }
+
+                this.testBox.text = ''; // reset the text
+                this.typewriteText(this.wordArray[this.index], this.testBox, 35); 
+                console.log('one third slay');
+                textDone = false;
+            }
+        } // end of phase 2
+
+        else if (gamePhase == 3) {
+            // switch scene to eyes
+            if (this.complete == true) {
+                this.timer += 0.01
+            }
+            if (this.timer >= 3) {
+                gamePhase = 4;
+                this.scene.start("filterGame");
+            }
+            
+            // click for more text to be written
+            if (this.input.activePointer.isDown && textDone == true) {
+                this.index += 1; 
+
+                // so out of index error doesn't happen (clicked through all the dialogue)
+                if (this.index >= this.wordArray.length) {
+                    textDone = false;
+                    this.complete = true;
+                    return;
+                }
+
+                this.testBox.text = ''; // reset the text
+                this.typewriteText(this.wordArray[this.index], this.testBox, 35); 
+                textDone = false;
+            }
+        } // end of phase 3
 
         // moving animations
         // thank you Prof for making the texture atlas lab
+        // we always want this so not in game phase if statement
         if (keyRIGHT.isDown) {
             this.player.x += this.charMoveSpeed;
             this.player.anims.play('walk_right', true);
@@ -99,31 +194,8 @@ class Cutscene extends Phaser.Scene {
             this.player.x -= this.charMoveSpeed;
             this.player.anims.play('walk_left', true);
         }
-        // else if (keyUP.isDown) {
-        //     this.player.y -= this.charMoveSpeed;
-        //     this.player.anims.play('run_up', true);
-        // }
-        // else if (keyDOWN.isDown) {
-        //     this.player.y += this.charMoveSpeed;
-        //     this.player.anims.play('run_down', true);
-        // }
-        // idle animations
-        // else if (!keyRIGHT.isDown && !keyLEFT.isDown && !keyUP.isDown && !keyDOWN.isDown) {
-            
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_left') {
-        //         this.player.anims.play('idle_left');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_right') {
-        //         this.player.anims.play('idle_right');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_up') {
-        //         this.player.anims.play('idle_up');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_down') {
-        //         this.player.anims.play('idle_down');
-        //     }
+        
 
-        // }
     }
     
     // credit for the base of this function: https://tinyurl.com/typewritephaser3
@@ -132,7 +204,6 @@ class Cutscene extends Phaser.Scene {
     typewriteText(text, textbox, speed) {
         const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
-        //textDone = false;
         this.time.addEvent({
             callback: () => {
                 textbox.text += text[i]
@@ -147,4 +218,5 @@ class Cutscene extends Phaser.Scene {
             delay: speed // typing speed, big numbers = slower text, small = faster
         });
     }
+
 }
