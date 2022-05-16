@@ -13,7 +13,6 @@ class Menu extends Phaser.Scene {
 
     create() {
         gamePhase = 1;
-        console.log(gamePhase);
         // more stuff
         let menuConfig = {
             fontFamily: 'Horror',
@@ -47,7 +46,8 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            this.scene.start("filterGame");
+            // this.scene.start("filterGame");
+            this.scene.start("mazeGame");
         }
     }
 }
