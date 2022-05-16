@@ -14,10 +14,9 @@ class Eyes extends Phaser.Scene {
             this.cursors = this.input.keyboard.createCursorKeys();
 
             this.eyeGroup = this.add.group();
-
             this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
             this.eye = this.physics.add.sprite(300,400,'eye');
-            this.eye2 = this.physics.add.sprite(950,400,'eye'); 
+            this.eye2 = this.physics.add.sprite(950,400,'eye');
 
             this.eyeGroup.add(this.eye);
             this.eyeGroup.add(this.eye2);
@@ -39,9 +38,9 @@ class Eyes extends Phaser.Scene {
 
             this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
             this.eye = this.physics.add.sprite(300,100,'eye');
-            this.eye2 = this.physics.add.sprite(950,100,'eye'); 
-            this.eye3 = this.physics.add.sprite(950,600,'eye'); 
-            this.eye4 = this.physics.add.sprite(300,600,'eye'); 
+            this.eye2 = this.physics.add.sprite(950,100,'eye');
+            this.eye3 = this.physics.add.sprite(950,600,'eye');
+            this.eye4 = this.physics.add.sprite(300,600,'eye');
 
             this.eyeGroup.add(this.eye);
             this.eyeGroup.add(this.eye2);
@@ -115,7 +114,7 @@ class Eyes extends Phaser.Scene {
 
             this.timer += 0.01;
             if (this.timer >= 9) {
-                this.scene.start('mazeGame');
+                this.scene.start('restaurantGame'); // restaurant game
             }
         }
     }
