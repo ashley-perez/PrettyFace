@@ -152,7 +152,7 @@ class Filter extends Phaser.Scene {
         // 1
         if(health >=95 ) {
             console.log(health);
-            console.log("filter 95 +");
+            //console.log("filter 95 +");
             if(this.complete == true) {
                 this.timer += 0.01;
             }
@@ -169,7 +169,7 @@ class Filter extends Phaser.Scene {
         } // end gamephase 1
         else if(health >=80 && health <=94 ) {
             console.log(health);
-            console.log("filter 95 +");
+            //console.log("filter 95 +");
             if(this.complete == true) {
                 this.timer += 0.01;
             }

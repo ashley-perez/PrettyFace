@@ -12,6 +12,10 @@ class Comment extends Phaser.Scene {
 
         this.load.image('replyButton', './assets/replyButton.png');
 
+        this.load.image('one', './assets/one.png');
+        this.load.image('two', './assets/two.png');
+        this.load.image('three', './assets/three.png');
+
     }
 
     create() {
@@ -30,15 +34,39 @@ class Comment extends Phaser.Scene {
 
 
             this.complete = false;
+            this.buttonNum = false;
+
+            this.instructions = this.add.text(100,100, 'choose a reply', {color: '#000000'});
 
             this.comments = this.physics.add.sprite(config.width/1.87, config.height-450,'comments');
             this.reply = this.physics.add.sprite(config.width/1.94, config.height-195, 'reply1');
             this.replyButton = this.physics.add.sprite(config.width/1.85, config.height-75, 'replyButton').setInteractive();
             this.replyButton.setScale(2);
 
+            this.choiceOne = this.physics.add.sprite(300, config.height-500, 'one').setInteractive();
+            this.choiceTwo = this.physics.add.sprite(300, config.height-400, 'two').setInteractive();
+            this.choiceThree = this.physics.add.sprite(300, config.height-300, 'three').setInteractive();
+
             // click on reply button
+            this.choiceOne.on('pointerdown', function(pointer) {
+                this.buttonNum = true;
+                console.log("clciked");
+            }, this);
+
+            this.choiceTwo.on('pointerdown', function(pointer) {
+                this.buttonNum = true;
+                console.log("clciked");
+            }, this);
+
+            this.choiceThree.on('pointerdown', function(pointer) {
+                this.buttonNum = true;
+                console.log("clciked");
+            }, this);
+
             this.replyButton.on('pointerdown', function(pointer) {
-                this.complete = true;
+                if (this.buttonNum == true) {
+                    this.complete = true;
+                }
                 console.log("clciked");
             }, this);
 
@@ -60,18 +88,41 @@ class Comment extends Phaser.Scene {
                 "background"
             ).setOrigin(0, 0);
 
+            this.instructions = this.add.text(100,100, 'choose a reply', {color: '#000000'});
 
             this.complete = false;
+            this.buttonNum = false;
 
             this.comments = this.physics.add.sprite(config.width/1.87, config.height-450,'comments');
             this.reply = this.physics.add.sprite(config.width/1.94, config.height-195, 'reply1');
             this.replyButton = this.physics.add.sprite(config.width/1.85, config.height-75, 'replyButton').setInteractive();
             this.replyButton.setScale(2);
 
+            this.choiceOne = this.physics.add.sprite(300, config.height-500, 'one').setInteractive();
+            this.choiceTwo = this.physics.add.sprite(300, config.height-400, 'two').setInteractive();
+            this.choiceThree = this.physics.add.sprite(300, config.height-300, 'three').setInteractive();
+
             // click on reply button
+            this.choiceOne.on('pointerdown', function(pointer) {
+                this.buttonNum = true;
+                console.log("choice one");
+            }, this);
+
+            this.choiceTwo.on('pointerdown', function(pointer) {
+                this.buttonNum = true;
+                console.log("chioce two");
+            }, this);
+
+            this.choiceThree.on('pointerdown', function(pointer) {
+                this.buttonNum = true;
+                console.log("choice three");
+            }, this);
+
             this.replyButton.on('pointerdown', function(pointer) {
-                this.complete = true;
-                console.log("clciked");
+                if (this.buttonNum == true) {
+                    this.complete = true;
+                }
+                console.log("reply");
             }, this);
 
             //just a fake timer for now
@@ -103,7 +154,7 @@ class Comment extends Phaser.Scene {
                 //console.log(this.time);
             }
 
-            if (this.timer >= 5.5) {
+            if (this.timer >= 3) {
                 if(Math.floor(Math.random() * 2) == 0) {
                     console.log("eyes");
                     this.scene.start("eyesGame");
@@ -128,7 +179,7 @@ class Comment extends Phaser.Scene {
                 //console.log(this.time);
             }
 
-            if (this.timer >= 5.5) {
+            if (this.timer >= 3) {
                 if(Math.floor(Math.random() * 2) == 0) {
                     console.log("eyes");
                     this.scene.start("eyesGame");
