@@ -6,8 +6,8 @@ class Filter extends Phaser.Scene {
 
     preload() {
         this.load.image('player', './assets/noFilterFace.png');
-        this.load.image('playerHeart', './assets/heartFilterFace1.png');
-        this.load.image('playerDog', './assets/dogFilterFace1.png');
+        this.load.image('playerHeart', './assets/HeartFilterFace1.png');
+        this.load.image('playerDog', './assets/DogFilterFace1.png');
 
         this.load.image('heartFilter', './assets/HeartFilterSelect.png');
         this.load.image('dogFilter', './assets/DogFilterSelect.png');
