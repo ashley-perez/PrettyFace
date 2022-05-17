@@ -18,16 +18,22 @@ class Eyes extends Phaser.Scene {
 
             this.eyeGroup = this.add.group();
             this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
-            this.eye = this.physics.add.sprite(300,400,'eye2');
-            this.eye2 = this.physics.add.sprite(950,400,'eye2');
+            //this.eye = this.physics.add.sprite(-300,-400,'eye2');
+            //this.eye2 = this.physics.add.sprite(950,800,'eye2');
+            this.eye3 = this.physics.add.sprite(-650,500,'eye2');
+            //this.eye4 = this.physics.add.sprite(1500,300,'eye2');
 
-            this.eyeGroup.add(this.eye);
-            this.eyeGroup.add(this.eye2);
+            //this.eyeGroup.add(this.eye);
+            //this.eyeGroup.add(this.eye2);
+            //this.eyeGroup.add(this.eye3);
+            //this.eyeGroup.add(this.eye4);
+
+            this.disappear = false;
 
             this.player.body.collideWorldBounds = true;
-
-            this.physics.add.collider(this.player, this.eyeGroup, null, function() {
-                console.log("COLLISION");
+            this.physics.add.collider(this.player, this.eye3, null, function() {
+                this.eye3.destroy(true);
+                this.disappear = true;
             }, this);
 
             this.timer = 0;
@@ -36,14 +42,14 @@ class Eyes extends Phaser.Scene {
         else if (health >= 80 && health <=94)  {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
-
+/*
             this.eyeGroup = this.add.group();
 
             this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
-            this.eye = this.physics.add.sprite(300,100,'eye3');
-            this.eye2 = this.physics.add.sprite(950,100,'eye3');
-            this.eye3 = this.physics.add.sprite(950,600,'eye3');
-            this.eye4 = this.physics.add.sprite(300,600,'eye3');
+            this.eye10 = this.physics.add.sprite(300,100,'eye3');
+            this.eye11 = this.physics.add.sprite(950,100,'eye3');
+            this.eye12 = this.physics.add.sprite(950,600,'eye3');
+            this.eye13 = this.physics.add.sprite(300,600,'eye3');
 
             this.eyeGroup.add(this.eye);
             this.eyeGroup.add(this.eye2);
@@ -54,7 +60,7 @@ class Eyes extends Phaser.Scene {
 
             this.physics.add.collider(this.player, this.eyeGroup, null, function() {
                 console.log("COLLISION");
-            }, this);
+            }, this);*/
 
             this.timer = 0;
         }
@@ -62,11 +68,14 @@ class Eyes extends Phaser.Scene {
 
     update() {
         this.timer += 0.01;
+        if(this.disappear == false) {
+            //this.eyeFollow(this.eye, this.player, 70);
+            //this.eyeFollow(this.eye2, this.player, 70);
+            this.eyeFollow(this.eye3, this.player, 70);
+            //this.eyeFollow(this.eye4, this.player, 70);
+        }
         if (health >= 95) {
             this.player.setVelocity(0);
-            this.eyeFollow(this.eye, this.player, 70);
-            this.eyeFollow(this.eye2, this.player, 70);
-
             if (this.cursors.left.isDown)
             {
                 this.player.setVelocityX(-200);
@@ -85,14 +94,14 @@ class Eyes extends Phaser.Scene {
                 this.player.setVelocityY(200);
             }
 
-            
+
             if (this.timer >= 9) {
                 this.scene.start('narrOne');
                 console.log("narrr");
             }
         }
         else if (health >=80 && health <=94) {
-            this.player.setVelocity(0);
+           /* this.player.setVelocity(0);
             this.eyeFollow(this.eye, this.player,  85);
             this.eyeFollow(this.eye2, this.player, 85);
             this.eyeFollow(this.eye3, this.player, 85);
@@ -120,11 +129,15 @@ class Eyes extends Phaser.Scene {
             if (this.timer >= 9) {
                 this.scene.start('narrOne'); // restaurant game
             }
-        }
+        }*/
+    }
+
+    }
+    destroySprite(sprite) {
+        sprite.destroy(true);
     }
 
     eyeFollow(eye, player, speed) {
         this.physics.moveToObject(eye, player, speed);
     }
-
 }
