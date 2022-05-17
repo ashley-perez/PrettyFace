@@ -12,7 +12,7 @@ class Filter extends Phaser.Scene {
         this.load.image('heartFilter', './assets/HeartFilterSelect.png');
         this.load.image('dogFilter', './assets/DogFilterSelect.png');
 
-        this.load.image('filterbackground', './assets/testFilterBackGround.png');
+        this.load.image('filterbackground', './assets/testFilterBackground.png');
         this.load.image('post', './assets/postButton.png');
 
         this.load.image('sad', './assets/sadCharacter.png');
