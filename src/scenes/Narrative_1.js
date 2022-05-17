@@ -12,7 +12,8 @@ class Cutscene extends Phaser.Scene {
 
     create() {
         // array of dialogue
-        this.wordArray = ['really good writing goes here', 'hello', 'bruh', 'bye'];
+        this.wordArray1 = ['damn im so happy', 'pretty meh', 'bruh', 'bye'];
+        // this.wordArray = ['really good writing goes here', 'hello', 'bruh', 'bye'];
         this.index = 0;
 
         // text boxes that "write themselves"
@@ -20,41 +21,14 @@ class Cutscene extends Phaser.Scene {
 	    this.typewriteText(this.wordArray[this.index], this.testBox, 70);
 
         // player stuff
-        this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
-        this.charMoveSpeed = 2.5;
+        // this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
+        // this.charMoveSpeed = 2.5;
 
         // key inputs
-        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-
-        // player animations
-        this.anims.create({
-            key: 'walk_left',
-            frames: this.anims.generateFrameNames('girl_atlas', {
-                prefix: 'walk_left_',
-                start: 1,
-                end: 4,
-                suffix: '',
-                zeroPad: 4
-            }),
-            frameRate: 4,
-            repeat: -1,
-        });
-
-        this.anims.create({
-            key: 'walk_right',
-            frames: this.anims.generateFrameNames('girl_atlas', {
-                prefix: 'walk_right_',
-                start: 1,
-                end: 4,
-                suffix: '',
-                zeroPad: 4
-            }),
-            frameRate: 4,
-            repeat: -1,
-        });
+        // keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        // keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        // keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        // keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 
         this.complete = true;
         this.timer = 0;
@@ -62,134 +36,46 @@ class Cutscene extends Phaser.Scene {
     }
 
     update() {
-        if(gamePhase == 1) {
-        // switch scene to eyes
+        if(health >=95) {
+       
         if(this.complete == true) {
             this.timer += 0.01;
+            this.testBox.text = ''; // reset the text
+            this.typewriteText(this.wordArray[0], this.testBox, 60);
         }
         if (this.timer >= 7) {
-            gamePhase = 2;
+            health -= 3;
             this.scene.start("filterGame");
         }
 
         // click for more text to be written
-        if (this.input.activePointer.isDown && textDone == true) {
-            this.index += 1;
+        // if (this.input.activePointer.isDown && textDone == true) {
+        //     this.index += 1;
 
-            // so out of index error doesn't happen (clicked through all the dialogue)
-            if (this.index >= this.wordArray.length) {
-                textDone = false;
-                return;
+        //     // so out of index error doesn't happen (clicked through all the dialogue)
+        //     if (this.index >= this.wordArray.length) {
+        //         textDone = false;
+        //         return;
+        //     }
+
+            
+        //     console.log('SLAYYYYYY');
+        //     textDone = false;
+
+        // }
+        }
+        else if(health >=80 && health <=94) {
+       
+            if(this.complete == true) {
+                this.timer += 0.01;
+                this.testBox.text = ''; // reset the text
+                this.typewriteText(this.wordArray[1], this.testBox, 60);
             }
-
-            this.testBox.text = ''; // reset the text
-            this.typewriteText(this.wordArray[this.index], this.testBox, 60);
-            console.log('SLAYYYYYY');
-            textDone = false;
-
-        }
-
-        // moving animations
-        // thank you Prof for making the texture atlas lab
-        if (keyRIGHT.isDown) {
-            this.player.x += this.charMoveSpeed;
-            this.player.anims.play('walk_right', true);
-        }
-        else if (keyLEFT.isDown) {
-            this.player.x -= this.charMoveSpeed;
-            this.player.anims.play('walk_left', true);
-        }
-        // else if (keyUP.isDown) {
-        //     this.player.y -= this.charMoveSpeed;
-        //     this.player.anims.play('run_up', true);
-        // }
-        // else if (keyDOWN.isDown) {
-        //     this.player.y += this.charMoveSpeed;
-        //     this.player.anims.play('run_down', true);
-        // }
-        // idle animations
-        // else if (!keyRIGHT.isDown && !keyLEFT.isDown && !keyUP.isDown && !keyDOWN.isDown) {
-
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_left') {
-        //         this.player.anims.play('idle_left');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_right') {
-        //         this.player.anims.play('idle_right');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_up') {
-        //         this.player.anims.play('idle_up');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_down') {
-        //         this.player.anims.play('idle_down');
-        //     }
-
-        // }
-    }
-    else if(gamePhase == 2) {
-        // switch scene to eyes
-        console.log(gamePhase);
-        if(this.complete == true) {
-            this.timer += 0.01;
-        }
-        if (this.timer >= 7) {
-            gamePhase = 3;
-            this.scene.start("filterGame");
-        }
-
-        // click for more text to be written
-        if (this.input.activePointer.isDown && textDone == true) {
-            this.index += 1;
-
-            // so out of index error doesn't happen (clicked through all the dialogue)
-            if (this.index >= this.wordArray.length) {
-                textDone = false;
-                return;
+            if (this.timer >= 7) {
+                health -= 10;
+                this.scene.start("filterGame");
             }
-
-            this.testBox.text = ''; // reset the text
-            this.typewriteText(this.wordArray[this.index], this.testBox, 60);
-            console.log('SLAYYYYYY');
-            textDone = false;
-
         }
-
-        // moving animations
-        // thank you Prof for making the texture atlas lab
-        if (keyRIGHT.isDown) {
-            this.player.x += this.charMoveSpeed;
-            this.player.anims.play('walk_right', true);
-        }
-        else if (keyLEFT.isDown) {
-            this.player.x -= this.charMoveSpeed;
-            this.player.anims.play('walk_left', true);
-        }
-        // else if (keyUP.isDown) {
-        //     this.player.y -= this.charMoveSpeed;
-        //     this.player.anims.play('run_up', true);
-        // }
-        // else if (keyDOWN.isDown) {
-        //     this.player.y += this.charMoveSpeed;
-        //     this.player.anims.play('run_down', true);
-        // }
-        // idle animations
-        // else if (!keyRIGHT.isDown && !keyLEFT.isDown && !keyUP.isDown && !keyDOWN.isDown) {
-
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_left') {
-        //         this.player.anims.play('idle_left');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_right') {
-        //         this.player.anims.play('idle_right');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_up') {
-        //         this.player.anims.play('idle_up');
-        //     }
-        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_down') {
-        //         this.player.anims.play('idle_down');
-        //     }
-
-        // }
-    }
-   
     }
 
     // credit for the base of this function: https://tinyurl.com/typewritephaser3

@@ -15,7 +15,7 @@ class Comment extends Phaser.Scene {
     }
 
     create() {
-        if(gamePhase==1) {
+        if(health >=95) {
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -39,53 +39,14 @@ class Comment extends Phaser.Scene {
             // click on reply button
             this.replyButton.on('pointerdown', function(pointer) {
                 this.complete = true;
+                console.log("clciked");
             }, this);
 
             //just a fake timer for now
             this.timer = 0;
 
-        }//end Gamephase1
+        }//end
 
-        else if(gamePhase == 2) {
-            // mouse stuff
-            this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
-
-            this.normbackground = this.add.tileSprite
-            (
-                0,
-                0,
-                1280,
-                720,
-                "background"
-            ).setOrigin(0, 0);
-                //just a fake timer for now
-            this.timer = 0;
-
-            this.complete = true;
-
-            this.add.text(game.config.width/2, game.config.height/2, 'COMMENTS PHASE 2',  {color: '#000000'});
-        }
-
-        else if(gamePhase == 3) {
-            // mouse stuff
-            this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
-
-            this.normbackground = this.add.tileSprite
-            (
-                0,
-                0,
-                1280,
-                720,
-                "background"
-            ).setOrigin(0, 0);
-
-                //just a fake timer for now
-            this.timer = 0;
-            
-            this.complete = true;
-
-            this.add.text(game.config.width/2, game.config.height/2, 'COMMENTS PHASE 3',  {color: '#000000'});
-        }
     }
 
     // getting data from old scene
@@ -96,7 +57,7 @@ class Comment extends Phaser.Scene {
 
 
     update() {
-        if(gamePhase==1) {
+        if(health >= 95) {
 
             // if (this.heart == true) {
             //     this.add.text(game.config.width/2, game.config.height/2, 'the hearts are so cute',  {color: '#000000'});
@@ -111,30 +72,17 @@ class Comment extends Phaser.Scene {
             }
 
             if (this.timer >= 5.5) {
-                this.scene.start("narrOne");
+                if(Math.floor(Math.random() * 2) == 0) {
+                    console.log("eyes");
+                    this.scene.start("eyeGame");
+                }
+                else if (Math.floor(Math.random() * 2) == 1) {
+                    console.log("maze");
+                    this.scene.start("mazeGame");
+                }
             }
         }//end gamePhase 1
-
-        else if (gamePhase == 2) {
-            console.log('COMMENT PHASE 2');
-            if(this.complete == true) {
-                this.timer+= 0.01;
-            }
-            if (this.timer >= 8) {
-                this.scene.start("eyesGame");
-            }
         }
 
-        else if (gamePhase == 3) {
-            console.log('COMMENT PHASE 2');
-            if(this.complete == true) {
-                this.timer+= 0.01;
-            }
-            if (this.timer >= 8) {
-                this.scene.start("eyesGame");
-            }
-        }
     
     }
-
-}

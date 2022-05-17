@@ -61,9 +61,8 @@ class Eyes extends Phaser.Scene {
     }
 
     update() {
-        if (gamePhase == 2) {
-            console.log(gamePhase);
-            this.player.setVelocity(0);
+        if (health >= 95) {
+            // this.player.setVelocity(0);
             this.eyeFollow(this.eye, this.player, 70);
             this.eyeFollow(this.eye2, this.player, 70);
 
@@ -90,7 +89,7 @@ class Eyes extends Phaser.Scene {
                 this.scene.start('narrOne');
             }
         }
-        else if (gamePhase == 3) {
+        else if (health >=80 && health <=94) {
             this.player.setVelocity(0);
             this.eyeFollow(this.eye, this.player,  85);
             this.eyeFollow(this.eye2, this.player, 85);
@@ -117,7 +116,7 @@ class Eyes extends Phaser.Scene {
 
             this.timer += 0.01;
             if (this.timer >= 9) {
-                this.scene.start('mazeGame'); // restaurant game
+                this.scene.start('narrOne'); // restaurant game
             }
         }
     }

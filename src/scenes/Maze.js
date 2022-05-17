@@ -83,17 +83,16 @@ class Maze extends Phaser.Scene {
         this.physics.add.collider(this.player, this.mazeEnd, null, function() {
             // this.countT = 0;
             // console.log(this.countT);
-            if(gamePhase == 3) {
-            this.scene.start("restaurantGame");
+            if(health >=95) {
+            this.scene.start("narrOne");
             }
         }, this);
     }//end phase 3
     }
 
     update() {
-        if(gamePhase == 3) {
-        this.player.setVelocity(0);
-
+        if(health >= 95) {
+        // this.player.body.setVelocity(0);
     
         if (this.cursors.left.isDown)
         {
@@ -113,8 +112,7 @@ class Maze extends Phaser.Scene {
             this.player.setVelocityY(200);
         }
 
+        }//end
     }
-}//end phase 3
-
 
 }

@@ -22,6 +22,7 @@ let config = {
 
 let game = new Phaser.Game(config);
 let gamePhase;
+let health;
 
 // set border
 let borderUISize = game.config.height / 15;

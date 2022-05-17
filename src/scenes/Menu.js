@@ -12,7 +12,9 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        gamePhase = 1;
+        // gamePhase = 1;
+
+        health = 100;
         // more stuff
         let menuConfig = {
             fontFamily: 'Horror',
@@ -46,7 +48,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            var music = this.sound.add('bgMusic');  // add music background
+            var music = this.sound.add('bgMusic', {volume: 0.3});  // add music background
             music.setLoop(true);
             music.play();
             this.scene.start("filterGame");
