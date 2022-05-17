@@ -83,9 +83,7 @@ class Maze extends Phaser.Scene {
         this.physics.add.collider(this.player, this.mazeEnd, null, function() {
             // this.countT = 0;
             // console.log(this.countT);
-            if(health >=95) {
             this.scene.start("narrOne");
-            }
         }, this);
         }//end 
 
@@ -145,9 +143,7 @@ class Maze extends Phaser.Scene {
             this.physics.add.collider(this.player, this.mazeEnd, null, function() {
                 // this.countT = 0;
                 // console.log(this.countT);
-                if(health >=95) {
                 this.scene.start("narrOne");
-                }
             }, this);
             }//end 
     }
