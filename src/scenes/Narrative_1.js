@@ -17,7 +17,7 @@ class Cutscene extends Phaser.Scene {
         this.index = 0;
 
         // text boxes that "write themselves"
-        this.testBox = this.add.text(100, 600, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+        this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 	    this.typewriteText(this.wordArray1[this.index], this.testBox, 70);
 
         // player stuff
@@ -30,7 +30,7 @@ class Cutscene extends Phaser.Scene {
         // keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         // keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 
-        this.complete = true;
+        this.complete = false;
         this.timer = 0;
 
     }
@@ -42,6 +42,7 @@ class Cutscene extends Phaser.Scene {
             this.index=0;
        
         if(this.complete == true) {
+            this.complete = false;
             this.testBox.text = ''; // reset the text
             this.typewriteText(this.wordArray1[this.index], this.testBox, 60);
         }
@@ -90,11 +91,11 @@ class Cutscene extends Phaser.Scene {
         this.time.addEvent({
             callback: () => {
                 textbox.text += text[i]
-                ++i
+                i++
 
                 // when there is no more to write set bool to false
                 if (i == length) {
-                    textDone = true;
+                    this.complete = true;
                 }
             },
             repeat: length - 1,
