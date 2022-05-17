@@ -6,7 +6,7 @@ class Menu extends Phaser.Scene {
     preload() {
         //this.load.spritesheet('button', './assets/playButton.png');
         //this.load.image('mouse', './assets/mouse.png');
-
+        this.load.audio('bgMusic', './assets/bg_music.mp3');
         this.load.image('play1', './assets/play1.png');
         this.load.image('play2', './assets/play2.png');
     }
@@ -46,8 +46,16 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
+<<<<<<< HEAD
             this.scene.start("filterGame");
             // this.scene.start("mazeGame");
+=======
+            var music = this.sound.add('bgMusic');  // add music background
+            music.setLoop(true);
+            music.play();
+            //this.scene.start("filterGame");
+            this.scene.start("mazeGame");
+>>>>>>> 0fc018795b56b61a2fc5a96afef319feb2bf7edb
         }
     }
 }
