@@ -17,8 +17,7 @@ class Cutscene extends Phaser.Scene {
         this.index = 0;
 
         // text boxes that "write themselves"
-        this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
-	    this.typewriteText(this.wordArray1[this.index], this.testBox, 70);
+        
 
         // player stuff
         // this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
@@ -30,7 +29,18 @@ class Cutscene extends Phaser.Scene {
         // keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         // keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 
-        this.complete = false;
+        if(health >= 95) {
+            this.index=0;
+            this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+	        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+        }
+        else if(health >= 80 && health <=94) {
+            this.index=1;
+            this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+	        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+        }
+
+        this.complete = true;
         this.timer = 0;
 
     }
@@ -39,41 +49,18 @@ class Cutscene extends Phaser.Scene {
         this.timer += 0.01;
         if(health >=95) {
             console.log("penis");
-            this.index=0;
-       
-        if(this.complete == true) {
-            this.complete = false;
-            this.testBox.text = ''; // reset the text
-            this.typewriteText(this.wordArray1[this.index], this.testBox, 60);
-        }
         if (this.timer >= 7) {
-            health -= 3;
+            health -= 10;
             this.scene.start("filterGame");
         }
-
-        // click for more text to be written
-        // if (this.input.activePointer.isDown && textDone == true) {
-        //     this.index += 1;
-
-        //     // so out of index error doesn't happen (clicked through all the dialogue)
-        //     if (this.index >= this.wordArray.length) {
-        //         textDone = false;
-        //         return;
-        //     }
-
-            
-        //     console.log('SLAYYYYYY');
-        //     textDone = false;
-
-        // }
         }
         else if(health >=80 && health <=94) {
        
-            if(this.complete == true) {
-                this.timer += 0.01;
-                this.testBox.text = ''; // reset the text
-                this.typewriteText(this.wordArray[1], this.testBox, 60);
-            }
+            // if(this.complete == true) {
+            //     this.timer += 0.01;
+            //     this.testBox.text = ''; // reset the text
+            //     this.typewriteText(this.wordArray1[1], this.testBox, 60);
+            // }
             if (this.timer >= 7) {
                 health -= 10;
                 this.scene.start("filterGame");
