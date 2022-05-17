@@ -27,7 +27,7 @@ class Maze extends Phaser.Scene {
     }
 
     create() {
-        if(gamePhase == 3) {
+        if(health >=95) {
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
         this.countT = 5;
@@ -92,7 +92,7 @@ class Maze extends Phaser.Scene {
 
     update() {
         if(health >= 95) {
-        // this.player.body.setVelocity(0);
+        this.player.body.setVelocity(0);
     
         if (this.cursors.left.isDown)
         {

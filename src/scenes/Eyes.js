@@ -12,7 +12,7 @@ class Eyes extends Phaser.Scene {
     }
 
     create() {
-        if (gamePhase == 2)  {
+        if (health >= 95)  {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -33,7 +33,7 @@ class Eyes extends Phaser.Scene {
             this.timer = 0;
         }
 
-        else if (gamePhase == 3)  {
+        else if (health >= 80 && health <=94)  {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -62,7 +62,7 @@ class Eyes extends Phaser.Scene {
 
     update() {
         if (health >= 95) {
-            // this.player.setVelocity(0);
+            this.player.setVelocity(0);
             this.eyeFollow(this.eye, this.player, 70);
             this.eyeFollow(this.eye2, this.player, 70);
 
