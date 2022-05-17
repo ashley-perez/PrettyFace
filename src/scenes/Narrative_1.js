@@ -18,7 +18,7 @@ class Cutscene extends Phaser.Scene {
 
         // text boxes that "write themselves"
         this.testBox = this.add.text(100, 600, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
-	    this.typewriteText(this.wordArray[this.index], this.testBox, 70);
+	    this.typewriteText(this.wordArray1[this.index], this.testBox, 70);
 
         // player stuff
         // this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
@@ -36,12 +36,14 @@ class Cutscene extends Phaser.Scene {
     }
 
     update() {
+        this.timer += 0.01;
         if(health >=95) {
+            console.log("penis");
+            this.index=0;
        
         if(this.complete == true) {
-            this.timer += 0.01;
             this.testBox.text = ''; // reset the text
-            this.typewriteText(this.wordArray[0], this.testBox, 60);
+            this.typewriteText(this.wordArray1[this.index], this.testBox, 60);
         }
         if (this.timer >= 7) {
             health -= 3;

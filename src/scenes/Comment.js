@@ -74,7 +74,7 @@ class Comment extends Phaser.Scene {
             if (this.timer >= 5.5) {
                 if(Math.floor(Math.random() * 2) == 0) {
                     console.log("eyes");
-                    this.scene.start("eyeGame");
+                    this.scene.start("eyesGame");
                 }
                 else if (Math.floor(Math.random() * 2) == 1) {
                     console.log("maze");

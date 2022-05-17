@@ -61,6 +61,7 @@ class Eyes extends Phaser.Scene {
     }
 
     update() {
+        this.timer += 0.01;
         if (health >= 95) {
             this.player.setVelocity(0);
             this.eyeFollow(this.eye, this.player, 70);
@@ -84,9 +85,10 @@ class Eyes extends Phaser.Scene {
                 this.player.setVelocityY(200);
             }
 
-            this.timer += 0.01;
+            
             if (this.timer >= 9) {
                 this.scene.start('narrOne');
+                console.log("narrr");
             }
         }
         else if (health >=80 && health <=94) {
