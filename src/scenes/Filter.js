@@ -83,7 +83,6 @@ class Filter extends Phaser.Scene {
             this.timer = 0;
         }//end gamephase 1
 
-
         // START OF PHASE 2 ---------------------------------------------------------------------------------------------------------
         if (gamePhase == 2) {
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');

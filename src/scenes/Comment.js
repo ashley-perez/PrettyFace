@@ -46,7 +46,7 @@ class Comment extends Phaser.Scene {
 
         }//end Gamephase1
 
-        if(gamePhase == 2) {
+        else if(gamePhase == 2) {
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -58,14 +58,15 @@ class Comment extends Phaser.Scene {
                 720,
                 "background"
             ).setOrigin(0, 0);
-
+                //just a fake timer for now
+            this.timer = 0;
 
             this.complete = true;
 
             this.add.text(game.config.width/2, game.config.height/2, 'COMMENTS PHASE 2',  {color: '#000000'});
         }
 
-        if(gamePhase == 3) {
+        else if(gamePhase == 3) {
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -78,7 +79,9 @@ class Comment extends Phaser.Scene {
                 "background"
             ).setOrigin(0, 0);
 
-
+                //just a fake timer for now
+            this.timer = 0;
+            
             this.complete = true;
 
             this.add.text(game.config.width/2, game.config.height/2, 'COMMENTS PHASE 3',  {color: '#000000'});

@@ -30,7 +30,7 @@ class Eyes extends Phaser.Scene {
             this.timer = 0;
         }
 
-        if (gamePhase == 3)  {
+        else if (gamePhase == 3)  {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -58,8 +58,8 @@ class Eyes extends Phaser.Scene {
     }
 
     update() {
-        console.log(gamePhase);
         if (gamePhase == 2) {
+            console.log(gamePhase);
             this.player.setVelocity(0);
             this.eyeFollow(this.eye, this.player, 70);
             this.eyeFollow(this.eye2, this.player, 70);
@@ -114,7 +114,7 @@ class Eyes extends Phaser.Scene {
 
             this.timer += 0.01;
             if (this.timer >= 9) {
-                this.scene.start('restaurantGame'); // restaurant game
+                this.scene.start('mazeGame'); // restaurant game
             }
         }
     }

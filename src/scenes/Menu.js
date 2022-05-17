@@ -46,8 +46,8 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            //this.scene.start("filterGame");
-            this.scene.start("mazeGame");
+            this.scene.start("filterGame");
+            // this.scene.start("mazeGame");
         }
     }
 }

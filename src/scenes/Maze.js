@@ -27,9 +27,10 @@ class Maze extends Phaser.Scene {
     }
 
     create() {
+        if(gamePhase == 3) {
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.count = 5;
+        this.countT = 5;
 
         this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
         this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
@@ -79,19 +80,21 @@ class Maze extends Phaser.Scene {
         this.player.body.collideWorldBounds = true;
 
         this.physics.add.collider(this.player, this.maze);
-        this.physics.add.overlap(this.player, this.mazeEnd, null, function() {
-            this.count = 0;
-            // this.scene.start("eyesGame");
-        });
+        this.physics.add.collider(this.player, this.mazeEnd, null, function() {
+            // this.countT = 0;
+            // console.log(this.countT);
+            if(gamePhase == 3) {
+            this.scene.start("restaurantGame");
+            }
+        }, this);
+    }//end phase 3
     }
 
     update() {
+        if(gamePhase == 3) {
         this.player.setVelocity(0);
 
-        if(this.count == 0) {
-            this.scene.start("eyesGame");
-        }
-
+    
         if (this.cursors.left.isDown)
         {
             this.player.setVelocityX(-200);
@@ -109,7 +112,9 @@ class Maze extends Phaser.Scene {
         {
             this.player.setVelocityY(200);
         }
+
     }
+}//end phase 3
 
 
 }

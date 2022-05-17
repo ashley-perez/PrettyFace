@@ -62,14 +62,14 @@ class Cutscene extends Phaser.Scene {
     }
 
     update() {
-
+        if(gamePhase == 1) {
         // switch scene to eyes
         if(this.complete == true) {
             this.timer += 0.01;
         }
         if (this.timer >= 7) {
-            this.scene.start("eyesGame");//eyesgame
             gamePhase = 2;
+            this.scene.start("filterGame");
         }
 
         // click for more text to be written
@@ -124,6 +124,72 @@ class Cutscene extends Phaser.Scene {
         //     }
 
         // }
+    }
+    else if(gamePhase == 2) {
+        // switch scene to eyes
+        console.log(gamePhase);
+        if(this.complete == true) {
+            this.timer += 0.01;
+        }
+        if (this.timer >= 7) {
+            gamePhase = 3;
+            this.scene.start("filterGame");
+        }
+
+        // click for more text to be written
+        if (this.input.activePointer.isDown && textDone == true) {
+            this.index += 1;
+
+            // so out of index error doesn't happen (clicked through all the dialogue)
+            if (this.index >= this.wordArray.length) {
+                textDone = false;
+                return;
+            }
+
+            this.testBox.text = ''; // reset the text
+            this.typewriteText(this.wordArray[this.index], this.testBox, 60);
+            console.log('SLAYYYYYY');
+            textDone = false;
+
+        }
+
+        // moving animations
+        // thank you Prof for making the texture atlas lab
+        if (keyRIGHT.isDown) {
+            this.player.x += this.charMoveSpeed;
+            this.player.anims.play('walk_right', true);
+        }
+        else if (keyLEFT.isDown) {
+            this.player.x -= this.charMoveSpeed;
+            this.player.anims.play('walk_left', true);
+        }
+        // else if (keyUP.isDown) {
+        //     this.player.y -= this.charMoveSpeed;
+        //     this.player.anims.play('run_up', true);
+        // }
+        // else if (keyDOWN.isDown) {
+        //     this.player.y += this.charMoveSpeed;
+        //     this.player.anims.play('run_down', true);
+        // }
+        // idle animations
+        // else if (!keyRIGHT.isDown && !keyLEFT.isDown && !keyUP.isDown && !keyDOWN.isDown) {
+
+        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_left') {
+        //         this.player.anims.play('idle_left');
+        //     }
+        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_right') {
+        //         this.player.anims.play('idle_right');
+        //     }
+        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_up') {
+        //         this.player.anims.play('idle_up');
+        //     }
+        //     if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'run_down') {
+        //         this.player.anims.play('idle_down');
+        //     }
+
+        // }
+    }
+   
     }
 
     // credit for the base of this function: https://tinyurl.com/typewritephaser3
