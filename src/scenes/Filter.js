@@ -19,7 +19,6 @@ class Filter extends Phaser.Scene {
     }
 
     create() {
-        // START OF PHASE 1 ---------------------------------------------------------------------------------------------------------
         if(health >= 95) {
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
@@ -77,7 +76,6 @@ class Filter extends Phaser.Scene {
                 if (this.dogFilter == true || this.heartFilter == true) {
                     this.complete = true;
                 }
-                console.log('CLICKKKKK');
             }, this);
 
             this.timer = 0;
@@ -169,7 +167,6 @@ class Filter extends Phaser.Scene {
         } // end gamephase 1
         else if(health >=80 && health <=94 ) {
             console.log(health);
-            //console.log("filter 95 +");
             if(this.complete == true) {
                 this.timer += 0.01;
             }

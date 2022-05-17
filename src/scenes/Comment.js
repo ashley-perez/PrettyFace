@@ -15,7 +15,6 @@ class Comment extends Phaser.Scene {
         this.load.image('one', './assets/one.png');
         this.load.image('two', './assets/two.png');
         this.load.image('three', './assets/three.png');
-
     }
 
     create() {
@@ -141,14 +140,7 @@ class Comment extends Phaser.Scene {
 
     update() {
         if(health >= 95) {
-            console.log("comment 95");
-            // if (this.heart == true) {
-            //     this.add.text(game.config.width/2, game.config.height/2, 'the hearts are so cute',  {color: '#000000'});
-            // }
-            // else if (this.dog == true) {
-            //     this.add.text(game.config.width/2.5, game.config.height/2, 'the dog filter is not slayful',  {color: '#000000'});
-            // }
-
+            console.log('health 95+');
             if(this.complete == true) {
                 this.timer+= 0.01;
                 //console.log(this.time);
@@ -164,16 +156,10 @@ class Comment extends Phaser.Scene {
                     this.scene.start("mazeGame");
                 }
             }
-        }//end gamePhase 1
+
+        }
         else if(health >=80 && health <=94 ) {
             console.log("comment 80+");
-            // if (this.heart == true) {
-            //     this.add.text(game.config.width/2, game.config.height/2, 'the hearts are so cute',  {color: '#000000'});
-            // }
-            // else if (this.dog == true) {
-            //     this.add.text(game.config.width/2.5, game.config.height/2, 'the dog filter is not slayful',  {color: '#000000'});
-            // }
-
             if(this.complete == true) {
                 this.timer+= 0.01;
                 //console.log(this.time);
@@ -189,8 +175,8 @@ class Comment extends Phaser.Scene {
                     this.scene.start("mazeGame");
                 }
             }
-        }//end gamePhase 2
         }
+    }
 
     
     }

@@ -28,63 +28,66 @@ class Maze extends Phaser.Scene {
 
     create() {
         if(health >=95) {
-        // movement this.cursors
-        this.cursors = this.input.keyboard.createCursorKeys();
-        this.countT = 5;
+            // movement this.cursors
+            this.cursors = this.input.keyboard.createCursorKeys();
+            this.countT = 5;
 
-        this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
-        this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
-        this.maze2 = this.physics.add.sprite(game.config.width/2.52714709, 613.00, 'maze2');
-        this.maze3 = this.physics.add.sprite(852, 613.00, 'maze3');
-        this.maze4 = this.physics.add.sprite(909, 312.00, 'maze4'); 
-        this.maze5 = this.physics.add.sprite(581.50, 506.50, 'maze5');
-        this.maze6 = this.physics.add.sprite(400.50 , 387.50 , 'maze6');
-        this.maze7 = this.physics.add.sprite(621.50, 434.00, 'maze7');
-        this.maze8 = this.physics.add.sprite(767.00 , 387.50 , 'maze8');
-        this.maze9 = this.physics.add.sprite(439.00, 266.50 , 'maze9');
-        this.maze10 = this.physics.add.sprite(717.00, 266.50, 'maze10');
-        this.maze11 = this.physics.add.sprite(520.50 ,193.50 , 'maze11');
-        this.maze12 = this.physics.add.sprite(717.00 ,192.50 , 'maze12');
-        this.maze13 = this.physics.add.sprite(394.00 ,144.50 , 'maze13');
-        this.maze14 = this.physics.add.sprite(658.50 ,141.50 , 'maze14');
-        this.maze15 = this.physics.add.sprite(856.50 ,141.50 , 'maze15');
-        this.maze16 = this.physics.add.sprite(621.50 ,77.50 , 'maze16');
-        this.maze17 = this.physics.add.sprite(547.00 ,12.50 , 'maze17');
-        this.mazeEnd = this.physics.add.sprite(856.50  ,16.88 , 'mazeEnd');
+            this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
+            this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
+            this.maze2 = this.physics.add.sprite(game.config.width/2.52714709, 613.00, 'maze2');
+            this.maze3 = this.physics.add.sprite(852, 613.00, 'maze3');
+            this.maze4 = this.physics.add.sprite(909, 312.00, 'maze4'); 
+            this.maze5 = this.physics.add.sprite(581.50, 506.50, 'maze5');
+            this.maze6 = this.physics.add.sprite(400.50 , 387.50 , 'maze6');
+            this.maze7 = this.physics.add.sprite(621.50, 434.00, 'maze7');
+            this.maze8 = this.physics.add.sprite(767.00 , 387.50 , 'maze8');
+            this.maze9 = this.physics.add.sprite(439.00, 266.50 , 'maze9');
+            this.maze10 = this.physics.add.sprite(717.00, 266.50, 'maze10');
+            this.maze11 = this.physics.add.sprite(520.50 ,193.50 , 'maze11');
+            this.maze12 = this.physics.add.sprite(717.00 ,192.50 , 'maze12');
+            this.maze13 = this.physics.add.sprite(394.00 ,144.50 , 'maze13');
+            this.maze14 = this.physics.add.sprite(658.50 ,141.50 , 'maze14');
+            this.maze15 = this.physics.add.sprite(856.50 ,141.50 , 'maze15');
+            this.maze16 = this.physics.add.sprite(621.50 ,77.50 , 'maze16');
+            this.maze17 = this.physics.add.sprite(547.00 ,12.50 , 'maze17');
+            this.mazeEnd = this.physics.add.sprite(856.50  ,16.88 , 'mazeEnd');
 
-        this.maze1.body.allowGravity = false; this.maze1.body.immovable = true;
-        this.maze2.body.immovable = true; this.maze2.body.allowGravity = false;
-        this.maze3.body.immovable = true; this.maze3.body.allowGravity = false;
-        this.maze4.body.immovable = true; this.maze4.body.allowGravity = false;
-        this.maze5.body.immovable = true; this.maze5.body.allowGravity = false;
-        this.maze6.body.immovable = true; this.maze6.body.allowGravity = false;
-        this.maze7.body.immovable = true; this.maze7.body.allowGravity = false;
-        this.maze8.body.immovable = true; this.maze8.body.allowGravity = false;
-        this.maze9.body.immovable = true; this.maze9.body.allowGravity = false;
-        this.maze10.body.immovable = true; this.maze10.body.allowGravity = false;
-        this.maze11.body.immovable = true; this.maze11.body.allowGravity = false;
-        this.maze12.body.immovable = true; this.maze12.body.allowGravity = false;
-        this.maze13.body.immovable = true; this.maze13.body.allowGravity = false;
-        this.maze14.body.immovable = true; this.maze14.body.allowGravity = false;
-        this.maze15.body.immovable = true; this.maze15.body.allowGravity = false;
-        this.maze16.body.immovable = true; this.maze16.body.allowGravity = false;
-        this.maze17.body.immovable = true; this.maze17.body.allowGravity = false;
-        this.mazeEnd.body.allowGravity = false;
+            this.maze1.body.allowGravity = false; this.maze1.body.immovable = true;
+            this.maze2.body.immovable = true; this.maze2.body.allowGravity = false;
+            this.maze3.body.immovable = true; this.maze3.body.allowGravity = false;
+            this.maze4.body.immovable = true; this.maze4.body.allowGravity = false;
+            this.maze5.body.immovable = true; this.maze5.body.allowGravity = false;
+            this.maze6.body.immovable = true; this.maze6.body.allowGravity = false;
+            this.maze7.body.immovable = true; this.maze7.body.allowGravity = false;
+            this.maze8.body.immovable = true; this.maze8.body.allowGravity = false;
+            this.maze9.body.immovable = true; this.maze9.body.allowGravity = false;
+            this.maze10.body.immovable = true; this.maze10.body.allowGravity = false;
+            this.maze11.body.immovable = true; this.maze11.body.allowGravity = false;
+            this.maze12.body.immovable = true; this.maze12.body.allowGravity = false;
+            this.maze13.body.immovable = true; this.maze13.body.allowGravity = false;
+            this.maze14.body.immovable = true; this.maze14.body.allowGravity = false;
+            this.maze15.body.immovable = true; this.maze15.body.allowGravity = false;
+            this.maze16.body.immovable = true; this.maze16.body.allowGravity = false;
+            this.maze17.body.immovable = true; this.maze17.body.allowGravity = false;
+            this.mazeEnd.body.allowGravity = false;
 
 
-        this.maze = this.add.group();
-        this.maze.add(this.maze1);this.maze.add(this.maze2);this.maze.add(this.maze3);this.maze.add(this.maze4);this.maze.add(this.maze5);this.maze.add(this.maze6);
-        this.maze.add(this.maze7);this.maze.add(this.maze8);this.maze.add(this.maze9);this.maze.add(this.maze10);this.maze.add(this.maze11);this.maze.add(this.maze12);
-        this.maze.add(this.maze13);this.maze.add(this.maze14);this.maze.add(this.maze15);this.maze.add(this.maze16);this.maze.add(this.maze17);
+            this.maze = this.add.group();
+            this.maze.add(this.maze1);this.maze.add(this.maze2);this.maze.add(this.maze3);this.maze.add(this.maze4);this.maze.add(this.maze5);this.maze.add(this.maze6);
+            this.maze.add(this.maze7);this.maze.add(this.maze8);this.maze.add(this.maze9);this.maze.add(this.maze10);this.maze.add(this.maze11);this.maze.add(this.maze12);
+            this.maze.add(this.maze13);this.maze.add(this.maze14);this.maze.add(this.maze15);this.maze.add(this.maze16);this.maze.add(this.maze17);
 
-        this.player.body.collideWorldBounds = true;
+            this.player.body.collideWorldBounds = true;
 
-        this.physics.add.collider(this.player, this.maze);
-        this.physics.add.collider(this.player, this.mazeEnd, null, function() {
-            // this.countT = 0;
-            // console.log(this.countT);
-            this.scene.start("narrOne");
-        }, this);
+            this.physics.add.collider(this.player, this.maze);
+
+            // when player reaches end of maze do something
+            this.physics.add.collider(this.player, this.mazeEnd, null, function() {
+                // this.countT = 0;
+                // console.log(this.countT);
+                this.scene.start("narrOne");
+            }, this);
+
         }//end 
 
         else if (health >= 80 && health <=94)  {
@@ -145,31 +148,29 @@ class Maze extends Phaser.Scene {
                 // console.log(this.countT);
                 this.scene.start("narrOne");
             }, this);
-            }//end 
+        }//end 
     }
 
     update() {
         if(health >= 95) {
-        this.player.body.setVelocity(0);
-    
-        if (this.cursors.left.isDown)
-        {
-            this.player.setVelocityX(-200);
-        }
-        else if (this.cursors.right.isDown)
-        {
-            this.player.setVelocityX(200);
-        }
+            this.player.body.setVelocity(0);
+            if (this.cursors.left.isDown)
+            {
+                this.player.setVelocityX(-200);
+            }
+            else if (this.cursors.right.isDown)
+            {
+                this.player.setVelocityX(200);
+            }
 
-        if (this.cursors.up.isDown)
-        {
-            this.player.setVelocityY(-200);
-        }
-        else if (this.cursors.down.isDown)
-        {
-            this.player.setVelocityY(200);
-        }
-
+            if (this.cursors.up.isDown)
+            {
+                this.player.setVelocityY(-200);
+            }
+            else if (this.cursors.down.isDown)
+            {
+                this.player.setVelocityY(200);
+            }
         }//end
         else if (health >= 80 && health <=94)  {
             this.player.body.setVelocity(0);
@@ -192,7 +193,7 @@ class Maze extends Phaser.Scene {
                 this.player.setVelocityY(200);
             }
     
-            }//end
+        }//end
 
     }
 
