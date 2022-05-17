@@ -46,11 +46,19 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
+<<<<<<< HEAD
             this.scene.start("filterGame");
             var music = this.sound.add('bgMusic');  // add music background
             music.setLoop(true);
             music.play();
 
+=======
+            var music = this.sound.add('bgMusic');  // add music background
+            music.setLoop(true);
+            music.play();
+            this.scene.start("filterGame");
+            //this.scene.start("mazeGame");
+>>>>>>> 8dc51cad1c10e920c2917aa23c903536ce88bab2
         }
     }
 }
