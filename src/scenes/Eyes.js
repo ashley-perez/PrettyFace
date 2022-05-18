@@ -34,7 +34,7 @@ class Eyes extends Phaser.Scene {
             this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye2');
             this.eye3 = this.physics.add.sprite(-150,700,'eye2');
-            this.eye4 = this.physics.add.sprite(1400,300,'eye4');
+            this.eye4 = this.physics.add.sprite(1400,300,'eye2');
             this.eye5 = this.physics.add.sprite(450,1100,'eye2');
 
             // check each eye exist
