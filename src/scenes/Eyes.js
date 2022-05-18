@@ -31,10 +31,10 @@ class Eyes extends Phaser.Scene {
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
 
             this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
-            this.eye = this.physics.add.sprite(0,-200,'eye2');
+            this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye2');
-            this.eye3 = this.physics.add.sprite(-450,800,'eye2');
-            this.eye4 = this.physics.add.sprite(1500,300,'eye2');
+            this.eye3 = this.physics.add.sprite(-150,700,'eye2');
+            this.eye4 = this.physics.add.sprite(1400,300,'eye4');
             this.eye5 = this.physics.add.sprite(450,1100,'eye2');
 
             // check each eye exist
@@ -49,27 +49,27 @@ class Eyes extends Phaser.Scene {
             // player colliding with each eye
             this.player.body.collideWorldBounds = true;
             this.physics.add.collider(this.player, this.eye, null, function() {
-                this.destroySprite(this.eye);
+                this.eye.setPosition(0,-100);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye2, null, function() {
-                this.destroySprite(this.eye2);
+                this.eye2.setPosition(950,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye3, null, function() {
-                this.destroySprite(this.eye3);
+                this.eye3.setPosition(-150,700);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye4, null, function() {
-                this.destroySprite(this.eye4);
+                this.eye4.setPosition(1400,300);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye5, null, function() {
-                this.destroySprite(this.eye5);
+                this.eye5.setPosition(450,1100);
                 health -= 2;
                 console.log(health);
             }, this);
@@ -115,27 +115,27 @@ class Eyes extends Phaser.Scene {
             // player colliding with each eye
             this.player.body.collideWorldBounds = true;
             this.physics.add.collider(this.player, this.eye, null, function() {
-                this.destroySprite(this.eye);
+                this.reviveSprite(this.eye);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye2, null, function() {
-                this.destroySprite(this.eye2);
+                this.reviveSprite(this.eye2);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye3, null, function() {
-                this.destroySprite(this.eye3);
+                this.reviveSprite(this.eye3);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye4, null, function() {
-                this.destroySprite(this.eye4);
+                this.reviveSprite(this.eye4);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye5, null, function() {
-                this.destroySprite(this.eye5);
+                this.reviveSprite(this.eye5);
                 health -= 2;
                 console.log(health);
             }, this);
@@ -156,20 +156,15 @@ class Eyes extends Phaser.Scene {
             }
             this.player.setVelocity(0);
 
-            if(this.disappear == false || this.e == false)
-                this.eyeFollow(this.eye, this.player, 75);
+            this.eyeFollow(this.eye, this.player, 75);
 
-            if(this.disappear == false || this.e2 == false)
-                this.eyeFollow(this.eye2, this.player, 75);
+            this.eyeFollow(this.eye2, this.player, 75);
 
-            if(this.disappear == false || this.e3 == false)
-                this.eyeFollow(this.eye3, this.player, 75);
+            this.eyeFollow(this.eye3, this.player, 75);
 
-            if(this.disappear == false || this.e4 == false)
-                this.eyeFollow(this.eye4, this.player, 75);
+            this.eyeFollow(this.eye4, this.player, 75);
 
-            if(this.disappear == false || this.e5 == false)
-                this.eyeFollow(this.eye5, this.player, 75);
+            this.eyeFollow(this.eye5, this.player, 75);
 
             if (this.cursors.left.isDown)
             {
@@ -241,22 +236,6 @@ class Eyes extends Phaser.Scene {
                 this.scene.start('narrOne'); // restaurant game
             }
         }
-    }
-
-    destroySprite(sprite) {
-        sprite.destroy(true);
-        this.disappear = true;
-
-        if(sprite == this.eye)
-            this.e = true;
-        if(sprite == this.eye2)
-            this.e2 = true;
-        if(sprite == this.eye3)
-            this.e3 = true;
-        if(sprite == this.eye4)
-            this.e4 = true;
-        if(sprite == this.eye5)
-            this.e5 = true;
     }
 
     eyeFollow(eye, player, speed) {
