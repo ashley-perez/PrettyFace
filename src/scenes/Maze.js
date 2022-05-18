@@ -24,13 +24,29 @@ class Maze extends Phaser.Scene {
         this.load.image('maze16', './assets/testMaze15.png');
         this.load.image('maze17', './assets/testMaze16.png');
         this.load.image('mazeEnd', './assets/testMazeEnd.png');
+        this.load.atlas('instruction', './assets/instructMaze.png', './assets/instructMaze.json');
+
     }
 
     create() {
         if(health >=95) {
+            this.anims.create({
+                key: 'idle',
+                frames: this.anims.generateFrameNames('instruction', {
+                    prefix: 'frame_',
+                    start: 1,
+                    end: 5,
+                    suffix: '',
+                    zeroPad: 2
+                }),
+                frameRate: 20,
+                repeat: -1,
+            });
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
             this.countT = 5;
+
+            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
 
             this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
             this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
@@ -87,14 +103,28 @@ class Maze extends Phaser.Scene {
                 // console.log(this.countT);
                 this.scene.start("narrOne");
             }, this);
-
+            this.timer2 = 0;
         }//end 
 
         else if (health >= 80 && health <=94)  {
+            this.anims.create({
+                key: 'idle',
+                frames: this.anims.generateFrameNames('instruction', {
+                    prefix: 'frame_',
+                    start: 1,
+                    end: 5,
+                    suffix: '',
+                    zeroPad: 2
+                }),
+                frameRate: 20,
+                repeat: -1,
+            });
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
             this.countT = 5;
-    
+
+            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
+
             this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
             this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
             this.maze2 = this.physics.add.sprite(game.config.width/2.52714709, 613.00, 'maze2');
@@ -114,7 +144,7 @@ class Maze extends Phaser.Scene {
             this.maze16 = this.physics.add.sprite(621.50 ,77.50 , 'maze16');
             this.maze17 = this.physics.add.sprite(547.00 ,12.50 , 'maze17');
             this.mazeEnd = this.physics.add.sprite(856.50  ,16.88 , 'mazeEnd');
-    
+
             this.maze1.body.allowGravity = false; this.maze1.body.immovable = true;
             this.maze2.body.immovable = true; this.maze2.body.allowGravity = false;
             this.maze3.body.immovable = true; this.maze3.body.allowGravity = false;
@@ -133,26 +163,34 @@ class Maze extends Phaser.Scene {
             this.maze16.body.immovable = true; this.maze16.body.allowGravity = false;
             this.maze17.body.immovable = true; this.maze17.body.allowGravity = false;
             this.mazeEnd.body.allowGravity = false;
-    
-    
+
+
             this.maze = this.add.group();
             this.maze.add(this.maze1);this.maze.add(this.maze2);this.maze.add(this.maze3);this.maze.add(this.maze4);this.maze.add(this.maze5);this.maze.add(this.maze6);
             this.maze.add(this.maze7);this.maze.add(this.maze8);this.maze.add(this.maze9);this.maze.add(this.maze10);this.maze.add(this.maze11);this.maze.add(this.maze12);
             this.maze.add(this.maze13);this.maze.add(this.maze14);this.maze.add(this.maze15);this.maze.add(this.maze16);this.maze.add(this.maze17);
-    
+
             this.player.body.collideWorldBounds = true;
-    
+
             this.physics.add.collider(this.player, this.maze);
+
+            // when player reaches end of maze do something
             this.physics.add.collider(this.player, this.mazeEnd, null, function() {
                 // this.countT = 0;
                 // console.log(this.countT);
                 this.scene.start("narrOne");
             }, this);
+            this.timer2 = 0;
         }//end 
     }
 
     update() {
         if(health >= 95) {
+            this.timer2 += 0.01;
+            this.instruction.anims.play('idle', true);
+            if(this.timer2 >=2) {
+            this.instruction.alpha=0;
+            }
             this.player.body.setVelocity(0);
             if (this.cursors.left.isDown)
             {
@@ -173,6 +211,11 @@ class Maze extends Phaser.Scene {
             }
         }//end
         else if (health >= 80 && health <=94)  {
+            this.timer2 += 0.01;
+            this.instruction.anims.play('idle', true);
+            if(this.timer2 >=2) {
+            this.instruction.alpha=0;
+            }
             this.player.body.setVelocity(0);
         
             if (this.cursors.left.isDown)
