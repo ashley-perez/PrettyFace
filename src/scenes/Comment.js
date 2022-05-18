@@ -15,11 +15,7 @@ class Comment extends Phaser.Scene {
         this.load.image('one', './assets/reply1.png');
         this.load.image('two', './assets/reply2.png');
         this.load.image('three', './assets/reply3.png');
-<<<<<<< HEAD
         this.load.atlas('commentInstruction', './assets/instructComment.png', './assets/instructComment.json');
-=======
-        this.load.atlas('instruction2', './assets/instructComment.png', './assets/instructComment.json');
->>>>>>> 35cca68433e23af479a2522f025681ab8f24cd38
 
     }
 
@@ -53,7 +49,7 @@ class Comment extends Phaser.Scene {
             this.complete = false;
             this.buttonNum = false;
 
-            this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'instruction2', 0).setScale(2);
+            this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'commentInstruction', 0).setScale(2);
 
             this.comments = this.physics.add.sprite(config.width/1.87, config.height/2.56,'comments');
             this.reply = this.physics.add.sprite(config.width/1.94, config.height/1.2, 'reply1');
@@ -98,13 +94,8 @@ class Comment extends Phaser.Scene {
 
         else if(health >= 80 && health <=94) {
             this.anims.create({
-<<<<<<< HEAD
                 key: 'frame',
                 frames: this.anims.generateFrameNames('commentInstruction', {
-=======
-                key: 'idle',
-                frames: this.anims.generateFrameNames('instruction2', {
->>>>>>> 35cca68433e23af479a2522f025681ab8f24cd38
                     prefix: 'frame_',
                     start: 1,
                     end: 5,
@@ -130,7 +121,7 @@ class Comment extends Phaser.Scene {
             this.complete = false;
             this.buttonNum = false;
 
-            this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'instruction2', 0).setScale(2);
+            this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'commentInstruction', 0).setScale(2);
 
             this.comments = this.physics.add.sprite(config.width/1.87, config.height/2.56,'comments');
             this.reply = this.physics.add.sprite(config.width/1.94, config.height/1.2, 'reply1');
@@ -185,11 +176,7 @@ class Comment extends Phaser.Scene {
     update() {
         if(health >= 95) {
             this.timer2 += 0.01;
-<<<<<<< HEAD
-            this.instruction.anims.play('frame', true);
-=======
-            this.instruction2.anims.play('idle', true);
->>>>>>> 35cca68433e23af479a2522f025681ab8f24cd38
+            this.instruction2.anims.play('frame', true);
             if(this.timer2 >=2) {
             this.instruction2.alpha=0;
             }
@@ -212,21 +199,19 @@ class Comment extends Phaser.Scene {
                     this.scene.start("mazeGame");
                 }
             }
-
         }
         else if(health >=80 && health <=94 ) {
             this.timer2 += 0.01;
-<<<<<<< HEAD
-            this.instruction.anims.play('frame', true);
-=======
-            this.instruction2.anims.play('idle', true);
->>>>>>> 35cca68433e23af479a2522f025681ab8f24cd38
+            this.instruction2.anims.play('frame', true);
             if(this.timer2 >=2) {
             this.instruction2.alpha=0;
             }
-            // console.log("comment 80+");
-            if(this.complete == true) {
+            // console.log('health 95+');
+            if(this.buttonNum == true) {
                 this.timer+= 0.01;
+                this.choiceOne.alpha=0;
+                this.choiceTwo.alpha=0;
+                this.choiceThree.alpha=0;
                 //console.log(this.time);
             }
 

@@ -102,6 +102,20 @@ class Filter extends Phaser.Scene {
             this.timer2 = 0;
         }//end
         else if(health >= 80 && health <=94) {
+            // instruction animation
+            this.anims.create({
+                key: 'idle',
+                frames: this.anims.generateFrameNames('instruction', {
+                    prefix: 'frame_',
+                    start: 1,
+                    end: 5,
+                    suffix: '',
+                    zeroPad: 2
+                }),
+                frameRate: 20,
+                repeat: -1,
+            });
+        
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -113,7 +127,8 @@ class Filter extends Phaser.Scene {
                 720,
                 "filterbackground"
             ).setOrigin(0, 0);
-
+            
+            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
             this.player = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player', 0);
             this.heart = this.physics.add.sprite(config.width/1.2, config.height/4.8, 'heartFilter', 0).setInteractive();
             this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
@@ -162,7 +177,6 @@ class Filter extends Phaser.Scene {
                 if (this.dogFilter == true || this.heartFilter == true) {
                     this.complete = true;
                 }
-                console.log('CLICKKKKK');
             }, this);
 
             this.timer = 0;

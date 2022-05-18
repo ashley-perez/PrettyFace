@@ -4,6 +4,7 @@ class Maze extends Phaser.Scene {
     }
 
     preload() {
+        
         this.load.image('heart', './assets/heart.png');
         // this.load.atlas('girl_atlas', './assets/testAtlas.png', './assets/testWalk.json');
         this.load.image('maze1', './assets/testMaze1.png'); 
@@ -24,8 +25,8 @@ class Maze extends Phaser.Scene {
         this.load.image('maze16', './assets/testMaze15.png');
         this.load.image('maze17', './assets/testMaze16.png');
         this.load.image('mazeEnd', './assets/testMazeEnd.png');
+        
         this.load.atlas('mazeInstruction', './assets/instructMaze.png', './assets/instructMaze.json');
-
     }
 
     create() {
@@ -46,7 +47,7 @@ class Maze extends Phaser.Scene {
             this.cursors = this.input.keyboard.createCursorKeys();
             this.countT = 5;
 
-            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
+            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
 
             this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
             this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
@@ -108,8 +109,8 @@ class Maze extends Phaser.Scene {
 
         else if (health >= 80 && health <=94)  {
             this.anims.create({
-                key: 'idle',
-                frames: this.anims.generateFrameNames('instruction', {
+                key: 'maze',
+                frames: this.anims.generateFrameNames('mazeInstruction', {
                     prefix: 'frame_',
                     start: 1,
                     end: 5,
@@ -123,7 +124,7 @@ class Maze extends Phaser.Scene {
             this.cursors = this.input.keyboard.createCursorKeys();
             this.countT = 5;
 
-            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
+            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
 
             this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
             this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
@@ -212,12 +213,11 @@ class Maze extends Phaser.Scene {
         }//end
         else if (health >= 80 && health <=94)  {
             this.timer2 += 0.01;
-            this.instruction.anims.play('idle', true);
+            this.instruction.anims.play('maze', true);
             if(this.timer2 >=2) {
             this.instruction.alpha=0;
             }
             this.player.body.setVelocity(0);
-        
             if (this.cursors.left.isDown)
             {
                 this.player.setVelocityX(-200);
@@ -226,7 +226,7 @@ class Maze extends Phaser.Scene {
             {
                 this.player.setVelocityX(200);
             }
-    
+
             if (this.cursors.up.isDown)
             {
                 this.player.setVelocityY(-200);
@@ -235,7 +235,6 @@ class Maze extends Phaser.Scene {
             {
                 this.player.setVelocityY(200);
             }
-    
         }//end
 
     }
