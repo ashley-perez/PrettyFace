@@ -8,9 +8,11 @@ class Filter extends Phaser.Scene {
         this.load.image('player', './assets/noFilterFace.png');
         this.load.image('playerHeart', './assets/HeartFilterFace1.png');
         this.load.image('playerDog', './assets/DogFilterFace1.png');
+        this.load.image('playerRainbow', './assets/RainbowFilterFace1.png');
 
         this.load.image('heartFilter', './assets/HeartFilterSelect.png');
         this.load.image('dogFilter', './assets/DogFilterSelect.png');
+        this.load.image('rainbowFilter', './assets/RainbowFilterSelect.png');
 
         this.load.image('filterbackground', './assets/testFilterBackground.png');
         this.load.image('post', './assets/postButton.png');
@@ -34,7 +36,7 @@ class Filter extends Phaser.Scene {
                 frameRate: 20,
                 repeat: -1,
             });
-        
+
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -46,21 +48,24 @@ class Filter extends Phaser.Scene {
                 720,
                 "filterbackground"
             ).setOrigin(0, 0);
-            
+
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
             this.player = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player', 0);
             this.heart = this.physics.add.sprite(config.width/1.2, config.height/4.8, 'heartFilter', 0).setInteractive();
             this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
+            this.rainbow = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+300, 'rainbowFilter', 0).setInteractive();
 
             this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
 
             this.complete = false;
             this.dogFilter = false;
             this.heartFilter = false;
+            this.rainbowFilter = false;
 
             // allow objects to be draggable
             this.input.setDraggable(this.heart);
             this.input.setDraggable(this.dog);
+            this.input.setDraggable(this.rainbow);
 
             // if input then move, updates the location of object to the pointer
             this.input.on('drag', function(pointer, gameObject, dragX, dragY) {
@@ -76,6 +81,7 @@ class Filter extends Phaser.Scene {
                 this.heart.destroy();
                 this.heartFilter = true;
                 this.dogFilter = false;
+                this.rainbowFilter = false;
                 console.log('heart');
             }, this);
 
@@ -86,14 +92,26 @@ class Filter extends Phaser.Scene {
                 this.dog.destroy();
                 this.dogFilter = true;
                 this.heartFilter = false;
+                this.rainbowFilter = false;
                 console.log('dog');
+            }, this);
+
+            this.physics.add.overlap(this.player, this.rainbow, null, function() {
+                this.player.setTexture('playerRainbow');
+                this.player.x = config.width/3.007;
+                this.player.y = config.height/1.775;
+                this.rainbow.destroy();
+                this.rainbowFilter = true;
+                this.dogFilter = false;
+                this.heartFilter = false;
+                console.log('rainbow');
             }, this);
 
 
             // click on post button
             this.postButton.on('pointerdown', function(pointer) {
                 // can only proceed after using a filter
-                if (this.dogFilter == true || this.heartFilter == true) {
+                if (this.dogFilter == true || this.heartFilter == true || this.rainbowFilter == true) {
                     this.complete = true;
                 }
             }, this);
@@ -115,7 +133,7 @@ class Filter extends Phaser.Scene {
                 frameRate: 20,
                 repeat: -1,
             });
-        
+
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
 
@@ -127,21 +145,24 @@ class Filter extends Phaser.Scene {
                 720,
                 "filterbackground"
             ).setOrigin(0, 0);
-            
+
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
             this.player = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player', 0);
             this.heart = this.physics.add.sprite(config.width/1.2, config.height/4.8, 'heartFilter', 0).setInteractive();
             this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
+            this.rainbow = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+300, 'rainbowFilter', 0).setInteractive();
 
             this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
 
             this.complete = false;
             this.dogFilter = false;
             this.heartFilter = false;
+            this.rainbowFilter = false;
 
             // allow objects to be draggable
             this.input.setDraggable(this.heart);
             this.input.setDraggable(this.dog);
+            this.input.setDraggable(this.rainbow);
 
             // if input then move, updates the location of object to the pointer
             this.input.on('drag', function(pointer, gameObject, dragX, dragY) {
@@ -157,6 +178,7 @@ class Filter extends Phaser.Scene {
                 this.heart.destroy();
                 this.heartFilter = true;
                 this.dogFilter = false;
+                this.rainbowFilter = false;
                 console.log('heart');
             }, this);
 
@@ -167,14 +189,25 @@ class Filter extends Phaser.Scene {
                 this.dog.destroy();
                 this.dogFilter = true;
                 this.heartFilter = false;
+                this.rainbowFilter = false;
                 console.log('dog');
             }, this);
 
+            this.physics.add.overlap(this.player, this.rainbow, null, function() {
+                this.player.setTexture('playerRainbow');
+                this.player.x = config.width/3.007;
+                this.player.y = config.height/1.775;
+                this.dog.destroy();
+                this.rainbowFilter = true;
+                this.dogFilter = false;
+                this.heartFilter = false;
+                console.log('rainbow');
+            }, this);
 
             // click on post button
             this.postButton.on('pointerdown', function(pointer) {
                 // can only proceed after using a filter
-                if (this.dogFilter == true || this.heartFilter == true) {
+                if (this.dogFilter == true || this.heartFilter == true|| this.rainbowFilter == true) {
                     this.complete = true;
                 }
             }, this);
@@ -203,10 +236,13 @@ class Filter extends Phaser.Scene {
                 // pass data to new scene
                 // will affect the comments
                 if (this.dogFilter == true) {
-                    this.scene.start('commentGame', {dog:true, heart:false});
+                    this.scene.start('commentGame', {dog:true, heart:false, rainbow:false});
                 }
                 else if (this.heartFilter == true) {
-                    this.scene.start('commentGame', {dog:false, heart:true});
+                    this.scene.start('commentGame', {dog:false, heart:true, rainbow:false});
+                }
+                else if (this.rainbowFilter == true) {
+                    this.scene.start('commentGame', {dog:false, heart:false, rainbow:true});
                 }
             }
         } // end gamephase 1
@@ -225,10 +261,13 @@ class Filter extends Phaser.Scene {
                 // pass data to new scene
                 // will affect the comments
                 if (this.dogFilter == true) {
-                    this.scene.start('commentGame', {dog:true, heart:false});
+                    this.scene.start('commentGame', {dog:true, heart:false, rainbow:false});
                 }
                 else if (this.heartFilter == true) {
-                    this.scene.start('commentGame', {dog:false, heart:true});
+                    this.scene.start('commentGame', {dog:false, heart:true, rainbow:false});
+                }
+                else if (this.rainbowFilter == true) {
+                    this.scene.start('commentGame', {dog:false, heart:false, rainbow:true});
                 }
             }
         } // end gamephase 1
