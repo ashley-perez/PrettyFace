@@ -39,7 +39,7 @@
   "meta": {
     "app": "https://www.leshylabs.com/apps/sstool/",
     "version": "Leshy SpriteSheet Tool v0.8.4",
-    "image": "spritesheet.png",
+    "image": "instructComment.png",
     "size": { "w": 425, "h": 125 },
     "scale": 1
   }
