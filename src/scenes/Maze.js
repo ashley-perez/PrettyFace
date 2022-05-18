@@ -24,15 +24,15 @@ class Maze extends Phaser.Scene {
         this.load.image('maze16', './assets/testMaze15.png');
         this.load.image('maze17', './assets/testMaze16.png');
         this.load.image('mazeEnd', './assets/testMazeEnd.png');
-        this.load.atlas('instruction', './assets/instructMaze.png', './assets/instructMaze.json');
+        this.load.atlas('mazeInstruction', './assets/instructMaze.png', './assets/instructMaze.json');
 
     }
 
     create() {
         if(health >=95) {
             this.anims.create({
-                key: 'idle',
-                frames: this.anims.generateFrameNames('instruction', {
+                key: 'maze',
+                frames: this.anims.generateFrameNames('mazeInstruction', {
                     prefix: 'frame_',
                     start: 1,
                     end: 5,
@@ -187,7 +187,7 @@ class Maze extends Phaser.Scene {
     update() {
         if(health >= 95) {
             this.timer2 += 0.01;
-            this.instruction.anims.play('idle', true);
+            this.instruction.anims.play('maze', true);
             if(this.timer2 >=2) {
             this.instruction.alpha=0;
             }

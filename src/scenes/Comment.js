@@ -15,15 +15,15 @@ class Comment extends Phaser.Scene {
         this.load.image('one', './assets/reply1.png');
         this.load.image('two', './assets/reply2.png');
         this.load.image('three', './assets/reply3.png');
-        this.load.atlas('instruction', './assets/instructComment.png', './assets/instructComment.json');
+        this.load.atlas('commentInstruction', './assets/instructComment.png', './assets/instructComment.json');
 
     }
 
     create() {
         if(health >=95) {
             this.anims.create({
-                key: 'idle',
-                frames: this.anims.generateFrameNames('instruction', {
+                key: 'frame',
+                frames: this.anims.generateFrameNames('commentInstruction', {
                     prefix: 'frame_',
                     start: 1,
                     end: 5,
@@ -94,8 +94,8 @@ class Comment extends Phaser.Scene {
 
         else if(health >= 80 && health <=94) {
             this.anims.create({
-                key: 'idle',
-                frames: this.anims.generateFrameNames('instruction', {
+                key: 'frame',
+                frames: this.anims.generateFrameNames('commentInstruction', {
                     prefix: 'frame_',
                     start: 1,
                     end: 5,
@@ -176,7 +176,7 @@ class Comment extends Phaser.Scene {
     update() {
         if(health >= 95) {
             this.timer2 += 0.01;
-            this.instruction.anims.play('idle', true);
+            this.instruction.anims.play('frame', true);
             if(this.timer2 >=2) {
             this.instruction.alpha=0;
             }
@@ -203,7 +203,7 @@ class Comment extends Phaser.Scene {
         }
         else if(health >=80 && health <=94 ) {
             this.timer2 += 0.01;
-            this.instruction.anims.play('idle', true);
+            this.instruction.anims.play('frame', true);
             if(this.timer2 >=2) {
             this.instruction.alpha=0;
             }

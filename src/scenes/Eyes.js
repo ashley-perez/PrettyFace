@@ -7,15 +7,15 @@ class Eyes extends Phaser.Scene {
         this.load.image('player', './assets/noFilterFace.png');
         this.load.image('eye2', './assets/eyeP2.png');
         this.load.image('eye4', './assets/eyeP4.png');
-        this.load.atlas('instruction', './assets/instructEyes.png', './assets/instructEyes.json');
+        this.load.atlas('eyeInstruction', './assets/instructEyes.png', './assets/instructEyes.json');
 
     }
 
     create() {
         if (health >= 95)  {
             this.anims.create({
-                key: 'idle',
-                frames: this.anims.generateFrameNames('instruction', {
+                key: 'eyeInfo',
+                frames: this.anims.generateFrameNames('eyeInstruction', {
                     prefix: 'frame_',
                     start: 1,
                     end: 5,
@@ -150,7 +150,7 @@ class Eyes extends Phaser.Scene {
 
         if (health >= 95) {
             this.timer2 += 0.01;
-            this.instruction.anims.play('idle', true);
+            this.instruction.anims.play('eyeInfo', true);
             if(this.timer2 >=2) {
             this.instruction.alpha=0;
             }

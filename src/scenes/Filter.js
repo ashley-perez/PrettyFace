@@ -21,19 +21,19 @@ class Filter extends Phaser.Scene {
 
     create() {
         if(health >= 95) {
-            // Idle left
-        this.anims.create({
-            key: 'idle',
-            frames: this.anims.generateFrameNames('instruction', {
-                prefix: 'frame_',
-                start: 1,
-                end: 5,
-                suffix: '',
-                zeroPad: 2
-            }),
-            frameRate: 20,
-            repeat: -1,
-        });
+            // instruction animation
+            this.anims.create({
+                key: 'idle',
+                frames: this.anims.generateFrameNames('instruction', {
+                    prefix: 'frame_',
+                    start: 1,
+                    end: 5,
+                    suffix: '',
+                    zeroPad: 2
+                }),
+                frameRate: 20,
+                repeat: -1,
+            });
         
             // mouse stuff
             this.input.setDefaultCursor('url(./assets/testFingerPointer.png), pointer');
