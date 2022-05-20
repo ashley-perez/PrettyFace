@@ -32,10 +32,7 @@ class Comment extends Phaser.Scene {
     }
 
     create() {
-        Filter.init = function(data) {
-            this.dogis = data.dog;
-            this.floweris = data.flower;
-        }
+        
 
         if(health >=95) {
 
@@ -244,8 +241,8 @@ class Comment extends Phaser.Scene {
 
     // getting data from old scene
     init(data) {
-        this.heart = data.heart;
-        this.dog = data.dog;
+        this.dogis = data.dog;
+        this.floweris = data.flower;
     }
 
 

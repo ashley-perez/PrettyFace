@@ -51,11 +51,11 @@ class Menu extends Phaser.Scene {
             var music = this.sound.add('bgMusic', {volume: 0.3});  // add music background
             music.setLoop(true);
             music.play();
-            //this.scene.start("filterGame");
+            this.scene.start("filterGame");
             //this.scene.start("mazeGame");
             // this.scene.start("blockingGame");
             //this.scene.start("eyesGame");
-            this.scene.start("restaurantGame");
+            // this.scene.start("restaurantGame");
         }
     }
 }

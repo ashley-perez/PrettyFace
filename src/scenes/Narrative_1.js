@@ -54,7 +54,7 @@ class Cutscene extends Phaser.Scene {
     update() {
         this.timer += 0.01;
         if(health >=95) {
-            console.log("penis");
+            // console.log("penis");
             if (this.timer >= 3) {
                 health -= 10;
                 this.scene.start("filterGame");
