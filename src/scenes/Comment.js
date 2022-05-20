@@ -9,6 +9,9 @@ class Comment extends Phaser.Scene {
 
         this.load.image('background', './assets/testBackGround.png');
         this.load.image('reply1', './assets/replyComment1.png');
+        this.load.image('reply1(n/b)', './assets/replyComment1(n).png');
+        this.load.image('reply2(n/b)', './assets/replyComment2(n).png');
+        this.load.image('reply3(n/b)', './assets/replyComment3(n).png');
 
         // this.load.image('replyButton', './assets/replyButton.png');
 
@@ -52,7 +55,7 @@ class Comment extends Phaser.Scene {
             this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'commentInstruction', 0).setScale(2);
 
             this.comments = this.physics.add.sprite(config.width/1.87, config.height/2.56,'comments');
-            this.reply = this.physics.add.sprite(config.width/1.94, config.height/1.2, 'reply1');
+            this.reply = this.physics.add.sprite(config.width/1.9, config.height/1.24, 'reply1');
             // this.replyButton = this.physics.add.sprite(config.width/1.85, config.height-75, 'replyButton').setInteractive();
             // this.replyButton.setScale(2);
 
@@ -66,18 +69,29 @@ class Comment extends Phaser.Scene {
                 this.buttonNum = true;
                 console.log(this.buttonNum);
                 console.log("clicked 1");
+                this.reply.setTexture('reply1(n/b)');
+                this.reply.x = config.width/1.9;
+                this.reply.y = config.height/1.25
+                health -= 1;
             }, this);
 
             this.choiceTwo.on('pointerdown', function(pointer) {
                 this.buttonNum = true;
                 console.log(this.buttonNum);
                 console.log("clicked 2");
+                this.reply.setTexture('reply2(n/b)');
+                this.reply.x = config.width/1.9;
+                this.reply.y = config.height/1.25
             }, this);
 
             this.choiceThree.on('pointerdown', function(pointer) {
                 this.buttonNum = true;
                 console.log(this.buttonNum);
                 console.log("clicked 3");
+                this.reply.setTexture('reply3(n/b)');
+                this.reply.x = config.width/1.9;
+                this.reply.y = config.height/1.25
+                health -= 2;
             }, this);
         }
             // this.replyButton.on('pointerdown', function(pointer) {
@@ -124,7 +138,7 @@ class Comment extends Phaser.Scene {
             this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'commentInstruction', 0).setScale(2);
 
             this.comments = this.physics.add.sprite(config.width/1.87, config.height/2.56,'comments');
-            this.reply = this.physics.add.sprite(config.width/1.94, config.height/1.2, 'reply1');
+            this.reply = this.physics.add.sprite(config.width/1.9, config.height/1.24, 'reply1');
             // this.replyButton = this.physics.add.sprite(config.width/1.85, config.height-75, 'replyButton').setInteractive();
             // this.replyButton.setScale(2);
 
@@ -138,18 +152,29 @@ class Comment extends Phaser.Scene {
                 this.buttonNum = true;
                 console.log(this.buttonNum);
                 console.log("clicked 1");
+                this.reply.setTexture('reply1(n/b)');
+                this.reply.x = config.width/1.9;
+                this.reply.y = config.height/1.25
+                health -= 1;
             }, this);
 
             this.choiceTwo.on('pointerdown', function(pointer) {
                 this.buttonNum = true;
                 console.log(this.buttonNum);
                 console.log("clicked 2");
+                this.reply.setTexture('reply2(n/b)');
+                this.reply.x = config.width/1.9;
+                this.reply.y = config.height/1.25
             }, this);
 
             this.choiceThree.on('pointerdown', function(pointer) {
                 this.buttonNum = true;
                 console.log(this.buttonNum);
                 console.log("clicked 3");
+                this.reply.setTexture('reply3(n/b)');
+                this.reply.x = config.width/1.9;
+                this.reply.y = config.height/1.25
+                health -= 2;
             }, this);
         }
             // this.replyButton.on('pointerdown', function(pointer) {
