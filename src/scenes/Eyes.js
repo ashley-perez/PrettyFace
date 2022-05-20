@@ -73,7 +73,7 @@ class Eyes extends Phaser.Scene {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
 
-            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
+            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2);
             this.phase2 = true;
 
             this.timer = 0;
@@ -82,8 +82,8 @@ class Eyes extends Phaser.Scene {
 
         else if (health >= 80 && health <=94)  {
             this.anims.create({
-                key: 'idle',
-                frames: this.anims.generateFrameNames('instruction', {
+                key: 'eyeInfo',
+                frames: this.anims.generateFrameNames('eyeInstruction', {
                     prefix: 'frame_',
                     start: 1,
                     end: 5,
@@ -96,7 +96,7 @@ class Eyes extends Phaser.Scene {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
 
-            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
+            this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2);
             this.phase2 = false;
             this.phase3 = true;
 
@@ -162,7 +162,7 @@ class Eyes extends Phaser.Scene {
         }
         else if (this.phase3 == true) {
             this.timer2 += 0.01;
-            this.instruction.anims.play('idle', true);
+            this.instruction.anims.play('eyeInfo', true);
             if(this.timer2 >=2) {
             this.instruction.alpha=0;
             }
