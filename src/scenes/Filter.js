@@ -273,18 +273,8 @@ class Filter extends Phaser.Scene {
             if (this.timer >= 3) {
                 // pass data to new scene
                 // will affect the comments
-                if (this.dogFilter == true) {
-                    this.scene.start('commentGame', {dog:true, heart:false, rainbow:false, flower:false});
-                }
-                else if (this.heartFilter == true) {
-                    this.scene.start('commentGame', {dog:false, heart:true, rainbow:false, flower:false});
-                }
-                else if (this.rainbowFilter == true) {
-                    this.scene.start('commentGame', {dog:false, heart:false, rainbow:true, flower:false});
-                }
-                else if (this.flowerFilter == true) {
-                    this.scene.start('commentGame', {dog:false, heart:false, rainbow:false, flower:true});
-                }
+                this.scene.start('commentGame', {dog: this.dogFilter, heart: this.heartFilter, rainbow: this.rainbowFilter, flower: this.flowerFilter});
+
             }
         } // end gamephase 1
         else if(health >=80 && health <=94 ) {
