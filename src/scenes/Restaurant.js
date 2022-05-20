@@ -18,8 +18,8 @@ class Restaurant extends Phaser.Scene {
         this.add.rectangle(100, 650, 200, 80, 0xc05780);
 
         this.sprite1 = this.physics.add.sprite(300,450,'server').setScale(0.9);
-        this.sprite2 = this.physics.add.sprite(600,200,'table2').setScale(1.3);
-        this.sprite3 = this.physics.add.sprite(1000,600,'table3').setScale(0.9);
+        this.sprite2 = this.physics.add.sprite(600,210,'table2').setScale(1);
+        this.sprite3 = this.physics.add.sprite(1000,590,'table3').setScale(1);
         this.sprite4 = this.physics.add.sprite(1000,233,'table1').setScale(1.9);
         this.sprite5 = this.physics.add.sprite(290,200,'plant').setScale(0.4);
         this.sprite6 = this.physics.add.sprite(700,450,'chef').setScale(0.9);
