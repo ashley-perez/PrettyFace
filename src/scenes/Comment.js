@@ -126,10 +126,14 @@ class Comment extends Phaser.Scene {
                 if(this.dogis==true) {
                     console.log("comment2.2");
                 this.comments.setTexture('comments2.2');
+                this.comments.x=config.width/1.87 
+                this.comments.y=config.height/2.56
                 }//dog filter
                 else {
                 console.log("comment2.1");
                 this.comments.setTexture('comments2.1');
+                this.comments.x=config.width/1.87 
+                this.comments.y=config.height/2.56
                 }//anything else
             }
             else if (Math.floor(Math.random() * 3) == 2) {
@@ -137,10 +141,14 @@ class Comment extends Phaser.Scene {
                 if(this.floweris==true) {
                     console.log("comment3.1");
                 this.comments.setTexture('comments3.1');
+                this.comments.x=config.width/1.87 
+                this.comments.y=config.height/2.56
                 }//dog filter
                 else {
                 console.log("comment3.2");
                 this.comments.setTexture('comments3.2');
+                this.comments.x=config.width/1.87 
+                this.comments.y=config.height/2.56
                 }//anything else
             }
 
