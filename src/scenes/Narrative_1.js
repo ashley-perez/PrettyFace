@@ -11,13 +11,14 @@ class Cutscene extends Phaser.Scene {
     }
 
     create() {
+        console.log("here at narrOne");
         // array of dialogue
         this.wordArray1 = ['damn im so happy', 'pretty meh', 'bruh', 'bye'];
         // this.wordArray = ['really good writing goes here', 'hello', 'bruh', 'bye'];
         this.index = 0;
 
         // text boxes that "write themselves"
-        
+
 
         // player stuff
         // this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
@@ -39,6 +40,11 @@ class Cutscene extends Phaser.Scene {
             this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 	        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
         }
+        else if(health >= 65 && health <=79) {
+            this.index=2;
+            this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+	        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+        }
 
         this.complete = true;
         this.timer = 0;
@@ -49,13 +55,19 @@ class Cutscene extends Phaser.Scene {
         this.timer += 0.01;
         if(health >=95) {
             console.log("penis");
-            if (this.timer >= 7) {
+            if (this.timer >= 3) {
                 health -= 10;
                 this.scene.start("filterGame");
             }
         }
         else if(health >=80 && health <=94) {
-            if (this.timer >= 7) {
+            if (this.timer >= 2) {
+                health -= 10;
+                this.scene.start("filterGame");
+            }
+        }
+        else if(health >= 65 && health <=79) {
+            if (this.timer >= 1) {
                 health -= 10;
                 this.scene.start("filterGame");
             }
