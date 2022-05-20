@@ -5,7 +5,7 @@ class Restaurant extends Phaser.Scene {
 
     preload(){
         this.load.image('server', './assets/servers.png');
-        this.load.image('cus2', './assets/cus2.png');
+        this.load.image('table2', './assets/table2.png');
         this.load.image('table3', './assets/table3.png');
         this.load.image('table1', './assets/table1.png');
         this.load.image('plant', './assets/plant.png');
@@ -18,7 +18,7 @@ class Restaurant extends Phaser.Scene {
         this.add.rectangle(100, 650, 200, 80, 0xc05780);
 
         this.sprite1 = this.physics.add.sprite(300,450,'server').setScale(0.9);
-        this.sprite2 = this.physics.add.sprite(600,200,'cus2').setScale(1.3);
+        this.sprite2 = this.physics.add.sprite(600,200,'table2').setScale(1.3);
         this.sprite3 = this.physics.add.sprite(1000,600,'table3').setScale(0.9);
         this.sprite4 = this.physics.add.sprite(1000,233,'table1').setScale(1.9);
         this.sprite5 = this.physics.add.sprite(290,200,'plant').setScale(0.4);

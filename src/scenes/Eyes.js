@@ -168,12 +168,12 @@ class Eyes extends Phaser.Scene {
             }
             this.player.setVelocity(0);
 
-            this.eyeFollow(this.eye, this.player, 130);
-            this.eyeFollow(this.eye2, this.player, 130);
-            this.eyeFollow(this.eye3, this.player, 130);
-            this.eyeFollow(this.eye4, this.player, 130);
-            this.eyeFollow(this.eye5, this.player, 130);
-            this.eyeFollow(this.eye6, this.player, 130);
+            this.eyeFollow(this.eye, this.player, 120);
+            this.eyeFollow(this.eye2, this.player, 120);
+            this.eyeFollow(this.eye3, this.player, 120);
+            this.eyeFollow(this.eye4, this.player, 120);
+            this.eyeFollow(this.eye5, this.player, 120);
+            this.eyeFollow(this.eye6, this.player, 120);
             this.eyeFollow(this.eye7, this.player, 150);
             this.eyeFollow(this.eye8, this.player, 150);
 
