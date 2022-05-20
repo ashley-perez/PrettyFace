@@ -6,6 +6,15 @@ class Comment extends Phaser.Scene {
 
     preload() {
         this.load.image('comments', './assets/comments1.png');
+        this.load.image('comments2.1', './assets/comments2(ver1).png');
+        this.load.image('comments2.2', './assets/comments2(ver2).png');
+        this.load.image('comments2.2', './assets/comments2(ver2).png');
+        this.load.image('comments3.1', './assets/comments3(ver1).png');
+        this.load.image('comments3.2', './assets/comments3(ver2).png');
+
+
+
+
 
         this.load.image('background', './assets/testBackGround.png');
         this.load.image('reply1', './assets/replyComment1.png');
@@ -23,7 +32,13 @@ class Comment extends Phaser.Scene {
     }
 
     create() {
+        Filter.init = function(data) {
+            this.dogis = data.dog;
+            this.floweris = data.flower;
+        }
+
         if(health >=95) {
+
             this.anims.create({
                 key: 'frame',
                 frames: this.anims.generateFrameNames('commentInstruction', {
@@ -100,6 +115,34 @@ class Comment extends Phaser.Scene {
             //     }
             //     console.log("clciked");
             // }, this);
+
+            console.log("wwww");
+            if(Math.floor(Math.random() * 3) == 0) {
+                console.log("comment1");
+                this.comments.setTexture('comments');
+            }//basic comment
+            else if (Math.floor(Math.random() * 3) == 1) {
+                console.log("1");
+                if(this.dogis==true) {
+                    console.log("comment2.2");
+                this.comments.setTexture('comments2.2');
+                }//dog filter
+                else {
+                console.log("comment2.1");
+                this.comments.setTexture('comments2.1');
+                }//anything else
+            }
+            else if (Math.floor(Math.random() * 3) == 2) {
+                console.log("2");
+                if(this.floweris==true) {
+                    console.log("comment3.1");
+                this.comments.setTexture('comments3.1');
+                }//dog filter
+                else {
+                console.log("comment3.2");
+                this.comments.setTexture('comments3.2');
+                }//anything else
+            }
 
             //just a fake timer for now
             this.timer = 0;
@@ -186,7 +229,7 @@ class Comment extends Phaser.Scene {
 
             //just a fake timer for now
             this.timer = 0;
-            this.timer2 = 0;
+            this.timer2 = -0.01;
     }//end
 
     }
@@ -200,6 +243,9 @@ class Comment extends Phaser.Scene {
 
     update() {
         if(health >= 95) {
+            if(this.timer2<=0) {
+            
+        }
             this.timer2 += 0.01;
             this.instruction2.anims.play('frame', true);
             if(this.timer2 >=2) {
@@ -215,13 +261,17 @@ class Comment extends Phaser.Scene {
             }
 
             if (this.timer >= 3) {
-                if(Math.floor(Math.random() * 2) == 0) {
+                if(Math.floor(Math.random() * 3) == 0) {
                     console.log("eyes");
                     this.scene.start("eyesGame");
                 }
-                else if (Math.floor(Math.random() * 2) == 1) {
+                else if (Math.floor(Math.random() * 3) == 1) {
                     console.log("maze");
                     this.scene.start("mazeGame");
+                }
+                else if (Math.floor(Math.random() * 3) == 2) {
+                    console.log("defend");
+                    this.scene.start("blockingGame");
                 }
             }
         }
