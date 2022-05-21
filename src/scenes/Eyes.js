@@ -4,7 +4,7 @@ class Eyes extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('player', './assets/noFilterFace1.png');
+        this.load.image('player', './assets/heart.png');
         this.load.image('eye2', './assets/eyeP2.png');
         this.load.image('eye4', './assets/eyeP4.png');
         this.load.atlas('eyeInstruction', './assets/instructEyes.png', './assets/instructEyes.json');
@@ -19,7 +19,7 @@ class Eyes extends Phaser.Scene {
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
 
-        this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player').setScale(0.2);
+        this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player');
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2);
 
