@@ -13,9 +13,8 @@ class Eyes extends Phaser.Scene {
 
     create() {
         this.phase2 = false;
-        this.phase3 = true;
+        this.phase3 = false;
         this.phase4 = false;
-        health = 70;
 
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -107,9 +106,9 @@ class Eyes extends Phaser.Scene {
             this.eye3 = this.physics.add.sprite(-150,700,'eye2');
             this.eye4 = this.physics.add.sprite(1500,300,'eye2');
             this.eye5 = this.physics.add.sprite(450,1000,'eye2');
-            this.eye6 = this.physics.add.sprite(750,-70,'eye4');
-            this.eye7 = this.physics.add.sprite(0,900,'eye4');
-            this.eye8 = this.physics.add.sprite(1300,-350,'eye4');
+            this.eye6 = this.physics.add.sprite(750,-70,'eye2');
+            this.eye7 = this.physics.add.sprite(0,900,'eye2');
+            this.eye8 = this.physics.add.sprite(1300,-350,'eye2');
 
             // player colliding with each eye
             this.player.body.collideWorldBounds = true;
@@ -288,8 +287,8 @@ class Eyes extends Phaser.Scene {
             this.eyeFollow(this.eye4, this.player, 120);
             this.eyeFollow(this.eye5, this.player, 120);
             this.eyeFollow(this.eye6, this.player, 120);
-            this.eyeFollow(this.eye7, this.player, 130);
-            this.eyeFollow(this.eye8, this.player, 130);
+            this.eyeFollow(this.eye7, this.player, 120);
+            this.eyeFollow(this.eye8, this.player, 120);
 
             if (this.cursors.left.isDown)
             {
@@ -323,14 +322,14 @@ class Eyes extends Phaser.Scene {
             }
             this.player.setVelocity(0);
 
-            this.eyeFollow(this.eye, this.player, 140);
-            this.eyeFollow(this.eye2, this.player, 140);
-            this.eyeFollow(this.eye3, this.player, 140);
-            this.eyeFollow(this.eye4, this.player, 140);
-            this.eyeFollow(this.eye5, this.player, 140);
-            this.eyeFollow(this.eye6, this.player, 140);
-            this.eyeFollow(this.eye7, this.player, 140);
-            this.eyeFollow(this.eye8, this.player, 140);
+            this.eyeFollow(this.eye, this.player, 135);
+            this.eyeFollow(this.eye2, this.player, 135);
+            this.eyeFollow(this.eye3, this.player, 135);
+            this.eyeFollow(this.eye4, this.player, 135);
+            this.eyeFollow(this.eye5, this.player, 135);
+            this.eyeFollow(this.eye6, this.player, 135);
+            this.eyeFollow(this.eye7, this.player, 135);
+            this.eyeFollow(this.eye8, this.player, 135);
 
             if (this.cursors.left.isDown)
             {

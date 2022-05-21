@@ -5,11 +5,14 @@ class Filter extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('player', './assets/noFilterFace.png');
-        this.load.image('playerHeart', './assets/HeartFilterFace1.png');
-        this.load.image('playerDog', './assets/DogFilterFace1.png');
-        this.load.image('playerRainbow', './assets/RainbowFilterFace1.png');
-        this.load.image('playerFlower', './assets/FlowerFilterFace1.png');
+        this.load.image('player1', './assets/noFilterFace1.png');
+        this.load.image('player2', './assets/noFilterFace2.png');
+        this.load.image('player3', './assets/noFilterFace3.png');
+
+        this.load.image('playerHeart1', './assets/HeartFilterFace1.png');
+        this.load.image('playerDog1', './assets/DogFilterFace1.png');
+        this.load.image('playerRainbow1', './assets/RainbowFilterFace1.png');
+        this.load.image('playerFlower1', './assets/FlowerFilterFace1.png');
 
         this.load.image('heartFilter', './assets/HeartFilterSelect.png');
         this.load.image('dogFilter', './assets/DogFilterSelect.png');
@@ -24,6 +27,7 @@ class Filter extends Phaser.Scene {
     }
 
     create() {
+
         if(health >= 95) {
             // instruction animation
             this.anims.create({
@@ -52,12 +56,11 @@ class Filter extends Phaser.Scene {
             ).setOrigin(0, 0);
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
-            this.player = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player', 0);
+            this.player1 = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player1', 0);
             this.heart = this.physics.add.sprite(config.width/1.2, config.height/4.8, 'heartFilter', 0).setInteractive();
             this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
             this.rainbow = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+450, 'rainbowFilter', 0).setInteractive();
             this.flower = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+300, 'flowerFilter', 0).setInteractive();
-
             this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
 
             this.complete = false;
@@ -79,10 +82,10 @@ class Filter extends Phaser.Scene {
             });
 
             // collision detection
-            this.physics.add.overlap(this.player, this.heart, null, function() {
-                this.player.setTexture('playerHeart');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.8367;
+            this.physics.add.overlap(this.player1, this.heart, null, function() {
+                this.player1.setTexture('playerHeart1');
+                this.player1.x = config.width/3.007;
+                this.player1.y = config.height/1.775;
                 this.heart.destroy();
                 this.heartFilter = true;
                 this.dogFilter = false;
@@ -91,10 +94,10 @@ class Filter extends Phaser.Scene {
                 console.log('heart');
             }, this);
 
-            this.physics.add.overlap(this.player, this.dog, null, function() {
-                this.player.setTexture('playerDog');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.775;
+            this.physics.add.overlap(this.player1, this.dog, null, function() {
+                this.player1.setTexture('playerDog1');
+                this.player1.x = config.width/3.007;
+                this.player1.y = config.height/1.775;
                 this.dog.destroy();
                 this.dogFilter = true;
                 this.heartFilter = false;
@@ -103,10 +106,10 @@ class Filter extends Phaser.Scene {
                 console.log('dog');
             }, this);
 
-            this.physics.add.overlap(this.player, this.rainbow, null, function() {
-                this.player.setTexture('playerRainbow');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.775;
+            this.physics.add.overlap(this.player1, this.rainbow, null, function() {
+                this.player1.setTexture('playerRainbow1');
+                this.player1.x = config.width/3.007;
+                this.player1.y = config.height/1.775;
                 this.rainbow.destroy();
                 this.rainbowFilter = true;
                 this.dogFilter = false;
@@ -115,10 +118,10 @@ class Filter extends Phaser.Scene {
                 console.log('rainbow');
             }, this);
 
-            this.physics.add.overlap(this.player, this.flower, null, function() {
-                this.player.setTexture('playerFlower');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.775;
+            this.physics.add.overlap(this.player1, this.flower, null, function() {
+                this.player1.setTexture('playerFlower1');
+                this.player1.x = config.width/3.007;
+                this.player1.y = config.height/1.775;
                 this.flower.destroy();
                 this.flowerFilter = true;
                 this.rainbowFilter = false;
@@ -167,7 +170,7 @@ class Filter extends Phaser.Scene {
             ).setOrigin(0, 0);
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
-            this.player = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player', 0);
+            this.player2 = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player2', 0);
             this.heart = this.physics.add.sprite(config.width/1.2, config.height/4.8, 'heartFilter', 0).setInteractive();
             this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
             this.rainbow = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+450, 'rainbowFilter', 0).setInteractive();
@@ -194,10 +197,10 @@ class Filter extends Phaser.Scene {
             });
 
             // collision detection
-            this.physics.add.overlap(this.player, this.heart, null, function() {
-                this.player.setTexture('playerHeart');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.8367;
+            this.physics.add.overlap(this.player2, this.heart, null, function() {
+                this.player2.setTexture('playerHeart2');
+                this.player2.x = config.width/3.007;
+                this.player2.y = config.height/1.8367;
                 this.heart.destroy();
                 this.heartFilter = true;
                 this.dogFilter = false;
@@ -206,10 +209,10 @@ class Filter extends Phaser.Scene {
                 console.log('heart');
             }, this);
 
-            this.physics.add.overlap(this.player, this.dog, null, function() {
-                this.player.setTexture('playerDog');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.775;
+            this.physics.add.overlap(this.player2, this.dog, null, function() {
+                this.player2.setTexture('playerDog1');
+                this.player2.x = config.width/3.007;
+                this.player2.y = config.height/1.775;
                 this.dog.destroy();
                 this.dogFilter = true;
                 this.heartFilter = false;
@@ -218,10 +221,10 @@ class Filter extends Phaser.Scene {
                 console.log('dog');
             }, this);
 
-            this.physics.add.overlap(this.player, this.rainbow, null, function() {
-                this.player.setTexture('playerRainbow');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.775;
+            this.physics.add.overlap(this.player2, this.rainbow, null, function() {
+                this.player2.setTexture('playerRainbow1');
+                this.player2.x = config.width/3.007;
+                this.player2.y = config.height/1.775;
                 this.rainbow.destroy();
                 this.rainbowFilter = true;
                 this.dogFilter = false;
@@ -230,10 +233,10 @@ class Filter extends Phaser.Scene {
                 console.log('rainbow');
             }, this);
 
-            this.physics.add.overlap(this.player, this.flower, null, function() {
-                this.player.setTexture('playerFlower');
-                this.player.x = config.width/3.007;
-                this.player.y = config.height/1.775;
+            this.physics.add.overlap(this.player2, this.flower, null, function() {
+                this.player2.setTexture('playerFlower1');
+                this.player2.x = config.width/3.007;
+                this.player2.y = config.height/1.775;
                 this.flower.destroy();
                 this.flowerFilter = true;
                 this.rainbowFilter = false;
