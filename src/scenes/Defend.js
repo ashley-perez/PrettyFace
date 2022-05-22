@@ -47,6 +47,7 @@ class Defend extends Phaser.Scene {
 
         // item that blocks/defends the other sprites
         this.block = this.physics.add.sprite(820, config.height/2, 'block');
+        this.block.body.collideWorldBounds = true;
         this.Speed = 5;
 
         // path for otherBlock to follow

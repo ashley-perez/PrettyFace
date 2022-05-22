@@ -8,7 +8,7 @@ class Maze extends Phaser.Scene {
         this.load.image('heart', './assets/heart.png');
         this.load.image('mark', './assets/mazeMark.png');
         // this.load.atlas('girl_atlas', './assets/testAtlas.png', './assets/testWalk.json');
-        this.load.image('maze1', './assets/testMaze1.png');
+        {this.load.image('maze1', './assets/testMaze1.png');
         this.load.image('maze2', './assets/testMaze2.png');
         this.load.image('maze3', './assets/testMaze3.png');
         this.load.image('maze4', './assets/testMaze1.png');
@@ -26,7 +26,7 @@ class Maze extends Phaser.Scene {
         this.load.image('maze16', './assets/testMaze15.png');
         this.load.image('maze17', './assets/testMaze16.png');
         this.load.image('mazeEnd', './assets/testMazeEnd.png');
-
+    }//maze images
         this.load.atlas('mazeInstruction', './assets/instructMaze.png', './assets/instructMaze.json');
     }
 
@@ -48,13 +48,13 @@ class Maze extends Phaser.Scene {
             });
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
-            this.markX = config.width/2.88; this.markY= config.height/1.28;
-            this.markMn = this.physics.add.sprite(this.markX, this.markY, 'mark');
+            this.markMn = this.physics.add.sprite(config.width/2.88, config.height/1.28, 'mark');
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
 
             this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.9);
-            this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
+
+            {this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
             this.maze2 = this.physics.add.sprite(game.config.width/2.52714709, 613.00, 'maze2');
             this.maze3 = this.physics.add.sprite(852, 613.00, 'maze3');
             this.maze4 = this.physics.add.sprite(909, 312.00, 'maze4');
@@ -92,13 +92,13 @@ class Maze extends Phaser.Scene {
             this.maze16.body.immovable = true; this.maze16.body.allowGravity = false;
             this.maze17.body.immovable = true; this.maze17.body.allowGravity = false;
             this.mazeEnd.body.allowGravity = false;
-
+        }//maze sprites and collisions all collapsed
 
             this.maze = this.add.group();
-            this.maze.add(this.maze1);this.maze.add(this.maze2);this.maze.add(this.maze3);this.maze.add(this.maze4);this.maze.add(this.maze5);this.maze.add(this.maze6);
+            {this.maze.add(this.maze1);this.maze.add(this.maze2);this.maze.add(this.maze3);this.maze.add(this.maze4);this.maze.add(this.maze5);this.maze.add(this.maze6);
             this.maze.add(this.maze7);this.maze.add(this.maze8);this.maze.add(this.maze9);this.maze.add(this.maze10);this.maze.add(this.maze11);this.maze.add(this.maze12);
             this.maze.add(this.maze13);this.maze.add(this.maze14);this.maze.add(this.maze15);this.maze.add(this.maze16);this.maze.add(this.maze17);
-            
+            }//add to maze group
             this.player.body.collideWorldBounds = true;
 
             this.physics.add.collider(this.player, this.maze);
@@ -108,9 +108,8 @@ class Maze extends Phaser.Scene {
             }, this);
 
             this.followP = false;
-            // this.timerMax = 250;
-            this.timer=300;
-            this.timer2 = 0;
+            this.timer=300;//narration timer
+            this.timer2 = 0;//instruction timer
             // when player collides with thing write a textbox near the player!!
             this.physics.add.overlap(this.player, this.markMn, this.writeStuff, null, this);
             this.testBox = this.add.text(this.player.x, this.player.y+100, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
@@ -186,29 +185,22 @@ class Maze extends Phaser.Scene {
     }
 
     writeStuff(player, object) {
-        // this.timer=0;
         this.testBox.alpha=1;
         this.followP=true;
-        // object.disableBody(true,true); // have to destroy the object or the collision keeps happening
         this.typewriteText(this.wordArray1[this.index], this.testBox, 90);
-        // this.timer = 19.9;
         if(this.index==0){
             object.x=config.width/2.248;
             object.y=config.height/1.858;
-            // this.timerMax = 300;
             this.timer = 300;
-            // console.log("adwf");
         }
         else if(this.index==1){
             object.x=config.width/1.615;
             object.y=config.height/3.6;
-            // this.timerMax=400;
             this.timer = 400;
         }
         else if(this.index==2){
             object.x=config.width/-100;
             object.y=config.height/-100;
-            // this.timerMax=250;
             this.timer = 250;
 
         }
