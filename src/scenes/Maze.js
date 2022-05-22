@@ -49,11 +49,9 @@ class Maze extends Phaser.Scene {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
             this.countT = 5;
-            this.markMN = 0;
             this.markX = config.width/2.88; this.markY= config.height/1.28;
             this.markMn = this.physics.add.sprite(this.markX, this.markY, 'mark');
 
-            
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
 
@@ -115,6 +113,13 @@ class Maze extends Phaser.Scene {
                 // console.log(this.countT);
                 this.scene.start("narrOne");
             }, this);
+
+
+            // when player collides with thing write a textbox near the player!!
+            this.physics.add.overlap(this.player, this.markMn, this.writeStuff, null, this);
+
+            
+
             this.timer2 = 0;
         }//end
 
@@ -221,13 +226,8 @@ class Maze extends Phaser.Scene {
             {
                 this.player.setVelocityY(200);
             }
-            this.physics.add.overlap(this.player, this.markMn, null, function() {   
-                this.testBox = this.add.text(this.player.x, this.player.y-10, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
-                this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
-                this.index++;
-                
-                },this);
-            this.complete = true;
+           
+            
         }//end
         else if (health >= 80 && health <=94)  {
             this.timer2 += 0.01;
@@ -256,7 +256,16 @@ class Maze extends Phaser.Scene {
         }//end
 
     }
-typewriteText(text, textbox, speed) {
+
+    writeStuff(player, object) {
+        object.disableBody(true,true); // have to destroy the object or the collision keeps happening
+        this.testBox = this.add.text(this.player.x, this.player.y-10, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+        this.index++;
+    }
+
+    typewriteText(text, textbox, speed) {
+        console.log('the passed in text: ' + text);
         const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
         //textDone = false;
