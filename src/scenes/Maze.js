@@ -102,25 +102,18 @@ class Maze extends Phaser.Scene {
             this.player.body.collideWorldBounds = true;
 
             this.physics.add.collider(this.player, this.maze);
-
-            
-
             // when player reaches end of maze do something
             this.physics.add.collider(this.player, this.mazeEnd, null, function() {
                 this.scene.start("narrOne");
             }, this);
 
-
+            this.followP = false;
+            // this.timerMax = 250;
+            this.timer=300;
+            this.timer2 = 0;
             // when player collides with thing write a textbox near the player!!
             this.physics.add.overlap(this.player, this.markMn, this.writeStuff, null, this);
-
-            
-            this.followP = false;
-            this.timerMax = 250;
-            this.timer=this.timerMax;
-            this.timer2 = 0;
-
-            this.testBox = this.add.text(this.player.x, this.player.y-40, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+            this.testBox = this.add.text(this.player.x, this.player.y+100, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 
         // }//end
 
@@ -193,28 +186,31 @@ class Maze extends Phaser.Scene {
     }
 
     writeStuff(player, object) {
+        // this.timer=0;
         this.testBox.alpha=1;
         this.followP=true;
-        // this.testBox="";
-
         // object.disableBody(true,true); // have to destroy the object or the collision keeps happening
-        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+        this.typewriteText(this.wordArray1[this.index], this.testBox, 90);
         // this.timer = 19.9;
         if(this.index==0){
             object.x=config.width/2.248;
             object.y=config.height/1.858;
-            this.timerMax = 300;
+            // this.timerMax = 300;
+            this.timer = 300;
             // console.log("adwf");
         }
         else if(this.index==1){
             object.x=config.width/1.615;
             object.y=config.height/3.6;
-            this.timerMax=400;
+            // this.timerMax=400;
+            this.timer = 400;
         }
         else if(this.index==2){
             object.x=config.width/-100;
             object.y=config.height/-100;
-            this.timerMax=250;
+            // this.timerMax=250;
+            this.timer = 250;
+
         }
         this.index++;
 
