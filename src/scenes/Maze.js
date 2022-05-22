@@ -123,7 +123,7 @@ class Maze extends Phaser.Scene {
             this.timer2 += 0.01;
             this.instruction.anims.play('maze', true);
             if(this.timer2 >=2) {
-            this.instruction.alpha=0;
+                this.instruction.alpha=0;
             }//instructions
             this.player.body.setVelocity(0);
             if (this.cursors.left.isDown)
@@ -187,6 +187,7 @@ class Maze extends Phaser.Scene {
     writeStuff(player, object) {
         this.testBox.alpha=1;
         this.followP=true;
+        this.testBox.text = '';
         this.typewriteText(this.wordArray1[this.index], this.testBox, 90);
         if(this.index==0){
             object.x=config.width/2.248;
