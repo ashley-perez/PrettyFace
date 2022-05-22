@@ -4,11 +4,11 @@ class Maze extends Phaser.Scene {
     }
 
     preload() {
-        
+
         this.load.image('heart', './assets/heart.png');
         this.load.image('mark', './assets/mazeMark.png');
         // this.load.atlas('girl_atlas', './assets/testAtlas.png', './assets/testWalk.json');
-        this.load.image('maze1', './assets/testMaze1.png'); 
+        this.load.image('maze1', './assets/testMaze1.png');
         this.load.image('maze2', './assets/testMaze2.png');
         this.load.image('maze3', './assets/testMaze3.png');
         this.load.image('maze4', './assets/testMaze1.png');
@@ -26,7 +26,7 @@ class Maze extends Phaser.Scene {
         this.load.image('maze16', './assets/testMaze15.png');
         this.load.image('maze17', './assets/testMaze16.png');
         this.load.image('mazeEnd', './assets/testMazeEnd.png');
-        
+
         this.load.atlas('mazeInstruction', './assets/instructMaze.png', './assets/instructMaze.json');
     }
 
@@ -57,11 +57,11 @@ class Maze extends Phaser.Scene {
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
 
-            this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.4);
+            this.player = this.physics.add.sprite(755, 622, 'heart').setScale(0.9);
             this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
             this.maze2 = this.physics.add.sprite(game.config.width/2.52714709, 613.00, 'maze2');
             this.maze3 = this.physics.add.sprite(852, 613.00, 'maze3');
-            this.maze4 = this.physics.add.sprite(909, 312.00, 'maze4'); 
+            this.maze4 = this.physics.add.sprite(909, 312.00, 'maze4');
             this.maze5 = this.physics.add.sprite(581.50, 506.50, 'maze5');
             this.maze6 = this.physics.add.sprite(400.50 , 387.50 , 'maze6');
             this.maze7 = this.physics.add.sprite(621.50, 434.00, 'maze7');
@@ -75,7 +75,7 @@ class Maze extends Phaser.Scene {
             this.maze15 = this.physics.add.sprite(856.50 ,141.50 , 'maze15');
             this.maze16 = this.physics.add.sprite(621.50 ,77.50 , 'maze16');
             this.maze17 = this.physics.add.sprite(547.00 ,12.50 , 'maze17');
-            this.mazeEnd = this.physics.add.sprite(856.50  ,16.88 , 'mazeEnd');
+            this.mazeEnd = this.physics.add.sprite(856.50  ,16.88 , 'mazeEnd').setScale(0.5);
 
             this.markMn.body.allowGravity = false; this.markMn.body.immovable = true;
             this.maze1.body.allowGravity = false; this.maze1.body.immovable = true;
@@ -116,7 +116,7 @@ class Maze extends Phaser.Scene {
                 this.scene.start("narrOne");
             }, this);
             this.timer2 = 0;
-        }//end 
+        }//end
 
         else if (health >= 80 && health <=94)  {
             this.anims.create({
@@ -141,7 +141,7 @@ class Maze extends Phaser.Scene {
             this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
             this.maze2 = this.physics.add.sprite(game.config.width/2.52714709, 613.00, 'maze2');
             this.maze3 = this.physics.add.sprite(852, 613.00, 'maze3');
-            this.maze4 = this.physics.add.sprite(909, 312.00, 'maze4'); 
+            this.maze4 = this.physics.add.sprite(909, 312.00, 'maze4');
             this.maze5 = this.physics.add.sprite(581.50, 506.50, 'maze5');
             this.maze6 = this.physics.add.sprite(400.50 , 387.50 , 'maze6');
             this.maze7 = this.physics.add.sprite(621.50, 434.00, 'maze7');
@@ -193,7 +193,7 @@ class Maze extends Phaser.Scene {
                 this.scene.start("narrOne");
             }, this);
             this.timer2 = 0;
-        }//end 
+        }//end
     }
 
     update() {
