@@ -7,9 +7,26 @@ class Defend extends Phaser.Scene {
         this.load.image('heart', './assets/heart.png');
         this.load.image('block', './assets/block.png');
         this.load.image('missle', './assets/tempProjectile.png');
+        this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructComment.json');
+
     }
 
     create() {
+        this.anims.create({
+            key: 'frame',
+            frames: this.anims.generateFrameNames('defendInstruction', {
+                prefix: 'frame_',
+                start: 1,
+                end: 5,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 20,
+            repeat: -1,
+        });
+
+        this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'defendInstruction', 0).setScale(2);
+
         // create the keys we will be using
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -55,13 +72,16 @@ class Defend extends Phaser.Scene {
         // collision between projectile and blocker
         this.physics.add.overlap(this.block, this.projectile, this.blockedProjectile, null, this);
 
-
-        
-
-
+        this.timer2=0;
     }
     
     update() {
+
+        this.timer2 += 0.01;
+            this.instruction2.anims.play('frame', true);
+            if(this.timer2 >=2) {
+            this.instruction2.alpha=0;
+            }
         if (this.cursors.up.isDown) {
             this.block.y -= this.Speed;
         }

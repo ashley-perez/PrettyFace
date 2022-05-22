@@ -32,7 +32,7 @@ class Comment extends Phaser.Scene {
     }
 
     create() {
-        
+        this.random =(Math.floor(Math.random() * 3)); 
 
         if(health >=95) {
 
@@ -114,11 +114,11 @@ class Comment extends Phaser.Scene {
             // }, this);
 
             console.log("wwww");
-            if(Math.floor(Math.random() * 3) == 0) {
+            if(this.random == 0) {
                 console.log("comment1");
                 this.comments.setTexture('comments');
             }//basic comment
-            else if (Math.floor(Math.random() * 3) == 1) {
+            else if (this.random == 1) {
                 console.log("1");
                 if(this.dogis==true) {
                     console.log("comment2.2");
@@ -133,7 +133,7 @@ class Comment extends Phaser.Scene {
                 this.comments.y=config.height/2.56
                 }//anything else
             }
-            else if (Math.floor(Math.random() * 3) == 2) {
+            else if (this.random == 2) {
                 console.log("2");
                 if(this.floweris==true) {
                     console.log("comment3.1");

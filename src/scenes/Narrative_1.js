@@ -80,7 +80,7 @@ class Cutscene extends Phaser.Scene {
     typewriteText(text, textbox, speed) {
         const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
-        //textDone = false;
+        //textDone = false; 
         this.time.addEvent({
             callback: () => {
                 textbox.text += text[i]

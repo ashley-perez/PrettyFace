@@ -6,6 +6,7 @@ class Maze extends Phaser.Scene {
     preload() {
         
         this.load.image('heart', './assets/heart.png');
+        this.load.image('mark', './assets/mazeMark.png');
         // this.load.atlas('girl_atlas', './assets/testAtlas.png', './assets/testWalk.json');
         this.load.image('maze1', './assets/testMaze1.png'); 
         this.load.image('maze2', './assets/testMaze2.png');
@@ -30,6 +31,8 @@ class Maze extends Phaser.Scene {
     }
 
     create() {
+        this.wordArray1 = ['damn im so happy', 'pretty meh', 'bruh', 'bye'];
+            this.index=0;
         if(health >=95) {
             this.anims.create({
                 key: 'maze',
@@ -46,6 +49,11 @@ class Maze extends Phaser.Scene {
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
             this.countT = 5;
+            this.markMN = 0;
+            this.markX = config.width/2.88; this.markY= config.height/1.28;
+            this.markMn = this.physics.add.sprite(this.markX, this.markY, 'mark');
+
+            
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
 
@@ -69,6 +77,7 @@ class Maze extends Phaser.Scene {
             this.maze17 = this.physics.add.sprite(547.00 ,12.50 , 'maze17');
             this.mazeEnd = this.physics.add.sprite(856.50  ,16.88 , 'mazeEnd');
 
+            this.markMn.body.allowGravity = false; this.markMn.body.immovable = true;
             this.maze1.body.allowGravity = false; this.maze1.body.immovable = true;
             this.maze2.body.immovable = true; this.maze2.body.allowGravity = false;
             this.maze3.body.immovable = true; this.maze3.body.allowGravity = false;
@@ -97,6 +106,8 @@ class Maze extends Phaser.Scene {
             this.player.body.collideWorldBounds = true;
 
             this.physics.add.collider(this.player, this.maze);
+
+            
 
             // when player reaches end of maze do something
             this.physics.add.collider(this.player, this.mazeEnd, null, function() {
@@ -210,6 +221,13 @@ class Maze extends Phaser.Scene {
             {
                 this.player.setVelocityY(200);
             }
+            this.physics.add.overlap(this.player, this.markMn, null, function() {   
+                this.testBox = this.add.text(this.player.x, this.player.y-10, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+                this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+                this.index++;
+                
+                },this);
+            this.complete = true;
         }//end
         else if (health >= 80 && health <=94)  {
             this.timer2 += 0.01;
@@ -238,5 +256,22 @@ class Maze extends Phaser.Scene {
         }//end
 
     }
+typewriteText(text, textbox, speed) {
+        const length = text.length; // how many times the loop should repeat (based on sentence length)
+        let i = 0;
+        //textDone = false;
+        this.time.addEvent({
+            callback: () => {
+                textbox.text += text[i]
+                i++
 
+                // when there is no more to write set bool to false
+                if (i == length) {
+                    this.complete = true;
+                }
+            },
+            repeat: length - 1,
+            delay: speed // typing speed, big numbers = slower text, small = faster
+        });
+    }
 }

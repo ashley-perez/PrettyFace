@@ -253,7 +253,7 @@ class Filter extends Phaser.Scene {
             this.timer = 0;
             this.timer2 = 0;
         }//end
-
+        this.timer2 = 0;
     }
 
     update() {
