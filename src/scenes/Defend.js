@@ -7,7 +7,7 @@ class Defend extends Phaser.Scene {
         this.load.image('heart', './assets/heart.png');
         this.load.image('block', './assets/block.png');
         this.load.image('missle', './assets/tempProjectile.png');
-        this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructComment.json');
+        this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructDefend.json');
 
     }
 

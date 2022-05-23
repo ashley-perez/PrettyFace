@@ -130,7 +130,7 @@ class Filter extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.heart, null, function() {
             this.player.setTexture(this.heartPhases[this.index]);
             this.player.x = config.width/3.007;
-            this.player.y = config.height/1.8367;
+            this.player.y = config.height/1.775;
             this.heart.destroy();
             this.heartFilter = true;
             this.dogFilter = false;

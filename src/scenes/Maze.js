@@ -37,8 +37,8 @@ class Maze extends Phaser.Scene {
     create() {
         
         // this.createAnimations();
-        this.wordArray1 = ['not bad not bad', 'my shoulders look broad though\nIll shoot from another angle.', 'next post I will'];//meh confidence
-        this.wordArray2 = ['are they right?', 'Am I becoming too wide?', 'I think Ill skip dinner tonight...'];//bad confidence
+        this.wordArray1 = ['not bad not bad', 'my shoulders look broad \nthough.I should shoot\n from another angle.', 'next post I will'];//meh confidence
+        this.wordArray2 = ['are they right?', 'Am I becoming too wide?', 'I think Ill skip dinner\ntonight...'];//bad confidence
         this.wordArray3 = ['I dont look like them', 'My lips are too small', 'Injections will fix it'];//bad confidence
 
             this.index=0;
@@ -129,24 +129,32 @@ class Maze extends Phaser.Scene {
                         // this.maze.flash(250);
                         this.player.x = this.player.x + 20;
                         this.timer3 = 50;
-                        this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+                        this.cameras.main.flash(200);
+                        this.cameras.main.shake(200);
+                        // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
                     }
                     else if(this.cursors.right.isDown) {
                         this.player.x = this.player.x - 20;
                         this.timer3 = 50;
-                        this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+                        this.cameras.main.flash(200);
+                        this.cameras.main.shake(200);
+                        // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 
                     }
                     else if(this.cursors.up.isDown) {
                         this.player.y = this.player.y + 20;
                         this.timer3 = 50;
-                        this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+                        this.cameras.main.flash(200);
+                        this.cameras.main.shake(200);
+                        // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 
                     }
                     else if(this.cursors.down.isDown) {
                         this.player.y = this.player.y - 20;
                         this.timer3 = 50;
-                        this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+                        this.cameras.main.flash(200);
+                        this.cameras.main.shake(200);
+                        // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 
                     }
                    
