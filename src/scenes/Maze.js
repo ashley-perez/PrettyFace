@@ -29,12 +29,18 @@ class Maze extends Phaser.Scene {
     }//maze images
         this.load.image('mirror', './assets/mirror.png');
         this.load.image('mirror1', './assets/mirror(filled1).png');
+        this.load.image('mirror2', './assets/mirror(filled2).png');
 
         this.load.atlas('mazeInstruction', './assets/instructMaze.png', './assets/instructMaze.json');
     }
 
     create() {
-        this.wordArray1 = ['not bad not bad', 'my shoulders look broad though\nIll shoot from another angle.', 'next post I will'];
+        
+        // this.createAnimations();
+        this.wordArray1 = ['not bad not bad', 'my shoulders look broad though\nIll shoot from another angle.', 'next post I will'];//meh confidence
+        this.wordArray2 = ['are they right?', 'Am I becoming too wide?', 'I think Ill skip dinner tonight...'];//bad confidence
+        this.wordArray3 = ['I dont look like them', 'My lips are too small', 'Injections will fix it'];//bad confidence
+
             this.index=0;
             // if(health >=95) {
             this.anims.create({
@@ -54,10 +60,17 @@ class Maze extends Phaser.Scene {
             this.markMn = this.physics.add.sprite(config.width/2.066, config.height/1.29, 'mark');
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
-            this.mirror = this.physics.add.sprite(config.width/2.057, config.height/1.425, 'mirror', 0).setScale(2).setDepth(1);
+            this.mirror = this.physics.add.sprite(config.width/2.057, config.height/1.425, 'mirror', 0).setScale(1.2).setDepth(1);
+            this.mirror2 = this.physics.add.sprite(config.width/2.54, config.height/1.853, 'mirror', 0).setScale(1.2).setDepth(1);
+
 
             this.player = this.physics.add.sprite(760, 622, 'heart').setScale(0.7);
             this.player.body.collideWorldBounds = true;
+
+            // this.cameras.main.setScroll(this.player.x, this.player.y);
+            this.cameras.main.setBounds(0, 0, config.width, config.height);
+            
+            this.cameras.main.startFollow(this.player);
 
             {this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
             this.maze2 = this.physics.add.sprite(game.config.width/2.52714709, 613.00, 'maze2');
@@ -151,24 +164,29 @@ class Maze extends Phaser.Scene {
             this.timer3= 50;
             // when player collides with thing write a textbox near the player!!
             this.physics.add.overlap(this.player, this.markMn, this.writeStuff, null, this);//collide with invisible objects
-            this.testBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
+            this.testBox = this.add.text(this.player.x, this.player.y, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 
         // }//end
-
+            this.playerPositionX = this.player.x;
+            this.playerPositionY = this.player.y;
     }
 
     update() {
+        this.playerPositionX = this.player.x;
+        this.playerPositionY = this.player.y;
+        
         // console.log(health);
         if(this.timer3 >0){
             this.timer3 = this.timer3 - 1;
         }//freeze the player
-            this.timer2 += 0.01;
+            this.timer2 += 0.01;//instruction timer
             this.instruction.anims.play('maze', true);
-            if(this.timer2 >=2) {
+            if(this.timer2 >=1.5) {
                 this.instruction.alpha=0;
+                this.cameras.main.setZoom(2.5);
             }//instructions
             this.player.body.setVelocity(0);
-            console.log(this.timer3);
+            // console.log(this.timer3);
             if(this.timer3 <=0) {//unfreeze playe to move
             if (this.cursors.left.isDown)
             {
@@ -208,6 +226,7 @@ class Maze extends Phaser.Scene {
         this.testBox.alpha=1;
         this.followP=true;
         this.testBox.text = '';
+        if(health >=87) {
         this.typewriteText(this.wordArray1[this.index], this.testBox, 90);
         if(this.index==0){
             this.mirror.setTexture('mirror1');
@@ -216,6 +235,7 @@ class Maze extends Phaser.Scene {
             this.timer = 200;
         }
         else if(this.index==1){
+            this.mirror2.setTexture('mirror2')
             object.x=config.width/1.5;
             object.y=config.height/2.2;
             this.timer = 400;
@@ -227,7 +247,29 @@ class Maze extends Phaser.Scene {
 
         }
         this.index++;
-
+        }//Positive comments
+        else if(health >=65 && health <=86) {
+            this.typewriteText(this.wordArray2[this.index], this.testBox, 90);
+            if(this.index==0){
+                this.mirror.setTexture('mirror1');
+                object.x=config.width/2.542;
+                object.y=config.height/1.6;
+                this.timer = 200;
+            }
+            else if(this.index==1){
+                this.mirror2.setTexture('mirror2')
+                object.x=config.width/1.5;
+                object.y=config.height/2.2;
+                this.timer = 400;
+            }
+            else if(this.index==2){
+                object.x=config.width/-100;
+                object.y=config.height/-100;
+                this.timer = 250;
+    
+            }
+            this.index++;
+            }//Positive comments
     }
 
     typewriteText(text, textbox, speed) {

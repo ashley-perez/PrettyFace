@@ -247,7 +247,7 @@ class Comment extends Phaser.Scene {
 
 
     update() {
-        if(health >= 95) {
+        if(health >= 87) {
             if(this.timer2<=0) {
             
         }
@@ -280,7 +280,7 @@ class Comment extends Phaser.Scene {
                 }
             }
         }
-        else if(health >=80 && health <=94 ) {
+        else if(health >=65 && health <=86 ) {
             this.timer2 += 0.01;
             this.instruction2.anims.play('frame', true);
             if(this.timer2 >=2) {
