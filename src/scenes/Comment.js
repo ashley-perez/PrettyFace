@@ -34,6 +34,12 @@ class Comment extends Phaser.Scene {
     this.load.image("reply4.2(n/b)", "./assets/replyComment11(n).png");
     this.load.image("reply4.3(n/b)", "./assets/replyComment12(n).png");
 
+    this.load.image("battery1","./assets/Health 100Full Battery.png");
+    this.load.image("battery2","./assets/Health 90.png");
+    this.load.image("battery3","./assets/Health 70.png");
+    this.load.image("battery4","./assets/Health 40.png");
+    this.load.image("battery5","./assets/Health 20.png");
+    this.load.image("battery6","./assets/Health 5.png");
 
     // this.load.image('replyButton', './assets/replyButton.png');
 
@@ -46,13 +52,35 @@ class Comment extends Phaser.Scene {
 
   create() {
       if(health >=87) {
+    this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery1", 0).setDepth(1);
     this.random = Math.floor(Math.random() * 3);
     console.log("random " +this.random);
       }//3 different options of comments for most positive
       else if (health <= 86 && health >= 65) {
+        this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery2", 0).setDepth(1);
         this.random = Math.floor(Math.random() * 1);
         console.log("random "+this.random);
-          }//3 different options of comments for most positive
+        }
+        else if (health <= 64 && health >= 35) {
+            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery3", 0).setDepth(1);
+            this.random = Math.floor(Math.random() * 1);
+            console.log("random "+this.random);
+        }
+        else if (health <= 34 && health >= 25) {
+            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery4", 0).setDepth(1);
+            this.random = Math.floor(Math.random() * 1);
+            console.log("random "+this.random);
+        }//just because i made an extra battery it supposed to be 34 - 10
+        else if (health <= 24 && health >= 10) {
+            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery5", 0).setDepth(1);
+            this.random = Math.floor(Math.random() * 1);
+            console.log("random "+this.random);
+        }//just because i made an extra battery it supposed to be 34 - 10
+        else if (health <= 9 && health >= 1) {
+            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery6", 0).setDepth(1);
+            this.random = Math.floor(Math.random() * 1);
+            console.log("random "+this.random);
+        }
     this.anims.create({
       key: "frame",
       frames: this.anims.generateFrameNames("commentInstruction", {
@@ -65,9 +93,7 @@ class Comment extends Phaser.Scene {
       frameRate: 20,
       repeat: -1,
     });
-    this.instruction2 = this.physics.add
-      .sprite(config.width / 2, config.height / 30, "commentInstruction", 0)
-      .setScale(2);
+    this.instruction2 = this.physics.add.sprite(config.width / 2, config.height / 30, "commentInstruction", 0).setScale(2);
 
     // mouse stuff
     this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
@@ -102,6 +128,8 @@ class Comment extends Phaser.Scene {
       .sprite(300, config.height - 300, "three")
       .setInteractive();
 
+//comment and replies above 87 health
+      if(health >=87) {
     // click on reply button
     if (this.buttonNum == false) {
       if (this.random == 0) {
@@ -114,7 +142,7 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply1.1(n/b)");
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
-            health -= 1;
+            health -= 2;
           },
           this
         );
@@ -141,7 +169,7 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply1.3(n/b)");
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
-            health -= 2;
+            health -= 1;
           },
           this
         );
@@ -160,7 +188,6 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply2.1(n/b)");
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
-            health -= 1;
           },
           this
         );
@@ -174,6 +201,7 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply2.2(n/b)");
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
+            health -= 1;
           },
           this
         );
@@ -205,7 +233,7 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply3.1(n/b)");
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
-            health -= 1;
+            health -= 2;
           },
           this
         );
@@ -275,6 +303,183 @@ class Comment extends Phaser.Scene {
       }
     } //Comment textures
 
+}//comment and replies above 87 health
+
+else if(health <= 86 && health >= 65) {
+    // click on reply button
+    if (this.buttonNum == false) {
+      if (this.random == 0) {
+        this.choiceOne.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 1");
+            this.reply.setTexture("reply1.1(n/b)");
+            this.reply.x = config.width / 1.9;
+            this.reply.y = config.height / 1.25;
+            health -= 2;
+          },
+          this
+        );
+
+        this.choiceTwo.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 2");
+            this.reply.setTexture("reply1.2(n/b)");
+            this.reply.x = config.width / 1.9;
+            this.reply.y = config.height / 1.25;
+          },
+          this
+        );
+
+        this.choiceThree.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 3");
+            this.reply.setTexture("reply1.3(n/b)");
+            this.reply.x = config.width / 1.9;
+            this.reply.y = config.height / 1.25;
+            health -= 1;
+          },
+          this
+        );
+      } //comment reply 1
+      else if (this.random == 1) {
+        this.reply.setTexture("reply2");
+        this.reply.x = config.width / 1.9707;
+        this.reply.y = config.height / 1.14;
+
+        this.choiceOne.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 1");
+            this.reply.setTexture("reply2.1(n/b)");
+            this.reply.x = config.width / 1.93;
+            this.reply.y = config.height / 1.16;
+          },
+          this
+        );
+
+        this.choiceTwo.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 2");
+            this.reply.setTexture("reply2.2(n/b)");
+            this.reply.x = config.width / 1.93;
+            this.reply.y = config.height / 1.16;
+            health -= 1;
+          },
+          this
+        );
+
+        this.choiceThree.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 3");
+            this.reply.setTexture("reply2.3(n/b)");
+            this.reply.x = config.width / 1.93;
+            this.reply.y = config.height / 1.16;
+            health -= 2;
+          },
+          this
+        );
+      } //comment reply 2
+      else if (this.random == 2) {
+        this.reply.setTexture("reply3");
+        this.reply.x = config.width / 1.9707;
+        this.reply.y = config.height / 1.14;
+        this.choiceOne.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 1");
+            this.reply.setTexture("reply3.1(n/b)");
+            this.reply.x = config.width / 1.93;
+            this.reply.y = config.height / 1.16;
+            health -= 2;
+          },
+          this
+        );
+
+        this.choiceTwo.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 2");
+            this.reply.setTexture("reply3.2(n/b)");
+            this.reply.x = config.width / 1.93;
+            this.reply.y = config.height / 1.16;
+          },
+          this
+        );
+
+        this.choiceThree.on(
+          "pointerdown",
+          function (pointer) {
+            this.buttonNum = true;
+            console.log(this.buttonNum);
+            console.log("clicked 3");
+            this.reply.setTexture("reply3.3(n/b)");
+            this.reply.x = config.width / 1.93;
+            this.reply.y = config.height / 1.16;
+            health -= 2;
+          },
+          this
+        );
+      } //comment reply 3
+    }
+
+    {
+      if (this.random == 0) {
+        console.log("comment1");
+        this.comments.setTexture("comments");
+      } //basic comment
+      else if (this.random == 1) {
+        console.log("1");
+        if (this.dogis == true) {
+          console.log("comment2.2");
+          this.comments.setTexture("comments2.2");
+          this.comments.x = config.width / 1.83;
+          this.comments.y = config.height / 2.205;
+        } //dog filter
+        else {
+          console.log("comment2.1");
+          this.comments.setTexture("comments2.1");
+          this.comments.x = config.width / 1.87;
+          this.comments.y = config.height / 2.205;
+        } //anything else
+      } else if (this.random == 2) {
+        console.log("2");
+        if (this.floweris == true) {
+          console.log("comment3.1");
+          this.comments.setTexture("comments3.1");
+          this.comments.x = config.width / 1.87;
+          this.comments.y = config.height / 2.205;
+        } //dog filter
+        else {
+          console.log("comment3.2");
+          this.comments.setTexture("comments3.2");
+          this.comments.x = config.width / 1.87;
+          this.comments.y = config.height / 2.205;
+        } //anything else
+      }
+    } //Comment textures
+}
+
     //just a fake timer for now
     this.timer = 0;
     this.timer2 = 0;
@@ -287,6 +492,7 @@ class Comment extends Phaser.Scene {
   }
 
   update() {
+    console.log(health);
     
       if (this.timer2 <= 0) {
       }

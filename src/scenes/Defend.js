@@ -122,6 +122,7 @@ class Defend extends Phaser.Scene {
         player.disableBody(true,true);
         this.shooting = false;
         this.coolDown = 0;
+        health = health - 3;
     }
 
     blockedProjectile (block, projectile) {

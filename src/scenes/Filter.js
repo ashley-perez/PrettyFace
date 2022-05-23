@@ -64,10 +64,10 @@ class Filter extends Phaser.Scene {
         else if (health <= 86 && health >= 65) {
             this.index = 1;
         }
-        else if (health <= 86 && health >= 65) {
+        else if (health <= 64 && health >= 35) {
             this.index = 2;
         }
-        else if (health <= 86 && health >= 65) {
+        else if (health <= 34 && health >= 10) {
             this.index = 3;
         }
         else {
@@ -195,7 +195,7 @@ class Filter extends Phaser.Scene {
             this.instruction.alpha=0;
         }
         
-        //console.log(health);
+        console.log(health);
         //console.log("filter 95 +");
 
         if(this.complete == true) {
