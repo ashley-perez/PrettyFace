@@ -43,6 +43,8 @@ class Filter extends Phaser.Scene {
     create() {
         this.index = 0;
 
+        this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
+
         this.playerPhases = ['normalPlayer', 'semiNormal', 'messyPlayer'];
         this.dogPhases = ['normalDog', 'semiNormalDog', 'messyDog'];
         this.flowerPhases = ['normalFlower', 'semiNormalFlower', 'messyFlower'];
