@@ -63,6 +63,7 @@ class Filter extends Phaser.Scene {
         ).setOrigin(0, 0);
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
+        this.timer = 0;
 
         if(health >= 87) {
             this.player1 = this.physics.add.sprite(config.width/3.007, config.height/1.775, 'player1', 0);
