@@ -73,12 +73,17 @@ class Defend extends Phaser.Scene {
         // collision between projectile and blocker
         this.physics.add.overlap(this.block, this.projectile, this.blockedProjectile, null, this);
 
+        this.timer=0;
         this.timer2=0;
     }
     
     update() {
 
-        this.timer2 += 0.01;
+        this.timer += 0.01; this.timer2 += 0.01;
+        if (this.timer >= 9) {
+            this.scene.start("narrOne"); // restaurant game
+        }
+        
             this.instruction2.anims.play('frame', true);
             if(this.timer2 >=2) {
             this.instruction2.alpha=0;

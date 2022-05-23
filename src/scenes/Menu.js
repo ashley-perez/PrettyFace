@@ -54,7 +54,7 @@ class Menu extends Phaser.Scene {
             this.scene.start("filterGame");
             //  this.scene.start("commentGame");
             //  this.scene.start("mazeGame");
-            //this.scene.start("blockingGame");
+            // this.scene.start("blockingGame");
             //this.scene.start("eyesGame");
             // this.scene.start("restaurantGame");
         }
