@@ -7,7 +7,7 @@ class Defend extends Phaser.Scene {
         this.load.image('heart', './assets/heart.png');
         this.load.image('block', './assets/block.png');
         this.load.image('missle', './assets/tempProjectile.png');
-        this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructComment.json');
+        this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructDefend.json');
 
     }
 
@@ -73,12 +73,17 @@ class Defend extends Phaser.Scene {
         // collision between projectile and blocker
         this.physics.add.overlap(this.block, this.projectile, this.blockedProjectile, null, this);
 
+        this.timer=0;
         this.timer2=0;
     }
     
     update() {
 
-        this.timer2 += 0.01;
+        this.timer += 0.01; this.timer2 += 0.01;
+        if (this.timer >= 9) {
+            this.scene.start("narrOne"); // restaurant game
+        }
+        
             this.instruction2.anims.play('frame', true);
             if(this.timer2 >=2) {
             this.instruction2.alpha=0;
@@ -117,6 +122,7 @@ class Defend extends Phaser.Scene {
         player.disableBody(true,true);
         this.shooting = false;
         this.coolDown = 0;
+        health = health - 3;
     }
 
     blockedProjectile (block, projectile) {
