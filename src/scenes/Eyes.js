@@ -5,7 +5,7 @@ class Eyes extends Phaser.Scene {
 
     preload() {
         this.load.audio('eyesMusic', './assets/eyes.wav');
-        this.load.audio('sob', './assets/sob.wav');
+        this.load.audio('ouch', './assets/ouch.mp3');
         this.load.audio('scream', './assets/scream.mp3');
         this.load.image('player', './assets/heart.png');
         this.load.image('eye2', './assets/eyeP2.png');
@@ -53,37 +53,37 @@ class Eyes extends Phaser.Scene {
             // player colliding with each eye
             this.player.body.collideWorldBounds = true;
             this.physics.add.collider(this.player, this.eye, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch', {volume: 0.5});
                 this.eye.setPosition(0,-70);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye2, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch', {volume: 0.5});
                 this.eye2.setPosition(950,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye3, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch', {volume: 0.5});
                 this.eye3.setPosition(-150,700);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye4, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch', {volume: 0.5});
                 this.eye4.setPosition(1400,300);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye5, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch', {volume: 0.5});
                 this.eye5.setPosition(450,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye6, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch', {volume: 0.5});
                 this.eye6.setPosition(750,-70);
                 health -= 2;
                 console.log(health);
@@ -124,49 +124,49 @@ class Eyes extends Phaser.Scene {
             // player colliding with each eye
             this.player.body.collideWorldBounds = true;
             this.physics.add.collider(this.player, this.eye, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye.setPosition(0,-70);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye2, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye2.setPosition(950,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye3, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye3.setPosition(-150,700);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye4, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye4.setPosition(1400,300);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye5, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye5.setPosition(450,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye6, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye6.setPosition(750,-70);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye7, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye7.setPosition(0,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye8, null, function() {
-                this.sound.play('sob');
+                this.sound.play('ouch');
                 this.eye8.setPosition(1300,-300);
                 health -= 2;
                 console.log(health);
@@ -206,49 +206,49 @@ class Eyes extends Phaser.Scene {
             // player colliding with each eye
             this.player.body.collideWorldBounds = true;
             this.physics.add.collider(this.player, this.eye, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye.setPosition(0,-70);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye2, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye2.setPosition(950,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye3, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye3.setPosition(-150,700);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye4, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye4.setPosition(1400,300);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye5, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye5.setPosition(450,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye6, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye6.setPosition(750,-70);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye7, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye7.setPosition(0,800);
                 health -= 2;
                 console.log(health);
             }, this);
             this.physics.add.collider(this.player, this.eye8, null, function() {
-                this.sound.play('scream');
+                this.sound.play('scream', {volume: 0.6});
                 this.eye8.setPosition(1300,-300);
                 health -= 2;
                 console.log(health);

@@ -2,8 +2,9 @@ class Defend extends Phaser.Scene {
     constructor() {
         super("blockingGame")
     }
-    
+
     preload() {
+        this.load.audio('sob', './assets/sob.wav');
         this.load.image('heart', './assets/heart.png');
         this.load.image('block', './assets/block.png');
         this.load.image('missle', './assets/tempProjectile.png');
@@ -68,7 +69,9 @@ class Defend extends Phaser.Scene {
         this.projectile.setScale(0.5);
 
         // collision between projectile and breakable object
-        this.physics.add.overlap(this.playerGroup, this.projectile, this.hitObject, null, this);
+        this.physics.add.overlap(this.playerGroup, this.projectile, this.hitObject, null, function() {
+            this.sound.play('sob'); // didn't work?
+        }, this);
 
         // collision between projectile and blocker
         this.physics.add.overlap(this.block, this.projectile, this.blockedProjectile, null, this);
@@ -76,7 +79,7 @@ class Defend extends Phaser.Scene {
         this.timer=0;
         this.timer2=0;
     }
-    
+
     update() {
 
         this.timer += 0.01; this.timer2 += 0.01;
@@ -120,13 +123,13 @@ class Defend extends Phaser.Scene {
             this.shooting = true;
             this.coolDown = 0;
         }
-        
+
         // if projectile is off screen then reset
         if (this.shooting == true && this.projectile.x >= 1280) {
             this.shooting = false;
             this.coolDown = 0;
         }
-        
+
     }
 
     hitObject (projectile, player) {
@@ -153,4 +156,3 @@ class Defend extends Phaser.Scene {
 
 
 }
-

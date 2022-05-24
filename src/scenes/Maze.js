@@ -4,6 +4,8 @@ class Maze extends Phaser.Scene {
     }
 
     preload() {
+        this.load.audio('hm', './assets/hm.mp3');
+        this.load.audio('hmm', './assets/hmm.mp3');
 
         this.load.image('heart', './assets/heart.png');
         this.load.image('mark', './assets/mazeMark.png');
@@ -35,7 +37,7 @@ class Maze extends Phaser.Scene {
     }
 
     create() {
-        
+
         // this.createAnimations();
         this.wordArray1 = ['not bad not bad', 'my shoulders look broad \nthough.I should shoot\n from another angle.', 'next post I will'];//meh confidence
         this.wordArray2 = ['are they right?', 'Am I becoming too wide?', 'I think Ill skip dinner\ntonight...'];//bad confidence
@@ -69,7 +71,7 @@ class Maze extends Phaser.Scene {
 
             // this.cameras.main.setScroll(this.player.x, this.player.y);
             this.cameras.main.setBounds(0, 0, config.width, config.height);
-            
+
             this.cameras.main.startFollow(this.player);
 
             {this.maze1 = this.physics.add.sprite(game.config.width/4.78504673, 312, 'maze1');
@@ -157,7 +159,7 @@ class Maze extends Phaser.Scene {
                         // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
 
                     }
-                   
+
                 }, this);
             }//too sad and now hurt when hit walls
 
@@ -193,7 +195,7 @@ class Maze extends Phaser.Scene {
     update() {
         this.playerPositionX = this.player.x;
         this.playerPositionY = this.player.y;
-        
+
         // console.log(health);
         if(this.timer3 >0){
             this.timer3 = this.timer3 - 1;
@@ -236,8 +238,6 @@ class Maze extends Phaser.Scene {
                 this.timer=this.timerMax;
             }//count down timer
            console.log(this.timer);
-            
-       
 
     }
 
@@ -249,12 +249,14 @@ class Maze extends Phaser.Scene {
         this.typewriteText(this.wordArray1[this.index], this.testBox, 90);
         if(this.index==0){
             this.mirror.setTexture('mirror1');
+            this.sound.play('hm');
             object.x=config.width/2.542;
             object.y=config.height/1.6;
             this.timer = 200;
         }
         else if(this.index==1){
-            this.mirror2.setTexture('mirror2')
+            this.mirror2.setTexture('mirror2');
+            this.sound.play('hmm');
             object.x=config.width/1.5;
             object.y=config.height/2.2;
             this.timer = 400;
@@ -271,12 +273,14 @@ class Maze extends Phaser.Scene {
             this.typewriteText(this.wordArray2[this.index], this.testBox, 90);
             if(this.index==0){
                 this.mirror.setTexture('mirror1');
+                this.sound.play('hm');
                 object.x=config.width/2.542;
                 object.y=config.height/1.6;
                 this.timer = 200;
             }
             else if(this.index==1){
-                this.mirror2.setTexture('mirror2')
+                this.mirror2.setTexture('mirror2');
+                this.sound.play('hmm');
                 object.x=config.width/1.5;
                 object.y=config.height/2.2;
                 this.timer = 400;
@@ -285,7 +289,7 @@ class Maze extends Phaser.Scene {
                 object.x=config.width/-100;
                 object.y=config.height/-100;
                 this.timer = 250;
-    
+
             }
             this.index++;
             }//Positive comments
