@@ -8,6 +8,8 @@ class Cutscene extends Phaser.Scene {
     preload() {
         // loading player texture atlas
         this.load.atlas('girl_atlas', './assets/testAtlas.png', './assets/testWalk.json');
+
+        this.load.audio('typing', './assets/typing.wav');
     }
 
     create() {
@@ -83,9 +85,10 @@ class Cutscene extends Phaser.Scene {
     typewriteText(text, textbox, speed) {
         const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
-        //textDone = false; 
+        //textDone = false;
         this.time.addEvent({
             callback: () => {
+                //this.typing = this.sound.play('typing');
                 textbox.text += text[i]
                 i++
 
