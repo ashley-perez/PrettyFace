@@ -4,6 +4,9 @@ class Comment extends Phaser.Scene {
   }
 
   preload() {
+    this.load.audio('notifComment', './assets/comment.wav');
+    this.load.audio('reply', './assets/reply.wav');
+
     this.load.image("comments", "./assets/comments1.png");
     this.load.image("comments2.1", "./assets/comments2(ver1).png");
     this.load.image("comments2.2", "./assets/comments2(ver2).png");
@@ -51,6 +54,7 @@ class Comment extends Phaser.Scene {
   }
 
   create() {
+    this.sound.play('notifComment');
       if(health >=87) {
     this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery1", 0).setDepth(1);
     this.random = Math.floor(Math.random() * 3);
@@ -302,7 +306,6 @@ class Comment extends Phaser.Scene {
         } //anything else
       }
     } //Comment textures
-
 }//comment and replies above 87 health
 
 else if(health <= 86 && health >= 65) {
@@ -493,7 +496,7 @@ else if(health <= 86 && health >= 65) {
 
   update() {
     console.log(health);
-    
+
       if (this.timer2 <= 0) {
       }
       this.timer2 += 0.01;
