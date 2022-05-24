@@ -14,7 +14,7 @@ let config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: true // toggle if collision hit box are visible
+            debug: false // toggle if collision hit box are visible
         }
     }
 }
