@@ -25,7 +25,7 @@ class Defend extends Phaser.Scene {
             repeat: -1,
         });
 
-        this.instruction2 = this.physics.add.sprite(config.width/2, config.height/30, 'defendInstruction', 0).setScale(2);
+        this.defendInstruction = this.physics.add.sprite(config.width/2, config.height/30, 'defendInstruction', 0).setScale(2);
 
         // create the keys we will be using
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -81,12 +81,25 @@ class Defend extends Phaser.Scene {
 
         this.timer += 0.01; this.timer2 += 0.01;
         if (this.timer >= 9) {
-            this.scene.start("narrOne"); // restaurant game
+            if(sceneCount<2){
+                if (Math.floor(Math.random() * 2) == 0) {
+                    console.log("eyes");
+                    sceneCount++;
+                    this.scene.start("eyesGame");
+                  } else if (Math.floor(Math.random() * 2) == 1) {
+                    console.log("maze");
+                    sceneCount++;
+                    this.scene.start("mazeGame");
+                  }
+            }
+            else {
+                this.scene.start("narrOne")
+            }
         }
         
-            this.instruction2.anims.play('frame', true);
+            this.defendInstruction.anims.play('frame', true);
             if(this.timer2 >=2) {
-            this.instruction2.alpha=0;
+            this.defendInstruction.alpha=0;
             }
         if (this.cursors.up.isDown) {
             this.block.y -= this.Speed;

@@ -516,12 +516,15 @@ else if(health <= 86 && health >= 65) {
       if (this.timer >= 3) {
         if (Math.floor(Math.random() * 3) == 0) {
           console.log("eyes");
+          sceneCount++;
           this.scene.start("eyesGame");
         } else if (Math.floor(Math.random() * 3) == 1) {
           console.log("maze");
+          sceneCount++;
           this.scene.start("mazeGame");
         } else if (Math.floor(Math.random() * 3) == 2) {
           console.log("defend");
+          sceneCount++;
           this.scene.start("blockingGame");
         }
     }

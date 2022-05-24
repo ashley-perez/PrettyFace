@@ -17,7 +17,6 @@ class Eyes extends Phaser.Scene {
     create() {
         //this.music.pause();
         //this.eyesMusic = this.sound.play('eyesMusic');
-        health = 50;
         this.phase2 = false;
         this.phase3 = false;
         this.phase4 = true;
@@ -297,8 +296,20 @@ class Eyes extends Phaser.Scene {
             }
 
             if (this.timer >= 9) {
-                console.log("phase2");
-                this.scene.start("narrOne");
+                if(sceneCount<2){
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        console.log("defend");
+                        sceneCount++;
+                        this.scene.start("blockingGame");
+                      } else if (Math.floor(Math.random() * 2) == 1) {
+                        console.log("maze");
+                        sceneCount++;
+                        this.scene.start("mazeGame");
+                      }
+                }
+                else {
+                    this.scene.start("narrOne")
+                }
             }
         }
         else if (this.phase3 == true) {
@@ -337,9 +348,20 @@ class Eyes extends Phaser.Scene {
             }
 
             if (this.timer >= 9) {
-                console.log("phase3");
-                this.scene.start("narrOne"); // restaurant game
+                if (Math.floor(Math.random() * 2) == 0) {
+                    console.log("defend");
+                    sceneCount++;
+                    this.scene.start("blockingGame");
+                  } else if (Math.floor(Math.random() * 2) == 1) {
+                    console.log("maze");
+                    sceneCount++;
+                    this.scene.start("mazeGame");
+                  }
             }
+            else {
+                this.scene.start("narrOne")
+            }
+            
         }
 
         else if (this.phase4 == true) {
@@ -377,8 +399,18 @@ class Eyes extends Phaser.Scene {
             }
 
             if (this.timer >= 9) {
-                console.log("phase3");
-                this.scene.start("narrOne"); // restaurant game
+                if (Math.floor(Math.random() * 2) == 0) {
+                    console.log("defend");
+                    sceneCount++;
+                    this.scene.start("blockingGame");
+                  } else if (Math.floor(Math.random() * 2) == 1) {
+                    console.log("maze");
+                    sceneCount++;
+                    this.scene.start("mazeGame");
+                  }
+            }
+            else {
+                this.scene.start("narrOne")
             }
         }
         //this.eyesMusic.pause();
