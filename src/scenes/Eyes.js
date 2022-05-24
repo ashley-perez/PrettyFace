@@ -17,10 +17,9 @@ class Eyes extends Phaser.Scene {
     create() {
         //this.music.pause();
         //this.eyesMusic = this.sound.play('eyesMusic');
-        health = 60;
         this.phase2 = false;
         this.phase3 = false;
-        this.phase4 = true;
+        this.phase4 = false;
 
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
