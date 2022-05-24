@@ -21,7 +21,8 @@ let config = {
 
 
 let game = new Phaser.Game(config);
-let gamePhase;
+let sceneCount =0;
+let narrCount=0;
 let health;
 
 // set border

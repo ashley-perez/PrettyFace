@@ -55,11 +55,15 @@ class Cutscene extends Phaser.Scene {
 
     update() {
         this.timer += 0.01;
+        this.input.setDefaultCursor("");
+
         if(health >=95) {
             // console.log("penis");
             if (this.timer >= 3) {
                 health -= 5;
         console.log(health);
+        narrCount++;
+        sceneCount=0;
                 this.scene.start("filterGame");
             }
         }
@@ -67,6 +71,7 @@ class Cutscene extends Phaser.Scene {
             if (this.timer >= 2) {
                 health -= 8;
         console.log(health);
+        narrCount++;
                 this.scene.start("filterGame");
             }
         }
@@ -74,6 +79,7 @@ class Cutscene extends Phaser.Scene {
             if (this.timer >= 1) {
                 health -= 10;
         console.log(health);
+            narrCount++;
                 this.scene.start("filterGame");
             }
         }

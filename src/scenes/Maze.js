@@ -165,7 +165,18 @@ class Maze extends Phaser.Scene {
 
             // when player reaches end of maze do something
             this.physics.add.collider(this.player, this.mazeEnd, null, function() {
-                this.scene.start("narrOne");
+                if (Math.floor(Math.random() * 2) == 0) {
+                    console.log("defend");
+                    sceneCount++;
+                    this.scene.start("blockingGame");
+                  } else if (Math.floor(Math.random() * 2) == 1) {
+                    console.log("eyes");
+                    sceneCount++;
+                    this.scene.start("eyesGame");
+                  }
+            else {
+                this.scene.start("narrOne")
+            }
             }, this);
 
             this.followP = false;
@@ -223,7 +234,7 @@ class Maze extends Phaser.Scene {
             }//text follow the player
             if(this.timer <=0) {
                 this.followP=false;
-                this.testBox.alpha=0;
+                this.testBox.text='';
                 this.timer=this.timerMax;
             }//count down timer
            console.log(this.timer);
@@ -296,6 +307,7 @@ class Maze extends Phaser.Scene {
 
                 // when there is no more to write set bool to false
                 if (i == length) {
+                    // textbox.text='';
                     this.complete = true;
                     // textbox = '';
                 }
