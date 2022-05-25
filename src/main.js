@@ -4,7 +4,7 @@ let config = {
     type: Phaser.AUTO,
     width: 1280,          // game resolution rn is 720p
     height: 720,
-    scene: [Menu, Filter, Comment, Cutscene, Eyes, Maze, Restaurant, Defend], // the scenes we will be using
+    scene: [Menu, Filter, Comment, Cutscene, Eyes, Maze, Defend], // the scenes we will be using
 
     object_delay: 100,
     autoCenter: true,
@@ -30,4 +30,4 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 // keys we will be using
-let keyS, keyRIGHT, keyLEFT, keyUP, keyDOWN;
+let keyP, keyRIGHT, keyLEFT, keyUP, keyDOWN;

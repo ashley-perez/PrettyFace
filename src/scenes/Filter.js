@@ -35,7 +35,11 @@ class Filter extends Phaser.Scene {
 
 
         // background and instructions
-        this.load.image('filterbackground', './assets/testFilterBackground.png');
+        this.load.image('bg1', './assets/filterbg1.png');
+        this.load.image('bg2', './assets/filterbg2.png');
+        this.load.image('bg3', './assets/filterbg3.png');
+        this.load.image('bg4', './assets/filterbg4.png');
+        this.load.image('bg5', './assets/filterbg5.png');
         this.load.image('post', './assets/postButton.png');
         this.load.atlas('instruction', './assets/instructFilter.png', './assets/instructFilter.json');
     }
@@ -45,6 +49,7 @@ class Filter extends Phaser.Scene {
 
         this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
 
+        this.bgPhases = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5'];
         this.playerPhases = ['normalPlayer', 'semiNormal', 'messyPlayer'];
         this.dogPhases = ['normalDog', 'semiNormalDog', 'messyDog'];
         this.flowerPhases = ['normalFlower', 'semiNormalFlower', 'messyFlower'];
@@ -60,18 +65,23 @@ class Filter extends Phaser.Scene {
         // health: 100 to 87, 86 to 65, 64 to 35, 34 to 10, 9 to 1
         if (health >= 87) {
             this.index = 0;
+            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg1").setOrigin(0, 0);
         }
         else if (health <= 86 && health >= 65) {
             this.index = 1;
+            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg2").setOrigin(0, 0);
         }
         else if (health <= 64 && health >= 35) {
             this.index = 2;
+            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg3").setOrigin(0, 0);
         }
         else if (health <= 34 && health >= 10) {
             this.index = 3;
+            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg4").setOrigin(0, 0);
         }
         else {
             this.index = 4;
+            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg5").setOrigin(0, 0);
         }
 
         // instruction animation
@@ -87,11 +97,9 @@ class Filter extends Phaser.Scene {
             frameRate: 20,
             repeat: -1,
         });
+        this.background = this.add.tileSprite(0, 0, 1280, 720, this.bgPhases[this.index]).setOrigin(0, 0);
 
-        // game background
-        this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "filterbackground").setOrigin(0, 0);
-
-        this.player = this.physics.add.sprite(config.width/3.007, config.height/1.775, this.playerPhases[this.index], 0);
+        this.player = this.physics.add.sprite(config.width/2.99, config.height/1.78, this.playerPhases[this.index], 0);
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
 
@@ -131,8 +139,8 @@ class Filter extends Phaser.Scene {
         // collision detection
         this.physics.add.overlap(this.player, this.heart, null, function() {
             this.player.setTexture(this.heartPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.heart.destroy();
             this.heartFilter = true;
             this.dogFilter = false;
@@ -143,8 +151,8 @@ class Filter extends Phaser.Scene {
 
         this.physics.add.overlap(this.player, this.dog, null, function() {
             this.player.setTexture(this.dogPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.dog.destroy();
             this.dogFilter = true;
             this.heartFilter = false;
@@ -155,8 +163,8 @@ class Filter extends Phaser.Scene {
 
         this.physics.add.overlap(this.player, this.rainbow, null, function() {
             this.player.setTexture(this.rainbowPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.rainbow.destroy();
             this.rainbowFilter = true;
             this.dogFilter = false;
@@ -167,8 +175,8 @@ class Filter extends Phaser.Scene {
 
         this.physics.add.overlap(this.player, this.flower, null, function() {
             this.player.setTexture(this.flowerPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.flower.destroy();
             this.flowerFilter = true;
             this.rainbowFilter = false;
@@ -194,7 +202,7 @@ class Filter extends Phaser.Scene {
         if(this.instructionTimer >=2) {
             this.instruction.alpha=0;
         }
-        
+
         console.log(health);
         //console.log("filter 95 +");
 
@@ -206,7 +214,7 @@ class Filter extends Phaser.Scene {
             // will affect the comments
             this.scene.start('commentGame', {dog: this.dogFilter, heart: this.heartFilter, rainbow: this.rainbowFilter, flower: this.flowerFilter});
         }
-        
+
     }
 
 }

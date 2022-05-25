@@ -8,8 +8,6 @@ class Menu extends Phaser.Scene {
         //this.load.image('mouse', './assets/mouse.png');
         this.load.audio('bgMusic', './assets/bg_music.mp3');
         this.load.audio('start', './assets/kiss.wav');
-        this.load.image('play1', './assets/play1.png');
-        this.load.image('play2', './assets/play2.png');
         this.load.image('bg', './assets/bg_menu.png');
     }
 
@@ -55,17 +53,18 @@ class Menu extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2, 'Put on your', title1Config).setOrigin(0.5, 2.1);
         this.add.text(game.config.width/2, game.config.height/2, 'Pretty Face', title2Config).setOrigin(0.5, -0.45);
         this.add.rectangle(644, 649, 395, 85, 0x5c4ae4);
-        this.add.text(game.config.width/2, game.config.height/2, 'Press S to Start', startConfig).setOrigin(0.5,-5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Press P to Start', startConfig).setOrigin(0.5,-5);
 
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
     }
 
     update() {
-        if (Phaser.Input.Keyboard.JustDown(keyS)) {
+        if (Phaser.Input.Keyboard.JustDown(keyP)) {
             this.sound.play('start');
             var music = this.sound.add('bgMusic', {volume: 0.2});  // add music background
             music.setLoop(true);
             music.play();
+
             this.scene.start("filterGame");
             //  this.scene.start("commentGame");
         //  this.scene.start("mazeGame");
