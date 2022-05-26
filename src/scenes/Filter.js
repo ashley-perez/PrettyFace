@@ -12,26 +12,36 @@ class Filter extends Phaser.Scene {
         this.load.image('flowerFilter', './assets/FlowerFilterSelect.png');
 
         // player
-        this.load.image('normalPlayer', './assets/noFilterFace1.png');
-        this.load.image('semiNormal', './assets/noFilterFace2.png');
-        this.load.image('messyPlayer', './assets/noFilterFace3.png');
+        this.load.image('player1', './assets/noFilterFace1.png');
+        this.load.image('player2', './assets/noFilterFace2.png');
+        this.load.image('player3', './assets/noFilterFace3.png');
+        this.load.image('player4', './assets/noFilterFace4.png');
+        this.load.image('player5', './assets/noFilterFace5.png');
 
         // all the filters
-        this.load.image('normalDog', './assets/DogFilterFace1.png');
-        this.load.image('semiNormalDog', './assets/DogFilterFace2.png');
-        this.load.image('messyDog', './assets/DogFilterFace3.png');
+        this.load.image('dog1', './assets/DogFilterFace1.png');
+        this.load.image('dog2', './assets/DogFilterFace2.png');
+        this.load.image('dog3', './assets/DogFilterFace3.png');
+        this.load.image('dog4', './assets/DogFilterFace4.png');
+        this.load.image('dog5', './assets/DogFilterFace5.png');
 
-        this.load.image('normalFlower', './assets/FlowerFilterFace1.png');
-        this.load.image('semiNormalFlower', './assets/FlowerFilterFace2.png');
-        this.load.image('messyFlower', './assets/FlowerFilterFace3.png');
+        this.load.image('flower1', './assets/FlowerFilterFace1.png');
+        this.load.image('flower2', './assets/FlowerFilterFace2.png');
+        this.load.image('flower3', './assets/FlowerFilterFace3.png');
+        this.load.image('flower4', './assets/FlowerFilterFace4.png');
+        this.load.image('flower5', './assets/FlowerFilterFace5.png');
 
-        this.load.image('normalRainbow', './assets/RainbowFilterFace1.png');
-        this.load.image('semiNormalRainbow', './assets/RainbowFilterFace2.png');
-        this.load.image('messyRainbow', './assets/RainbowFilterFace3.png');
+        this.load.image('rainbow1', './assets/RainbowFilterFace1.png');
+        this.load.image('rainbow2', './assets/RainbowFilterFace2.png');
+        this.load.image('rainbow3', './assets/RainbowFilterFace3.png');
+        this.load.image('rainbow4', './assets/RainbowFilterFace4.png');
+        this.load.image('rainbow5', './assets/RainbowFilterFace5.png');
 
-        this.load.image('normalHeart', './assets/HeartFilterFace1.png');
-        this.load.image('semiNormalHeart', './assets/HeartFilterFace2.png');
-        this.load.image('messyHeart', './assets/HeartFilterFace3.png');
+        this.load.image('heart1', './assets/HeartFilterFace1.png');
+        this.load.image('heart2', './assets/HeartFilterFace2.png');
+        this.load.image('heart3', './assets/HeartFilterFace3.png');
+        this.load.image('heart4', './assets/HeartFilterFace4.png');
+        this.load.image('heart5', './assets/HeartFilterFace5.png');
 
 
         // background and instructions
@@ -50,11 +60,11 @@ class Filter extends Phaser.Scene {
         this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
 
         this.bgPhases = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5'];
-        this.playerPhases = ['normalPlayer', 'semiNormal', 'messyPlayer'];
-        this.dogPhases = ['normalDog', 'semiNormalDog', 'messyDog'];
-        this.flowerPhases = ['normalFlower', 'semiNormalFlower', 'messyFlower'];
-        this.rainbowPhases = ['normalRainbow', 'semiNormalRainbow', 'messyRainbow'];
-        this.heartPhases = ['normalHeart', 'semiNormalHeart', 'messyHeart'];
+        this.playerPhases = ['player1', 'player2', 'player3', 'player4', 'player5'];
+        this.dogPhases = ['dog1', 'dog2', 'dog3', 'dog4', 'dog5'];
+        this.flowerPhases = ['flower1', 'flower2', 'flower3', 'flower4', 'flower5'];
+        this.rainbowPhases = ['rainbow1', 'rainbow2', 'rainbow3', 'rainbow4', 'rainbow5'];
+        this.heartPhases = ['heart1', 'heart2', 'heart3', 'heart4', 'heart5'];
 
         this.complete = false;
         this.dogFilter = false;
@@ -65,23 +75,18 @@ class Filter extends Phaser.Scene {
         // health: 100 to 87, 86 to 65, 64 to 35, 34 to 10, 9 to 1
         if (health >= 87) {
             this.index = 0;
-            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg1").setOrigin(0, 0);
         }
         else if (health <= 86 && health >= 65) {
             this.index = 1;
-            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg2").setOrigin(0, 0);
         }
         else if (health <= 64 && health >= 35) {
             this.index = 2;
-            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg3").setOrigin(0, 0);
         }
         else if (health <= 34 && health >= 10) {
             this.index = 3;
-            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg4").setOrigin(0, 0);
         }
         else {
             this.index = 4;
-            this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "bg5").setOrigin(0, 0);
         }
 
         // instruction animation
