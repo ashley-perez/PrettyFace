@@ -124,7 +124,7 @@ class Cutscene extends Phaser.Scene {
             this.timer += 0.01;
         }
         if (this.timer >= 3) {
-            health -= 14;
+            health -= 9;
             this.scene.start('filterGame');
         }
 
