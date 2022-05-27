@@ -188,9 +188,9 @@ class Filter extends Phaser.Scene {
 
         // filters that are draggable
         this.heart = this.physics.add.sprite(config.width/1.15, config.height/4.8, 'heartFilter', 0).setInteractive();
-        this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
-        this.rainbow = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+450, 'rainbowFilter', 0).setInteractive();
-        this.flower = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+300, 'flowerFilter', 0).setInteractive();
+        this.dog = this.physics.add.sprite(config.width/1.15, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
+        this.rainbow = this.physics.add.sprite(config.width/1.15, (config.height/4.8)+450, 'rainbowFilter', 0).setInteractive();
+        this.flower = this.physics.add.sprite(config.width/1.15, (config.height/4.8)+300, 'flowerFilter', 0).setInteractive();
 
         // let the filters be draggable
         this.input.setDraggable(this.heart);
