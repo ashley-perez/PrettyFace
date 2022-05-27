@@ -1,4 +1,4 @@
-var textDone = false;
+var textDone = true;
 
 class Cutscene extends Phaser.Scene {
     constructor() {
@@ -6,83 +6,128 @@ class Cutscene extends Phaser.Scene {
     }
 
     preload() {
-        // loading player texture atlas
-        this.load.atlas('girl_atlas', './assets/testAtlas.png', './assets/testWalk.json');
-
-        this.load.audio('typing', './assets/typing.wav');
+        this.load.image('dialogbox', './assets/dialogbox.png');
     }
 
     create() {
-        console.log("here at narrOne");
-        // array of dialogue
-        this.wordArray1 = ['damn im so happy', 'pretty meh', 'bruh', 'bye'];
-        // this.wordArray = ['really good writing goes here', 'hello', 'bruh', 'bye'];
+        let distortedWriting = {
+            fontFamily: 'Scribbles',
+            fontSize: '36px',
+            color: '#FFFFFF',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        let normalWriting = {
+            fontFamily: 'Normal',
+            fontSize: '30px',
+            color: '#FFFFFF',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        this.phase1Text = [ "They really like me. ", "*notifications popping* ", "thank you... "];
+        this.phase2Text = [ "placeholder -- Phase 2 / health stage 2 "];
+        this.phase3Text = [ "FUCK YOU [username] ", "Who fucking says that?! ", "You don't know what it's like... ", "... ", "This is fine. I'm fine. "];
+        this.phase4Text = [ "...How could they say those things about me? ", "... ", "is this really what I look like? ", "I- ", "maybe they're right "];
+        this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "... ", "This was supposed to make me happy... I was happy. "];
+
         this.index = 0;
 
-        // text boxes that "write themselves"
+        this.UIbox = this.add.sprite(650, 575, 'dialogbox');
 
-
-        // player stuff
-        // this.player = this.physics.add.sprite(game.config.width-200, game.config.height/2, 'girl_atlas', 'walk_left_0001').setScale(0.5);
-        // this.charMoveSpeed = 2.5;
-
-        // key inputs
-        // keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        // keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        // keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        // keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-
-        if(health >= 95) {
-            this.index=0;
-            this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
-	        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+        // set up font based on health
+        if (health >= 40) {
+            this.textbox = this.add.text(275, 500, ' ', normalWriting).setWordWrapWidth(750);
+            this.continuePrompt = this.add.text(920, 620, '[SPACE]', normalWriting);
         }
-        else if(health >= 80 && health <=94) {
-            this.index=1;
-            this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
-	        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
-        }
-        else if(health >= 65 && health <=79) {
-            this.index=2;
-            this.testBox = this.add.text(game.config.width/2, game.config.height/2, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
-	        this.typewriteText(this.wordArray1[this.index], this.testBox, 150);
+        else {
+            this.textbox = this.add.text(275, 500, ' ', distortedWriting).setWordWrapWidth(750);
+            this.continuePrompt = this.add.text(920, 620, '[SPACE]', distortedWriting);
         }
 
-        this.complete = true;
+        this.continuePrompt.visible = false;
+
+        this.cursors =  this.input.keyboard.createCursorKeys();
+        
+        this.complete = false;
+
+        this.typewriteText("...", this.textbox, 300);
+
         this.timer = 0;
-
     }
 
     update() {
-        this.timer += 0.01;
-        this.input.setDefaultCursor("");
+        
+        // check for spacebar press to advance text
+        // will only advance text when previous writing is done
+        if(Phaser.Input.Keyboard.JustDown(this.cursors.space) && textDone) {
+            this.continuePrompt.visible = false; // prompt goes away because writing is happening
+            this.textbox.text = ''; // reset the text box
+            // phase 1 health
+            if (health >= 87) {
+                // done going through array, narration is over
+                if (this.index >= this.phase1Text.length) {
+                    this.complete = true;
+                    textDone = false;
+                    return;
+                }
+                this.typewriteText(this.phase1Text[this.index], this.textbox, 50);
+            }
+            else if (health <= 86 && health >= 65) {
+                if (this.index >= this.phase2Text.length) {
+                    this.complete = true;
+                    textDone = false;
+                    return;
+                }
+                // this.textbox = this.add.text(this.TEXT_X, this.TEXT_Y, this.phase2Text[this.index], {color: '#FFFFFF'});
+                this.typewriteText(this.phase2Text[this.index], this.textbox, 50);
+            }
+            else if (health <= 64 && health >= 35) {
+                if (this.index >= this.phase3Text.length) {
+                    this.complete = true;
+                    textDone = false;
+                    return;
+                }
+                this.typewriteText(this.phase3Text[this.index], this.textbox, 50);
+            }
+            else if (health <= 34 && health >= 10) {
+                if (this.index >= this.phase4Text.length) {
+                    this.complete = true;
+                    textDone = false;
+                    return;
+                }
+                this.typewriteText(this.phase4Text[this.index], this.textbox, 50);
 
-        if(health >=95) {
-            // console.log("penis");
-            if (this.timer >= 3) {
-                health -= 5;
-        console.log(health);
-        narrCount++;
-        sceneCount=0;
-                this.scene.start("filterGame");
             }
+            else {
+                if (this.index >= this.phase5Text.length) {
+                    this.complete = true;
+                    textDone = false;
+                    return;
+                }
+                this.typewriteText(wrappedText, this.textbox, 50);
+            } 
+            this.index += 1;
         }
-        else if(health >=80 && health <=94) {
-            if (this.timer >= 2) {
-                health -= 8;
-        console.log(health);
-        narrCount++;
-                this.scene.start("filterGame");
-            }
+
+        // done with narration, go to next scene
+        if (this.complete == true && health >= 0) {
+            this.timer += 0.01;
         }
-        else if(health >= 65 && health <=79) {
-            if (this.timer >= 1) {
-                health -= 10;
-        console.log(health);
-            narrCount++;
-                this.scene.start("filterGame");
-            }
+        if (this.timer >= 3) {
+            health -= 14;
+            this.scene.start('filterGame');
         }
+
     }
 
     // credit for the base of this function: https://tinyurl.com/typewritephaser3
@@ -91,20 +136,22 @@ class Cutscene extends Phaser.Scene {
     typewriteText(text, textbox, speed) {
         const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
-        //textDone = false;
+        //textDone = false; 
         this.time.addEvent({
             callback: () => {
-                //this.typing = this.sound.play('typing');
                 textbox.text += text[i]
                 i++
+                textDone = false;
 
-                // when there is no more to write set bool to false
+                // when there is no more text to write set bool to false
                 if (i == length) {
-                    this.complete = true;
+                    textDone = true;
+                    this.continuePrompt.visible = true; // visual cue for the player to advance the text appears
                 }
             },
             repeat: length - 1,
             delay: speed // typing speed, big numbers = slower text, small = faster
         });
     }
+    
 }
