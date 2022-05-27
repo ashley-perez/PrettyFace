@@ -72,6 +72,7 @@ class Cutscene extends Phaser.Scene {
                 health -= 8;
         console.log(health);
         narrCount++;
+        sceneCount=0;
                 this.scene.start("filterGame");
             }
         }
@@ -79,7 +80,26 @@ class Cutscene extends Phaser.Scene {
             if (this.timer >= 1) {
                 health -= 10;
         console.log(health);
-            narrCount++;
+        narrCount++;
+        sceneCount=0;
+                this.scene.start("filterGame");
+            }
+        }
+        else if(health >= 64 && health <=35) {
+            if (this.timer >= 1) {
+                health -= 10;
+        console.log(health);
+        narrCount++;
+        sceneCount=0;
+                this.scene.start("filterGame");
+            }
+        }
+        else if(health >= 34 && health <=10) {
+            if (this.timer >= 1) {
+                health -= 10;
+        console.log(health);
+        narrCount++;
+        sceneCount=0;
                 this.scene.start("filterGame");
             }
         }
