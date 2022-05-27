@@ -4,6 +4,7 @@ class Defend extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('bg', './assets/')
         this.load.audio('sob', './assets/sob.wav');
         this.load.image('heart', './assets/heart.png');
         this.load.image('block', './assets/block.png');

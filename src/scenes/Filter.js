@@ -320,9 +320,11 @@ class Filter extends Phaser.Scene {
             this.score2.y-=0.5;
             this.score3.y-=0.5;
             
-
-            
-
+            this.postButton.alpha=0;
+            this.heart.alpha=0;
+            this.dog.alpha=0;
+            this.flower.alpha=0;
+            this.rainbow.alpha=0;
         }
         if (this.timer >= 2.5) {
             // pass data to new scene
