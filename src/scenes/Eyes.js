@@ -454,18 +454,20 @@ class Eyes extends Phaser.Scene {
             }
             // switch screen
             if (this.timer >= 9) {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("maze");
-                    sceneCount++;
-                    this.scene.start("mazeGame");
-                  }
-            }
-            else {
-                this.scene.start("narrOne")
+                if(sceneCount<2){
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        console.log("defend");
+                        sceneCount++;
+                        this.scene.start("blockingGame");
+                      } else if (Math.floor(Math.random() * 2) == 1) {
+                        console.log("maze");
+                        sceneCount++;
+                        this.scene.start("mazeGame");
+                      }
+                }
+                else {
+                    this.scene.start("narrOne")
+                }
             }
         }
         else if (this.phase == 4) {
@@ -542,18 +544,20 @@ class Eyes extends Phaser.Scene {
             }
             // switch screen
             if (this.timer >= 9) {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("maze");
-                    sceneCount++;
-                    this.scene.start("mazeGame");
-                  }
-            }
-            else {
-                this.scene.start("narrOne")
+                if(sceneCount<2){
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        console.log("defend");
+                        sceneCount++;
+                        this.scene.start("blockingGame");
+                      } else if (Math.floor(Math.random() * 2) == 1) {
+                        console.log("maze");
+                        sceneCount++;
+                        this.scene.start("mazeGame");
+                      }
+                }
+                else {
+                    this.scene.start("narrOne")
+                }
             }
         }
         //this.eyesMusic.pause();

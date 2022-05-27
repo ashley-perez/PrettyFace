@@ -165,18 +165,20 @@ class Maze extends Phaser.Scene {
 
             // when player reaches end of maze do something
             this.physics.add.collider(this.player, this.mazeEnd, null, function() {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("eyes");
-                    sceneCount++;
-                    this.scene.start("eyesGame");
-                  }
-            else {
-                this.scene.start("narrOne")
-            }
+                    if(sceneCount<2){
+                        if (Math.floor(Math.random() * 2) == 0) {
+                            console.log("defend");
+                            sceneCount++;
+                            this.scene.start("blockingGame");
+                          } else if (Math.floor(Math.random() * 2) == 1) {
+                            console.log("maze");
+                            sceneCount++;
+                            this.scene.start("mazeGame");
+                          }
+                    }
+                    else {
+                        this.scene.start("narrOne");
+                }
             }, this);
 
             this.followP = false;
