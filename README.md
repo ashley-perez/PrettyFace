@@ -11,7 +11,7 @@ date
 
 ### Link to play game:
 
-link
+https://ashley-perez.github.io/PrettyFace/
 
 
 

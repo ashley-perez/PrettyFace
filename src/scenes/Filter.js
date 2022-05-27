@@ -12,30 +12,44 @@ class Filter extends Phaser.Scene {
         this.load.image('flowerFilter', './assets/FlowerFilterSelect.png');
 
         // player
-        this.load.image('normalPlayer', './assets/noFilterFace1.png');
-        this.load.image('semiNormal', './assets/noFilterFace2.png');
-        this.load.image('messyPlayer', './assets/noFilterFace3.png');
+        this.load.image('player1', './assets/noFilterFace1.png');
+        this.load.image('player2', './assets/noFilterFace2.png');
+        this.load.image('player3', './assets/noFilterFace3.png');
+        this.load.image('player4', './assets/noFilterFace4.png');
+        this.load.image('player5', './assets/noFilterFace5.png');
 
         // all the filters
-        this.load.image('normalDog', './assets/DogFilterFace1.png');
-        this.load.image('semiNormalDog', './assets/DogFilterFace2.png');
-        this.load.image('messyDog', './assets/DogFilterFace3.png');
+        this.load.image('dog1', './assets/DogFilterFace1.png');
+        this.load.image('dog2', './assets/DogFilterFace2.png');
+        this.load.image('dog3', './assets/DogFilterFace3.png');
+        this.load.image('dog4', './assets/DogFilterFace4.png');
+        this.load.image('dog5', './assets/DogFilterFace5.png');
 
-        this.load.image('normalFlower', './assets/FlowerFilterFace1.png');
-        this.load.image('semiNormalFlower', './assets/FlowerFilterFace2.png');
-        this.load.image('messyFlower', './assets/FlowerFilterFace3.png');
+        this.load.image('flower1', './assets/FlowerFilterFace1.png');
+        this.load.image('flower2', './assets/FlowerFilterFace2.png');
+        this.load.image('flower3', './assets/FlowerFilterFace3.png');
+        this.load.image('flower4', './assets/FlowerFilterFace4.png');
+        this.load.image('flower5', './assets/FlowerFilterFace5.png');
 
-        this.load.image('normalRainbow', './assets/RainbowFilterFace1.png');
-        this.load.image('semiNormalRainbow', './assets/RainbowFilterFace2.png');
-        this.load.image('messyRainbow', './assets/RainbowFilterFace3.png');
+        this.load.image('rainbow1', './assets/RainbowFilterFace1.png');
+        this.load.image('rainbow2', './assets/RainbowFilterFace2.png');
+        this.load.image('rainbow3', './assets/RainbowFilterFace3.png');
+        this.load.image('rainbow4', './assets/RainbowFilterFace4.png');
+        this.load.image('rainbow5', './assets/RainbowFilterFace5.png');
 
-        this.load.image('normalHeart', './assets/HeartFilterFace1.png');
-        this.load.image('semiNormalHeart', './assets/HeartFilterFace2.png');
-        this.load.image('messyHeart', './assets/HeartFilterFace3.png');
+        this.load.image('heart1', './assets/HeartFilterFace1.png');
+        this.load.image('heart2', './assets/HeartFilterFace2.png');
+        this.load.image('heart3', './assets/HeartFilterFace3.png');
+        this.load.image('heart4', './assets/HeartFilterFace4.png');
+        this.load.image('heart5', './assets/HeartFilterFace5.png');
 
 
         // background and instructions
-        this.load.image('filterbackground', './assets/testFilterBackground.png');
+        this.load.image('bg1', './assets/filterbg1.png');
+        this.load.image('bg2', './assets/filterbg2.png');
+        this.load.image('bg3', './assets/filterbg3.png');
+        this.load.image('bg4', './assets/filterbg4.png');
+        this.load.image('bg5', './assets/filterbg5.png');
         this.load.image('post', './assets/postButton.png');
         this.load.atlas('instruction', './assets/instructFilter.png', './assets/instructFilter.json');
     }
@@ -45,11 +59,12 @@ class Filter extends Phaser.Scene {
 
         this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
 
-        this.playerPhases = ['normalPlayer', 'semiNormal', 'messyPlayer'];
-        this.dogPhases = ['normalDog', 'semiNormalDog', 'messyDog'];
-        this.flowerPhases = ['normalFlower', 'semiNormalFlower', 'messyFlower'];
-        this.rainbowPhases = ['normalRainbow', 'semiNormalRainbow', 'messyRainbow'];
-        this.heartPhases = ['normalHeart', 'semiNormalHeart', 'messyHeart'];
+        this.bgPhases = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5'];
+        this.playerPhases = ['player1', 'player2', 'player3', 'player4', 'player5'];
+        this.dogPhases = ['dog1', 'dog2', 'dog3', 'dog4', 'dog5'];
+        this.flowerPhases = ['flower1', 'flower2', 'flower3', 'flower4', 'flower5'];
+        this.rainbowPhases = ['rainbow1', 'rainbow2', 'rainbow3', 'rainbow4', 'rainbow5'];
+        this.heartPhases = ['heart1', 'heart2', 'heart3', 'heart4', 'heart5'];
 
         this.complete = false;
         this.dogFilter = false;
@@ -87,11 +102,9 @@ class Filter extends Phaser.Scene {
             frameRate: 20,
             repeat: -1,
         });
+        this.background = this.add.tileSprite(0, 0, 1280, 720, this.bgPhases[this.index]).setOrigin(0, 0);
 
-        // game background
-        this.filterbackground = this.add.tileSprite(0, 0, 1280, 720, "filterbackground").setOrigin(0, 0);
-
-        this.player = this.physics.add.sprite(config.width/3.007, config.height/1.775, this.playerPhases[this.index], 0);
+        this.player = this.physics.add.sprite(config.width/2.99, config.height/1.78, this.playerPhases[this.index], 0);
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
 
@@ -131,8 +144,8 @@ class Filter extends Phaser.Scene {
         // collision detection
         this.physics.add.overlap(this.player, this.heart, null, function() {
             this.player.setTexture(this.heartPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.heart.destroy();
             this.heartFilter = true;
             this.dogFilter = false;
@@ -143,8 +156,8 @@ class Filter extends Phaser.Scene {
 
         this.physics.add.overlap(this.player, this.dog, null, function() {
             this.player.setTexture(this.dogPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.dog.destroy();
             this.dogFilter = true;
             this.heartFilter = false;
@@ -155,8 +168,8 @@ class Filter extends Phaser.Scene {
 
         this.physics.add.overlap(this.player, this.rainbow, null, function() {
             this.player.setTexture(this.rainbowPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.rainbow.destroy();
             this.rainbowFilter = true;
             this.dogFilter = false;
@@ -167,8 +180,8 @@ class Filter extends Phaser.Scene {
 
         this.physics.add.overlap(this.player, this.flower, null, function() {
             this.player.setTexture(this.flowerPhases[this.index]);
-            this.player.x = config.width/3.007;
-            this.player.y = config.height/1.775;
+            this.player.x = config.width/2.99;
+            this.player.y = config.height/1.78;
             this.flower.destroy();
             this.flowerFilter = true;
             this.rainbowFilter = false;
@@ -194,7 +207,7 @@ class Filter extends Phaser.Scene {
         if(this.instructionTimer >=2) {
             this.instruction.alpha=0;
         }
-        
+
         console.log(health);
         //console.log("filter 95 +");
 
@@ -206,7 +219,7 @@ class Filter extends Phaser.Scene {
             // will affect the comments
             this.scene.start('commentGame', {dog: this.dogFilter, heart: this.heartFilter, rainbow: this.rainbowFilter, flower: this.flowerFilter});
         }
-        
+
     }
 
 }

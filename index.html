@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Put on Your Pretty Face</title>
-    <link rel="preload" as="font" href="./assets/horror.ttf" type="font/ttf" crossorigin/>
     <style>
-        @font-face { font-family: Horror; src: url('./assets/horror.ttf'); }
-        body {
-            background-color: #FFFFFF;
-        }
+        @font-face { font-family: Scribbles; src: url('./assets/scribbly.ttf');}
+        @font-face { font-family: Bubble; src: url('./assets/bubble.ttf');}
+        @font-face { font-family: Normal; src:url('./assets/retro.ttf');}
+    </style>
+    <link rel="preload" as="font" href="./assets/scribbly.ttf" type="font/ttf" crossorigin/>
+    <link rel="preload" as="font" href="./assets/bubble.ttf" type="font/ttf" crossorigin/>
+    <link rel="preload" as="font" href="./assets/retro.ttf" type="font/ttf" crossorigin/>
+    <style>
     </style>
 </head>
 <body>
@@ -19,7 +22,6 @@
     <script src="./src/scenes/Menu.js"></script>
     <script src="./src/scenes/Filter.js"></script>
     <script src="./src/scenes/Eyes.js"></script>
-    <script src="./src/scenes/Restaurant.js"></script>
     <script src="./src/scenes/Comment.js"></script>
     <script src="./src/scenes/Maze.js"></script>
     <script src="./src/scenes/Narrative_1.js"></script>
