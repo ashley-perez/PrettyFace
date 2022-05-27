@@ -55,8 +55,15 @@ class Comment extends Phaser.Scene {
     this.load.image("one", "./assets/reply1.png");
     this.load.image("two", "./assets/reply2.png");
     this.load.image("three", "./assets/reply3.png");
-    this.load.atlas("commentInstruction", "./assets/instructComment.png","./assets/instructComment.json"
-    );
+    this.load.atlas("commentInstruction", "./assets/instructComment.png","./assets/instructComment.json");
+
+    //fake score
+    this.load.atlas('score_+000','./assets/score_+000.png','./assets/score_+000.json');
+    this.load.atlas('score_+100','./assets/score_+100.png','./assets/score_+100.json');
+    this.load.atlas('score_+200','./assets/score_+200.png','./assets/score_+200.json');
+    this.load.atlas('score_+300','./assets/score_+300.png','./assets/score_+300.json');
+    this.load.audio('score_sound', './assets/score_sound.mp3');
+    this.load.audio('yay_sound', './assets/yay_sound.mp3');
   }
 
   create() {
@@ -119,6 +126,15 @@ class Comment extends Phaser.Scene {
     this.complete = false;
     this.buttonNum = false;
 
+    this.score1 = this.physics.add.sprite(config.width/6, config.height/3, 'score_+000', 0);
+    this.score2 = this.physics.add.sprite(config.width/2, config.height/2.4, 'score_+000', 0);
+    this.score3 = this.physics.add.sprite(config.width/4, config.height/1.5, 'score_+000', 0);
+
+    this.score1.alpha=0;this.score2.alpha=0;this.score3.alpha=0;
+
+    var scoreSound = this.sound.add('score_sound', {volume: 0.9});  // add music background
+    var yaySound = this.sound.add('yay_sound', {volume: 0.9});  // add music background
+
     this.comments = this.physics.add.sprite(
       config.width / 1.87,
       config.height / 2.56,
@@ -157,6 +173,16 @@ class Comment extends Phaser.Scene {
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -170,6 +196,16 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply1.2(n/b)");
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -184,6 +220,16 @@ class Comment extends Phaser.Scene {
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
             health -= 1;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -202,6 +248,16 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply2.1(n/b)");
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -216,6 +272,16 @@ class Comment extends Phaser.Scene {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 1;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -230,6 +296,16 @@ class Comment extends Phaser.Scene {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -248,6 +324,16 @@ class Comment extends Phaser.Scene {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -261,6 +347,16 @@ class Comment extends Phaser.Scene {
             this.reply.setTexture("reply3.2(n/b)");
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -275,6 +371,16 @@ class Comment extends Phaser.Scene {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -332,6 +438,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -345,6 +461,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.setTexture("reply1.2(n/b)");
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -359,6 +485,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.x = config.width / 1.9;
             this.reply.y = config.height / 1.25;
             health -= 1;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -377,6 +513,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.setTexture("reply2.1(n/b)");
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -391,6 +537,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 1;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -405,6 +561,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -423,6 +589,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -436,6 +612,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.setTexture("reply3.2(n/b)");
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -450,6 +636,16 @@ else if(health <= 86 && health >= 65) {
             this.reply.x = config.width / 1.93;
             this.reply.y = config.height / 1.16;
             health -= 2;
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
           },
           this
         );
@@ -523,6 +719,13 @@ else if(health <= 86 && health >= 65) {
         this.choiceOne.alpha = 0;
         this.choiceTwo.alpha = 0;
         this.choiceThree.alpha = 0;
+        this.score1.alpha-=0.005;
+            this.score2.alpha-=0.005;
+            this.score3.alpha-=0.005;
+
+            this.score1.y-=0.5;
+            this.score2.y-=0.5;
+            this.score3.y-=0.5;
         //console.log(this.time);
       }
 

@@ -27,7 +27,7 @@ class Maze extends Phaser.Scene {
         this.load.image('maze15', './assets/testMaze14.png');
         this.load.image('maze16', './assets/testMaze15.png');
         this.load.image('maze17', './assets/testMaze16.png');
-        this.load.image('mazeEnd', './assets/testMazeEnd.png');
+        this.load.image('mazeEnd', './assets/ideal_body.png');
     }//maze images
         this.load.image('mirror', './assets/mirror.png');
         this.load.image('mirror1', './assets/mirror(filled1).png');
@@ -91,7 +91,7 @@ class Maze extends Phaser.Scene {
             this.maze15 = this.physics.add.sprite(856.50 ,141.50 , 'maze15');
             this.maze16 = this.physics.add.sprite(621.50 ,77.50 , 'maze16');
             this.maze17 = this.physics.add.sprite(547.00 ,12.50 , 'maze17');
-            this.mazeEnd = this.physics.add.sprite(856.50  ,16.88 , 'mazeEnd').setScale(0.5);
+            this.mazeEnd = this.physics.add.sprite(856.50  ,30 , 'mazeEnd').setScale(0.5);
 
             this.markMn.body.allowGravity = false; this.markMn.body.immovable = true;
             this.maze1.body.allowGravity = false; this.maze1.body.immovable = true;
@@ -165,18 +165,20 @@ class Maze extends Phaser.Scene {
 
             // when player reaches end of maze do something
             this.physics.add.collider(this.player, this.mazeEnd, null, function() {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("eyes");
-                    sceneCount++;
-                    this.scene.start("eyesGame");
-                  }
-            else {
-                this.scene.start("narrOne")
-            }
+                    if(sceneCount<2){
+                        if (Math.floor(Math.random() * 2) == 0) {
+                            console.log("defend");
+                            sceneCount++;
+                            this.scene.start("blockingGame");
+                          } else if (Math.floor(Math.random() * 2) == 1) {
+                            console.log("maze");
+                            sceneCount++;
+                            this.scene.start("mazeGame");
+                          }
+                    }
+                    else {
+                        this.scene.start("narrOne");
+                }
             }, this);
 
             this.followP = false;

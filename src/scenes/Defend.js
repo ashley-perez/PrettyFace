@@ -4,17 +4,19 @@ class Defend extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('bg', './assets/')
         this.load.audio('sob', './assets/sob.wav');
         this.load.image('heart', './assets/heart.png');
         this.load.image('block', './assets/block.png');
-        this.load.image('missle', './assets/tempProjectile.png');
+        this.load.image('enemy', './assets/badPhone.png');
+        this.load.image('missile', './assets/phone_attack1.png');
         this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructDefend.json');
 
     }
 
     create() {
         this.anims.create({
-            key: 'frame',
+            key: 'defendInfo',
             frames: this.anims.generateFrameNames('defendInstruction', {
                 prefix: 'frame_',
                 start: 1,
@@ -26,7 +28,7 @@ class Defend extends Phaser.Scene {
             repeat: -1,
         });
 
-        this.defendInstruction = this.physics.add.sprite(config.width/2, config.height/30, 'defendInstruction', 0).setScale(2);
+        this.defendInstruction = this.physics.add.sprite(config.width/2, config.height/30, 'defendInstruction', 0).setScale(2).setDepth(1);
 
         // create the keys we will be using
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -53,7 +55,7 @@ class Defend extends Phaser.Scene {
 
         // path for otherBlock to follow
         this.path =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
-        this.otherBlock = this.add.follower(this.path, 0, 0, 'block');
+        this.otherBlock = this.add.follower(this.path, 0, 0, 'enemy');
 
         // get object to follow a path
         this.otherBlock.startFollow({
@@ -65,8 +67,8 @@ class Defend extends Phaser.Scene {
             verticalAdjust: true
         });
 
-        this.projectile = this.physics.add.sprite(-100, -100, 'missle');
-        this.projectile.setScale(0.5);
+        this.projectile = this.physics.add.sprite(-100, -100, 'missile');
+        this.projectile.setScale(1.3);
 
         // collision between projectile and breakable object
         this.physics.add.overlap(this.playerGroup, this.projectile, this.hitObject, null, function() {
@@ -100,7 +102,7 @@ class Defend extends Phaser.Scene {
             }
         }
         
-            this.defendInstruction.anims.play('frame', true);
+            this.defendInstruction.anims.play('defendInfo', true);
             if(this.timer2 >=2) {
             this.defendInstruction.alpha=0;
             }

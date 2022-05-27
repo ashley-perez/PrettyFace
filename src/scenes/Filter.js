@@ -53,6 +53,15 @@ class Filter extends Phaser.Scene {
         this.load.image('crack1', './assets/crack1.png');
         this.load.image('post', './assets/postButton.png');
         this.load.atlas('instruction', './assets/instructFilter.png', './assets/instructFilter.json');
+
+        //fake score
+        this.load.atlas('score_+000','./assets/score_+000.png','./assets/score_+000.json');
+        this.load.atlas('score_+100','./assets/score_+100.png','./assets/score_+100.json');
+        this.load.atlas('score_+200','./assets/score_+200.png','./assets/score_+200.json');
+        this.load.atlas('score_+300','./assets/score_+300.png','./assets/score_+300.json');
+        this.load.audio('score_sound', './assets/score_sound.mp3');
+        this.load.audio('yay_sound', './assets/yay_sound.mp3');
+
     }
 
     create() {
@@ -105,6 +114,56 @@ class Filter extends Phaser.Scene {
             frameRate: 20,
             repeat: -1,
         });
+        //score animation
+        {this.anims.create({
+            key: 'score_0',
+            frames: this.anims.generateFrameNames('score_+000', {
+                prefix: 'frame_',
+                start: 1,
+                end: 5,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 20,
+            repeat: -1,
+        });
+        this.anims.create({
+            key: 'score_1',
+            frames: this.anims.generateFrameNames('score_+100', {
+                prefix: 'frame_',
+                start: 1,
+                end: 5,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 20,
+            repeat: -1,
+        });
+        this.anims.create({
+            key: 'score_2',
+            frames: this.anims.generateFrameNames('score_+200', {
+                prefix: 'frame_',
+                start: 1,
+                end: 5,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 20,
+            repeat: -1,
+        });
+        this.anims.create({
+            key: 'score_3',
+            frames: this.anims.generateFrameNames('score_+300', {
+                prefix: 'frame_',
+                start: 1,
+                end: 5,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 20,
+            repeat: -1,
+        });
+    }
         this.background = this.add.tileSprite(0, 0, 1280, 720, this.bgPhases[this.index]).setOrigin(0, 0);
 
         this.player = this.physics.add.sprite(config.width/2.99, config.height/1.78, this.playerPhases[this.index], 0);
@@ -112,10 +171,21 @@ class Filter extends Phaser.Scene {
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
 
         this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
+
         if (this.crackScreen > 0) {
             this.add.image(637, 360, 'crack1');
             console.log("inside");
         }
+
+        this.score1 = this.physics.add.sprite(config.width/6, config.height/3, 'score_+000', 0);
+        this.score2 = this.physics.add.sprite(config.width/2, config.height/2.4, 'score_+000', 0);
+        this.score3 = this.physics.add.sprite(config.width/4, config.height/1.5, 'score_+000', 0);
+
+        this.score1.alpha=0;this.score2.alpha=0;this.score3.alpha=0;
+
+        var scoreSound = this.sound.add('score_sound', {volume: 0.9});  // add music background
+        var yaySound = this.sound.add('yay_sound', {volume: 0.9});  // add music background
+
         // filters that are draggable
         this.heart = this.physics.add.sprite(config.width/1.15, config.height/4.8, 'heartFilter', 0).setInteractive();
         this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
@@ -158,6 +228,12 @@ class Filter extends Phaser.Scene {
             this.rainbowFilter = false;
             this.flowerFilter = false;
             console.log('heart');
+            // this.score1.setTexture("score_+200");
+            this.score1.anims.play('score_2');
+            // this.score2.setTexture("score_+300");
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture("score_+200");
+            this.score3.anims.play('score_2');
         }, this);
 
         this.physics.add.overlap(this.player, this.dog, null, function() {
@@ -170,6 +246,12 @@ class Filter extends Phaser.Scene {
             this.rainbowFilter = false;
             this.flowerFilter = false;
             console.log('dog');
+            // this.score1.setTexture('score_+100');
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+100');
+            this.score3.anims.play('score_1');
         }, this);
 
         this.physics.add.overlap(this.player, this.rainbow, null, function() {
@@ -182,6 +264,12 @@ class Filter extends Phaser.Scene {
             this.heartFilter = false;
             this.flowerFilter = false;
             console.log('rainbow');
+            // this.score1.setTexture('score_+100');
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+200');
+            this.score2.anims.play('score_2');
+            // this.score3.setTexture('score_+200');
+            this.score3.anims.play('score_2');
         }, this);
 
         this.physics.add.overlap(this.player, this.flower, null, function() {
@@ -194,6 +282,12 @@ class Filter extends Phaser.Scene {
             this.dogFilter = false;
             this.heartFilter = false;
             console.log('flower');
+            // this.score1.setTexture('score_+100');
+            this.score1.anims.play('score_1');
+            // this.score2.setTexture('score_+300');
+            this.score2.anims.play('score_3');
+            // this.score3.setTexture('score_+200');
+            this.score3.anims.play('score_2');
         }, this);
 
 
@@ -202,8 +296,15 @@ class Filter extends Phaser.Scene {
             // can only proceed after using a filter
             if (this.dogFilter == true || this.heartFilter == true || this.rainbowFilter == true || this.flowerFilter == true) {
                 this.complete = true;
+                //score NEEDS to account for the filters and change
+                this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                scoreSound.play();
+                yaySound.play();
             }
         }, this);
+
     }
 
     update() {
@@ -219,8 +320,21 @@ class Filter extends Phaser.Scene {
 
         if(this.complete == true) {
             this.timer += 0.01;
+            this.score1.alpha-=0.005;
+            this.score2.alpha-=0.005;
+            this.score3.alpha-=0.005;
+
+            this.score1.y-=0.5;
+            this.score2.y-=0.5;
+            this.score3.y-=0.5;
+
+            this.postButton.alpha=0;
+            this.heart.alpha=0;
+            this.dog.alpha=0;
+            this.flower.alpha=0;
+            this.rainbow.alpha=0;
         }
-        if (this.timer >= 3) {
+        if (this.timer >= 2.5) {
             // pass data to new scene
             // will affect the comments
             this.scene.start('commentGame', {dog: this.dogFilter, heart: this.heartFilter, rainbow: this.rainbowFilter, flower: this.flowerFilter});
