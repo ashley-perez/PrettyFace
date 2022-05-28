@@ -50,6 +50,7 @@ class Filter extends Phaser.Scene {
         this.load.image('bg3', './assets/filterbg3.png');
         this.load.image('bg4', './assets/filterbg4.png');
         this.load.image('bg5', './assets/filterbg5.png');
+        this.load.image('crack1', './assets/crack1.png');
         this.load.image('post', './assets/postButton.png');
         this.load.atlas('instruction', './assets/instructFilter.png', './assets/instructFilter.json');
         this.load.atlas('mouseClick', './assets/mouseClick.png','./assets/mouse_click.json');
@@ -66,6 +67,7 @@ class Filter extends Phaser.Scene {
 
     create() {
         this.index = 0;
+        this.crackScreen = 0;
 
         this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
 
@@ -97,6 +99,7 @@ class Filter extends Phaser.Scene {
         }
         else {
             this.index = 4;
+            this.crackScreen++;
         }
 
         // instruction animation
@@ -185,6 +188,11 @@ class Filter extends Phaser.Scene {
 
         this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
 
+        if (this.crackScreen > 0) {
+            this.add.image(637, 360, 'crack1');
+            console.log("inside");
+        }
+
         this.score1 = this.physics.add.sprite(config.width/6, config.height/3, 'score_+000', 0);
         this.score2 = this.physics.add.sprite(config.width/2, config.height/2.4, 'score_+000', 0);
         this.score3 = this.physics.add.sprite(config.width/4, config.height/1.5, 'score_+000', 0);
@@ -195,10 +203,10 @@ class Filter extends Phaser.Scene {
         var yaySound = this.sound.add('yay_sound', {volume: 0.9});  // add music background
 
         // filters that are draggable
-        this.heart = this.physics.add.sprite(config.width/1.2, config.height/4.8, 'heartFilter', 0).setInteractive();
-        this.dog = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
-        this.rainbow = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+450, 'rainbowFilter', 0).setInteractive();
-        this.flower = this.physics.add.sprite(config.width/1.2, (config.height/4.8)+300, 'flowerFilter', 0).setInteractive();
+        this.heart = this.physics.add.sprite(config.width/1.15, config.height/4.8, 'heartFilter', 0).setInteractive();
+        this.dog = this.physics.add.sprite(config.width/1.15, (config.height/4.8)+150, 'dogFilter', 0).setInteractive();
+        this.rainbow = this.physics.add.sprite(config.width/1.15, (config.height/4.8)+450, 'rainbowFilter', 0).setInteractive();
+        this.flower = this.physics.add.sprite(config.width/1.15, (config.height/4.8)+300, 'flowerFilter', 0).setInteractive();
 
         // let the filters be draggable
         this.input.setDraggable(this.heart);
@@ -342,7 +350,7 @@ class Filter extends Phaser.Scene {
             this.score1.y-=0.5;
             this.score2.y-=0.5;
             this.score3.y-=0.5;
-            
+
             this.postButton.alpha=0;
             this.heart.alpha=0;
             this.dog.alpha=0;

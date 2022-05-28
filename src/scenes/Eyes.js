@@ -582,8 +582,7 @@ class Eyes extends Phaser.Scene {
                 }
             }
         }
-        //this.eyesMusic.pause();
-        //music.resume();
+
     }
     eyeFollow(eye, player, speed) {
         this.physics.moveToObject(eye, player, speed);

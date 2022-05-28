@@ -16,7 +16,13 @@ class Comment extends Phaser.Scene {
     this.load.image("comments4.1", "./assets/comments4(ver1).png");
     this.load.image("comments4.2", "./assets/comments4(ver2).png");
 
-    this.load.image("background", "./assets/testBackGround.png");
+    this.load.image("bgcomment1", "./assets/commentBg1.png");
+    this.load.image("bgcomment2", "./assets/commentBg2.png");
+    this.load.image("bgcomment3", "./assets/commentBg3.png");
+    this.load.image("bgcomment4", "./assets/commentBg4.png");
+    this.load.image("bgcomment5", "./assets/commentBg5.png");
+    this.load.image('crack2', './assets/crack2.png');
+
     this.load.image("reply1", "./assets/replyComment1.png");
     this.load.image("reply1.1(n/b)", "./assets/replyComment1(n).png");
     this.load.image("reply1.2(n/b)", "./assets/replyComment2(n).png");
@@ -62,33 +68,41 @@ class Comment extends Phaser.Scene {
   }
 
   create() {
+    this.crackScreen = 0;
     this.sound.play('notifComment');
       if(health >=87) {
+      this.add.tileSprite(0, 0, 1280, 720, "bgcomment1").setOrigin(0, 0);
     this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery1", 0).setDepth(1);
     this.random = Math.floor(Math.random() * 3);
     console.log("random " +this.random);
       }//3 different options of comments for most positive
       else if (health <= 86 && health >= 65) {
+        this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
         this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery2", 0).setDepth(1);
         this.random = Math.floor(Math.random() * 1);
         console.log("random "+this.random);
         }
         else if (health <= 64 && health >= 35) {
+          this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
             this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery3", 0).setDepth(1);
             this.random = Math.floor(Math.random() * 1);
             console.log("random "+this.random);
         }
         else if (health <= 34 && health >= 25) {
+          this.add.tileSprite(0, 0, 1280, 720, "bgcomment3").setOrigin(0, 0);
             this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery4", 0).setDepth(1);
             this.random = Math.floor(Math.random() * 1);
             console.log("random "+this.random);
         }//just because i made an extra battery it supposed to be 34 - 10
         else if (health <= 24 && health >= 10) {
+          this.add.tileSprite(0, 0, 1280, 720, "bgcomment4").setOrigin(0, 0);
             this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery5", 0).setDepth(1);
             this.random = Math.floor(Math.random() * 1);
             console.log("random "+this.random);
         }//just because i made an extra battery it supposed to be 34 - 10
         else if (health <= 9 && health >= 1) {
+          this.crackScreen++;
+          this.add.tileSprite(0, 0, 1280, 720, "bgcomment5").setOrigin(0, 0);
             this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery6", 0).setDepth(1);
             this.random = Math.floor(Math.random() * 1);
             console.log("random "+this.random);
@@ -113,10 +127,6 @@ class Comment extends Phaser.Scene {
 
     // mouse stuff
     this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
-
-    this.normbackground = this.add
-      .tileSprite(0, 0, 1280, 720, "background")
-      .setOrigin(0, 0);
 
     this.complete = false;
     this.buttonNum = false;
@@ -683,7 +693,10 @@ else if(health <= 86 && health >= 65) {
       }
     } //Comment textures
 }
-
+  if (this.crackScreen > 0) {
+    this.add.image(639, 360, 'crack2');
+    console.log("inside");
+  }
     //just a fake timer for now
     this.timer = 0;
     this.timer2 = 0;
