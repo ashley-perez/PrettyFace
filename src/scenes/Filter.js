@@ -52,6 +52,7 @@ class Filter extends Phaser.Scene {
         this.load.image('bg5', './assets/filterbg5.png');
         this.load.image('post', './assets/postButton.png');
         this.load.atlas('instruction', './assets/instructFilter.png', './assets/instructFilter.json');
+        this.load.atlas('mouseClick', './assets/mouseClick.png','./assets/mouse_click.json');
 
         //fake score
         this.load.atlas('score_+000','./assets/score_+000.png','./assets/score_+000.json');
@@ -111,6 +112,18 @@ class Filter extends Phaser.Scene {
             frameRate: 20,
             repeat: -1,
         });
+        this.anims.create({
+            key: 'mouseInstruction',
+            frames: this.anims.generateFrameNames('mouseClick', {
+                prefix: 'frame_',
+                start: 1,
+                end: 3,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 3,
+            repeat: -1,
+        });
         //score animation
         {this.anims.create({
             key: 'score_0',
@@ -166,6 +179,9 @@ class Filter extends Phaser.Scene {
         this.player = this.physics.add.sprite(config.width/2.99, config.height/1.78, this.playerPhases[this.index], 0);
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'instruction', 0).setScale(2);
+
+        this.mouseClick = this.physics.add.sprite(config.width/8, config.height/30, 'mouseClick', 0).setScale(2);
+        this.mouseClick2 = this.physics.add.sprite(config.width/1.15, config.height/30, 'mouseClick', 0).setScale(2);
 
         this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
 
@@ -303,8 +319,15 @@ class Filter extends Phaser.Scene {
 
         this.instructionTimer += 0.01;
         this.instruction.anims.play('idle', true);
+        this.mouseClick.anims.play('mouseInstruction', true);
+        this.mouseClick2.anims.play('mouseInstruction', true);
+
+
         if(this.instructionTimer >=2) {
             this.instruction.alpha=0;
+            this.mouseClick.alpha=0;
+            this.mouseClick2.alpha=0;
+
         }
 
         console.log(health);

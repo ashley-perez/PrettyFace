@@ -34,6 +34,8 @@ class Maze extends Phaser.Scene {
         this.load.image('mirror2', './assets/mirror(filled2).png');
 
         this.load.atlas('mazeInstruction', './assets/instructMaze.png', './assets/instructMaze.json');
+        this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
+
     }
 
     create() {
@@ -57,6 +59,23 @@ class Maze extends Phaser.Scene {
                 frameRate: 20,
                 repeat: -1,
             });
+
+            this.anims.create({
+                key: 'keyboardInfo',
+                frames: this.anims.generateFrameNames('keyboardClick', {
+                    prefix: 'frame_',
+                    start: 1,
+                    end: 5,
+                    suffix: '',
+                    zeroPad: 2
+                }),
+                frameRate: 5,
+                repeat: -1,
+            });
+    
+            this.keyboardInstruction = this.physics.add.sprite(config.width/8, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
+            this.keyboardInstruction2 = this.physics.add.sprite(config.width/1.14, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
+
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
             this.markMn = this.physics.add.sprite(config.width/2.066, config.height/1.29, 'mark');
@@ -171,9 +190,9 @@ class Maze extends Phaser.Scene {
                             sceneCount++;
                             this.scene.start("blockingGame");
                           } else if (Math.floor(Math.random() * 2) == 1) {
-                            console.log("maze");
+                            console.log("eye");
                             sceneCount++;
-                            this.scene.start("mazeGame");
+                            this.scene.start("eyesGame");
                           }
                     }
                     else {
@@ -204,8 +223,12 @@ class Maze extends Phaser.Scene {
         }//freeze the player
             this.timer2 += 0.01;//instruction timer
             this.instruction.anims.play('maze', true);
-            if(this.timer2 >=1.5) {
+            this.keyboardInstruction.anims.play('keyboardInfo',true);
+            this.keyboardInstruction2.anims.play('keyboardInfo',true);
+            if(this.timer2 >=1.8) {
                 this.instruction.alpha=0;
+                this.keyboardInstruction.alpha=0;
+            this.keyboardInstruction2.alpha=0;
                 this.cameras.main.setZoom(2.5);
             }//instructions
             this.player.body.setVelocity(0);

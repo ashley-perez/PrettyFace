@@ -50,6 +50,7 @@ class Comment extends Phaser.Scene {
     this.load.image("two", "./assets/reply2.png");
     this.load.image("three", "./assets/reply3.png");
     this.load.atlas("commentInstruction", "./assets/instructComment.png","./assets/instructComment.json");
+    this.load.atlas('mouseClick', './assets/mouseClick.png','./assets/mouse_click.json');
 
     //fake score
     this.load.atlas('score_+000','./assets/score_+000.png','./assets/score_+000.json');
@@ -92,19 +93,23 @@ class Comment extends Phaser.Scene {
             this.random = Math.floor(Math.random() * 1);
             console.log("random "+this.random);
         }
-    this.anims.create({
-      key: "frame",
-      frames: this.anims.generateFrameNames("commentInstruction", {
-        prefix: "frame_",
-        start: 1,
-        end: 5,
-        suffix: "",
-        zeroPad: 2,
-      }),
-      frameRate: 20,
-      repeat: -1,
-    });
-    this.instruction2 = this.physics.add.sprite(config.width / 2, config.height / 30, "commentInstruction", 0).setScale(2);
+    
+    this.instruction2 = this.physics.add.sprite(config.width/2, config.height / 30, "commentInstruction", 0).setScale(2).setDepth(1);
+    this.mouseClick = this.physics.add.sprite(config.width/8, config.height/30, 'mouseClick', 0).setScale(2).setDepth(1);
+        this.mouseClick2 = this.physics.add.sprite(config.width/1.15, config.height/30, 'mouseClick', 0).setScale(2).setDepth(1);
+
+        this.anims.create({
+          key: "commentInfo",
+          frames: this.anims.generateFrameNames("commentInstruction", {
+            prefix: "frame_",
+            start: 1,
+            end: 5,
+            suffix: "",
+            zeroPad: 2,
+          }),
+          frameRate: 20,
+          repeat: -1,
+        });
 
     // mouse stuff
     this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
@@ -692,13 +697,19 @@ else if(health <= 86 && health >= 65) {
 
   update() {
     console.log(health);
+    console.log(this.timer2);
 
       if (this.timer2 <= 0) {
       }
       this.timer2 += 0.01;
-      this.instruction2.anims.play("frame", true);
+      this.instruction2.anims.play("commentInfo", true);
+      this.mouseClick.anims.play('mouseInstruction', true);
+      this.mouseClick2.anims.play('mouseInstruction', true);
+
       if (this.timer2 >= 2) {
         this.instruction2.alpha = 0;
+        this.mouseClick.alpha=0;
+            this.mouseClick2.alpha=0;
       }
       // console.log('health 95+');
       if (this.buttonNum == true) {
