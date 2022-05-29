@@ -7,7 +7,8 @@ class Eyes extends Phaser.Scene {
         this.load.audio('eyesMusic', './assets/eyes.wav');
         this.load.audio('ouch', './assets/ouch.mp3');
         this.load.audio('scream', './assets/scream.mp3');
-        this.load.image('player', './assets/heart.png');
+        this.load.image('player1', './assets/heart.png');
+        this.load.image('player2', './assets/fertal.png');
         this.load.image('eye2', './assets/eyeP2.png');
         this.load.image('eye4', './assets/eyeP4.png');
         this.load.atlas('eyeInstruction', './assets/instructEyes.png', './assets/instructEyes.json');
@@ -16,14 +17,17 @@ class Eyes extends Phaser.Scene {
     }
 
     create() {
-        //this.music.pause();
-        //this.eyesMusic = this.sound.play('eyesMusic');
         this.phase = 0;
 
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
 
-        this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player');
+        if(this.phase <= 1) {
+            this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player1');
+        }
+        else {
+            this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player2').setScale(0.7);
+        }
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2).setDepth(1);
         this.anims.create({
