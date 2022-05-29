@@ -25,7 +25,7 @@ class Eyes extends Phaser.Scene {
 
         this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player');
 
-        this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2);
+        this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2).setDepth(1);
         this.anims.create({
             key: 'eyeInfo',
             frames: this.anims.generateFrameNames('eyeInstruction', {

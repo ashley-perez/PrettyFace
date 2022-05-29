@@ -187,6 +187,7 @@ class Filter extends Phaser.Scene {
         this.mouseClick2 = this.physics.add.sprite(config.width/1.15, config.height/30, 'mouseClick', 0).setScale(2);
 
         this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
+        this.postButton.alpha=0;
 
         if (this.crackScreen > 0) {
             this.add.image(637, 360, 'crack1');
@@ -250,6 +251,7 @@ class Filter extends Phaser.Scene {
             this.score2.anims.play('score_3');
             // this.score3.setTexture("score_+200");
             this.score3.anims.play('score_2');
+            this.postButton.alpha=1;
         }, this);
 
         this.physics.add.overlap(this.player, this.dog, null, function() {
@@ -268,6 +270,7 @@ class Filter extends Phaser.Scene {
             this.score2.anims.play('score_3');
             // this.score3.setTexture('score_+100');
             this.score3.anims.play('score_1');
+            this.postButton.alpha=1;
         }, this);
 
         this.physics.add.overlap(this.player, this.rainbow, null, function() {
@@ -286,6 +289,7 @@ class Filter extends Phaser.Scene {
             this.score2.anims.play('score_2');
             // this.score3.setTexture('score_+200');
             this.score3.anims.play('score_2');
+            this.postButton.alpha=1;
         }, this);
 
         this.physics.add.overlap(this.player, this.flower, null, function() {
@@ -304,6 +308,7 @@ class Filter extends Phaser.Scene {
             this.score2.anims.play('score_3');
             // this.score3.setTexture('score_+200');
             this.score3.anims.play('score_2');
+            this.postButton.alpha=1;
         }, this);
 
 

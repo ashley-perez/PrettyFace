@@ -27,7 +27,7 @@ class Maze extends Phaser.Scene {
         this.load.image('maze15', './assets/testMaze14.png');
         this.load.image('maze16', './assets/testMaze15.png');
         this.load.image('maze17', './assets/testMaze16.png');
-        this.load.image('mazeEnd', './assets/ideal_body.png');
+        this.load.atlas('mazeEnd', './assets/ideal_body.png', './assets/ideal_body.json');
     }//maze images
         this.load.image('mirror', './assets/mirror.png');
         this.load.image('mirror1', './assets/mirror(filled1).png');
@@ -78,7 +78,7 @@ class Maze extends Phaser.Scene {
 
             // movement this.cursors
             this.cursors = this.input.keyboard.createCursorKeys();
-            this.markMn = this.physics.add.sprite(config.width/2.066, config.height/1.29, 'mark');
+            this.markMn = this.physics.add.sprite(config.width/2.066, config.height/1.29, 'mark').setScale(1.6);
 
             this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'mazeInstruction', 0).setScale(2).setDepth(1);
             this.mirror = this.physics.add.sprite(config.width/2.057, config.height/1.425, 'mirror', 0).setScale(1.2).setDepth(1);
@@ -111,6 +111,19 @@ class Maze extends Phaser.Scene {
             this.maze16 = this.physics.add.sprite(621.50 ,77.50 , 'maze16');
             this.maze17 = this.physics.add.sprite(547.00 ,12.50 , 'maze17');
             this.mazeEnd = this.physics.add.sprite(856.50  ,30 , 'mazeEnd').setScale(0.5);
+
+            this.anims.create({
+                key: 'ideal',
+                frames: this.anims.generateFrameNames('mazeEnd', {
+                    prefix: 'frame_',
+                    start: 1,
+                    end: 3,
+                    suffix: '',
+                    zeroPad: 2
+                }),
+                frameRate: 4,
+                repeat: -1,
+            });
 
             this.markMn.body.allowGravity = false; this.markMn.body.immovable = true;
             this.maze1.body.allowGravity = false; this.maze1.body.immovable = true;
@@ -203,7 +216,7 @@ class Maze extends Phaser.Scene {
             this.followP = false;
             this.timer=300;//narration timer
             this.timer2 = 0;//instruction timer
-            this.timer3= 50;
+            this.timer3= 150;
             // when player collides with thing write a textbox near the player!!
             this.physics.add.overlap(this.player, this.markMn, this.writeStuff, null, this);//collide with invisible objects
             this.testBox = this.add.text(this.player.x, this.player.y, '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
@@ -217,12 +230,13 @@ class Maze extends Phaser.Scene {
         this.playerPositionX = this.player.x;
         this.playerPositionY = this.player.y;
 
-        // console.log(health);
-        if(this.timer3 >0){
-            this.timer3 = this.timer3 - 1;
+        console.log(this.timer3);
+        if(this.timer3 > 0){
+            this.timer3--;
         }//freeze the player
             this.timer2 += 0.01;//instruction timer
             this.instruction.anims.play('maze', true);
+            this.mazeEnd.anims.play('ideal', true);
             this.keyboardInstruction.anims.play('keyboardInfo',true);
             this.keyboardInstruction2.anims.play('keyboardInfo',true);
             if(this.timer2 >=1.8) {
@@ -233,7 +247,7 @@ class Maze extends Phaser.Scene {
             }//instructions
             this.player.body.setVelocity(0);
             // console.log(this.timer3);
-            if(this.timer3 <=0) {//unfreeze playe to move
+            if(this.timer3 <=0) {//unfreeze player to move
             if (this.cursors.left.isDown)
             {
                 this.player.setVelocityX(-100);
@@ -262,7 +276,7 @@ class Maze extends Phaser.Scene {
                 this.testBox.text='';
                 this.timer=this.timerMax;
             }//count down timer
-           console.log(this.timer);
+        //    console.log(this.timer);
 
     }
 
@@ -271,7 +285,7 @@ class Maze extends Phaser.Scene {
         this.followP=true;
         this.testBox.text = '';
         if(health >=87) {
-        this.typewriteText(this.wordArray1[this.index], this.testBox, 90);
+        this.typewriteText(this.wordArray1[this.index], this.testBox, 40);
         if(this.index==0){
             this.mirror.setTexture('mirror1');
             this.sound.play('hm');
