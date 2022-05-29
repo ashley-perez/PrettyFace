@@ -8,9 +8,11 @@ class Defend extends Phaser.Scene {
         this.load.audio('sob', './assets/sob.wav');
         this.load.image('heart', './assets/heart.png');
         this.load.image('block', './assets/block.png');
-        this.load.image('enemy', './assets/badPhone.png');
+        // this.load.image('enemy', './assets/badPhone.png');
         this.load.image('missile', './assets/phone_attack1.png');
+        this.load.atlas('enemy', './assets/badPhone.png', './assets/bad_phone.json');
         this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructDefend.json');
+        this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
 
     }
 
@@ -29,6 +31,23 @@ class Defend extends Phaser.Scene {
         });
 
         this.defendInstruction = this.physics.add.sprite(config.width/2, config.height/30, 'defendInstruction', 0).setScale(2).setDepth(1);
+
+        this.anims.create({
+            key: 'keyboardInfo',
+            frames: this.anims.generateFrameNames('keyboardClick', {
+                prefix: 'frame_',
+                start: 1,
+                end: 5,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 5,
+            repeat: -1,
+        });
+
+        this.keyboardInstruction = this.physics.add.sprite(config.width/8, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
+        this.keyboardInstruction2 = this.physics.add.sprite(config.width/1.14, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
+
 
         // create the keys we will be using
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -53,9 +72,24 @@ class Defend extends Phaser.Scene {
         this.block.body.collideWorldBounds = true;
         this.Speed = 5;
 
+        this.anims.create({
+            key: 'phone',
+            frames: this.anims.generateFrameNames('enemy', {
+                prefix: 'frame_',
+                start: 1,
+                end: 3,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 7,
+            repeat: -1,
+        });
+
+
         // path for otherBlock to follow
         this.path =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
         this.otherBlock = this.add.follower(this.path, 0, 0, 'enemy');
+        this.otherBlock.anims.play('phone');
 
         // get object to follow a path
         this.otherBlock.startFollow({
@@ -103,8 +137,13 @@ class Defend extends Phaser.Scene {
         }
         
             this.defendInstruction.anims.play('defendInfo', true);
+            this.keyboardInstruction.anims.play('keyboardInfo',true);
+            this.keyboardInstruction2.anims.play('keyboardInfo',true);
+
             if(this.timer2 >=2) {
             this.defendInstruction.alpha=0;
+            this.keyboardInstruction.alpha=0;
+            this.keyboardInstruction2.alpha=0;
             }
         if (this.cursors.up.isDown) {
             this.block.y -= this.Speed;

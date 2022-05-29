@@ -11,6 +11,8 @@ class Eyes extends Phaser.Scene {
         this.load.image('eye2', './assets/eyeP2.png');
         this.load.image('eye4', './assets/eyeP4.png');
         this.load.atlas('eyeInstruction', './assets/instructEyes.png', './assets/instructEyes.json');
+        this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
+
     }
 
     create() {
@@ -23,7 +25,7 @@ class Eyes extends Phaser.Scene {
 
         this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'player');
 
-        this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2);
+        this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2).setDepth(1);
         this.anims.create({
             key: 'eyeInfo',
             frames: this.anims.generateFrameNames('eyeInstruction', {
@@ -36,6 +38,22 @@ class Eyes extends Phaser.Scene {
             frameRate: 20,
             repeat: -1,
         });
+
+        this.anims.create({
+            key: 'keyboardInfo',
+            frames: this.anims.generateFrameNames('keyboardClick', {
+                prefix: 'frame_',
+                start: 1,
+                end: 5,
+                suffix: '',
+                zeroPad: 2
+            }),
+            frameRate: 5,
+            repeat: -1,
+        });
+
+        this.keyboardInstruction = this.physics.add.sprite(config.width/8, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
+        this.keyboardInstruction2 = this.physics.add.sprite(config.width/1.14, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
 
         if (health >= 87)  {    // phase 1
             this.phase++;
@@ -334,8 +352,12 @@ class Eyes extends Phaser.Scene {
         this.timer2 += 0.01;
 
         this.instruction.anims.play('eyeInfo', true);
+        this.keyboardInstruction.anims.play('keyboardInfo',true);
+            this.keyboardInstruction2.anims.play('keyboardInfo',true);
         if(this.timer2 >=2) {
             this.instruction.alpha=0;
+            this.keyboardInstruction.alpha=0;
+            this.keyboardInstruction2.alpha=0;
         }
         if (this.phase == 1) {
             this.player.setVelocity(0);
