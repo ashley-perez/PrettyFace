@@ -429,7 +429,7 @@ class Comment extends Phaser.Scene {
     } //Comment textures
 }//comment and replies above 87 health
 
-else if(health <= 86 && health >= 65) {
+else if(health <= 86 && health >= 1) {//change 1 to 65
     // click on reply button
     if (this.buttonNum == false) {
       if (this.random == 0) {

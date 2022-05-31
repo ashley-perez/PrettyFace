@@ -69,6 +69,8 @@ class Maze extends Phaser.Scene {
   }
 
   create() {
+    var scoreSound = this.sound.add('score_sound', {volume: 0.5});
+        scoreSound.play();
     scary_music.setVolume(0.8);
     music.setVolume(0);
     //100-85 Nothing
@@ -166,6 +168,7 @@ class Maze extends Phaser.Scene {
     this.markMn = this.physics.add
       .sprite(config.width / 2.066, config.height / 1.29, "mark")
       .setScale(1.6);
+      this.markMn.visible = false;
 
     this.instruction = this.physics.add
       .sprite(config.width / 2, config.height / 30, "mazeInstruction", 0)
