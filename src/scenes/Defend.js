@@ -10,6 +10,8 @@ class Defend extends Phaser.Scene {
         this.load.image('block', './assets/block.png');
         // this.load.image('enemy', './assets/badPhone.png');
         this.load.image('missile', './assets/phone_attack1.png');
+        this.load.image('missile2', './assets/phone_attack2.png');
+        this.load.image('missile3', './assets/phone_attack3.png');
         this.load.atlas('enemy', './assets/badPhone.png', './assets/bad_phone.json');
         this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructDefend.json');
         this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
@@ -17,6 +19,11 @@ class Defend extends Phaser.Scene {
     }
 
     create() {
+        var scoreSound = this.sound.add('score_sound', {volume: 0.5});
+        scoreSound.play();
+        scary_music.setVolume(0.8);
+        music.setVolume(0);
+
         this.anims.create({
             key: 'defendInfo',
             frames: this.anims.generateFrameNames('defendInstruction', {
@@ -101,6 +108,8 @@ class Defend extends Phaser.Scene {
             verticalAdjust: true
         });
 
+        this.random = 0;
+
         this.projectile = this.physics.add.sprite(-100, -100, 'missile');
         this.projectile.setScale(1.3);
 
@@ -119,6 +128,9 @@ class Defend extends Phaser.Scene {
     update() {
 
         this.timer += 0.01; this.timer2 += 0.01;
+
+
+
         if (this.timer >= 9) {
             if(sceneCount<2){
                 if (Math.floor(Math.random() * 2) == 0) {
@@ -174,6 +186,20 @@ class Defend extends Phaser.Scene {
     }
 
     hitObject (projectile, player) {
+        //still has some bugs
+        this.random= Math.floor(Math.random() * 3);
+        if(this.random == 0) {
+            console.log(this.random);
+            projectile.setTexture('missile1');
+        }
+        else if(this.random == 1) {
+            console.log(this.random);
+            projectile.setTexture('missile2');
+        }
+        else if (this.random == 2) {
+            console.log(this.random);
+            projectile.setTexture('missile3');
+        }
         projectile.x = -100;
         projectile.y = -100;
         player.disableBody(true,true);
@@ -183,6 +209,20 @@ class Defend extends Phaser.Scene {
     }
 
     blockedProjectile (block, projectile) {
+        //still has some bugs
+        this.random= Math.floor(Math.random() * 3);
+        if(this.random == 0) {
+            console.log(this.random);
+            projectile.setTexture('missile1');
+        }
+        else if(this.random == 1) {
+            console.log(this.random);
+            projectile.setTexture('missile2');
+        }
+        else if (this.random == 2) {
+            console.log(this.random);
+            projectile.setTexture('missile3');
+        }
         projectile.x = -100;
         projectile.y = -100
         this.shooting = false;
