@@ -4,6 +4,7 @@ class Maze extends Phaser.Scene {
   }
 
   preload() {
+    this.load.audio('notifComment', './assets/comment.wav');
     this.load.audio("hm", "./assets/hm.mp3");
     this.load.audio("hmm", "./assets/hmm.mp3");
 
@@ -431,24 +432,28 @@ if (this.holder == 0) {
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
+            this.sound.play('notifComment');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           } else if (this.cursors.right.isDown) {
             this.player.x = this.player.x - 20;
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
+            this.sound.play('notifComment');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           } else if (this.cursors.up.isDown) {
             this.player.y = this.player.y + 20;
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
+            this.sound.play('notifComment');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           } else if (this.cursors.down.isDown) {
             this.player.y = this.player.y - 20;
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
+            this.sound.play('notifComment');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           }
         },
