@@ -127,6 +127,7 @@ class Cutscene extends Phaser.Scene {
             health -= 9;
             narrCount++;
             sceneCount = 0;
+            console.log("scene Count = "+sceneCount);
             this.scene.start('filterGame');
         }
 

@@ -93,7 +93,7 @@ class Maze extends Phaser.Scene {
     ]; //64-35 mirrors 1 and 3
     this.wordArray3 = [
       "is my belly that big?",
-      "was i ever skinny and pretty?",
+      "was I ever skinny and pretty?",
       "how could I let this happen",
     ]; //64-35 mirrors 1 and 3
     this.wordArray4 = [
@@ -103,7 +103,7 @@ class Maze extends Phaser.Scene {
     ]; //64-35 mirror 4
     this.wordArray5 = [
       "they are so beautiful",
-      "their waist are curves are\nso amazing...",
+      "their waist and curves are\nso amazing...",
       "why couldnt I look\nlike that?",
     ]; //64-35 phone 2 and 3
     this.wordArray6 = [
