@@ -69,6 +69,8 @@ class Maze extends Phaser.Scene {
   }
 
   create() {
+    scary_music.setVolume(0.8);
+    music.setVolume(0);
     //100-85 Nothing
     //86-65 Only mirrors and phones
     //Mirrors1-4 randomized and Phones 1-4 randomized.

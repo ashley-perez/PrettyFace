@@ -68,6 +68,7 @@ class Filter extends Phaser.Scene {
     create() {
         this.index = 0;
         this.crackScreen = 0;
+        
 
         this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
 
@@ -87,19 +88,29 @@ class Filter extends Phaser.Scene {
         // health: 100 to 87, 86 to 65, 64 to 35, 34 to 10, 9 to 1
         if (health >= 87) {
             this.index = 0;
+            scary_music.setVolume(0);
+            music.setVolume(0.8);
         }
         else if (health <= 86 && health >= 65) {
             this.index = 1;
+            scary_music.setVolume(0.2);
+            music.setVolume(0.7);
         }
         else if (health <= 64 && health >= 35) {
             this.index = 2;
+            scary_music.setVolume(0.4);
+            music.setVolume(0.6);
         }
         else if (health <= 34 && health >= 10) {
             this.index = 3;
+            scary_music.setVolume(0.8);
+            music.setVolume(0);
         }
         else {
             this.index = 4;
             this.crackScreen++;
+            scary_music.setVolume(0.9);
+            music.setVolume(0);
         }
 
         // instruction animation
@@ -200,7 +211,7 @@ class Filter extends Phaser.Scene {
 
         this.score1.alpha=0;this.score2.alpha=0;this.score3.alpha=0;
 
-        var scoreSound = this.sound.add('score_sound', {volume: 0.9});  // add music background
+        var scoreSound = this.sound.add('score_sound', {volume: 0.8});  // add music background
         var yaySound = this.sound.add('yay_sound', {volume: 0.9});  // add music background
 
         // filters that are draggable

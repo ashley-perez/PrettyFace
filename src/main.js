@@ -24,6 +24,8 @@ let game = new Phaser.Game(config);
 let sceneCount =0;
 let narrCount=0;
 let health;
+var music;
+var scary_music;
 
 // set border
 let borderUISize = game.config.height / 15;

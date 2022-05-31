@@ -19,6 +19,10 @@ class Defend extends Phaser.Scene {
     }
 
     create() {
+
+        scary_music.setVolume(0.8);
+        music.setVolume(0);
+
         this.anims.create({
             key: 'defendInfo',
             frames: this.anims.generateFrameNames('defendInstruction', {
