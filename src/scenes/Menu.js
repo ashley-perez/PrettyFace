@@ -13,7 +13,7 @@ class Menu extends Phaser.Scene {
 
     create() {
         // gamePhase = 1;
-        health = 100;
+        health = 100;//100, 84, 66, 63, 33, 
 
         let title1Config = {
             fontFamily: 'Normal',
@@ -67,8 +67,8 @@ class Menu extends Phaser.Scene {
 
             // this.scene.start("filterGame");
             // this.scene.start("commentGame");
-            // this.scene.start("mazeGame");
-            this.scene.start("blockingGame");
+            this.scene.start("mazeGame");
+            // this.scene.start("blockingGame");
             // this.scene.start("eyesGame");
             // this.scene.start("restaurantGame");
             // this.scene.start('narrOne');
