@@ -47,7 +47,7 @@ class Cutscene extends Phaser.Scene {
         this.UIbox = this.add.sprite(650, 575, 'dialogbox');
 
         // set up font based on health
-        if (health >= 40) {
+        if (phaseCount <= 3) {
             this.textbox = this.add.text(275, 500, ' ', normalWriting).setWordWrapWidth(750);
             this.continuePrompt = this.add.text(920, 620, '[SPACE]', normalWriting);
         }
