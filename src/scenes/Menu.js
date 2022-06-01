@@ -77,6 +77,7 @@ class Menu extends Phaser.Scene {
             // this.scene.start("restaurantGame");
             // this.scene.start('narrOne');
             // this.scene.start("endingScene");
+            // this.scene.start('gameOver');
         }
     }
 }
