@@ -31,14 +31,6 @@ class Eyes extends Phaser.Scene {
 
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
-
-        if(this.health <= 50) {
-            this.eyePlayer.setTexture("heartSad");
-        }
-        // else {
-        //     this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartSad').setScale(0.7);
-        // }
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2).setDepth(1);
         this.anims.create({
@@ -71,7 +63,9 @@ class Eyes extends Phaser.Scene {
         this.keyboardInstruction2 = this.physics.add.sprite(config.width/1.14, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
 
         if (health >= 87)  {    // phase 1
-            this.phase = 1;
+            this.phase = 0;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg1').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye2');
@@ -117,7 +111,10 @@ class Eyes extends Phaser.Scene {
         } //end if
 
         else if (health >= 65 && health <= 86)  {   // phase 2
-            this.phase = 2;
+            this.phase = 1;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg2').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
+
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye2');
@@ -170,7 +167,9 @@ class Eyes extends Phaser.Scene {
         } //end if
 
         else if (health >= 35 && health <= 64)  {   // phase 3
-            this.phase = 3;
+            this.phase = 2;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg3').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye4');
@@ -229,7 +228,9 @@ class Eyes extends Phaser.Scene {
             this.timer2 = 0;
         } //end if
         else if (health >= 10 && health <= 34)  {   // phase 4
-            this.phase = 4;
+            this.phase = 3;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg4').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartSad');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye4');
             this.eye2 = this.physics.add.sprite(950,800,'eye4');
@@ -295,7 +296,9 @@ class Eyes extends Phaser.Scene {
             this.timer2 = 0;
         } //end if
         else if (health >= 1 && health <= 9)  {   // phase 5
-            this.phase = 5;
+            this.phase = 4;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg5').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartSad');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye4');
             this.eye2 = this.physics.add.sprite(950,800,'eye4');
@@ -370,7 +373,7 @@ class Eyes extends Phaser.Scene {
         this.instruction.anims.play('eyeInfo', true);
         this.keyboardInstruction.anims.play('keyboardInfo',true);
             this.keyboardInstruction2.anims.play('keyboardInfo',true);
-        if(this.timer2 >= 5) {
+        if(this.timer2 >=2) {
             this.instruction.alpha=0;
             this.keyboardInstruction.alpha=0;
             this.keyboardInstruction2.alpha=0;

@@ -74,7 +74,7 @@ class Cutscene extends Phaser.Scene {
             this.continuePrompt.visible = false; // prompt goes away because writing is happening
             this.textbox.text = ''; // reset the text box
             // phase 1 health
-            if (health >= 87) {
+            if (narrCount == 0) {
                 // done going through array, narration is over
                 if (this.index >= this.phase1Text.length) {
                     this.complete = true;
@@ -83,7 +83,7 @@ class Cutscene extends Phaser.Scene {
                 }
                 this.typewriteText(this.phase1Text[this.index], this.textbox, 50);
             }
-            else if (health <= 86 && health >= 65) {
+            else if (narrCount == 1) {
                 if (this.index >= this.phase2Text.length) {
                     this.complete = true;
                     textDone = false;
@@ -91,7 +91,7 @@ class Cutscene extends Phaser.Scene {
                 }
                 this.typewriteText(this.phase2Text[this.index], this.textbox, 50);
             }
-            else if (health <= 64 && health >= 35) {
+            else if (narrCount == 2) {
                 if (this.index >= this.phase3Text.length) {
                     this.complete = true;
                     textDone = false;
@@ -99,7 +99,7 @@ class Cutscene extends Phaser.Scene {
                 }
                 this.typewriteText(this.phase3Text[this.index], this.textbox, 50);
             }
-            else if (health <= 34 && health >= 10) {
+            else if (narrCount == 3) {
                 if (this.index >= this.phase4Text.length) {
                     this.complete = true;
                     textDone = false;
@@ -108,7 +108,7 @@ class Cutscene extends Phaser.Scene {
                 this.typewriteText(this.phase4Text[this.index], this.textbox, 50);
 
             }
-            else {
+            else if (narrCount == 4) {
                 if (this.index >= this.phase5Text.length) {
                     this.complete = true;
                     textDone = false;
