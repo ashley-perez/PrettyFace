@@ -347,7 +347,7 @@ class Filter extends Phaser.Scene {
         this.mouseClick2.anims.play('mouseInstruction', true);
 
 
-        if(this.instructionTimer >=2) {
+        if(this.instructionTimer >= 5) {
             this.instruction.alpha=0;
             this.mouseClick.alpha=0;
             this.mouseClick2.alpha=0;

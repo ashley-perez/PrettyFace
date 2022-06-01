@@ -1,4 +1,5 @@
 var textDone = true;
+var lastPhase = false;
 
 class Cutscene extends Phaser.Scene {
     constructor() {
@@ -12,7 +13,7 @@ class Cutscene extends Phaser.Scene {
     create() {
         let distortedWriting = {
             fontFamily: 'Scribbles',
-            fontSize: '36px',
+            fontSize: '32px',
             color: '#FFFFFF',
             align: 'right',
             padding: {
@@ -33,11 +34,12 @@ class Cutscene extends Phaser.Scene {
             },
             fixedWidth: 0
         }
-
-        this.phase1Text = [ "They really like me. ", "*notifications popping* ", "thank you... "];
-        this.phase2Text = [ "placeholder -- Phase 2 / health stage 2 "];
-        this.phase3Text = [ "FUCK YOU [username] ", "Who fucking says that?! ", "You don't know what it's like... ", "... ", "This is fine. I'm fine. "];
-        this.phase4Text = [ "...How could they say those things about me? ", "... ", "is this really what I look like? ", "I- ", "maybe they're right "];
+        // sometimes i get scared i'm not enough or they'll get tired of me but that's just all in my head... right????
+        this.phase1Text = ["I've always found it hard to make friends... ", "It's just easier for me to be myself online. ", "I have a lot of friends who say nice things to me. ", "What else could I ever want? "];
+        this.phase2Text = ["They really like me... ","Sometimes I get scared I'm not enough. That they'll get tired of me... ", "but that's just all in my head. ", "... ", "r i g h t ? ? "];
+        this.phase3Text = [ "...How could they say those things about me? ", "... ", "I just wanted to fit in and be like everybody else. ", "Why does it all have to be so fucking complicated? "];
+        this.phase4Text = [ "FUCK YOU [username] ", "Who says that to a person?! I have feelings too. ", "You don't know what it's like. ", "... ", "This is fine. I'm fine. "];
+        // this.phase4Text = [ "...How could they say those things about me? ", "... ", "is this really what I look like? ", "I- ", "maybe they're right "];
         this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "... ", "This was supposed to make me happy... I was happy. "];
 
         this.index = 0;
@@ -88,7 +90,6 @@ class Cutscene extends Phaser.Scene {
                     textDone = false;
                     return;
                 }
-                // this.textbox = this.add.text(this.TEXT_X, this.TEXT_Y, this.phase2Text[this.index], {color: '#FFFFFF'});
                 this.typewriteText(this.phase2Text[this.index], this.textbox, 50);
             }
             else if (health <= 64 && health >= 35) {
@@ -112,23 +113,29 @@ class Cutscene extends Phaser.Scene {
                 if (this.index >= this.phase5Text.length) {
                     this.complete = true;
                     textDone = false;
+                    lastPhase = true;
                     return;
                 }
-                this.typewriteText(wrappedText, this.textbox, 50);
+                this.typewriteText(this.phase5Text[this.index], this.textbox, 50);
             } 
             this.index += 1;
         }
 
         // done with narration, go to next scene
         if (this.complete == true && health >= 0) {
-            this.timer += 0.01;
+            this.timer += 0.1;
         }
-        if (this.timer >= 3) {
-            health -= 9;
+
+        if (this.timer >= 3 && lastPhase != true) {
+            health -= 12;
             narrCount++;
             sceneCount = 0;
-            console.log("scene Count = "+sceneCount);
+            console.log("scene Count = " + sceneCount);
             this.scene.start('filterGame');
+        }
+        else if (this.timer >= 3 && lastPhase == true) {
+            console.log("end scene is about to start");
+            this.scene.start("endingScene");
         }
 
     }

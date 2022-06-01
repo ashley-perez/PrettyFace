@@ -70,60 +70,60 @@ class Comment extends Phaser.Scene {
   create() {
     this.crackScreen = 0;
     this.sound.play('notifComment');
-      if(health >=87) {
+    if(health >=87) {
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment1").setOrigin(0, 0);
-    this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery1", 0).setDepth(1);
-    this.random = Math.floor(Math.random() * 3);
-    console.log("random " +this.random);
-      }//3 different options of comments for most positive
-      else if (health <= 86 && health >= 65) {
-        this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
-        this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery2", 0).setDepth(1);
-        this.random = Math.floor(Math.random() * 1);
-        console.log("random "+this.random);
-        }
-        else if (health <= 64 && health >= 35) {
-          this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
-            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery3", 0).setDepth(1);
-            this.random = Math.floor(Math.random() * 1);
-            console.log("random "+this.random);
-        }
-        else if (health <= 34 && health >= 25) {
-          this.add.tileSprite(0, 0, 1280, 720, "bgcomment3").setOrigin(0, 0);
-            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery4", 0).setDepth(1);
-            this.random = Math.floor(Math.random() * 1);
-            console.log("random "+this.random);
-        }//just because i made an extra battery it supposed to be 34 - 10
-        else if (health <= 24 && health >= 10) {
-          this.add.tileSprite(0, 0, 1280, 720, "bgcomment4").setOrigin(0, 0);
-            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery5", 0).setDepth(1);
-            this.random = Math.floor(Math.random() * 1);
-            console.log("random "+this.random);
-        }//just because i made an extra battery it supposed to be 34 - 10
-        else if (health <= 9 && health >= 1) {
-          this.crackScreen++;
-          this.add.tileSprite(0, 0, 1280, 720, "bgcomment5").setOrigin(0, 0);
-            this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery6", 0).setDepth(1);
-            this.random = Math.floor(Math.random() * 1);
-            console.log("random "+this.random);
-        }
+      this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery1", 0).setDepth(1);
+      this.random = Math.floor(Math.random() * 3);
+      console.log("random " +this.random);
+    }//3 different options of comments for most positive
+    else if (health <= 86 && health >= 65) {
+      this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
+      this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery2", 0).setDepth(1);
+      this.random = Math.floor(Math.random() * 1);
+      console.log("random "+this.random);
+    }
+    else if (health <= 64 && health >= 35) {
+      this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
+      this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery3", 0).setDepth(1);
+      this.random = Math.floor(Math.random() * 1);
+      console.log("random "+this.random);
+    }
+    else if (health <= 34 && health >= 25) {
+      this.add.tileSprite(0, 0, 1280, 720, "bgcomment3").setOrigin(0, 0);
+      this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery4", 0).setDepth(1);
+      this.random = Math.floor(Math.random() * 1);
+      console.log("random "+this.random);
+    }//just because i made an extra battery it supposed to be 34 - 10
+    else if (health <= 24 && health >= 10) {
+      this.add.tileSprite(0, 0, 1280, 720, "bgcomment4").setOrigin(0, 0);
+      this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery5", 0).setDepth(1);
+      this.random = Math.floor(Math.random() * 1);
+      console.log("random "+this.random);
+    }//just because i made an extra battery it supposed to be 34 - 10
+    else if (health <= 9 && health >= 1) {
+      this.crackScreen++;
+      this.add.tileSprite(0, 0, 1280, 720, "bgcomment5").setOrigin(0, 0);
+      this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery6", 0).setDepth(1);
+      this.random = Math.floor(Math.random() * 1);
+      console.log("random "+this.random);
+    }
     
     this.instruction2 = this.physics.add.sprite(config.width/2, config.height / 30, "commentInstruction", 0).setScale(2).setDepth(1);
     this.mouseClick = this.physics.add.sprite(config.width/8, config.height/30, 'mouseClick', 0).setScale(2).setDepth(1);
-        this.mouseClick2 = this.physics.add.sprite(config.width/1.15, config.height/30, 'mouseClick', 0).setScale(2).setDepth(1);
+    this.mouseClick2 = this.physics.add.sprite(config.width/1.15, config.height/30, 'mouseClick', 0).setScale(2).setDepth(1);
 
-        this.anims.create({
-          key: "commentInfo",
-          frames: this.anims.generateFrameNames("commentInstruction", {
-            prefix: "frame_",
-            start: 1,
-            end: 5,
-            suffix: "",
-            zeroPad: 2,
-          }),
-          frameRate: 20,
-          repeat: -1,
-        });
+    this.anims.create({
+      key: "commentInfo",
+      frames: this.anims.generateFrameNames("commentInstruction", {
+        prefix: "frame_",
+        start: 1,
+        end: 5,
+        suffix: "",
+        zeroPad: 2,
+      }),
+      frameRate: 20,
+      repeat: -1,
+    });
 
     // mouse stuff
     this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
@@ -164,7 +164,7 @@ class Comment extends Phaser.Scene {
       .setInteractive();
 
 //comment and replies above 87 health
-      if(health >=87) {
+    if(health >=87) {
     // click on reply button
     if (this.buttonNum == false) {
       if (this.random == 0) {
@@ -710,16 +710,13 @@ else if(health <= 86 && health >= 1) {//change 1 to 65
 
   update() {
     console.log(health);
-    console.log(this.timer2);
 
-      if (this.timer2 <= 0) {
-      }
       this.timer2 += 0.01;
       this.instruction2.anims.play("commentInfo", true);
       this.mouseClick.anims.play('mouseInstruction', true);
       this.mouseClick2.anims.play('mouseInstruction', true);
 
-      if (this.timer2 >= 2) {
+      if (this.timer2 >= 5) {
         this.instruction2.alpha = 0;
         this.mouseClick.alpha=0;
             this.mouseClick2.alpha=0;

@@ -507,7 +507,7 @@ if (this.holder == 0) {
     this.mazeEnd.anims.play("ideal", true);
     this.keyboardInstruction.anims.play("keyboardInfo", true);
     this.keyboardInstruction2.anims.play("keyboardInfo", true);
-    if (this.timer2 >= 1.5) {
+    if (this.timer2 >= 2.2) {
       this.instruction.alpha = 0;
       this.keyboardInstruction.alpha = 0;
       this.keyboardInstruction2.alpha = 0;
