@@ -5,6 +5,7 @@ class Eyes extends Phaser.Scene {
 
     preload() {
         this.load.audio('eyesMusic', './assets/eyes.wav');
+        this.load.audio('score_sound', './assets/score_sound.mp3');
         this.load.audio('ouch', './assets/ouch.mp3');
         this.load.audio('scream', './assets/scream.mp3');
         this.load.image('heartNormal', './assets/heart.png');
@@ -13,7 +14,11 @@ class Eyes extends Phaser.Scene {
         this.load.image('eye4', './assets/eyeP4.png');
         this.load.atlas('eyeInstruction', './assets/instructEyes.png', './assets/instructEyes.json');
         this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
-
+        this.load.image('gameBg1', "./assets/gameBg1.png");
+        this.load.image('gameBg2', "./assets/gameBg2.png");
+        this.load.image('gameBg3', "./assets/gameBg3.png");
+        this.load.image('gameBg4', "./assets/gameBg4.png");
+        this.load.image('gameBg5', "./assets/gameBg5.png");
     }
 
     create() {
@@ -21,6 +26,7 @@ class Eyes extends Phaser.Scene {
         scoreSound.play();
         scary_music.setVolume(0.8);
         music.setVolume(0);
+
         this.phase = 0;
 
         // movement this.cursors
@@ -354,10 +360,10 @@ class Eyes extends Phaser.Scene {
             this.timer = 0;
             this.timer2 = 0;
         } //end if
+        // add bg
     }
 
     update() {
-        
         this.timer += 0.01;
         this.timer2 += 0.01;
 
@@ -369,7 +375,7 @@ class Eyes extends Phaser.Scene {
             this.keyboardInstruction.alpha=0;
             this.keyboardInstruction2.alpha=0;
         }
-        if (this.phase == 1) {
+        if (this.phase == 0) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 90);
@@ -413,7 +419,7 @@ class Eyes extends Phaser.Scene {
                 }
             }
         }
-        else if (this.phase == 2) {
+        else if (this.phase == 1) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 100);
@@ -442,22 +448,24 @@ class Eyes extends Phaser.Scene {
             }
             // switch screen
             if (this.timer >= 9) {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("maze");
-                    sceneCount++;
-                    this.scene.start("mazeGame");
-                  }
-            }
-            else {
-                this.scene.start("narrOne")
+                if(sceneCount<2){
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        console.log("defend");
+                        sceneCount++;
+                        this.scene.start("blockingGame");
+                      } else if (Math.floor(Math.random() * 2) == 1) {
+                        console.log("maze");
+                        sceneCount++;
+                        this.scene.start("mazeGame");
+                      }
+                }
+                else {
+                    this.scene.start("narrOne")
+                }
             }
         }
 
-        else if (this.phase == 3) {
+        else if (this.phase == 2) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 110);
@@ -483,8 +491,7 @@ class Eyes extends Phaser.Scene {
             else if (this.cursors.down.isDown)
             {
                 this.eyePlayer.setVelocityY(150);
-            }
-            // switch screen
+            }// switch screen
             if (this.timer >= 9) {
                 if(sceneCount<2){
                     if (Math.floor(Math.random() * 2) == 0) {
@@ -502,7 +509,7 @@ class Eyes extends Phaser.Scene {
                 }
             }
         }
-        else if (this.phase == 4) {
+        else if (this.phase == 3) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 115);
@@ -532,21 +539,23 @@ class Eyes extends Phaser.Scene {
             }
             // switch screen
             if (this.timer >= 9) {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("maze");
-                    sceneCount++;
-                    this.scene.start("mazeGame");
-                  }
-            }
-            else {
-                this.scene.start("narrOne")
+                if(sceneCount<2){
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        console.log("defend");
+                        sceneCount++;
+                        this.scene.start("blockingGame");
+                      } else if (Math.floor(Math.random() * 2) == 1) {
+                        console.log("maze");
+                        sceneCount++;
+                        this.scene.start("mazeGame");
+                      }
+                }
+                else {
+                    this.scene.start("narrOne")
+                }
             }
         }
-        else if (this.phase == 5) {
+        else if (this.phase == 4) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 120);

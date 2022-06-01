@@ -59,7 +59,7 @@ class Cutscene extends Phaser.Scene {
         this.continuePrompt.visible = false;
 
         this.cursors =  this.input.keyboard.createCursorKeys();
-        
+
         this.complete = false;
 
         this.typewriteText("...", this.textbox, 300);
@@ -68,7 +68,6 @@ class Cutscene extends Phaser.Scene {
     }
 
     update() {
-        
         // check for spacebar press to advance text
         // will only advance text when previous writing is done
         if(Phaser.Input.Keyboard.JustDown(this.cursors.space) && textDone) {
@@ -146,7 +145,7 @@ class Cutscene extends Phaser.Scene {
     typewriteText(text, textbox, speed) {
         const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
-        //textDone = false; 
+        //textDone = false;
         this.time.addEvent({
             callback: () => {
                 textbox.text += text[i]
@@ -163,5 +162,5 @@ class Cutscene extends Phaser.Scene {
             delay: speed // typing speed, big numbers = slower text, small = faster
         });
     }
-    
+
 }
