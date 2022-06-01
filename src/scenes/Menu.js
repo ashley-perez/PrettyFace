@@ -13,8 +13,7 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        // gamePhase = 1;
-        // health = 100;//100, 84, 66, 63, 33,
+        phaseCount = 1;
         music = this.sound.add('bgMusic', {volume: 0.8});  // add music background
         scary_music = this.sound.add('scary_bgMusic', {volume: 0});  // add scary music background
 
@@ -70,14 +69,14 @@ class Menu extends Phaser.Scene {
             scary_music.setLoop(true);
             scary_music.play();
 
-            //this.scene.start("filterGame");
+            this.scene.start("filterGame");
             // this.scene.start("commentGame");
             // this.scene.start("mazeGame");
             // this.scene.start("blockingGame");
             // this.scene.start("eyesGame");
             // this.scene.start("restaurantGame");
             // this.scene.start('narrOne');
-            this.scene.start("endingScene");
+            // this.scene.start("endingScene");
         }
     }
 }
