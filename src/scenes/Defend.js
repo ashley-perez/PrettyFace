@@ -68,7 +68,7 @@ class Defend extends Phaser.Scene {
         this.projectileVelocity = 0;
 
         // create multiple sprites and adds them to a group
-        if (health >= 50) {
+        if (phaseCount <= 3) {
             this.playerGroup = this.physics.add.group({
                 key: 'heart',
                 repeat: 6,
@@ -249,7 +249,7 @@ class Defend extends Phaser.Scene {
 
         // go to next scene when timer is over
         if (this.timer >= 20) {
-            if(sceneCount<2){
+            if(sceneCount < 2){
                 if (Math.floor(Math.random() * 2) == 0) {
                     console.log("eyes");
                     sceneCount++;

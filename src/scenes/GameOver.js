@@ -13,14 +13,26 @@ class GameOver extends Phaser.Scene {
         this.gameOverBG = this.add.tileSprite(0, 0, 1280, 720, 'background').setOrigin(0, 0);
 
         // keys
-        this.cursors = this.input.keyboard.createCursorKeys();
+        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
 
         // text box config
-        let distortedWriting = {
+        let bigDistorted = {
             fontFamily: 'Scribbles',
-            fontSize: '32px',
+            fontSize: '120px',
             color: '#FFFFFF',
-            align: 'right',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        let smallDistorted = {
+            fontFamily: 'Scribbles',
+            fontSize: '60px',
+            color: '#FFFFFF',
+            align: 'center',
             padding: {
                 top: 5,
                 bottom: 5,
@@ -29,15 +41,18 @@ class GameOver extends Phaser.Scene {
         }
 
         // text box
-        this.gameover = this.add.text(config.width/2, config.height/3, 'GAME OVER', distortedWriting);
-        this.restart = this.add.text(config.width/2, config.height/4, 'Press R to Restart', distortedWriting);
+        this.gameover = this.add.text(325, config.height/4, 'GAME OVER', bigDistorted);
+        this.restart = this.add.text(365, config.height/2, 'Press R to Restart', smallDistorted);
 
 
     }
 
     update() {
         // restart/replay the game
-        if (this.cursors.r.justDown) {
+        if (Phaser.Input.Keyboard.JustDown(keyR)) {
+            // get all music to stop so it doesn't keep playing when you restart
+            music.stop();
+            scary_music.stop();
             this.scene.start('menuScene')
         }
 
