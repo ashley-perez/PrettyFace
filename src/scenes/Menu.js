@@ -14,7 +14,7 @@ class Menu extends Phaser.Scene {
 
     create() {
         // gamePhase = 1;
-        health = 100;//100, 84, 66, 63, 33, 
+        // health = 100;//100, 84, 66, 63, 33, 
         music = this.sound.add('bgMusic', {volume: 0.8});  // add music background
         scary_music = this.sound.add('scary_bgMusic', {volume: 0});  // add scary music background
 

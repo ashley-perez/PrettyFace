@@ -110,7 +110,7 @@ class Defend extends Phaser.Scene {
         });
 
         // phase 1 health
-        if (health >= 87) {
+        if (phaseCount == 1) {
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -127,7 +127,7 @@ class Defend extends Phaser.Scene {
             this.projectileVelocity = 300;
             this.Speed = 2;
         }
-        else if (health <= 86 && health >= 65) {
+        else if (phaseCount == 2) {
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -143,7 +143,7 @@ class Defend extends Phaser.Scene {
             this.projectileVelocity = 350;
             this.Speed = 1.85;
         }
-        else if (health <= 64 && health >= 35) {
+        else if (phaseCount == 3) {
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -159,7 +159,7 @@ class Defend extends Phaser.Scene {
             this.projectileVelocity = 400;
             this.Speed = 1.8;
         }
-        else if (health <= 34 && health >= 10) {
+        else if (phaseCount == 4) {
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,355);
             this.pathTwo = new Phaser.Curves.Path(60,355).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -188,7 +188,7 @@ class Defend extends Phaser.Scene {
             secondProjectile = true;
             this.Speed = 1.5;
         }
-        else {
+        else if (phaseCount == 5) {
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,355);
             this.pathTwo = new Phaser.Curves.Path(60,355).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -247,6 +247,7 @@ class Defend extends Phaser.Scene {
         this.timer += 0.01; 
         this.timer2 += 0.01;
 
+        // go to next scene when timer is over
         if (this.timer >= 20) {
             if(sceneCount<2){
                 if (Math.floor(Math.random() * 2) == 0) {

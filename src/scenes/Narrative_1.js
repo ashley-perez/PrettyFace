@@ -74,7 +74,7 @@ class Cutscene extends Phaser.Scene {
             this.continuePrompt.visible = false; // prompt goes away because writing is happening
             this.textbox.text = ''; // reset the text box
             // phase 1 health
-            if (narrCount == 0) {
+            if (phaseCount == 1) {
                 // done going through array, narration is over
                 if (this.index >= this.phase1Text.length) {
                     this.complete = true;
@@ -83,7 +83,7 @@ class Cutscene extends Phaser.Scene {
                 }
                 this.typewriteText(this.phase1Text[this.index], this.textbox, 50);
             }
-            else if (narrCount == 1) {
+            else if (phaseCount == 2) {
                 if (this.index >= this.phase2Text.length) {
                     this.complete = true;
                     textDone = false;
@@ -91,7 +91,7 @@ class Cutscene extends Phaser.Scene {
                 }
                 this.typewriteText(this.phase2Text[this.index], this.textbox, 50);
             }
-            else if (narrCount == 2) {
+            else if (phaseCount == 3) {
                 if (this.index >= this.phase3Text.length) {
                     this.complete = true;
                     textDone = false;
@@ -99,7 +99,7 @@ class Cutscene extends Phaser.Scene {
                 }
                 this.typewriteText(this.phase3Text[this.index], this.textbox, 50);
             }
-            else if (narrCount == 3) {
+            else if (phaseCount == 4) {
                 if (this.index >= this.phase4Text.length) {
                     this.complete = true;
                     textDone = false;
@@ -108,7 +108,7 @@ class Cutscene extends Phaser.Scene {
                 this.typewriteText(this.phase4Text[this.index], this.textbox, 50);
 
             }
-            else if (narrCount == 4) {
+            else if (phaseCount == 5) {
                 if (this.index >= this.phase5Text.length) {
                     this.complete = true;
                     textDone = false;
@@ -127,7 +127,7 @@ class Cutscene extends Phaser.Scene {
 
         if (this.timer >= 3 && lastPhase != true) {
             health -= 12;
-            narrCount++;
+            phaseCount++;
             sceneCount = 0;
             console.log("scene Count = " + sceneCount);
             this.scene.start('filterGame');

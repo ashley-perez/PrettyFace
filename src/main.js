@@ -21,7 +21,7 @@ let config = {
 
 
 let game = new Phaser.Game(config);
-let sceneCount = 0;
+let phaseCount = 1;
 let narrCount = 0;
 let health;
 var music;

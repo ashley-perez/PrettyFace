@@ -70,7 +70,7 @@ class Comment extends Phaser.Scene {
   create() {
     this.crackScreen = 0;
     this.sound.play('notifComment');
-    if(health >=87) {
+    if(phaseCount == 1) {
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment1").setOrigin(0, 0);
       this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery1", 0).setDepth(1);
       this.random = Math.floor(Math.random() * 3);
@@ -88,18 +88,12 @@ class Comment extends Phaser.Scene {
       this.random = Math.floor(Math.random() * 1);
       console.log("random "+this.random);
     }
-    else if (health <= 34 && health >= 25) {
+    else if (health <= 34 && health >= 10) {
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment3").setOrigin(0, 0);
       this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery4", 0).setDepth(1);
       this.random = Math.floor(Math.random() * 1);
       console.log("random "+this.random);
-    }//just because i made an extra battery it supposed to be 34 - 10
-    else if (health <= 24 && health >= 10) {
-      this.add.tileSprite(0, 0, 1280, 720, "bgcomment4").setOrigin(0, 0);
-      this.battery = this.physics.add.sprite(config.width / 1.5638, config.height / 19.726, "battery5", 0).setDepth(1);
-      this.random = Math.floor(Math.random() * 1);
-      console.log("random "+this.random);
-    }//just because i made an extra battery it supposed to be 34 - 10
+    }
     else if (health <= 9 && health >= 1) {
       this.crackScreen++;
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment5").setOrigin(0, 0);
@@ -164,7 +158,7 @@ class Comment extends Phaser.Scene {
       .setInteractive();
 
 //comment and replies above 87 health
-    if(health >=87) {
+    if(phaseCount == 1) {
     // click on reply button
     if (this.buttonNum == false) {
       if (this.random == 0) {
@@ -429,7 +423,7 @@ class Comment extends Phaser.Scene {
     } //Comment textures
 }//comment and replies above 87 health
 
-else if(health <= 86 && health >= 1) {//change 1 to 65
+else if(phaseCount == 2) {//change 1 to 65
     // click on reply button
     if (this.buttonNum == false) {
       if (this.random == 0) {

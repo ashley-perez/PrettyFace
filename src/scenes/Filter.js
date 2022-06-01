@@ -86,27 +86,27 @@ class Filter extends Phaser.Scene {
         this.flowerFilter = false;
 
         // health: 100 to 87, 86 to 65, 64 to 35, 34 to 10, 9 to 1
-        if (health >= 87) {
+        if (phaseCount == 1) {
             this.index = 0;
             scary_music.setVolume(0);
             music.setVolume(0.8);
         }
-        else if (health <= 86 && health >= 65) {
+        else if (phaseCount == 2) {
             this.index = 1;
             scary_music.setVolume(0.2);
             music.setVolume(0.7);
         }
-        else if (health <= 64 && health >= 35) {
+        else if (phaseCount == 3) {
             this.index = 2;
             scary_music.setVolume(0.4);
             music.setVolume(0.6);
         }
-        else if (health <= 34 && health >= 10) {
+        else if (phaseCount == 4) {
             this.index = 3;
             scary_music.setVolume(0.8);
             music.setVolume(0);
         }
-        else {
+        else if (phaseCount == 5) {
             this.index = 4;
             this.crackScreen++;
             scary_music.setVolume(0.9);

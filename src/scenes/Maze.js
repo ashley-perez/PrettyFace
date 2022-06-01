@@ -89,7 +89,7 @@ class Maze extends Phaser.Scene {
     this.wordArray2 = [
       "are they right?",
       "Am I becoming too wide?",
-      "I think Ill skip dinner\ntonight...",
+      "I think I'll skip dinner\ntonight...",
     ]; //64-35 mirrors 1 and 3
     this.wordArray3 = [
       "is my belly that big?",
@@ -104,10 +104,10 @@ class Maze extends Phaser.Scene {
     this.wordArray5 = [
       "they are so beautiful",
       "their waist and curves are\nso amazing...",
-      "why couldnt I look\nlike that?",
+      "why don't I look\nlike that?",
     ]; //64-35 phone 2 and 3
     this.wordArray6 = [
-      "their lips and face\nare so pretty",
+      "their lips and face\nare perfect",
       "are my lips really\nthat small to them?...",
       "how can I compare\nto them?...",
     ]; //64-35 phone 1 and 4
@@ -316,7 +316,7 @@ class Maze extends Phaser.Scene {
     // this.background.tintBottomLeft - 0xfffff;
 
     //.setTint(0)
-    if (health >= 87 && health <= 100) {
+    if (phaseCount == 1) {
       this.physics.add.collider(this.player, this.maze);
       this.mirror.alpha = 0;
       this.mirror2.alpha = 0;
@@ -326,7 +326,7 @@ class Maze extends Phaser.Scene {
 
       console.log("87-100"); //no mirrors or phones or texts
     } //no damage loss and no text or mirrors
-    else if (health <= 86 && health >= 65) {
+    else if (phaseCount == 2) {
       this.background.alpha = 0.86;
       this.background2.alpha = 0.66;
       this.background.tintBottomLeft = 0x0FFFFF;
@@ -360,7 +360,7 @@ class Maze extends Phaser.Scene {
       this.mazeEnd.x = game.config.width / 4.16;
       this.mazeEnd.y = game.config.height / 9.172;
       console.log("86-65"); //only mirror and phones
-    } else if (health <= 64 && health >= 35) {
+    } else if (phaseCount == 3) {
       this.background.alpha = 0.69;
       this.background2.alpha = 0.43;
       this.background.tintBottomLeft = 0x0FFFFF;
@@ -369,22 +369,22 @@ class Maze extends Phaser.Scene {
       this.randomMirror = Math.floor(Math.random() * 4); //randomly decide which set of mirror story to paste
       this.randomPhone = Math.floor(Math.random() * 2); //randomly decide which set of phones story to paste
 //////////////////These apply for the write stuff function^
-if (this.holder == 0) {
-    if (this.random == 0) {
-      this.mirror.setTexture("mirror");
-      this.mirror2.setTexture("mirror");
-      this.isMirror = true;
-      this.holder = 1;
-      console.log(this.random + " is mirror");
-    } //end set mirror
-    else if (this.random == 1) {
-      this.mirror.setTexture("phone");
-      this.mirror2.setTexture("phone");
-      this.isMirror = false;
-      this.holder = 1;
-      console.log(this.random + " is phone");
-    } //end set phone
-  } //end holder so this only happens once
+      if (this.holder == 0) {
+          if (this.random == 0) {
+            this.mirror.setTexture("mirror");
+            this.mirror2.setTexture("mirror");
+            this.isMirror = true;
+            this.holder = 1;
+            console.log(this.random + " is mirror");
+          } //end set mirror
+          else if (this.random == 1) {
+            this.mirror.setTexture("phone");
+            this.mirror2.setTexture("phone");
+            this.isMirror = false;
+            this.holder = 1;
+            console.log(this.random + " is phone");
+          } //end set phone
+      } //end holder so this only happens once
       this.player.x = game.config.width / 3.657;
       this.player.y = game.config.height / 8.372;
       this.markMn.x = game.config.width / 2.233;
