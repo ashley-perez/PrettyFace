@@ -23,6 +23,7 @@ let config = {
 let game = new Phaser.Game(config);
 let phaseCount = 1;
 let narrCount = 0;
+let sceneCount = 1;
 let health;
 var music;
 var scary_music;

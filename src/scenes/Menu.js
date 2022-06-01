@@ -16,6 +16,7 @@ class Menu extends Phaser.Scene {
         phaseCount = 1;
         music = this.sound.add('bgMusic', {volume: 0.8});  // add music background
         scary_music = this.sound.add('scary_bgMusic', {volume: 0});  // add scary music background
+        health = 100;
 
         let title1Config = {
             fontFamily: 'Normal',
