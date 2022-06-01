@@ -32,7 +32,7 @@ class Broken extends Phaser.Scene {
                 suffix: '',
                 zeroPad: 1  // number of digits of the frame name ex: "sprite2"
             }),
-            frameRate: 3,
+            frameRate: 4,
             repeat: -1,
         });
         this.finalScene = this.physics.add.sprite(config.width/2, config.height/2, 'brokenBg', 0);
@@ -74,9 +74,18 @@ class Broken extends Phaser.Scene {
         this.phone10.anims.play('phone', true);
         this.phone11.anims.play('phone', true);
         this.phone12.anims.play('phone', true);
+
+        this.timer = 0;
     }
 
     update() {
+        this.timer += 0.01;
+        console.log(this.timer);
+
+        // go to credit scene
+        if (this.timer >= 6) {
+            this.scene.start('credits');
+        }
 
     }
 }

@@ -32,4 +32,4 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 // keys we will be using
-let keyS, keyRIGHT, keyLEFT, keyUP, keyDOWN, keyR;
+let keyS, keyRIGHT, keyLEFT, keyUP, keyDOWN, keyR, keyM;
