@@ -64,7 +64,7 @@ class Maze extends Phaser.Scene {
     );
 
     this.load.image("color_bg", "./assets/gameBG.png");
-    this.load.image("black_bg", "./assets/gameBG2.png");
+    this.load.image("black_bg", "./assets/gameBg5.png");
     this.load.image("scary_bg","./assets/finalScene1.png");
     this.load.image("scary_bg2","./assets/finalScene2.png");
   }
@@ -689,7 +689,7 @@ if (this.holder == 0) {
       }//end if picked phones
     } //end 86 - 65
     else if (health >= 35 && health <= 64) {
-      
+
       if (this.isMirror == true) {
         if (this.randomMirror == 0) {
             this.typewriteText(this.wordArray1[this.index], this.testBox, 40);
@@ -854,7 +854,7 @@ if (this.holder == 0) {
         object.y = game.config.height / 1.29;
         this.timer = 400;
         this.timer3 = 0.9;
-        
+
       } else if (this.index == 2) {
         object.x = config.width / -100;
         object.y = config.height / -100;

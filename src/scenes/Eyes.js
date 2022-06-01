@@ -5,6 +5,7 @@ class Eyes extends Phaser.Scene {
 
     preload() {
         this.load.audio('eyesMusic', './assets/eyes.wav');
+        this.load.audio('score_sound', './assets/score_sound.mp3');
         this.load.audio('ouch', './assets/ouch.mp3');
         this.load.audio('scream', './assets/scream.mp3');
         this.load.image('heartNormal', './assets/heart.png');
@@ -13,7 +14,11 @@ class Eyes extends Phaser.Scene {
         this.load.image('eye4', './assets/eyeP4.png');
         this.load.atlas('eyeInstruction', './assets/instructEyes.png', './assets/instructEyes.json');
         this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
-
+        this.load.image('gameBg1', "./assets/gameBg1.png");
+        this.load.image('gameBg2', "./assets/gameBg2.png");
+        this.load.image('gameBg3', "./assets/gameBg3.png");
+        this.load.image('gameBg4', "./assets/gameBg4.png");
+        this.load.image('gameBg5', "./assets/gameBg5.png");
     }
 
     create() {
@@ -21,18 +26,11 @@ class Eyes extends Phaser.Scene {
         scoreSound.play();
         scary_music.setVolume(0.8);
         music.setVolume(0);
+
         this.phase = 0;
 
         // movement this.cursors
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
-
-        if(this.phase >= 4) {
-            this.eyePlayer.setTexture("heartSad");
-        }
-        // else {
-        //     this.player = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartSad').setScale(0.7);
-        // }
 
         this.instruction = this.physics.add.sprite(config.width/2, config.height/30, 'eyeInstruction', 0).setScale(2).setDepth(1);
         this.anims.create({
@@ -65,7 +63,9 @@ class Eyes extends Phaser.Scene {
         this.keyboardInstruction2 = this.physics.add.sprite(config.width/1.14, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
 
         if (health >= 87)  {    // phase 1
-            this.phase++;
+            this.phase = 0;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg1').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye2');
@@ -111,7 +111,10 @@ class Eyes extends Phaser.Scene {
         } //end if
 
         else if (health >= 65 && health <= 86)  {   // phase 2
-            this.phase++;
+            this.phase = 1;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg2').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
+
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye2');
@@ -164,7 +167,9 @@ class Eyes extends Phaser.Scene {
         } //end if
 
         else if (health >= 35 && health <= 64)  {   // phase 3
-            this.phase++;
+            this.phase = 2;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg3').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye2');
             this.eye2 = this.physics.add.sprite(950,800,'eye4');
@@ -223,7 +228,9 @@ class Eyes extends Phaser.Scene {
             this.timer2 = 0;
         } //end if
         else if (health >= 10 && health <= 34)  {   // phase 4
-            this.phase+=4;
+            this.phase = 3;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg4').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartSad');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye4');
             this.eye2 = this.physics.add.sprite(950,800,'eye4');
@@ -289,7 +296,9 @@ class Eyes extends Phaser.Scene {
             this.timer2 = 0;
         } //end if
         else if (health >= 1 && health <= 9)  {   // phase 5
-            this.phase++;
+            this.phase = 4;
+            this.add.tileSprite(0, 0, 1280, 720, 'gameBg5').setOrigin(0, 0).setDepth(0);
+            this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartSad');
             // create eyes
             this.eye = this.physics.add.sprite(0,-100,'eye4');
             this.eye2 = this.physics.add.sprite(950,800,'eye4');
@@ -354,10 +363,10 @@ class Eyes extends Phaser.Scene {
             this.timer = 0;
             this.timer2 = 0;
         } //end if
+        // add bg
     }
 
     update() {
-        
         this.timer += 0.01;
         this.timer2 += 0.01;
 
@@ -369,7 +378,7 @@ class Eyes extends Phaser.Scene {
             this.keyboardInstruction.alpha=0;
             this.keyboardInstruction2.alpha=0;
         }
-        if (this.phase == 1) {
+        if (this.phase == 0) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 90);
@@ -413,7 +422,7 @@ class Eyes extends Phaser.Scene {
                 }
             }
         }
-        else if (this.phase == 2) {
+        else if (this.phase == 1) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 100);
@@ -442,22 +451,24 @@ class Eyes extends Phaser.Scene {
             }
             // switch screen
             if (this.timer >= 9) {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("maze");
-                    sceneCount++;
-                    this.scene.start("mazeGame");
-                  }
-            }
-            else {
-                this.scene.start("narrOne")
+                if(sceneCount<2){
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        console.log("defend");
+                        sceneCount++;
+                        this.scene.start("blockingGame");
+                      } else if (Math.floor(Math.random() * 2) == 1) {
+                        console.log("maze");
+                        sceneCount++;
+                        this.scene.start("mazeGame");
+                      }
+                }
+                else {
+                    this.scene.start("narrOne")
+                }
             }
         }
 
-        else if (this.phase == 3) {
+        else if (this.phase == 2) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 110);
@@ -483,8 +494,7 @@ class Eyes extends Phaser.Scene {
             else if (this.cursors.down.isDown)
             {
                 this.eyePlayer.setVelocityY(150);
-            }
-            // switch screen
+            }// switch screen
             if (this.timer >= 9) {
                 if(sceneCount<2){
                     if (Math.floor(Math.random() * 2) == 0) {
@@ -502,7 +512,7 @@ class Eyes extends Phaser.Scene {
                 }
             }
         }
-        else if (this.phase == 4) {
+        else if (this.phase == 3) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 115);
@@ -532,21 +542,23 @@ class Eyes extends Phaser.Scene {
             }
             // switch screen
             if (this.timer >= 9) {
-                if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("defend");
-                    sceneCount++;
-                    this.scene.start("blockingGame");
-                  } else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("maze");
-                    sceneCount++;
-                    this.scene.start("mazeGame");
-                  }
-            }
-            else {
-                this.scene.start("narrOne")
+                if(sceneCount<2){
+                    if (Math.floor(Math.random() * 2) == 0) {
+                        console.log("defend");
+                        sceneCount++;
+                        this.scene.start("blockingGame");
+                      } else if (Math.floor(Math.random() * 2) == 1) {
+                        console.log("maze");
+                        sceneCount++;
+                        this.scene.start("mazeGame");
+                      }
+                }
+                else {
+                    this.scene.start("narrOne")
+                }
             }
         }
-        else if (this.phase == 5) {
+        else if (this.phase == 4) {
             this.eyePlayer.setVelocity(0);
 
             this.eyeFollow(this.eye, this.eyePlayer, 120);

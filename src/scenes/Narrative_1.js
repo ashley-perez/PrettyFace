@@ -34,11 +34,11 @@ class Cutscene extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        this.phase1Text = [ "They really like me. ", "*notifications popping* ", "thank you... "];
-        this.phase2Text = [ "placeholder -- Phase 2 / health stage 2 "];
+        this.phase1Text = [ "They really like me. ", "*notifications popping* ", "I'm so happy. Thank you... "];
+        this.phase2Text = [ "What's wrong? ", "Hmmmmm... ", "Do they not like that filter? ", "...", "Whatever! "];
         this.phase3Text = [ "FUCK YOU [username] ", "Who fucking says that?! ", "You don't know what it's like... ", "... ", "This is fine. I'm fine. "];
         this.phase4Text = [ "...How could they say those things about me? ", "... ", "is this really what I look like? ", "I- ", "maybe they're right "];
-        this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "... ", "This was supposed to make me happy... I was happy. "];
+        this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "... ", "This was supposed to make me happy... "];
 
         this.index = 0;
 
@@ -57,7 +57,7 @@ class Cutscene extends Phaser.Scene {
         this.continuePrompt.visible = false;
 
         this.cursors =  this.input.keyboard.createCursorKeys();
-        
+
         this.complete = false;
 
         this.typewriteText("...", this.textbox, 300);
@@ -66,7 +66,6 @@ class Cutscene extends Phaser.Scene {
     }
 
     update() {
-        
         // check for spacebar press to advance text
         // will only advance text when previous writing is done
         if(Phaser.Input.Keyboard.JustDown(this.cursors.space) && textDone) {
@@ -115,7 +114,7 @@ class Cutscene extends Phaser.Scene {
                     return;
                 }
                 this.typewriteText(wrappedText, this.textbox, 50);
-            } 
+            }
             this.index += 1;
         }
 
@@ -123,7 +122,7 @@ class Cutscene extends Phaser.Scene {
         if (this.complete == true && health >= 0) {
             this.timer += 0.01;
         }
-        if (this.timer >= 3) {
+        if (this.timer >= 1) {
             health -= 9;
             narrCount++;
             sceneCount = 0;
@@ -139,7 +138,7 @@ class Cutscene extends Phaser.Scene {
     typewriteText(text, textbox, speed) {
         const length = text.length; // how many times the loop should repeat (based on sentence length)
         let i = 0;
-        //textDone = false; 
+        //textDone = false;
         this.time.addEvent({
             callback: () => {
                 textbox.text += text[i]
@@ -156,5 +155,5 @@ class Cutscene extends Phaser.Scene {
             delay: speed // typing speed, big numbers = slower text, small = faster
         });
     }
-    
+
 }
