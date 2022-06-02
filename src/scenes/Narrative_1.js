@@ -120,13 +120,19 @@ class Cutscene extends Phaser.Scene {
             this.index += 1;
         }
 
+        
+        console.log("this is this.complete " + this.complete);
+        console.log("hellllloooo " + this.timer);
         // done with narration, go to next scene
-        if (this.complete == true && health >= 0) {
+        // health >= 0
+        if (this.complete == true) {
             this.timer += 0.1;
+            console.log('inside update timer if')
+            console.log(this.timer);
         }
 
         if (this.timer >= 3 && lastPhase != true) {
-            health -= 12;
+            health -= 9;
             phaseCount++;
             sceneCount = 0;
             console.log("scene Count = " + sceneCount);
