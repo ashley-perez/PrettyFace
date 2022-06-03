@@ -75,14 +75,14 @@ class Menu extends Phaser.Scene {
             phase5_music.setLoop(true);
             phase5_music.play();
 
-            // this.scene.start("filterGame");
+            this.scene.start("filterGame");
             console.log(phaseCount);
             // this.scene.start("commentGame");
             // this.scene.start("mazeGame");
             // this.scene.start("blockingGame");
             // this.scene.start("eyesGame");
             // this.scene.start("restaurantGame");
-            this.scene.start('narrOne');
+            // this.scene.start('narrOne');
             // this.scene.start("endingScene");
             // this.scene.start('gameOver');
             // this.scene.start('credits');
