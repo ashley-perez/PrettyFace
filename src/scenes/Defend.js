@@ -292,8 +292,12 @@ class Defend extends Phaser.Scene {
             this.battery.setTexture("battery4");
             console.log("10+");
           }
-          else {
+          else if (health <= 9 && health >= 1) {
             this.battery.setTexture("battery5");
+            console.log("5+");
+          }
+          else {
+            this.battery.setTexture("battery6");
             console.log("1+");
           }
         this.timer += 0.01;

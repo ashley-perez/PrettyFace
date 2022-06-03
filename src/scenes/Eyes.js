@@ -399,8 +399,12 @@ class Eyes extends Phaser.Scene {
             this.battery.setTexture("battery4");
             console.log("10+");
           }
-          else {
+          else if (health <= 9 && health >= 1) {
             this.battery.setTexture("battery5");
+            console.log("5+");
+          }
+          else {
+            this.battery.setTexture("battery6");
             console.log("1+");
           }
         this.timer += 0.01;
@@ -425,20 +429,20 @@ class Eyes extends Phaser.Scene {
 
             if (this.cursors.left.isDown)
             {
-                this.eyePlayer.setVelocityX(-170);
+                this.eyePlayer.setVelocityX(-165);
             }
             else if (this.cursors.right.isDown)
             {
-                this.eyePlayer.setVelocityX(170);
+                this.eyePlayer.setVelocityX(165);
             }
 
             if (this.cursors.up.isDown)
             {
-                this.eyePlayer.setVelocityY(-170);
+                this.eyePlayer.setVelocityY(-165);
             }
             else if (this.cursors.down.isDown)
             {
-                this.eyePlayer.setVelocityY(170);
+                this.eyePlayer.setVelocityY(165);
             }
             // switch screen
             if (this.timer >= 9) {
