@@ -38,7 +38,7 @@ class Credits extends Phaser.Scene {
       let evenSmaller = {
         fontFamily: 'Normal',
         fontSize: '50px',
-        color: '#f0a8ba',
+        color: '#ff99b9',
         align: 'center',
         padding: {
             top: 5,
@@ -50,10 +50,11 @@ class Credits extends Phaser.Scene {
 
       // text boxes
       this.credits = this.add.text(450, 60, 'CREDITS', normalWriting);
-      this.one = this.add.text(85, 250, 'Andrew Dresel-Kurtz    Art & Programming', smaller);
-      this.two = this.add.text(75, 300, '             Ashley Perez    Programming', smaller);
-      this.three=this.add.text(85, 350, '                 Jane Tran    Art & Programming', smaller);
-      this.menuPrompt = this.add.text(435, 500, 'Press M for Menu', evenSmaller);
+      this.one = this.add.text(85, 270, 'Andrew Dresel-Kurtz    Art & Programming', smaller);
+      this.two = this.add.text(75, 320, '             Ashley Perez    Programming', smaller);
+      this.three=this.add.text(85, 370, '                 Jane Tran    Art & Programming', smaller);
+      this.add.rectangle(644, 649, 480, 85, 0x5c4ae4);
+      this.menuPrompt = this.add.text(440, 620, 'Press M for Menu', evenSmaller);
 
       // key
       keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
