@@ -47,7 +47,7 @@ class Broken extends Phaser.Scene {
         }
 
         this.cursors =  this.input.keyboard.createCursorKeys();
-        this.textArray = ["This has to be a bad dream. ", "... ", "That's it! ", "This is  j u s t  a dream. This isn't happening.", "All I need to do is wake myself up... ", "... "];
+        this.textArray = ["This has to be a bad dream. ", "... ", "That's it! ", "This is  j u s t  a dream. This isn't happening.","hahaha ", "All I need to do is wake myself up... ", "... "];
         this.index = 0;
 
         this.UIbox = this.add.sprite(650, 150, 'dialogbox');
