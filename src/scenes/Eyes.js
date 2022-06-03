@@ -14,11 +14,13 @@ class Eyes extends Phaser.Scene {
         this.load.image('eye4', './assets/eyeP4.png');
         this.load.atlas('eyeInstruction', './assets/instructEyes.png', './assets/instructEyes.json');
         this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
+        // game backgrounds
         this.load.image('gameBg1', "./assets/gameBg1.png");
         this.load.image('gameBg2', "./assets/gameBg2.png");
         this.load.image('gameBg3', "./assets/gameBg3.png");
         this.load.image('gameBg4', "./assets/gameBg4.png");
         this.load.image('gameBg5', "./assets/gameBg5.png");
+        // health stuff
         this.load.image("battery1","./assets/Health 100Full Battery.png");
         this.load.image("battery2","./assets/Health 90.png");
         this.load.image("battery3","./assets/Health 70.png");
