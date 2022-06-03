@@ -14,7 +14,7 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        phaseCount = 5;
+        phaseCount = 1;
         music = this.sound.add('bgMusic', {volume: 0.8});  // add music background
         scary_music = this.sound.add('scary_bgMusic', {volume: 0});  // add scary music background
         phase5_music = this.sound.add('phase5_bgMusic', {volume: 0});  // add scary music background
