@@ -58,7 +58,7 @@ class Broken extends Phaser.Scene {
                 suffix: '',
                 zeroPad: 1  // number of digits of the frame name ex: "sprite2"
             }),
-            frameRate: 7,
+            frameRate: 16,
             repeat: -1,
         });
         this.finalScene = this.physics.add.sprite(config.width/2, config.height/2, 'brokenBg', 0);
