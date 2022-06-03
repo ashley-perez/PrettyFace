@@ -79,7 +79,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            // phaseCount = 5;
+            // phaseCount = 4;
             this.sound.play('start');
 
             music.setLoop(true);

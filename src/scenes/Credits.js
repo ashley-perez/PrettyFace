@@ -68,6 +68,7 @@ class Credits extends Phaser.Scene {
          // get all music to stop so it doesn't keep playing when you restart
          music.stop();
          scary_music.stop();
+         deadMusic.stop();
          this.scene.start('menuScene')
       }
 

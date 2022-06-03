@@ -167,6 +167,7 @@ class Broken extends Phaser.Scene {
 
         // go to credit scene
         if (this.sceneTimer >= 5) {
+            deadMusic.stop();
             this.scene.start('credits');
         }
 

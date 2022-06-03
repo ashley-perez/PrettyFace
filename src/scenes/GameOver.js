@@ -57,6 +57,7 @@ class GameOver extends Phaser.Scene {
         // restart/replay the game
         if (Phaser.Input.Keyboard.JustDown(keyR)) {
             // get all music to stop so it doesn't keep playing when you restart
+            deadMusic.stop();
             music.stop();
             scary_music.stop();
             this.scene.start('menuScene')
