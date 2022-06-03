@@ -28,42 +28,32 @@ class Defend extends Phaser.Scene {
     }
 
     create() {
-        
         if(phaseCount<=3){
             var scoreSound = this.sound.add('score_sound', {volume: 0.5});
-                scoreSound.play();
-                scary_music.setVolume(0.8);
+            scoreSound.play();
+            scary_music.setVolume(0.8);
             music.setVolume(0);
             phase5_music.setVolume(0);
-            }
-            else if(phaseCount==4){
-              var scoreSound = this.sound.add('score_sound', {volume: 0.3});
-                scoreSound.play();
-                scary_music.setVolume(0.8);
+        }
+        else if(phaseCount==4){
+            var scoreSound = this.sound.add('score_sound', {volume: 0.3});
+            scoreSound.play();
+            scary_music.setVolume(0.8);
             music.setVolume(0);
             phase5_music.setVolume(0);
-            }
-            else if(phaseCount == 5){
-              scary_music.setVolume(0.5);
+        }
+        else if(phaseCount == 5){
+            scary_music.setVolume(0.5);
             music.setVolume(0);
             phase5_music.setVolume(0.7);
-            }
+        }
 
-        this.background = this.physics.add
-      .sprite(config.width, config.height, "color_bg", 0)
-      .setScale(2)
-      .setDepth(-1); //full color
-    this.background2 = this.physics.add
-      .sprite(config.width, config.height, "black_bg", 0)
-      .setScale(2)
-      .setDepth(-2); //dark scary
-      this.background3 = this.physics.add
-      .sprite(config.width, config.height, "scary_bg", 0)
-      .setScale(2)
-      .setDepth(-3); //dark scary
-        // scary_music.setVolume(0.8);
-        // music.setVolume(0);
-        // phase5_music.setVolume(0);
+        this.shieldNoise = this.sound.add('defend', {volume: 2});
+
+        this.background = this.physics.add.sprite(config.width, config.height, "color_bg", 0).setScale(2).setDepth(-1); //full color
+        this.background2 = this.physics.add.sprite(config.width, config.height, "black_bg", 0).setScale(2).setDepth(-2); //dark scary
+        this.background3 = this.physics.add.sprite(config.width, config.height, "scary_bg", 0).setScale(2).setDepth(-3); //dark scary
+        
 
         this.anims.create({
             key: 'defendInfo',
@@ -186,7 +176,7 @@ class Defend extends Phaser.Scene {
         }
         else if (phaseCount == 3) {
             this.background.alpha = 0.69;
-      this.background2.alpha = 0.43;
+            this.background2.alpha = 0.43;
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(100, 60).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -294,9 +284,6 @@ class Defend extends Phaser.Scene {
     }
 
     update() {
-        if(health <= 0){
-            this.scene.start("gameOver");
-        }
         console.log(health);
         this.battery.x= this.block.x+10;
         this.battery.y=this.block.y-50;
@@ -437,6 +424,9 @@ class Defend extends Phaser.Scene {
         projectile.y = -100
         this.shooting = false;
         this.coolDown = 0;
+
+        this.shieldNoise.play();
+        
     }
 
     hitObject2 (projectile, player) {
@@ -479,6 +469,7 @@ class Defend extends Phaser.Scene {
         projectile.x = -100;
         projectile.y = -100
         this.shootingTwo = false;
+        this.shieldNoise.play();
     }
 
 }
