@@ -28,12 +28,25 @@ class Eyes extends Phaser.Scene {
     }
 
     create() {
-        var scoreSound = this.sound.add('score_sound', {volume: 0.5});
-        scoreSound.play();
-        
-        // scary_music.setVolume(0.8);
-        // music.setVolume(0);
-        // phase5_music.setVolume(0);
+        if(phaseCount<=3){
+            var scoreSound = this.sound.add('score_sound', {volume: 0.5});
+                scoreSound.play();
+                scary_music.setVolume(0.8);
+            music.setVolume(0);
+            phase5_music.setVolume(0);
+            }
+            else if(phaseCount==4){
+              var scoreSound = this.sound.add('score_sound', {volume: 0.3});
+                scoreSound.play();
+                scary_music.setVolume(0.8);
+            music.setVolume(0);
+            phase5_music.setVolume(0);
+            }
+            else if(phaseCount == 5){
+              scary_music.setVolume(0.5);
+            music.setVolume(0);
+            phase5_music.setVolume(0.7);
+            }
 
         this.phase = 0;
 

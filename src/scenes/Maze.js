@@ -7,6 +7,8 @@ class Maze extends Phaser.Scene {
     this.load.audio('notifComment', './assets/comment.wav');
     this.load.audio("hm", "./assets/hm.mp3");
     this.load.audio("hmm", "./assets/hmm.mp3");
+    this.load.audio("hurt", "./assets/hurt.mp3");
+
 
     this.load.image("heart", "./assets/heart.png");
     this.load.image("sad_heart","./assets/heartFetal.png");
@@ -70,11 +72,26 @@ class Maze extends Phaser.Scene {
   }
 
   create() {
+    if(phaseCount<=3){
     var scoreSound = this.sound.add('score_sound', {volume: 0.5});
         scoreSound.play();
-    // scary_music.setVolume(0.8);
-    // music.setVolume(0);
-    // phase5_music.setVolume(0);
+        scary_music.setVolume(0.8);
+    music.setVolume(0);
+    phase5_music.setVolume(0);
+    }
+    else if(phaseCount==4){
+      var scoreSound = this.sound.add('score_sound', {volume: 0.3});
+        scoreSound.play();
+        scary_music.setVolume(0.8);
+    music.setVolume(0);
+    phase5_music.setVolume(0);
+    }
+    else if(phaseCount == 5){
+      scary_music.setVolume(0.5);
+    music.setVolume(0);
+    phase5_music.setVolume(0.7);
+    }
+    
     //100-85 Nothing
     //86-65 Only mirrors and phones
     //Mirrors1-4 randomized and Phones 1-4 randomized.
@@ -462,28 +479,28 @@ class Maze extends Phaser.Scene {
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
-            this.sound.play('notifComment');
+            this.sound.play('hurt');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           } else if (this.cursors.right.isDown) {
             this.player.x = this.player.x - 20;
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
-            this.sound.play('notifComment');
+            this.sound.play('hurt');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           } else if (this.cursors.up.isDown) {
             this.player.y = this.player.y + 20;
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
-            this.sound.play('notifComment');
+            this.sound.play('hurt');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           } else if (this.cursors.down.isDown) {
             this.player.y = this.player.y - 20;
             this.timer3 = 0.5;
             this.cameras.main.flash(200);
             this.cameras.main.shake(200);
-            this.sound.play('notifComment');
+            this.sound.play('hurt');
             // this.owwBox = this.add.text(this.player.x, (this.player.y+100), '', {color: '#FFFFFF'}).setWordWrapWidth(500); // empty '' needs to be there!!
           }
         },

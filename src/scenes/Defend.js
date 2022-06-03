@@ -22,12 +22,32 @@ class Defend extends Phaser.Scene {
         this.load.atlas('enemy', './assets/badPhone.png', './assets/bad_phone.json');
         this.load.atlas('defendInstruction', './assets/instructDefend.png', './assets/instructDefend.json');
         this.load.atlas('keyboardClick', './assets/keyboardClick.png','./assets/keyboard_click.json');
+        this.load.audio("defend", "./assets/block.mp3");
+        this.load.audio("hurt", "./assets/hurt.mp3");
 
     }
 
     create() {
-        var scoreSound = this.sound.add('score_sound', {volume: 0.5});
-        scoreSound.play();
+        if(phaseCount<=3){
+            var scoreSound = this.sound.add('score_sound', {volume: 0.5});
+                scoreSound.play();
+                scary_music.setVolume(0.8);
+            music.setVolume(0);
+            phase5_music.setVolume(0);
+            }
+            else if(phaseCount==4){
+              var scoreSound = this.sound.add('score_sound', {volume: 0.3});
+                scoreSound.play();
+                scary_music.setVolume(0.8);
+            music.setVolume(0);
+            phase5_music.setVolume(0);
+            }
+            else if(phaseCount == 5){
+              scary_music.setVolume(0.5);
+            music.setVolume(0);
+            phase5_music.setVolume(0.7);
+            }
+
         this.background = this.physics.add
       .sprite(config.width, config.height, "color_bg", 0)
       .setScale(2)
