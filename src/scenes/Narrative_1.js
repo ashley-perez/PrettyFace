@@ -8,9 +8,36 @@ class Cutscene extends Phaser.Scene {
 
     preload() {
         this.load.image('dialogbox', './assets/dialogbox.png');
+        // player
+        this.load.image('player1', './assets/noFilterFace1.png');
+        this.load.image('player2', './assets/noFilterFace2.png');
+        this.load.image('player3', './assets/noFilterFace3.png');
+        this.load.image('player4', './assets/noFilterFace4.png');
+        this.load.image('player5', './assets/noFilterFace5.png');
     }
 
     create() {
+        this.back = this.physics.add.sprite(config.width/2, config.height/2, 'player1', 0).setScale(2);
+        if(phaseCount == 1){
+            this.back.setTexture('player1');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 2){
+            this.back.setTexture('player2');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 3){
+            this.back.setTexture('player3');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 4){
+            this.back.setTexture('player4');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 5){
+            this.back.setTexture('player5');
+            this.back.alpha = 0.2;
+        }
         let distortedWriting = {
             fontFamily: 'Scribbles',
             fontSize: '32px',
