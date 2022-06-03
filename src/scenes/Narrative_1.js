@@ -131,14 +131,14 @@ class Cutscene extends Phaser.Scene {
             console.log(this.timer);
         }
 
-        if (this.timer >= 3 && lastPhase != true) {
+        if (this.timer >= 3 && phaseCount<=4) {
             health -= 9;
             phaseCount++;
             sceneCount = 0;
             console.log("scene Count = " + sceneCount);
             this.scene.start('filterGame');
         }
-        else if (this.timer >= 3 && lastPhase == true) {
+        else if (this.timer >= 3 && phaseCount==5) {
             console.log("end scene is about to start");
             this.scene.start("endingScene");
         }

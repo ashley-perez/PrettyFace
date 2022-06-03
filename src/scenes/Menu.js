@@ -8,6 +8,7 @@ class Menu extends Phaser.Scene {
         //this.load.image('mouse', './assets/mouse.png');
         this.load.audio('bgMusic', './assets/bg_music2.mp3');
         this.load.audio('scary_bgMusic', './assets/bg_music2(darker).mp3');
+        this.load.audio('phase5_bgMusic', './assets/bg_music3.mp3');
         this.load.audio('start', './assets/kiss.wav');
         this.load.image('bg', './assets/bg_menu.png');
     }
@@ -16,6 +17,7 @@ class Menu extends Phaser.Scene {
         phaseCount = 1;
         music = this.sound.add('bgMusic', {volume: 0.8});  // add music background
         scary_music = this.sound.add('scary_bgMusic', {volume: 0});  // add scary music background
+        phase5_music = this.sound.add('phase5_bgMusic', {volume: 0});  // add scary music background
         health = 100;
 
         let title1Config = {
@@ -63,14 +65,18 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
+            phaseCount = 4;
             this.sound.play('start');
 
             music.setLoop(true);
             music.play();
             scary_music.setLoop(true);
             scary_music.play();
+            phase5_music.setLoop(true);
+            phase5_music.play();
 
             this.scene.start("filterGame");
+            console.log(phaseCount);
             // this.scene.start("commentGame");
             // this.scene.start("mazeGame");
             // this.scene.start("blockingGame");

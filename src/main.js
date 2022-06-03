@@ -27,6 +27,7 @@ let narrCount = 0;
 let sceneCount = 1;
 var music;
 var scary_music;
+var phase5_music;
 
 // set border
 let borderUISize = game.config.height / 15;

@@ -24,8 +24,9 @@ class Eyes extends Phaser.Scene {
     create() {
         var scoreSound = this.sound.add('score_sound', {volume: 0.5});
         scoreSound.play();
-        scary_music.setVolume(0.8);
-        music.setVolume(0);
+        // scary_music.setVolume(0.8);
+        // music.setVolume(0);
+        // phase5_music.setVolume(0);
 
         this.phase = 0;
 
@@ -295,7 +296,7 @@ class Eyes extends Phaser.Scene {
             this.timer = 0;
             this.timer2 = 0;
         } //end if
-        else if (health >= 1 && health <= 9)  {   // phase 5
+        else if (phaseCount == 5)  {   // phase 5
             this.phase = 4;
             this.add.tileSprite(0, 0, 1280, 720, 'gameBg5').setOrigin(0, 0).setDepth(0);
             this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartSad');

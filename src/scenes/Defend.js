@@ -24,8 +24,9 @@ class Defend extends Phaser.Scene {
     create() {
         var scoreSound = this.sound.add('score_sound', {volume: 0.5});
         scoreSound.play();
-        scary_music.setVolume(0.8);
-        music.setVolume(0);
+        // scary_music.setVolume(0.8);
+        // music.setVolume(0);
+        // phase5_music.setVolume(0);
 
         this.anims.create({
             key: 'defendInfo',

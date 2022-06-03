@@ -72,8 +72,9 @@ class Maze extends Phaser.Scene {
   create() {
     var scoreSound = this.sound.add('score_sound', {volume: 0.5});
         scoreSound.play();
-    scary_music.setVolume(0.8);
-    music.setVolume(0);
+    // scary_music.setVolume(0.8);
+    // music.setVolume(0);
+    // phase5_music.setVolume(0);
     //100-85 Nothing
     //86-65 Only mirrors and phones
     //Mirrors1-4 randomized and Phones 1-4 randomized.
@@ -122,11 +123,19 @@ class Maze extends Phaser.Scene {
         "who could love\nme now?",
         "nobody...",
       ]; //34-10 mirror 5 and 6
- }//arrays
+      this.wordArray9 = [
+        "ł ĐØ₦'₮ ɆVɆ₦ ₴ɆɆ ₥Ɏ₴ɆⱠ₣",
 
-    this.index = 0;
-    this.random = 0;
-    this.holder = 0;
+        "₥Ɏ ฿ØĐɎ ⱠØØ₭₴ ₩ⱤØ₦₲",
+
+        "₩Ⱨ₳₮ ł₴ ₥Ɏ ฿ØĐɎ?",
+      ];//phase 5
+ }//arrays
+ 
+
+    this.index = 0;//array stuff
+    this.random = 0;//mirror or phone
+    this.holder = 0;//temp variable to pick a phone or mirror
     this.isMirror = false;
     // if(health >=95) {
     this.anims.create({
@@ -324,9 +333,10 @@ class Maze extends Phaser.Scene {
       this.markMn.x = -10;
       this.markMn.y = -20;
 
-      console.log("87-100"); //no mirrors or phones or texts
+      console.log("phase 1"); //no mirrors or phones or texts
     } //no damage loss and no text or mirrors
     else if (phaseCount == 2) {
+      this.physics.add.collider(this.player, this.maze);
       this.background.alpha = 0.86;
       this.background2.alpha = 0.66;
       this.background.tintBottomLeft = 0x0FFFFF;
@@ -335,11 +345,7 @@ class Maze extends Phaser.Scene {
       this.randomMirror = Math.floor(Math.random() * 4); //randomly decide which set of mirror story to paste
       this.randomPhone = Math.floor(Math.random() * 2); //randomly decide which set of phones story to paste
 //////////////////These apply for the write stuff function^
-      if (health >= 77) {
-        this.physics.add.collider(this.player, this.maze);
-      }
-      // this.markMn.x=-10;
-      // this.markMn.y=-20;
+
       if (this.holder == 0) {
         if (this.random == 0) {
           this.mirror.setTexture("mirror");
@@ -359,8 +365,9 @@ class Maze extends Phaser.Scene {
 
       this.mazeEnd.x = game.config.width / 4.16;
       this.mazeEnd.y = game.config.height / 9.172;
-      console.log("86-65"); //only mirror and phones
-    } else if (phaseCount == 3) {
+      console.log("phase 2"); //only mirror and phones
+    }
+    else if (phaseCount == 3) {
       this.background.alpha = 0.69;
       this.background2.alpha = 0.43;
       this.background.tintBottomLeft = 0x0FFFFF;
@@ -395,8 +402,9 @@ class Maze extends Phaser.Scene {
       // this.markMn.y=-20;
       this.mazeEnd.x = game.config.width / 1.92;
       this.mazeEnd.y = game.config.height / 1.6;
-      console.log("64-35");
-    } else if (health <= 34 && health >= 10) {
+      console.log("phase 3");
+    } 
+    else if (phaseCount == 4) {
         this.player.setTexture("sad_heart");
       this.background.alpha = 0.5;
       this.background2.alpha = 0.5;
@@ -414,10 +422,32 @@ class Maze extends Phaser.Scene {
       // this.markMn.y=-20;
       this.mazeEnd.x = game.config.width / 4.122;
       this.mazeEnd.y = game.config.height / 1.31;
-      console.log("34-10");
-    }
+      console.log("phase 4");
+    }//end phase 4
+    else if (phaseCount == 5) {
+      this.player.setTexture("sad_heart");
+    this.background.alpha = 0.5;
+    this.background2.alpha = 0.6;
+    this.background3.setTexture("scary_bg2");
+    this.background.tintBottomLeft = 0x0FFFFF;
 
-    if (health <= 76) {
+    this.player.x = game.config.width / 1.488;
+    this.player.y = game.config.height / 9.35;
+    this.markMn.x = game.config.width / 1.66;
+    this.markMn.y = game.config.height / 2.17;
+    this.mirror.x = game.config.width / 1.66;
+    this.mirror.y = game.config.height / 2.704;
+    this.mirror.setTexture("mirror(broken)");
+    this.mirror2.setTexture("mirror(broken)");
+
+    // this.markMn.x=-10;
+    // this.markMn.y=-20;
+    this.mazeEnd.x = game.config.width / 4.122;
+    this.mazeEnd.y = game.config.height / 1.31;
+    console.log("phase 5");
+  }//end phase 4
+
+    if (phaseCount >= 3) {
       //so i dont have to copy paste the same code over and over
       this.physics.add.collider(
         this.player,
@@ -547,7 +577,7 @@ class Maze extends Phaser.Scene {
     this.testBox.alpha = 1;
     this.followP = true;
     this.testBox.text = "";
-    if (health <= 86 && health >= 65) {
+    if (phaseCount == 2) {
       // this.typewriteText(this.wordArray1[this.index], this.testBox, 40);
 
       if (this.isMirror == true) {
@@ -688,7 +718,7 @@ class Maze extends Phaser.Scene {
           } //end if mirror 1 and 4 array 6
       }//end if picked phones
     } //end 86 - 65
-    else if (health >= 35 && health <= 64) {
+    else if (phaseCount == 3) {
 
       if (this.isMirror == true) {
         if (this.randomMirror == 0) {
@@ -834,7 +864,7 @@ class Maze extends Phaser.Scene {
           } //end if mirror 1 and 4 array 6
       }//end if picked phones
     } //mehish comments
-    else if (health >= 10 && health <= 34) {
+    else if (phaseCount == 4) {
       if (this.randomMirror == 0) {
         this.typewriteText(this.wordArray7[this.index], this.testBox, 40);
       if (this.index == 0) {
@@ -890,8 +920,36 @@ class Maze extends Phaser.Scene {
     console.log("mirror list "+this.randomMirror);
     } //end if mirror 5 and 6 array 8
     } //not bueno comments
-  }
+    else if (phaseCount == 5) {
+        this.typewriteText(this.wordArray9[this.index], this.testBox, 40);
+      if (this.index == 0) {
+        this.mirror.setTexture("mirror5");
+        this.sound.play("hm");
+        object.x = config.width / 2.542;
+        object.y = config.height / 1.6;
+        this.timer = 200;
+        this.timer3 = 0.9;
+        // this.maze1.setScale(1.3);this.maze2.setScale(1.3);this.maze3.setScale(1.3);this.maze4.setScale(1.3);this.maze6.setScale(1.2);
+        // this.maze7.setScale(1.3);this.maze8.setScale(1.3);this.maze9.setScale(1.3);this.maze10.setScale(1.3);this.maze11.setScale(1.3);this.maze12.setScale(1.3);
+        // this.maze13.setScale(1.3);this.maze14.setScale(1.3);this.maze15.setScale(1.3);this.maze16.setScale(1.3);this.maze17.setScale(1.3);
+      } else if (this.index == 1) {
+        this.mirror2.setTexture("mirror6");
+        this.sound.play("hmm");
+        object.x = game.config.width / 2.077;
+        object.y = game.config.height / 1.29;
+        this.timer = 400;
+        this.timer3 = 0.9;
 
+      } else if (this.index == 2) {
+        object.x = config.width / -100;
+        object.y = config.height / -100;
+        this.holder=0;
+        this.timer = 250;
+      }
+      this.index++;
+    console.log("mirror list "+this.randomMirror);
+    } //end if 
+    } //bad bad phase 5
   typewriteText(text, textbox, speed) {
     console.log("the passed in text: " + text);
     const length = text.length; // how many times the loop should repeat (based on sentence length)

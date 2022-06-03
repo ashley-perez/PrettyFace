@@ -105,12 +105,14 @@ class Filter extends Phaser.Scene {
             this.index = 3;
             scary_music.setVolume(0.8);
             music.setVolume(0);
+            phase5_music.setVolume(0.4);
         }
         else if (phaseCount == 5) {
             this.index = 4;
             this.crackScreen++;
-            scary_music.setVolume(0.9);
+            scary_music.setVolume(0.2);
             music.setVolume(0);
+            phase5_music.setVolume(0.9);
         }
 
         // instruction animation

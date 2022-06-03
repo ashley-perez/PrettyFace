@@ -6,7 +6,7 @@ class Comment extends Phaser.Scene {
   preload() {
     this.load.audio('notifComment', './assets/comment.wav');
     this.load.audio('reply', './assets/reply.wav');
-
+    {
     this.load.image("comment1(phase1)", "./assets/comment1(phase1).png");
     this.load.image("reply1(phase1)(cm1)", "./assets/comment1(phase1)(reply1).png");
     this.load.image("reply2(phase1)(cm1)", "./assets/comment1(phase1)(reply2).png");
@@ -21,7 +21,23 @@ class Comment extends Phaser.Scene {
     this.load.image("reply1(phase1)(cm3)", "./assets/comment3(phase1)(reply1).png");
     this.load.image("reply2(phase1)(cm3)", "./assets/comment3(phase1)(reply2).png");
     this.load.image("reply3(phase1)(cm3)", "./assets/comment3(phase1)(reply3).png");
-
+    }//endPhase 1 comments and replies
+    {
+      this.load.image("comment1(phase2)", "./assets/comment1(phase2).png");
+      this.load.image("reply1(phase2)(cm1)", "./assets/comment1(phase2)(reply1).png");
+      this.load.image("reply2(phase2)(cm1)", "./assets/comment1(phase2)(reply2).png");
+      this.load.image("reply3(phase2)(cm1)", "./assets/comment1(phase2)(reply3).png");
+  
+      this.load.image("comment2(phase2)", "./assets/comment2(phase2).png");
+      this.load.image("reply1(phase2)(cm2)", "./assets/comment2(phase2)(reply1).png");
+      this.load.image("reply2(phase2)(cm2)", "./assets/comment2(phase2)(reply2).png");
+      this.load.image("reply3(phase2)(cm2)", "./assets/comment2(phase2)(reply3).png");
+  
+      this.load.image("comment3(phase2)", "./assets/comment3(phase2).png");
+      this.load.image("reply1(phase2)(cm3)", "./assets/comment3(phase2)(reply1).png");
+      this.load.image("reply2(phase2)(cm3)", "./assets/comment3(phase2)(reply2).png");
+      this.load.image("reply3(phase2)(cm3)", "./assets/comment3(phase2)(reply3).png");
+      }//endPhase 2 comments and replies
 
     this.load.image('crack2', './assets/crack2.png');
 
@@ -90,31 +106,47 @@ class Comment extends Phaser.Scene {
       this.choiceOne = this.physics.add.sprite(config.width/4.266, config.height/6.6055, "one", 0).setInteractive();
       this.choiceTwo = this.physics.add.sprite(config.width/4.266, config.height/3.6, "two", 0).setInteractive();
       this.choiceThree = this.physics.add.sprite(config.width/4.266, config.height/2.474, "three", 0).setInteractive();
-
-
-      // this.selection = Math.floor(Math.selection() * 3);
-      // console.log("selection " +this.selection);
     }//3 different options of comments for most positive
     else if (phaseCount == 2) {
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
-      // this.selection = Math.floor(Math.selection() * 1);
-      // console.log("selection "+this.selection);
+      this.comment1 = this.physics.add.sprite(config.width/1.942, config.height/3.6, "comment1(phase2)", 0);
+      this.comment2 = this.physics.add.sprite(config.width/1.942, config.height/1.9407, "comment2(phase2)", 0);
+      this.comment3 = this.physics.add.sprite(config.width/1.866, config.height/1.32, "comment3(phase2)", 0);
+      this.reply = this.physics.add.sprite(config.width/2.647, config.height/3.7018, "replyIcon", 0);
+      this.choiceOne = this.physics.add.sprite(config.width/4.266, config.height/6.6055, "one", 0).setInteractive();
+      this.choiceTwo = this.physics.add.sprite(config.width/4.266, config.height/3.6, "two", 0).setInteractive();
+      this.choiceThree = this.physics.add.sprite(config.width/4.266, config.height/2.474, "three", 0).setInteractive();
     }
     else if (phaseCount == 3) {
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment2").setOrigin(0, 0);
-      // this.selection = Math.floor(Math.selection() * 1);
-      // console.log("selection "+this.selection);
+      this.comment1 = this.physics.add.sprite(config.width/1.9418, config.height/3.6, "comment1(phase3)", 0);
+      this.comment2 = this.physics.add.sprite(config.width/1.887, config.height/1.9, "comment2(phase3)", 0);
+      this.comment3 = this.physics.add.sprite(config.width/1.955, config.height/1.277, "comment3(phase3)", 0);
+      this.reply = this.physics.add.sprite(config.width/2.647, config.height/3.7018, "replyIcon", 0);
+      this.choiceOne = this.physics.add.sprite(config.width/4.266, config.height/6.6055, "one", 0).setInteractive();
+      this.choiceTwo = this.physics.add.sprite(config.width/4.266, config.height/3.6, "two", 0).setInteractive();
+      this.choiceThree = this.physics.add.sprite(config.width/4.266, config.height/2.474, "three", 0).setInteractive();
     }
     else if (phaseCount == 4) {
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment3").setOrigin(0, 0);
-      // this.selection = Math.floor(Math.selection() * 1);
-      // console.log("selection "+this.selection);
+      this.comment1 = this.physics.add.sprite(config.width/1.9418, config.height/3.6, "comment1(phase4)", 0);
+      this.comment2 = this.physics.add.sprite(config.width/1.887, config.height/1.9, "comment2(phase4)", 0);
+      this.comment3 = this.physics.add.sprite(config.width/1.955, config.height/1.277, "comment3(phase4)", 0);
+      this.reply = this.physics.add.sprite(config.width/2.647, config.height/3.7018, "replyIcon", 0);
+      this.choiceOne = this.physics.add.sprite(config.width/4.266, config.height/6.6055, "one", 0).setInteractive();
+      this.choiceTwo = this.physics.add.sprite(config.width/4.266, config.height/3.6, "two", 0).setInteractive();
+      this.choiceThree = this.physics.add.sprite(config.width/4.266, config.height/2.474, "three", 0).setInteractive();
     }
     else if (phaseCount == 5) {
       this.crackScreen++;
       this.add.tileSprite(0, 0, 1280, 720, "bgcomment5").setOrigin(0, 0);
-      // this.selection = Math.floor(Math.selection() * 1);
-      // console.log("selection "+this.selection);
+      this.comment1 = this.physics.add.sprite(config.width/1.9418, config.height/3.6, "comment1(phase5)", 0);
+      this.comment2 = this.physics.add.sprite(config.width/1.887, config.height/1.9, "comment2(phase5)", 0);
+      this.comment3 = this.physics.add.sprite(config.width/1.955, config.height/1.277, "comment3(phase5)", 0);
+      this.reply = this.physics.add.sprite(config.width/2.647, config.height/3.7018, "replyIcon", 0);
+      this.choiceOne = this.physics.add.sprite(config.width/4.266, config.height/6.6055, "one", 0).setInteractive();
+      this.choiceTwo = this.physics.add.sprite(config.width/4.266, config.height/3.6, "two", 0).setInteractive();
+      this.choiceThree = this.physics.add.sprite(config.width/4.266, config.height/2.474, "three", 0).setInteractive();
     }
     
     this.instruction2 = this.physics.add.sprite(config.width/2, config.height / 30, "commentInstruction", 0).setScale(2).setDepth(1);
@@ -151,7 +183,7 @@ class Comment extends Phaser.Scene {
 
 this.scoreAnime = false;
 //comment and replies phase1
-    if(phaseCount == 1) {
+    if(phaseCount <=3) {
     // click on reply button
         if(this.selection==1){
         this.choiceOne.on("pointerdown",function (pointer) {
@@ -344,534 +376,199 @@ this.scoreAnime = false;
             }//selection 3. Refer to the function replyComment at the bottom for the rest of the function
 
   }//phase 1
-{
-//       if (this.selection == 0) {
-//         this.choiceOne.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 1");
-//             this.reply.setTexture("reply1.1(n/b)");
-//             this.reply.x = config.width / 1.9;
-//             this.reply.y = config.height / 1.25;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
+  else if(phaseCount >=4) {
+    // click on reply button
+        if(this.selection==1){
+        this.choiceOne.on("pointerdown",function (pointer) {
+          this.scoreAnime = true;
+          // console.log(this.repliedAll);
+          console.log("clicked 1");
+          this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+          this.score1.alpha=1;
+          this.score2.alpha=1;
+          this.score3.alpha=1;
+          // scoreSound.play();
+          yaySound.play();
+          // this.choiceOne.removeInteractive();
+          // this.choiceTwo.removeInteractive();
+          // this.choiceThree.removeInteractive();
+          console.log("AAAA"+this.selection);
+          },this);
+          
+          //^Reply 1
+          this.choiceTwo.on("pointerdown",function (pointer) {
+            this.scoreAnime = true;
+            // console.log(this.repliedAll);
+            console.log("clicked 2");
+            this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+            this.score1.alpha=1;
+            this.score2.alpha=1;
+            this.score3.alpha=1;
+            // scoreSound.play();
+            yaySound.play();
+            // this.choiceOne.removeInteractive();
+            // this.choiceTwo.removeInteractive();
+            // this.choiceThree.removeInteractive();
+            console.log("AAAA"+this.selection);
+            },this);
+            //^Reply 2
+            this.choiceThree.on("pointerdown",function (pointer) {
+              this.scoreAnime = true;
+              // console.log(this.repliedAll);
+              console.log("clicked 3");
+              this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+              this.score1.alpha=1;
+              this.score2.alpha=1;
+              this.score3.alpha=1;
+              // scoreSound.play();
+              yaySound.play();
+              // this.choiceOne.removeInteractive();
+              // this.choiceTwo.removeInteractive();
+              // this.choiceThree.removeInteractive();
+              console.log("AAAA"+this.selection);
+              },this);
+              //^Reply 3
+            }//selection 1. Refer to the function replyComment at the bottom for the rest of the function
+        if(this.selection==2){
+              this.choiceOne.on("pointerdown",function (pointer) {
+                this.scoreAnime = true;
+                // console.log(this.repliedAll);
+                console.log("clicked 1");
+                this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+                this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                // scoreSound.play();
+                yaySound.play();
+                // this.choiceOne.removeInteractive();
+                // this.choiceTwo.removeInteractive();
+                // this.choiceThree.removeInteractive();
+                console.log("AAAA"+this.selection);
+                },this);
+                
+                //^Reply 1
+                this.choiceTwo.on("pointerdown",function (pointer) {
+                  this.scoreAnime = true;
+                  // console.log(this.repliedAll);
+                  console.log("clicked 2");
+                  this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+                  this.score1.alpha=1;
+                  this.score2.alpha=1;
+                  this.score3.alpha=1;
+                  // scoreSound.play();
+                  yaySound.play();
+                  // this.choiceOne.removeInteractive();
+                  // this.choiceTwo.removeInteractive();
+                  // this.choiceThree.removeInteractive();
+                  console.log("AAAA"+this.selection);
+                  },this);
+                  //^Reply 2
+                  this.choiceThree.on("pointerdown",function (pointer) {
+                    this.scoreAnime = true;
+                    // console.log(this.repliedAll);
+                    console.log("clicked 3");
+                    this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+                    this.score1.alpha=1;
+                    this.score2.alpha=1;
+                    this.score3.alpha=1;
+                    // scoreSound.play();
+                    yaySound.play();
+                    // this.choiceOne.removeInteractive();
+                    // this.choiceTwo.removeInteractive();
+                    // this.choiceThree.removeInteractive();
+                    console.log("AAAA"+this.selection);
+                    },this);
+                    //^Reply 3
+            }//selection 2. Refer to the function replyComment at the bottom for the rest of the function
+        if(this.selection==3){
+              this.choiceOne.on("pointerdown",function (pointer) {
+                this.scoreAnime = true;
+                // console.log(this.repliedAll);
+                console.log("clicked 1");
+                this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+                this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                // scoreSound.play();
+                yaySound.play();
+                // this.choiceOne.removeInteractive();
+                // this.choiceTwo.removeInteractive();
+                // this.choiceThree.removeInteractive();
+                console.log("AAAA"+this.selection);
+                },this);
+                
+                //^Reply 1
+                this.choiceTwo.on("pointerdown",function (pointer) {
+                  this.scoreAnime = true;
+                  // console.log(this.repliedAll);
+                  console.log("clicked 2");
+                  this.score1.anims.play('score_0');
+          // this.score2.setTexture('score_+300');
+          this.score2.anims.play('score_0');
+          // this.score3.setTexture('score_+100');
+          this.score3.anims.play('score_0');
+                  this.score1.alpha=1;
+                  this.score2.alpha=1;
+                  this.score3.alpha=1;
+                  // scoreSound.play();
+                  yaySound.play();
+                  // this.choiceOne.removeInteractive();
+                  // this.choiceTwo.removeInteractive();
+                  // this.choiceThree.removeInteractive();
+                  console.log("AAAA"+this.selection);
+                  },this);
+                  //^Reply 2
+                  this.choiceThree.on("pointerdown",function (pointer) {
+                    this.scoreAnime = true;
+                    // console.log(this.repliedAll);
+                    console.log("clicked 3");
+                    this.score1.anims.play('score_0');
+                    // this.score2.setTexture('score_+300');
+                    this.score2.anims.play('score_0');
+                    // this.score3.setTexture('score_+100');
+                    this.score3.anims.play('score_0');
+                    this.score1.alpha=1;
+                    this.score2.alpha=1;
+                    this.score3.alpha=1;
+                    // scoreSound.play();
+                    yaySound.play();
+                    // this.choiceOne.removeInteractive();
+                    // this.choiceTwo.removeInteractive();
+                    // this.choiceThree.removeInteractive();
+                    console.log("AAAA"+this.selection);
+                    },this);
+                    //^Reply 3
+            }//selection 3. Refer to the function replyComment at the bottom for the rest of the function
 
-//         this.choiceTwo.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 2");
-//             this.reply.setTexture("reply1.2(n/b)");
-//             this.reply.x = config.width / 1.9;
-//             this.reply.y = config.height / 1.25;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceThree.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 3");
-//             this.reply.setTexture("reply1.3(n/b)");
-//             this.reply.x = config.width / 1.9;
-//             this.reply.y = config.height / 1.25;
-//             health -= 1;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-//       } //comment reply 1
-//       else if (this.selection == 1) {
-//         this.reply.setTexture("reply2");
-//         this.reply.x = config.width / 1.9707;
-//         this.reply.y = config.height / 1.14;
-
-//         this.choiceOne.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 1");
-//             this.reply.setTexture("reply2.1(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceTwo.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 2");
-//             this.reply.setTexture("reply2.2(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 1;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceThree.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 3");
-//             this.reply.setTexture("reply2.3(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-//       } //comment reply 2
-//       else if (this.selection == 2) {
-//         this.reply.setTexture("reply3");
-//         this.reply.x = config.width / 1.9707;
-//         this.reply.y = config.height / 1.14;
-//         this.choiceOne.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 1");
-//             this.reply.setTexture("reply3.1(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceTwo.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 2");
-//             this.reply.setTexture("reply3.2(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceThree.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 3");
-//             this.reply.setTexture("reply3.3(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-//       } //comment reply 3
-//     }
-
-//     {
-//       if (this.selection == 0) {
-//         console.log("comment1");
-//         this.comments.setTexture("comments");
-//       } //basic comment
-//       else if (this.selection == 1) {
-//         console.log("1");
-//         if (this.dogis == true) {
-//           console.log("comment2.2");
-//           this.comments.setTexture("comments2.2");
-//           this.comments.x = config.width / 1.83;
-//           this.comments.y = config.height / 2.205;
-//         } //dog filter
-//         else {
-//           console.log("comment2.1");
-//           this.comments.setTexture("comments2.1");
-//           this.comments.x = config.width / 1.87;
-//           this.comments.y = config.height / 2.205;
-//         } //anything else
-//       } else if (this.selection == 2) {
-//         console.log("2");
-//         if (this.floweris == true) {
-//           console.log("comment3.1");
-//           this.comments.setTexture("comments3.1");
-//           this.comments.x = config.width / 1.87;
-//           this.comments.y = config.height / 2.205;
-//         } //dog filter
-//         else {
-//           console.log("comment3.2");
-//           this.comments.setTexture("comments3.2");
-//           this.comments.x = config.width / 1.87;
-//           this.comments.y = config.height / 2.205;
-//         } //anything else
-//       }
-//     } //Comment textures
-// }//comment and replies above 87 health
-
-//  if(phaseCount == 2) {//change 1 to 65
-//     // click on reply button
-//     if (this.repliedAll == false) {
-//       if (this.selection == 0) {
-//         this.choiceOne.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 1");
-//             this.reply.setTexture("reply1.1(n/b)");
-//             this.reply.x = config.width / 1.9;
-//             this.reply.y = config.height / 1.25;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceTwo.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 2");
-//             this.reply.setTexture("reply1.2(n/b)");
-//             this.reply.x = config.width / 1.9;
-//             this.reply.y = config.height / 1.25;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceThree.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 3");
-//             this.reply.setTexture("reply1.3(n/b)");
-//             this.reply.x = config.width / 1.9;
-//             this.reply.y = config.height / 1.25;
-//             health -= 1;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-//       } //comment reply 1
-//       else if (this.selection == 1) {
-//         this.reply.setTexture("reply2");
-//         this.reply.x = config.width / 1.9707;
-//         this.reply.y = config.height / 1.14;
-
-//         this.choiceOne.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 1");
-//             this.reply.setTexture("reply2.1(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceTwo.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 2");
-//             this.reply.setTexture("reply2.2(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 1;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceThree.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 3");
-//             this.reply.setTexture("reply2.3(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-//       } //comment reply 2
-//       else if (this.selection == 2) {
-//         this.reply.setTexture("reply3");
-//         this.reply.x = config.width / 1.9707;
-//         this.reply.y = config.height / 1.14;
-//         this.choiceOne.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 1");
-//             this.reply.setTexture("reply3.1(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceTwo.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 2");
-//             this.reply.setTexture("reply3.2(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-
-//         this.choiceThree.on(
-//           "pointerdown",
-//           function (pointer) {
-//             this.repliedAll = true;
-//             console.log(this.repliedAll);
-//             console.log("clicked 3");
-//             this.reply.setTexture("reply3.3(n/b)");
-//             this.reply.x = config.width / 1.93;
-//             this.reply.y = config.height / 1.16;
-//             health -= 2;
-//             this.score1.anims.play('score_1');
-//             // this.score2.setTexture('score_+300');
-//             this.score2.anims.play('score_3');
-//             // this.score3.setTexture('score_+100');
-//             this.score3.anims.play('score_1');
-//             this.score1.alpha=1;
-//                 this.score2.alpha=1;
-//                 this.score3.alpha=1;
-//                 scoreSound.play();
-//                 yaySound.play();
-//           },
-//           this
-//         );
-//       } //comment reply 3
-//     }
-
-//     {
-//       if (this.selection == 0) {
-//         console.log("comment1");
-//         this.comments.setTexture("comments");
-//       } //basic comment
-//       else if (this.selection == 1) {
-//         console.log("1");
-//         if (this.dogis == true) {
-//           console.log("comment2.2");
-//           this.comments.setTexture("comments2.2");
-//           this.comments.x = config.width / 1.83;
-//           this.comments.y = config.height / 2.205;
-//         } //dog filter
-//         else {
-//           console.log("comment2.1");
-//           this.comments.setTexture("comments2.1");
-//           this.comments.x = config.width / 1.87;
-//           this.comments.y = config.height / 2.205;
-//         } //anything else
-//       } else if (this.selection == 2) {
-//         console.log("2");
-//         if (this.floweris == true) {
-//           console.log("comment3.1");
-//           this.comments.setTexture("comments3.1");
-//           this.comments.x = config.width / 1.87;
-//           this.comments.y = config.height / 2.205;
-//         } //dog filter
-//         else {
-//           console.log("comment3.2");
-//           this.comments.setTexture("comments3.2");
-//           this.comments.x = config.width / 1.87;
-//           this.comments.y = config.height / 2.205;
-//         } //anything else
-//       }
-//     } //Comment textures
-// }
-  }
+  }//phase 4 and 5
   if (this.crackScreen > 0) {
     this.add.image(639, 360, 'crack2');
     console.log("inside");
@@ -1232,6 +929,306 @@ this.scoreAnime = false;
                 this.score2.anims.play('score_3');
                 // this.score3.setTexture('score_+100');
                 this.score3.anims.play('score_1');
+                this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                // scoreSound.play();
+                // yaySound.play();
+                this.selection = 4;
+              },this);
+              //^Reply 3
+              }//if in selection 3
+   }//phase 1
+   else if(phase >= 2) {//change this to == 2
+    if(selection == 1){
+    this.choiceOne.on("pointerdown",function (pointer) {
+      this.scoreAnime = true;
+      // console.log(this.repliedAll);
+      console.log("clicked 1");
+      this.comment1.setTexture("reply1(phase2)(cm1)");
+      this.comment1.x=config.width / 2.02;
+      this.comment1.y=config.height / 4;
+  
+      // this.reply.x = config.width / 1.989;
+      this.reply.y = config.height / 1.943;
+  
+      this.choiceOne.y =  config.height / 2.544;
+      this.choiceTwo.y =  config.height / 1.925;
+      this.choiceThree.y =  config.height / 1.548;
+  
+      health -= 1;
+      // this.score1.anims.play('score_1');
+      // // this.score2.setTexture('score_+300');
+      // this.score2.anims.play('score_3');
+      // // this.score3.setTexture('score_+100');
+      // this.score3.anims.play('score_1');
+      this.score1.alpha=1;
+      this.score2.alpha=1;
+      this.score3.alpha=1;
+      // scoreSound.play();
+      // yaySound.play();
+      this.choiceOne.setInteractive();
+      this.choiceTwo.setInteractive();
+      this.choiceThree.setInteractive();
+      this.selection = 2;
+      // console.log("AAAA"+selection);
+      },this);
+      //^Reply 1
+      this.choiceTwo.on("pointerdown",function (pointer) {
+        this.scoreAnime = true;
+        // console.log(this.repliedAll);
+        console.log("clicked 2");
+        this.comment1.setTexture("reply2(phase2)(cm1)");
+        this.comment1.x=config.width / 2.02;
+        this.comment1.y=config.height / 4;
+
+        // this.reply.x = config.width / 1.989;
+        this.reply.y = config.height / 1.943;
+
+        this.choiceOne.y =  config.height / 2.544;
+        this.choiceTwo.y =  config.height / 1.925;
+        this.choiceThree.y =  config.height / 1.548;
+
+        health -= 1;
+        // this.score1.anims.play('score_1');
+        // // this.score2.setTexture('score_+300');
+        // this.score2.anims.play('score_3');
+        // // this.score3.setTexture('score_+100');
+        // this.score3.anims.play('score_1');
+        this.score1.alpha=1;
+        this.score2.alpha=1;
+        this.score3.alpha=1;
+        // scoreSound.play();
+        // yaySound.play();
+        this.choiceOne.setInteractive();
+        this.choiceTwo.setInteractive();
+        this.choiceThree.setInteractive();
+        this.selection = 2;
+      },this);
+      //^ Reply 2
+      this.choiceThree.on("pointerdown",function (pointer) {
+        this.scoreAnime = true;
+        // console.log(this.repliedAll);
+        console.log("clicked 3");
+        this.comment1.setTexture("reply3(phase2)(cm1)");
+        this.comment1.x=config.width / 2.02;
+        this.comment1.y=config.height / 4;
+
+        // this.reply.x = config.width / 1.989;
+        this.reply.y = config.height / 1.943;
+
+        this.choiceOne.y =  config.height / 2.544;
+        this.choiceTwo.y =  config.height / 1.925;
+        this.choiceThree.y =  config.height / 1.548;
+
+        health -= 1;
+        // this.score1.anims.play('score_1');
+        // // this.score2.setTexture('score_+300');
+        // this.score2.anims.play('score_3');
+        // // this.score3.setTexture('score_+100');
+        // this.score3.anims.play('score_1');
+        this.score1.alpha=1;
+        this.score2.alpha=1;
+        this.score3.alpha=1;
+        // scoreSound.play();
+        // yaySound.play();
+        this.choiceOne.setInteractive();
+        this.choiceTwo.setInteractive();
+        this.choiceThree.setInteractive();
+        this.selection = 2;
+      },this);
+      //^Reply 3
+      }//if in selection 1
+      else if(selection == 2){
+        this.choiceOne.on("pointerdown",function (pointer) {
+          this.scoreAnime = true;
+          // console.log(this.repliedAll);
+          console.log("clicked 1");
+          this.comment2.setTexture("reply1(phase2)(cm2)");
+          this.comment2.x=config.width / 1.95;
+          this.comment2.y=config.height / 2.066;
+      
+          // this.reply.x = config.width / 1.989;
+          this.reply.y = config.height /1.32;
+      
+          this.choiceOne.y =  config.height / 1.572;
+          this.choiceTwo.y =  config.height / 1.311;
+          this.choiceThree.y =  config.height / 1.125;
+      
+          health -= 1;
+          // this.score1.anims.play('score_1');
+          // // this.score2.setTexture('score_+300');
+          // this.score2.anims.play('score_3');
+          // // this.score3.setTexture('score_+100');
+          // this.score3.anims.play('score_1');
+          this.score1.alpha=1;
+          this.score2.alpha=1;
+          this.score3.alpha=1;
+          // scoreSound.play();
+          // yaySound.play();
+          this.selection = 3;
+          this.choiceOne.setInteractive();
+          this.choiceTwo.setInteractive();
+          this.choiceThree.setInteractive();
+          // console.log("AAAA"+selection);
+          },this);
+          //^Reply 1
+          this.choiceTwo.on("pointerdown",function (pointer) {
+            this.scoreAnime = true;
+            // console.log(this.repliedAll);
+            console.log("clicked 2");
+            this.comment2.setTexture("reply2(phase2)(cm2)");
+            this.comment2.x=config.width / 1.95;
+            this.comment2.y=config.height / 2.066;
+        
+            // this.reply.x = config.width / 1.989;
+            this.reply.y = config.height /1.32;
+        
+            this.choiceOne.y =  config.height / 1.572;
+            this.choiceTwo.y =  config.height / 1.311;
+            this.choiceThree.y =  config.height / 1.125;
+    
+            health -= 1;
+            // this.score1.anims.play('score_1');
+            // // this.score2.setTexture('score_+300');
+            // this.score2.anims.play('score_3');
+            // // this.score3.setTexture('score_+100');
+            // this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+            this.score2.alpha=1;
+            this.score3.alpha=1;
+            // scoreSound.play();
+            // yaySound.play();
+            this.selection = 3;
+            this.choiceOne.setInteractive();
+            this.choiceTwo.setInteractive();
+            this.choiceThree.setInteractive();
+          },this);
+          //^ Reply 2
+          this.choiceThree.on("pointerdown",function (pointer) {
+            this.scoreAnime = true;
+            // console.log(this.repliedAll);
+            console.log("clicked 3");
+            this.comment2.setTexture("reply3(phase2)(cm2)");
+            this.comment2.x=config.width / 1.95;
+          this.comment2.y=config.height / 2.066;
+      
+          // this.reply.x = config.width / 1.989;
+          this.reply.y = config.height /1.32;
+      
+          this.choiceOne.y =  config.height / 1.572;
+          this.choiceTwo.y =  config.height / 1.311;
+          this.choiceThree.y =  config.height / 1.125;
+    
+            health -= 1;
+            // this.score1.anims.play('score_1');
+            // // this.score2.setTexture('score_+300');
+            // this.score2.anims.play('score_3');
+            // // this.score3.setTexture('score_+100');
+            // this.score3.anims.play('score_1');
+            this.score1.alpha=1;
+            this.score2.alpha=1;
+            this.score3.alpha=1;
+            // scoreSound.play();
+            // yaySound.play();
+            this.selection = 3;
+            this.choiceOne.setInteractive();
+            this.choiceTwo.setInteractive();
+            this.choiceThree.setInteractive();
+          },this);
+          //^Reply 3
+          }//if in selection 2
+          else if(selection == 3){
+            this.choiceOne.on("pointerdown",function (pointer) {
+              this.scoreAnime = true;
+              // console.log(this.repliedAll);
+              console.log("clicked 1");
+              this.comment3.setTexture("reply1(phase2)(cm3)");
+              this.comment3.x=config.width / 1.87;
+              this.comment3.y=config.height / 1.37;
+          
+              this.reply.alpha=0;
+          
+              this.choiceOne.alpha=0;
+              this.choiceTwo.alpha=0
+              this.choiceThree.alpha=0;
+
+              // this.choiceOne.removeInteractive();
+              // this.choiceTwo.removeInteractive();
+              // this.choiceThree.removeInteractive();
+          
+              health -= 1;
+              // this.score1.anims.play('score_1');
+              // // this.score2.setTexture('score_+300');
+              // this.score2.anims.play('score_3');
+              // // this.score3.setTexture('score_+100');
+              // this.score3.anims.play('score_1');
+              this.score1.alpha=1;
+              this.score2.alpha=1;
+              this.score3.alpha=1;
+              // scoreSound.play();
+              // yaySound.play();
+              this.selection = 4;
+              // console.log("AAAA"+selection);
+              },this);
+              
+              //^Reply 1
+              this.choiceTwo.on("pointerdown",function (pointer) {
+                this.scoreAnime = true;
+                // console.log(this.repliedAll);
+                console.log("clicked 2");
+                this.comment3.setTexture("reply2(phase2)(cm3)");
+                this.comment3.x=config.width / 1.87;
+                this.comment3.y=config.height / 1.37;
+
+                this.reply.alpha=0;
+          
+                this.choiceOne.alpha=0;
+                this.choiceTwo.alpha=0
+                this.choiceThree.alpha=0;
+  
+                // this.choiceOne.removeInteractive();
+                // this.choiceTwo.removeInteractive();
+                // this.choiceThree.removeInteractive();
+        
+                health -= 1;
+                // this.score1.anims.play('score_1');
+                // // this.score2.setTexture('score_+300');
+                // this.score2.anims.play('score_3');
+                // // this.score3.setTexture('score_+100');
+                // this.score3.anims.play('score_1');
+                this.score1.alpha=1;
+                this.score2.alpha=1;
+                this.score3.alpha=1;
+                // scoreSound.play();
+                // yaySound.play();
+                this.selection = 4;
+              },this);
+              //^ Reply 2
+              this.choiceThree.on("pointerdown",function (pointer) {
+                this.scoreAnime = true;
+                // console.log(this.repliedAll);
+                console.log("clicked 3");
+                this.comment3.setTexture("reply3(phase2)(cm3)");
+                this.comment3.x=config.width / 1.87;
+                this.comment3.y=config.height / 1.367;
+
+                this.reply.alpha=0;
+          
+                this.choiceOne.alpha=0;
+                this.choiceTwo.alpha=0
+                this.choiceThree.alpha=0;
+  
+                // this.choiceOne.removeInteractive();
+                // this.choiceTwo.removeInteractive();
+                // this.choiceThree.removeInteractive();
+        
+                health -= 1;
+                // this.score1.anims.play('score_1');
+                // // this.score2.setTexture('score_+300');
+                // this.score2.anims.play('score_3');
+                // // this.score3.setTexture('score_+100');
+                // this.score3.anims.play('score_1');
                 this.score1.alpha=1;
                 this.score2.alpha=1;
                 this.score3.alpha=1;
