@@ -8,9 +8,40 @@ class Cutscene extends Phaser.Scene {
 
     preload() {
         this.load.image('dialogbox', './assets/dialogbox.png');
+
+         // player
+        this.load.image('player1', './assets/noFilterFace1.png');
+        this.load.image('player2', './assets/noFilterFace2.png');
+        this.load.image('player3', './assets/noFilterFace3.png');
+        this.load.image('player4', './assets/noFilterFace4.png');
+        this.load.image('player5', './assets/noFilterFace5.png');
     }
 
     create() {
+
+        this.back = this.physics.add.sprite(config.width/2, config.height/2, 'player1', 0).setScale(2);
+
+        if(phaseCount == 1){
+            this.back.setTexture('player1');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 2){
+            this.back.setTexture('player2');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 3){
+            this.back.setTexture('player3');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 4){
+            this.back.setTexture('player4');
+            this.back.alpha = 0.2;
+        }
+        else if(phaseCount == 5){
+            this.back.setTexture('player5');
+            this.back.alpha = 0.2;
+        }
+
         let distortedWriting = {
             fontFamily: 'Scribbles',
             fontSize: '32px',
@@ -38,9 +69,9 @@ class Cutscene extends Phaser.Scene {
         this.phase1Text = ["I've always found it hard to make friends... ", "It's just easier for me to be myself online. ", "I have a lot of friends who say nice things to me. ", "What else could I ever want? "];
         this.phase2Text = ["They really like me... ","Sometimes I get scared I'm not enough. That they'll get tired of me... ", "but that's just all in my head. ", "... ", "r i g h t ? ? "];
         this.phase3Text = [ "...How could they say those things about me? ", "... ", "I just wanted to fit in and be like everybody else. ", "Why does it all have to be so fucking complicated? "];
-        this.phase4Text = [ "FUCK YOU [username] ", "Who says that to a person?! I have feelings too. ", "You don't know what it's like. ", "... ", "This is fine. I'm fine. "];
+        this.phase4Text = [ "FUCK YOU ", "Who says that to a person?! ", "Don't they know I have feelings too? ", "They don't know what it's like. ", "....... ", "This is fine... I'm fine. "];
         // this.phase4Text = [ "...How could they say those things about me? ", "... ", "is this really what I look like? ", "I- ", "maybe they're right "];
-        this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "... ", "This was supposed to make me happy... I was happy. "];
+        this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "... ", "This was supposed to make me happy...", "I was so happy. ", "e v e r y t h i n g   w a s   o k  "];
 
         this.index = 0;
 

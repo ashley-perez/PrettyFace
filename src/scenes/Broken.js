@@ -1,3 +1,5 @@
+var textDone = true; // please don't delete this
+
 class Broken extends Phaser.Scene {
     constructor() {
         super("endingScene");
@@ -56,7 +58,7 @@ class Broken extends Phaser.Scene {
                 suffix: '',
                 zeroPad: 1  // number of digits of the frame name ex: "sprite2"
             }),
-            frameRate: 20,
+            frameRate: 10,
             repeat: -1,
         });
         this.finalScene = this.physics.add.sprite(config.width/2, config.height/2, 'brokenBg', 0);
@@ -98,7 +100,7 @@ class Broken extends Phaser.Scene {
 
     update() {
         console.log("we are broken");
-        if(Phaser.Input.Keyboard.JustDown(this.cursors.space)) {// && textDone
+        if(Phaser.Input.Keyboard.JustDown(this.cursors.space) && textDone) {// && textDone
             this.continuePrompt.visible = false; // prompt goes away because writing is happening
             this.text.text = ''; // reset the text box
 
@@ -153,7 +155,7 @@ class Broken extends Phaser.Scene {
         }
 
         // go to credit scene
-        if (this.sceneTimer >= 6) {
+        if (this.sceneTimer >= 3) {
             this.scene.start('credits');
         }
 
@@ -170,11 +172,11 @@ class Broken extends Phaser.Scene {
             callback: () => {
                 textbox.text += text[i]
                 i++
-                this.textDone = false;
+                textDone = false;
 
                 // when there is no more text to write set bool to false
                 if (i == length) {
-                    this.textDone = true;
+                    textDone = true;
                     this.continuePrompt.visible = true; // visual cue for the player to advance the text appears
                 }
             },
