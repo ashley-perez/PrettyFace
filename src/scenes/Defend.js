@@ -188,7 +188,7 @@ class Defend extends Phaser.Scene {
             this.pathTwo = new Phaser.Curves.Path(100,355).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
             this.phoneTwo = this.add.follower(this.pathTwo, 0,0, 'enemy');
-            this.phoneOne.anims.play('phone'); 
+            this.phoneOne.anims.play('phone');
             this.phoneTwo.anims.play('phone');
 
             this.phoneOne.startFollow({
@@ -219,7 +219,7 @@ class Defend extends Phaser.Scene {
             this.pathTwo = new Phaser.Curves.Path(100,355).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
             this.phoneTwo = this.add.follower(this.pathTwo, 0,0, 'enemy');
-            this.phoneOne.anims.play('phone'); 
+            this.phoneOne.anims.play('phone');
             this.phoneTwo.anims.play('phone');
 
             this.phoneOne.startFollow({
@@ -242,21 +242,21 @@ class Defend extends Phaser.Scene {
             this.projectileVelocity = 400;
             secondProjectile = true;
             this.Speed = 2.7;
-        } 
+        }
 
         this.random = 0;
 
         this.projectile = this.physics.add.sprite(-100, -100, 'missile');
         this.projectile.setScale(1.3);
 
-        if (secondProjectile == true) { 
+        if (secondProjectile == true) {
             this.projectileTwo = this.physics.add.sprite(-100, -100, 'missile');
             this.projectileTwo.setScale(1.3);
 
             this.physics.add.overlap(this.playerGroup, this.projectileTwo, this.hitObject2, null, this);
             this.physics.add.overlap(this.block, this.projectileTwo, this.blockedProjectile2, null, this);
         }
-        
+
 
         // collision between projectile and breakable object
         this.physics.add.overlap(this.playerGroup, this.projectile, this.hitObject, null, this);
@@ -266,7 +266,7 @@ class Defend extends Phaser.Scene {
 
         this.battery = this.physics.add.sprite(this.block.x, this.block.y-100, "battery1", 0).setDepth(2);
 
-        
+
 
         this.timer=0;
         this.timer2=0;
@@ -292,13 +292,13 @@ class Defend extends Phaser.Scene {
             this.battery.setTexture("battery4");
             console.log("10+");
           }
-          else if (health <= 9 && health >= 1) {
+          else {
             this.battery.setTexture("battery5");
             console.log("1+");
           }
         this.timer += 0.01;
         this.timer2 += 0.01;
-        this.timer += 0.01; 
+        this.timer += 0.01;
         this.timer2 += 0.01;
 
         // go to next scene when timer is over
@@ -308,7 +308,7 @@ class Defend extends Phaser.Scene {
                     console.log("eyes");
                     sceneCount++;
                     this.scene.start("eyesGame");
-                } 
+                }
                 else if (Math.floor(Math.random() * 2) == 1) {
                     console.log("maze");
                     sceneCount++;
@@ -319,7 +319,7 @@ class Defend extends Phaser.Scene {
                 this.scene.start("narrOne")
             }
         }
-        
+
         this.defendInstruction.anims.play('defendInfo', true);
         this.keyboardInstruction.anims.play('keyboardInfo',true);
         this.keyboardInstruction2.anims.play('keyboardInfo',true);
