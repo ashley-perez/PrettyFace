@@ -566,19 +566,19 @@ class Eyes extends Phaser.Scene {
 
             if (this.cursors.left.isDown)
             {
-                this.eyePlayer.setVelocityX(-140);
+                this.eyePlayer.setVelocityX(-145);
             }
             else if (this.cursors.right.isDown)
             {
-                this.eyePlayer.setVelocityX(140);
+                this.eyePlayer.setVelocityX(145);
             }
             if (this.cursors.up.isDown)
             {
-                this.eyePlayer.setVelocityY(-140);
+                this.eyePlayer.setVelocityY(-145);
             }
             else if (this.cursors.down.isDown)
             {
-                this.eyePlayer.setVelocityY(140);
+                this.eyePlayer.setVelocityY(145);
             }
             // switch screen
             if (this.timer >= 9) {
