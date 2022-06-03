@@ -11,6 +11,10 @@ class Defend extends Phaser.Scene {
         this.load.image('heart', './assets/heart.png');
         this.load.image('heartFetal', './assets/heartFetal.png');
         this.load.image('block', './assets/block.png');
+        this.load.image("color_bg", "./assets/gameBG.png");
+        this.load.image("black_bg", "./assets/gameBg5.png");
+        this.load.image("scary_bg","./assets/finalScene1.png");
+        this.load.image("scary_bg2","./assets/finalScene2.png");
         // this.load.image('enemy', './assets/badPhone.png');
         this.load.image('missile', './assets/phone_attack1.png');
         this.load.image('missile2', './assets/phone_attack2.png');
@@ -24,6 +28,18 @@ class Defend extends Phaser.Scene {
     create() {
         var scoreSound = this.sound.add('score_sound', {volume: 0.5});
         scoreSound.play();
+        this.background = this.physics.add
+      .sprite(config.width, config.height, "color_bg", 0)
+      .setScale(2)
+      .setDepth(-1); //full color
+    this.background2 = this.physics.add
+      .sprite(config.width, config.height, "black_bg", 0)
+      .setScale(2)
+      .setDepth(-2); //dark scary
+      this.background3 = this.physics.add
+      .sprite(config.width, config.height, "scary_bg", 0)
+      .setScale(2)
+      .setDepth(-3); //dark scary
         // scary_music.setVolume(0.8);
         // music.setVolume(0);
         // phase5_music.setVolume(0);
@@ -112,6 +128,7 @@ class Defend extends Phaser.Scene {
 
         // phase 1 health
         if (phaseCount == 1) {
+            this.background.alpha = 1;
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -129,6 +146,8 @@ class Defend extends Phaser.Scene {
             this.Speed = 2;
         }
         else if (phaseCount == 2) {
+            this.background.alpha = 0.86;
+      this.background2.alpha = 0.66;
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -145,6 +164,8 @@ class Defend extends Phaser.Scene {
             this.Speed = 1.85;
         }
         else if (phaseCount == 3) {
+            this.background.alpha = 0.69;
+      this.background2.alpha = 0.43;
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -161,6 +182,8 @@ class Defend extends Phaser.Scene {
             this.Speed = 1.8;
         }
         else if (phaseCount == 4) {
+            this.background.alpha = 0.5;
+      this.background2.alpha = 0.5;
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,355);
             this.pathTwo = new Phaser.Curves.Path(60,355).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -190,6 +213,8 @@ class Defend extends Phaser.Scene {
             this.Speed = 1.5;
         }
         else if (phaseCount == 5) {
+            this.background.alpha = 0.5;
+    this.background2.alpha = 0.6;
             this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,355);
             this.pathTwo = new Phaser.Curves.Path(60,355).lineTo(60,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
@@ -249,7 +274,7 @@ class Defend extends Phaser.Scene {
         this.timer2 += 0.01;
 
         // go to next scene when timer is over
-        if (this.timer >= 20) {
+        if (this.timer >= 12) {
             if(sceneCount < 2){
                 if (Math.floor(Math.random() * 2) == 0) {
                     console.log("eyes");
