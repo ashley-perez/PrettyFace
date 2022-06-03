@@ -134,7 +134,7 @@ class Cutscene extends Phaser.Scene {
         if (this.timer >= 3 && phaseCount<=4) {
             health -= 9;
             phaseCount++;
-            sceneCount = 0;
+            sceneCount = 1;
             console.log("scene Count = " + sceneCount);
             this.scene.start('filterGame');
         }

@@ -19,11 +19,18 @@ class Eyes extends Phaser.Scene {
         this.load.image('gameBg3', "./assets/gameBg3.png");
         this.load.image('gameBg4', "./assets/gameBg4.png");
         this.load.image('gameBg5', "./assets/gameBg5.png");
+        this.load.image("battery1","./assets/Health 100Full Battery.png");
+        this.load.image("battery2","./assets/Health 90.png");
+        this.load.image("battery3","./assets/Health 70.png");
+        this.load.image("battery4","./assets/Health 40.png");
+        this.load.image("battery5","./assets/Health 20.png");
+        this.load.image("battery6","./assets/Health 5.png");
     }
 
     create() {
         var scoreSound = this.sound.add('score_sound', {volume: 0.5});
         scoreSound.play();
+        
         // scary_music.setVolume(0.8);
         // music.setVolume(0);
         // phase5_music.setVolume(0);
@@ -62,6 +69,8 @@ class Eyes extends Phaser.Scene {
 
         this.keyboardInstruction = this.physics.add.sprite(config.width/8, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
         this.keyboardInstruction2 = this.physics.add.sprite(config.width/1.14, config.height/30, 'keyboardClick', 0).setScale(2).setDepth(1);
+
+        this.eyePlayer = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'heartNormal');
 
         if (phaseCount == 1)  {    // phase 1
             this.phase = 0;
@@ -364,10 +373,36 @@ class Eyes extends Phaser.Scene {
             this.timer = 0;
             this.timer2 = 0;
         } //end if
+        this.battery = this.physics.add.sprite(this.eyePlayer.x, this.eyePlayer.y, "battery1", 0).setDepth(2);
+
+        
         // add bg
     }
 
     update() {
+        console.log(health);
+        this.battery.x= this.eyePlayer.x;
+        this.battery.y=this.eyePlayer.y;
+        if(health >=87){
+            this.battery.setTexture("battery1");
+            console.log("87+");
+          }
+          else if (health <= 86 && health >= 65) {
+            this.battery.setTexture("battery2");
+            console.log("65+");
+          }
+          else if(health <= 64 && health >= 35) {
+            this.battery.setTexture("battery3");
+            console.log("35+");
+          }
+          else if (health <= 34 && health >= 10) {
+            this.battery.setTexture("battery4");
+            console.log("10+");
+          }
+          else if (health <= 9 && health >= 1) {
+            this.battery.setTexture("battery5");
+            console.log("1+");
+          }
         this.timer += 0.01;
         this.timer2 += 0.01;
 

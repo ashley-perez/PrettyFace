@@ -525,6 +525,8 @@ class Maze extends Phaser.Scene {
   }
 
   update() {
+    console.log(health);
+
     this.playerPositionX = this.player.x;
     this.playerPositionY = this.player.y;
 

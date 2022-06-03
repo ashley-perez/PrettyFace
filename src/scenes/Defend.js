@@ -264,12 +264,40 @@ class Defend extends Phaser.Scene {
         // collision between projectile and blocker
         this.physics.add.overlap(this.block, this.projectile, this.blockedProjectile, null, this);
 
+        this.battery = this.physics.add.sprite(this.block.x, this.block.y-100, "battery1", 0).setDepth(2);
+
+        
+
         this.timer=0;
         this.timer2=0;
     }
 
     update() {
-
+        console.log(health);
+        this.battery.x= this.block.x+10;
+        this.battery.y=this.block.y-50;
+        if(health >=87){
+            this.battery.setTexture("battery1");
+            console.log("87+");
+          }
+          else if (health <= 86 && health >= 65) {
+            this.battery.setTexture("battery2");
+            console.log("65+");
+          }
+          else if(health <= 64 && health >= 35) {
+            this.battery.setTexture("battery3");
+            console.log("35+");
+          }
+          else if (health <= 34 && health >= 10) {
+            this.battery.setTexture("battery4");
+            console.log("10+");
+          }
+          else if (health <= 9 && health >= 1) {
+            this.battery.setTexture("battery5");
+            console.log("1+");
+          }
+        this.timer += 0.01;
+        this.timer2 += 0.01;
         this.timer += 0.01; 
         this.timer2 += 0.01;
 
