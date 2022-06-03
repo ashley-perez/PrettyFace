@@ -2,12 +2,12 @@ class Credits extends Phaser.Scene {
     constructor() {
       super("credits");
     }
-    
+
     preload() {
       this.load.image('background', './assets/creds.png');
 
     }
-     
+
     create() {
       // background
       this.tempBG = this.add.tileSprite(0, 0, 1280, 720, 'background').setOrigin(0, 0);
@@ -16,7 +16,7 @@ class Credits extends Phaser.Scene {
       let normalWriting = {
         fontFamily: 'Normal',
         fontSize: '100px',
-        color: '#000000',
+        color: '#f0a8ba',
         align: 'center',
         padding: {
             top: 5,
@@ -27,7 +27,7 @@ class Credits extends Phaser.Scene {
       let smaller = {
         fontFamily: 'Normal',
         fontSize: '55px',
-        color: '#000000',
+        color: '#f0a8ba',
         align: 'center',
         padding: {
             top: 5,
@@ -38,7 +38,7 @@ class Credits extends Phaser.Scene {
       let evenSmaller = {
         fontFamily: 'Normal',
         fontSize: '50px',
-        color: '#000000',
+        color: '#ff99b9',
         align: 'center',
         padding: {
             top: 5,
@@ -50,10 +50,11 @@ class Credits extends Phaser.Scene {
 
       // text boxes
       this.credits = this.add.text(450, 60, 'CREDITS', normalWriting);
-      this.one = this.add.text(85, 250, 'Andrew Dresel-Kurtz    Art & Programming', smaller); 
-      this.two = this.add.text(75, 300, '             Ashley Perez    Programming', smaller);
-      this.three=this.add.text(85, 350, '                 Jane Tran    Art & Programming', smaller);
-      this.menuPrompt = this.add.text(435, 500, 'Press M for Menu', evenSmaller);
+      this.one = this.add.text(85, 270, 'Andrew Dresel-Kurtz    Art & Programming', smaller);
+      this.two = this.add.text(75, 320, '             Ashley Perez    Programming', smaller);
+      this.three=this.add.text(85, 370, '                 Jane Tran    Art & Programming', smaller);
+      this.add.rectangle(644, 649, 480, 85, 0x5c4ae4);
+      this.menuPrompt = this.add.text(440, 620, 'Press M for Menu', evenSmaller);
 
       // key
       keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
@@ -72,5 +73,4 @@ class Credits extends Phaser.Scene {
 
     }
 
-} 
-
+}

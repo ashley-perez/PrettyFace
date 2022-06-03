@@ -388,7 +388,7 @@ class Eyes extends Phaser.Scene {
         } //end if
         this.battery = this.physics.add.sprite(this.eyePlayer.x, this.eyePlayer.y, "battery1", 0).setDepth(2);
 
-        
+
         // add bg
     }
 
@@ -414,6 +414,10 @@ class Eyes extends Phaser.Scene {
           }
           else if (health <= 9 && health >= 1) {
             this.battery.setTexture("battery5");
+            console.log("5+");
+          }
+          else {
+            this.battery.setTexture("battery6");
             console.log("1+");
           }
         this.timer += 0.01;
@@ -430,28 +434,28 @@ class Eyes extends Phaser.Scene {
         if (this.phase == 0) {
             this.eyePlayer.setVelocity(0);
 
-            this.eyeFollow(this.eye, this.eyePlayer, 100);
-            this.eyeFollow(this.eye2, this.eyePlayer, 100);
-            this.eyeFollow(this.eye3, this.eyePlayer, 100);
-            this.eyeFollow(this.eye4, this.eyePlayer, 100);
-            this.eyeFollow(this.eye5, this.eyePlayer, 100);
+            this.eyeFollow(this.eye, this.eyePlayer, 110);
+            this.eyeFollow(this.eye2, this.eyePlayer, 110);
+            this.eyeFollow(this.eye3, this.eyePlayer, 110);
+            this.eyeFollow(this.eye4, this.eyePlayer, 110);
+            this.eyeFollow(this.eye5, this.eyePlayer, 110);
 
             if (this.cursors.left.isDown)
             {
-                this.eyePlayer.setVelocityX(-170);
+                this.eyePlayer.setVelocityX(-165);
             }
             else if (this.cursors.right.isDown)
             {
-                this.eyePlayer.setVelocityX(170);
+                this.eyePlayer.setVelocityX(165);
             }
 
             if (this.cursors.up.isDown)
             {
-                this.eyePlayer.setVelocityY(-170);
+                this.eyePlayer.setVelocityY(-165);
             }
             else if (this.cursors.down.isDown)
             {
-                this.eyePlayer.setVelocityY(170);
+                this.eyePlayer.setVelocityY(165);
             }
             // switch screen
             if (this.timer >= 9) {
@@ -520,13 +524,13 @@ class Eyes extends Phaser.Scene {
         else if (this.phase == 2) {
             this.eyePlayer.setVelocity(0);
 
-            this.eyeFollow(this.eye, this.eyePlayer, 125);
-            this.eyeFollow(this.eye2, this.eyePlayer, 125);
-            this.eyeFollow(this.eye3, this.eyePlayer, 125);
-            this.eyeFollow(this.eye4, this.eyePlayer, 125);
-            this.eyeFollow(this.eye5, this.eyePlayer, 125);
-            this.eyeFollow(this.eye6, this.eyePlayer, 125);
-            this.eyeFollow(this.eye7, this.eyePlayer, 125);
+            this.eyeFollow(this.eye, this.eyePlayer, 130);
+            this.eyeFollow(this.eye2, this.eyePlayer, 130);
+            this.eyeFollow(this.eye3, this.eyePlayer, 130);
+            this.eyeFollow(this.eye4, this.eyePlayer, 130);
+            this.eyeFollow(this.eye5, this.eyePlayer, 130);
+            this.eyeFollow(this.eye6, this.eyePlayer, 130);
+            this.eyeFollow(this.eye7, this.eyePlayer, 130);
 
             if (this.cursors.left.isDown)
             {
@@ -564,30 +568,30 @@ class Eyes extends Phaser.Scene {
         else if (this.phase == 3) {
             this.eyePlayer.setVelocity(0);
 
-            this.eyeFollow(this.eye, this.eyePlayer, 135);
-            this.eyeFollow(this.eye2, this.eyePlayer, 135);
-            this.eyeFollow(this.eye3, this.eyePlayer, 135);
-            this.eyeFollow(this.eye4, this.eyePlayer, 135);
-            this.eyeFollow(this.eye5, this.eyePlayer, 135);
-            this.eyeFollow(this.eye6, this.eyePlayer, 135);
-            this.eyeFollow(this.eye7, this.eyePlayer, 135);
-            this.eyeFollow(this.eye8, this.eyePlayer, 135);
+            this.eyeFollow(this.eye, this.eyePlayer, 140);
+            this.eyeFollow(this.eye2, this.eyePlayer, 140);
+            this.eyeFollow(this.eye3, this.eyePlayer, 140);
+            this.eyeFollow(this.eye4, this.eyePlayer, 140);
+            this.eyeFollow(this.eye5, this.eyePlayer, 140);
+            this.eyeFollow(this.eye6, this.eyePlayer, 140);
+            this.eyeFollow(this.eye7, this.eyePlayer, 140);
+            this.eyeFollow(this.eye8, this.eyePlayer, 140);
 
             if (this.cursors.left.isDown)
             {
-                this.eyePlayer.setVelocityX(-140);
+                this.eyePlayer.setVelocityX(-145);
             }
             else if (this.cursors.right.isDown)
             {
-                this.eyePlayer.setVelocityX(140);
+                this.eyePlayer.setVelocityX(145);
             }
             if (this.cursors.up.isDown)
             {
-                this.eyePlayer.setVelocityY(-140);
+                this.eyePlayer.setVelocityY(-145);
             }
             else if (this.cursors.down.isDown)
             {
-                this.eyePlayer.setVelocityY(140);
+                this.eyePlayer.setVelocityY(145);
             }
             // switch screen
             if (this.timer >= 9) {
@@ -610,30 +614,30 @@ class Eyes extends Phaser.Scene {
         else if (this.phase == 4) {
             this.eyePlayer.setVelocity(0);
 
-            this.eyeFollow(this.eye, this.eyePlayer, 140);
-            this.eyeFollow(this.eye2, this.eyePlayer, 140);
-            this.eyeFollow(this.eye3, this.eyePlayer, 140);
-            this.eyeFollow(this.eye4, this.eyePlayer, 140);
-            this.eyeFollow(this.eye5, this.eyePlayer, 140);
-            this.eyeFollow(this.eye6, this.eyePlayer, 140);
-            this.eyeFollow(this.eye7, this.eyePlayer, 140);
-            this.eyeFollow(this.eye8, this.eyePlayer, 140);
+            this.eyeFollow(this.eye, this.eyePlayer, 150);
+            this.eyeFollow(this.eye2, this.eyePlayer, 150);
+            this.eyeFollow(this.eye3, this.eyePlayer, 150);
+            this.eyeFollow(this.eye4, this.eyePlayer, 150);
+            this.eyeFollow(this.eye5, this.eyePlayer, 150);
+            this.eyeFollow(this.eye6, this.eyePlayer, 150);
+            this.eyeFollow(this.eye7, this.eyePlayer, 150);
+            this.eyeFollow(this.eye8, this.eyePlayer, 150);
 
             if (this.cursors.left.isDown)
             {
-                this.eyePlayer.setVelocityX(-135);
+                this.eyePlayer.setVelocityX(-130);
             }
             else if (this.cursors.right.isDown)
             {
-                this.eyePlayer.setVelocityX(135);
+                this.eyePlayer.setVelocityX(130);
             }
             if (this.cursors.up.isDown)
             {
-                this.eyePlayer.setVelocityY(-135);
+                this.eyePlayer.setVelocityY(-130);
             }
             else if (this.cursors.down.isDown)
             {
-                this.eyePlayer.setVelocityY(135);
+                this.eyePlayer.setVelocityY(130);
             }
             // switch screen
             if (this.timer >= 9) {

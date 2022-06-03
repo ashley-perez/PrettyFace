@@ -39,7 +39,7 @@ class Broken extends Phaser.Scene {
         this.cursors =  this.input.keyboard.createCursorKeys();
         this.textArray = ["This has to be a bad dream. ", "... ", "That's it! ", "This is  j u s t  a dream. This isn't happening.", "All I need to do is wake myself up... ", "... "];
         this.index = 0;
-        
+
         this.UIbox = this.add.sprite(650, 150, 'dialogbox');
         this.UIbox.scaleX = 1.5;
         this.text = this.add.text(100,70, "", distortedWriting);
@@ -58,7 +58,7 @@ class Broken extends Phaser.Scene {
                 suffix: '',
                 zeroPad: 1  // number of digits of the frame name ex: "sprite2"
             }),
-            frameRate: 10,
+            frameRate: 7,
             repeat: -1,
         });
         this.finalScene = this.physics.add.sprite(config.width/2, config.height/2, 'brokenBg', 0);
@@ -120,15 +120,15 @@ class Broken extends Phaser.Scene {
         // this.timer += 0.01;
         // this.sceneTimer += 0.01;
         if (this.complete == true) {
-            this.phone1.alpha = 100; 
-            this.phone2.alpha = 100; 
-            this.phone3.alpha = 100; 
-            this.phone4.alpha = 100; 
-            this.phone5.alpha = 100; 
-            this.phone6.alpha = 100; 
-            this.phone7.alpha = 100; 
-            this.phone8.alpha = 100; 
-            this.phone9.alpha = 100; 
+            this.phone1.alpha = 100;
+            this.phone2.alpha = 100;
+            this.phone3.alpha = 100;
+            this.phone4.alpha = 100;
+            this.phone5.alpha = 100;
+            this.phone6.alpha = 100;
+            this.phone7.alpha = 100;
+            this.phone8.alpha = 100;
+            this.phone9.alpha = 100;
             this.phone10.alpha = 100;
             this.phone11.alpha = 100;
             this.phone12.alpha = 100;
@@ -155,7 +155,7 @@ class Broken extends Phaser.Scene {
         }
 
         // go to credit scene
-        if (this.sceneTimer >= 3) {
+        if (this.sceneTimer >= 5) {
             this.scene.start('credits');
         }
 

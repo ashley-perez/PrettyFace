@@ -55,10 +55,10 @@ class Menu extends Phaser.Scene {
         }
 
         this.add.image(0,0, "bg").setOrigin(0).setDepth(0);
-        this.add.text(game.config.width/2, (game.config.height/2)-20, 'Put on Your', title1Config).setOrigin(0.5, 2.1);
-        this.add.text(game.config.width/2, (game.config.height/2)+30, 'Pretty Face', title2Config).setOrigin(0.5, -0.45);
+        this.add.text(game.config.width/2, (game.config.height/2)-20, 'Put on Your', title1Config).setOrigin(0.5, 2.2);
+        this.add.text(game.config.width/2, (game.config.height/2)+30, 'Pretty Face', title2Config).setOrigin(0.5, -0.49);
         this.add.rectangle(644, 649, 395, 85, 0x5c4ae4);
-        this.add.text(game.config.width/2, (game.config.height/2)-45, 'Press S to Start', startConfig).setOrigin(0.5,-5.2);
+        this.add.text(game.config.width/2, (game.config.height/2)-45, 'Press S to Start', startConfig).setOrigin(0.5,-5.4);
 
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     }
