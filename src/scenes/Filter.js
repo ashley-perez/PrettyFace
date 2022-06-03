@@ -99,7 +99,7 @@ class Filter extends Phaser.Scene {
         else if (phaseCount == 3) {
             this.index = 2;
             scary_music.setVolume(0.4);
-            music.setVolume(0.6);
+            music.setVolume(0.5);
         }
         else if (phaseCount == 4) {
             this.index = 3;

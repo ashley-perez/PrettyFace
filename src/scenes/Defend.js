@@ -146,8 +146,8 @@ class Defend extends Phaser.Scene {
             this.Speed = 4.5;
         }
         else if (phaseCount == 2) {
-            this.background.alpha = 0.86;
-            this.background2.alpha = 0.66;
+            this.background.alpha = 0.9;
+            this.background2.alpha = 0.7;
             // path for otherBlock to follow
             this.pathOne =  new Phaser.Curves.Path(100, 60).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
