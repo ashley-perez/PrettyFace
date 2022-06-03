@@ -56,7 +56,7 @@ class Broken extends Phaser.Scene {
                 suffix: '',
                 zeroPad: 1  // number of digits of the frame name ex: "sprite2"
             }),
-            frameRate: 4,
+            frameRate: 20,
             repeat: -1,
         });
         this.finalScene = this.physics.add.sprite(config.width/2, config.height/2, 'brokenBg', 0);
@@ -98,7 +98,7 @@ class Broken extends Phaser.Scene {
 
     update() {
         console.log("we are broken");
-        if(Phaser.Input.Keyboard.JustDown(this.cursors.space) && textDone) {
+        if(Phaser.Input.Keyboard.JustDown(this.cursors.space)) {// && textDone
             this.continuePrompt.visible = false; // prompt goes away because writing is happening
             this.text.text = ''; // reset the text box
 
