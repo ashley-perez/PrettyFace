@@ -41,7 +41,6 @@ class Cutscene extends Phaser.Scene {
             this.back.setTexture('player5');
             this.back.alpha = 0.2;
         }
-
         let distortedWriting = {
             fontFamily: 'Scribbles',
             fontSize: '32px',
