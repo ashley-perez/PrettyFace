@@ -28,6 +28,7 @@ class Defend extends Phaser.Scene {
     }
 
     create() {
+        
         if(phaseCount<=3){
             var scoreSound = this.sound.add('score_sound', {volume: 0.5});
                 scoreSound.play();
@@ -293,6 +294,9 @@ class Defend extends Phaser.Scene {
     }
 
     update() {
+        if(health <= 0){
+            this.scene.start("gameOver");
+        }
         console.log(health);
         this.battery.x= this.block.x+10;
         this.battery.y=this.block.y-50;

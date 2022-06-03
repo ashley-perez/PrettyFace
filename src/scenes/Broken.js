@@ -10,9 +10,19 @@ class Broken extends Phaser.Scene {
         this.load.atlas('phoneflash','./assets/phoneflash.png','./assets/phoneflash.json');
 
         this.load.image('dialogbox', './assets/dialogbox.png');
+        this.load.audio('gameover', './assets/gameover.mp3');
+
     }
 
     create() {
+        deadMusic = this.sound.add('gameover', {volume: 0});  // add music background
+        deadMusic.play();
+        deadMusic.setLoop(true);
+        music.stop();
+        scary_music.stop();
+
+
+
         let distortedWriting = {
             fontFamily: 'Scribbles',
             fontSize: '45px',
@@ -120,6 +130,7 @@ class Broken extends Phaser.Scene {
         // this.timer += 0.01;
         // this.sceneTimer += 0.01;
         if (this.complete == true) {
+            deadMusic.setVolume(1);
             this.phone1.alpha = 100;
             this.phone2.alpha = 100;
             this.phone3.alpha = 100;

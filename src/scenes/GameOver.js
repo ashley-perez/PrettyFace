@@ -5,10 +5,16 @@ class GameOver extends Phaser.Scene {
 
     preload() {
         this.load.image('background', './assets/gameOverBg.png');
-    
+        this.load.audio('gameover', './assets/gameover.mp3');
+
     }
-     
+
     create() {
+        deadMusic = this.sound.add('gameover', {volume: 1});  // add music background
+        deadMusic.play();
+        deadMusic.setLoop(true);
+        music.stop(); // add music background
+        scary_music.stop();
         // background
         this.gameOverBG = this.add.tileSprite(0, 0, 1280, 720, 'background').setOrigin(0, 0);
 

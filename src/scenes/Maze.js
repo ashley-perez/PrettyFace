@@ -542,6 +542,9 @@ class Maze extends Phaser.Scene {
   }
 
   update() {
+    if(health <= 0){
+      this.scene.start("gameOver");
+  }
     console.log(health);
 
     this.playerPositionX = this.player.x;

@@ -68,9 +68,9 @@ class Cutscene extends Phaser.Scene {
         this.phase1Text = ["I've always found it hard to make friends... ", "It's just easier for me to be myself online. ","They know the me I want them to know. ", "I have a lot of online friends who say nice things to me. ", "What else could I ever want? ",];
         this.phase2Text = ["Everybody has been so kind to me lately... ","Sometimes I get scared I'm not enough. That they'll get tired of me... ", "but that's just all in my head. ", "... ", "r i g h t ? ? "];
         this.phase3Text = [ "...How could they say those things about me? ", "... ", "I just want to fit in and be like everybody else. ", "Why does it all have to be so fucking complicated? ", "I know I shouldn't let it bother me so much but... ", "... "];
-        this.phase4Text = [ "FUCK YOU ", "Who says that to a person?! ", "Don't they know I have feelings too? ", "They don't know what it's like. ", "....... ", "This is fine... I'm fine. "];
+        this.phase4Text = [ "FUCK YOU ", "Who says that to a person?! ", "Don't they know I have feelings too? ", "They don't know what it's like. ", "Why are they targeting me? ","....... ", "This is fine... I'm fine. "];
         // this.phase4Text = [ "...How could they say those things about me? ", "... ", "is this really what I look like? ", "I- ", "maybe they're right "];
-        this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "... ", "This was supposed to make me happy...", "I was so happy. ", "e v e r y t h i n g   w a s   o k  "];
+        this.phase5Text = [ "WHY IS IT NOT ENOUGH??!! ", "THEY CRITIQUE EVERY FUCKING LITTLE THING I DO!!!! ", "Is this what I really look like? ", "I don't even recognize myself anymore ", "... ", "This was supposed to make me happy...", "I was so happy. ", "e v e r y t h i n g   w a s   o k  "];
 
         this.index = 0;
 

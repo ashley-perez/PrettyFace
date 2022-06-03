@@ -393,6 +393,9 @@ class Eyes extends Phaser.Scene {
     }
 
     update() {
+        if(health <= 0){
+            this.scene.start("gameOver");
+        }
         console.log(health);
         this.battery.x= this.eyePlayer.x;
         this.battery.y=this.eyePlayer.y;
