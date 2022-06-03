@@ -88,11 +88,11 @@ class Defend extends Phaser.Scene {
         if (phaseCount <= 3) {
             this.playerGroup = this.physics.add.group({
                 key: 'heart',
-                repeat: 6,
+                repeat: 8,
                 setXY: {
                     x: 900,
                     y: 50,
-                    stepY: 100
+                    stepY: 75
                 }
             });
         }
@@ -130,7 +130,7 @@ class Defend extends Phaser.Scene {
         if (phaseCount == 1) {
             this.background.alpha = 1;
             // path for otherBlock to follow
-            this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
+            this.pathOne =  new Phaser.Curves.Path(100, 60).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
             this.phoneOne.anims.play('phone');
             // get object to follow a path
@@ -143,13 +143,13 @@ class Defend extends Phaser.Scene {
                 verticalAdjust: true
             });
             this.projectileVelocity = 300;
-            this.Speed = 2;
+            this.Speed = 4.5;
         }
         else if (phaseCount == 2) {
             this.background.alpha = 0.86;
-      this.background2.alpha = 0.66;
+            this.background2.alpha = 0.66;
             // path for otherBlock to follow
-            this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
+            this.pathOne =  new Phaser.Curves.Path(100, 60).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
             this.phoneOne.anims.play('phone');
             this.phoneOne.startFollow({
@@ -161,13 +161,13 @@ class Defend extends Phaser.Scene {
                 verticalAdjust: true
             });
             this.projectileVelocity = 350;
-            this.Speed = 1.85;
+            this.Speed = 3.8;
         }
         else if (phaseCount == 3) {
             this.background.alpha = 0.69;
       this.background2.alpha = 0.43;
             // path for otherBlock to follow
-            this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,650);
+            this.pathOne =  new Phaser.Curves.Path(100, 60).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
             this.phoneOne.anims.play('phone');
             this.phoneOne.startFollow({
@@ -179,13 +179,13 @@ class Defend extends Phaser.Scene {
                 verticalAdjust: true
             });
             this.projectileVelocity = 400;
-            this.Speed = 1.8;
+            this.Speed = 3;
         }
         else if (phaseCount == 4) {
             this.background.alpha = 0.5;
-      this.background2.alpha = 0.5;
-            this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,355);
-            this.pathTwo = new Phaser.Curves.Path(60,355).lineTo(60,650);
+            this.background2.alpha = 0.5;
+            this.pathOne =  new Phaser.Curves.Path(100, 60).lineTo(100,355);
+            this.pathTwo = new Phaser.Curves.Path(100,355).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
             this.phoneTwo = this.add.follower(this.pathTwo, 0,0, 'enemy');
             this.phoneOne.anims.play('phone'); 
@@ -210,13 +210,13 @@ class Defend extends Phaser.Scene {
 
             this.projectileVelocity = 400;
             secondProjectile = true;
-            this.Speed = 1.5;
+            this.Speed = 2.8;
         }
         else if (phaseCount == 5) {
             this.background.alpha = 0.5;
-    this.background2.alpha = 0.6;
-            this.pathOne =  new Phaser.Curves.Path(60, 60).lineTo(60,355);
-            this.pathTwo = new Phaser.Curves.Path(60,355).lineTo(60,650);
+            this.background2.alpha = 0.6;
+            this.pathOne =  new Phaser.Curves.Path(100, 60).lineTo(100,355);
+            this.pathTwo = new Phaser.Curves.Path(100,355).lineTo(100,650);
             this.phoneOne = this.add.follower(this.pathOne, 0, 0, 'enemy');
             this.phoneTwo = this.add.follower(this.pathTwo, 0,0, 'enemy');
             this.phoneOne.anims.play('phone'); 
@@ -241,7 +241,7 @@ class Defend extends Phaser.Scene {
 
             this.projectileVelocity = 400;
             secondProjectile = true;
-            this.Speed = 2;
+            this.Speed = 2.7;
         } 
 
         this.random = 0;
@@ -347,7 +347,7 @@ class Defend extends Phaser.Scene {
         }
 
         // if projectile is off screen then reset
-        if (this.shooting == true && this.projectile.x >= 1280) {
+        if (this.shooting == true && this.projectile.x >= 920) {
             this.shooting = false;
         }
 
@@ -360,7 +360,7 @@ class Defend extends Phaser.Scene {
             }
 
             // if projectile is off screen then reset
-            if (this.shootingTwo == true && this.projectileTwo.x >= 1280) {
+            if (this.shootingTwo == true && this.projectileTwo.x >= 920) {
                 this.shootingTwo = false;
             }
         }
