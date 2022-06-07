@@ -204,7 +204,7 @@ class Filter extends Phaser.Scene {
 
         if (this.crackScreen > 0) {
             this.add.image(637, 360, 'crack1');
-            console.log("inside");
+            //a("inside");
         }
 
         this.score1 = this.physics.add.sprite(config.width/6, config.height/3, 'score_+000', 0);
@@ -257,7 +257,7 @@ class Filter extends Phaser.Scene {
             this.dogFilter = false;
             this.rainbowFilter = false;
             this.flowerFilter = false;
-            console.log('heart');
+            //a('heart');
             // this.score1.setTexture("score_+200");
             this.score1.anims.play('score_2');
             // this.score2.setTexture("score_+300");
@@ -276,7 +276,7 @@ class Filter extends Phaser.Scene {
             this.heartFilter = false;
             this.rainbowFilter = false;
             this.flowerFilter = false;
-            console.log('dog');
+            //a('dog');
             // this.score1.setTexture('score_+100');
             this.score1.anims.play('score_1');
             // this.score2.setTexture('score_+300');
@@ -295,7 +295,7 @@ class Filter extends Phaser.Scene {
             this.dogFilter = false;
             this.heartFilter = false;
             this.flowerFilter = false;
-            console.log('rainbow');
+            //a('rainbow');
             // this.score1.setTexture('score_+100');
             this.score1.anims.play('score_1');
             // this.score2.setTexture('score_+200');
@@ -314,7 +314,7 @@ class Filter extends Phaser.Scene {
             this.rainbowFilter = false;
             this.dogFilter = false;
             this.heartFilter = false;
-            console.log('flower');
+            //a('flower');
             // this.score1.setTexture('score_+100');
             this.score1.anims.play('score_1');
             // this.score2.setTexture('score_+300');
@@ -356,8 +356,8 @@ class Filter extends Phaser.Scene {
 
         }
 
-        console.log(health);
-        //console.log("filter 95 +");
+        //a(health);
+        ////a("filter 95 +");
 
         if(this.complete == true) {
             this.timer += 0.01;

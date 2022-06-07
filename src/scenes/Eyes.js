@@ -104,31 +104,31 @@ class Eyes extends Phaser.Scene {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye.setPosition(0,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye2, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye2.setPosition(950,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye3, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye3.setPosition(-150,700);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye4, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye4.setPosition(1400,300);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye5, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye5.setPosition(450,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
 
             this.timer = 0;
@@ -154,37 +154,37 @@ class Eyes extends Phaser.Scene {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye.setPosition(0,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye2, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye2.setPosition(950,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye3, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye3.setPosition(-150,700);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye4, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye4.setPosition(1400,300);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye5, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye5.setPosition(450,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye6, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye6.setPosition(750,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
 
             this.timer = 0;
@@ -210,43 +210,43 @@ class Eyes extends Phaser.Scene {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye.setPosition(0,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye2, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye2.setPosition(950,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye3, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye3.setPosition(-150,700);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye4, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye4.setPosition(1400,300);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye5, null, function() {
                 this.sound.play('ouch', {volume: 0.1});
                 this.eye5.setPosition(450,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye6, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye6.setPosition(750,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye7, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye7.setPosition(0,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
 
             this.timer = 0;
@@ -272,49 +272,49 @@ class Eyes extends Phaser.Scene {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye.setPosition(0,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye2, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye2.setPosition(950,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye3, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye3.setPosition(-150,700);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye4, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye4.setPosition(1400,300);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye5, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye5.setPosition(450,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye6, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye6.setPosition(750,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye7, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye7.setPosition(0,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye8, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye8.setPosition(1300,-300);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
 
             this.timer = 0;
@@ -340,49 +340,49 @@ class Eyes extends Phaser.Scene {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye.setPosition(0,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye2, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye2.setPosition(950,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye3, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye3.setPosition(-150,700);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye4, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye4.setPosition(1400,300);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye5, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye5.setPosition(450,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye6, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye6.setPosition(750,-70);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye7, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye7.setPosition(0,800);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
             this.physics.add.collider(this.eyePlayer, this.eye8, null, function() {
                 this.sound.play('scream', {volume: 0.1});
                 this.eye8.setPosition(1300,-300);
                 health -= 2;
-                console.log(health);
+                //a(health);
             }, this);
 
             this.timer = 0;
@@ -398,32 +398,32 @@ class Eyes extends Phaser.Scene {
         if(health <= 0){
             this.scene.start("gameOver");
         }
-        console.log(health);
+        //a(health);
         this.battery.x= this.eyePlayer.x;
         this.battery.y=this.eyePlayer.y;
         if(health >=87){
             this.battery.setTexture("battery1");
-            console.log("87+");
+            //a("87+");
           }
           else if (health <= 86 && health >= 65) {
             this.battery.setTexture("battery2");
-            console.log("65+");
+            //a("65+");
           }
           else if(health <= 64 && health >= 35) {
             this.battery.setTexture("battery3");
-            console.log("35+");
+            //a("35+");
           }
           else if (health <= 34 && health >= 10) {
             this.battery.setTexture("battery4");
-            console.log("10+");
+            //a("10+");
           }
           else if (health <= 9 && health >= 1) {
             this.battery.setTexture("battery5");
-            console.log("5+");
+            //a("5+");
           }
           else {
             this.battery.setTexture("battery6");
-            console.log("1+");
+            //a("1+");
           }
         this.timer += 0.01;
         this.timer2 += 0.01;
@@ -466,11 +466,11 @@ class Eyes extends Phaser.Scene {
             if (this.timer >= 9) {
                 if(sceneCount<2){
                     if (Math.floor(Math.random() * 2) == 0) {
-                        console.log("defend");
+                        //a("defend");
                         sceneCount++;
                         this.scene.start("blockingGame");
                       } else if (Math.floor(Math.random() * 2) == 1) {
-                        console.log("maze");
+                        //a("maze");
                         sceneCount++;
                         this.scene.start("mazeGame");
                       }
@@ -511,11 +511,11 @@ class Eyes extends Phaser.Scene {
             if (this.timer >= 9) {
                 if(sceneCount<2){
                     if (Math.floor(Math.random() * 2) == 0) {
-                        console.log("defend");
+                        //a("defend");
                         sceneCount++;
                         this.scene.start("blockingGame");
                       } else if (Math.floor(Math.random() * 2) == 1) {
-                        console.log("maze");
+                        //a("maze");
                         sceneCount++;
                         this.scene.start("mazeGame");
                       }
@@ -556,11 +556,11 @@ class Eyes extends Phaser.Scene {
             if (this.timer >= 9) {
                 if(sceneCount<2){
                     if (Math.floor(Math.random() * 2) == 0) {
-                        console.log("defend");
+                        //a("defend");
                         sceneCount++;
                         this.scene.start("blockingGame");
                       } else if (Math.floor(Math.random() * 2) == 1) {
-                        console.log("maze");
+                        //a("maze");
                         sceneCount++;
                         this.scene.start("mazeGame");
                       }
@@ -602,11 +602,11 @@ class Eyes extends Phaser.Scene {
             if (this.timer >= 9) {
                 if(sceneCount<2){
                     if (Math.floor(Math.random() * 2) == 0) {
-                        console.log("defend");
+                        //a("defend");
                         sceneCount++;
                         this.scene.start("blockingGame");
                       } else if (Math.floor(Math.random() * 2) == 1) {
-                        console.log("maze");
+                        //a("maze");
                         sceneCount++;
                         this.scene.start("mazeGame");
                       }
@@ -648,11 +648,11 @@ class Eyes extends Phaser.Scene {
             if (this.timer >= 9) {
                 if(sceneCount<2){
                     if (Math.floor(Math.random() * 2) == 0) {
-                        console.log("defend");
+                        //a("defend");
                         sceneCount++;
                         this.scene.start("blockingGame");
                       } else if (Math.floor(Math.random() * 2) == 1) {
-                        console.log("maze");
+                        //a("maze");
                         sceneCount++;
                         this.scene.start("mazeGame");
                       }
