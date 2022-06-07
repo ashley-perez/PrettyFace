@@ -1081,7 +1081,7 @@ this.scoreAnime = false;
           this.score2.alpha=1;
           this.score3.alpha=1;
 
-          // this.selection = 3;
+          this.selection = 3;
           // this.choiceOne.setInteractive();
           // this.choiceTwo.setInteractive();
           // this.choiceThree.setInteractive();
@@ -1104,7 +1104,7 @@ this.scoreAnime = false;
             this.score2.alpha=1;
             this.score3.alpha=1;
 
-            // this.selection = 3;
+            this.selection = 3;
             // this.choiceOne.setInteractive();
             // this.choiceTwo.setInteractive();
             // this.choiceThree.setInteractive();
