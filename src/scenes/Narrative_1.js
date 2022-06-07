@@ -151,25 +151,25 @@ class Cutscene extends Phaser.Scene {
         }
 
         
-        console.log("this is this.complete " + this.complete);
-        console.log("hellllloooo " + this.timer);
+        //a("this is this.complete " + this.complete);
+        //a("hellllloooo " + this.timer);
         // done with narration, go to next scene
         // health >= 0
         if (this.complete == true) {
             this.timer += 0.1;
-            console.log('inside update timer if')
-            console.log(this.timer);
+            //a('inside update timer if')
+            //a(this.timer);
         }
 
         if (this.timer >= 3 && phaseCount<=4) {
-            health -= 6;
+            health -= 5;
             phaseCount++;
             sceneCount = 1;
-            console.log("scene Count = " + sceneCount);
+            //a("scene Count = " + sceneCount);
             this.scene.start('filterGame');
         }
         else if (this.timer >= 3 && phaseCount==5) {
-            console.log("end scene is about to start");
+            //a("end scene is about to start");
             this.scene.start("endingScene");
         }
 

@@ -49,6 +49,7 @@ class Defend extends Phaser.Scene {
         }
 
         this.shieldNoise = this.sound.add('defend', {volume: 2});
+        this.damageNoise = this.sound.add('hurt', {volume:0.7});
 
         this.background = this.physics.add.sprite(config.width, config.height, "color_bg", 0).setScale(2).setDepth(-1); //full color
         this.background2 = this.physics.add.sprite(config.width, config.height, "black_bg", 0).setScale(2).setDepth(-2); //dark scary
@@ -154,7 +155,7 @@ class Defend extends Phaser.Scene {
                 verticalAdjust: true
             });
             this.projectileVelocity = 300;
-            this.Speed = 4.5;
+            this.Speed = 5;
         }
         else if (phaseCount == 2) {
             this.background.alpha = 0.9;
@@ -172,7 +173,7 @@ class Defend extends Phaser.Scene {
                 verticalAdjust: true
             });
             this.projectileVelocity = 350;
-            this.Speed = 3.8;
+            this.Speed = 4;
         }
         else if (phaseCount == 3) {
             this.background.alpha = 0.69;
@@ -190,7 +191,7 @@ class Defend extends Phaser.Scene {
                 verticalAdjust: true
             });
             this.projectileVelocity = 400;
-            this.Speed = 3;
+            this.Speed = 3.5;
         }
         else if (phaseCount == 4) {
             this.background.alpha = 0.5;
@@ -221,7 +222,7 @@ class Defend extends Phaser.Scene {
 
             this.projectileVelocity = 400;
             secondProjectile = true;
-            this.Speed = 2.8;
+            this.Speed = 3.2;
         }
         else if (phaseCount == 5) {
             this.background.alpha = 0.5;
@@ -252,7 +253,7 @@ class Defend extends Phaser.Scene {
 
             this.projectileVelocity = 400;
             secondProjectile = true;
-            this.Speed = 2.7;
+            this.Speed = 3;
         }
 
         this.random = 0;
@@ -284,32 +285,32 @@ class Defend extends Phaser.Scene {
     }
 
     update() {
-        console.log(health);
+        //a(health);
         this.battery.x= this.block.x+10;
         this.battery.y=this.block.y-50;
         if(health >=87){
             this.battery.setTexture("battery1");
-            console.log("87+");
+            //a("87+");
           }
           else if (health <= 86 && health >= 65) {
             this.battery.setTexture("battery2");
-            console.log("65+");
+            //a("65+");
           }
           else if(health <= 64 && health >= 35) {
             this.battery.setTexture("battery3");
-            console.log("35+");
+            //a("35+");
           }
           else if (health <= 34 && health >= 10) {
             this.battery.setTexture("battery4");
-            console.log("10+");
+            //a("10+");
           }
           else if (health <= 9 && health >= 1) {
             this.battery.setTexture("battery5");
-            console.log("5+");
+            //a("5+");
           }
           else {
             this.battery.setTexture("battery6");
-            console.log("1+");
+            //a("1+");
           }
         this.timer += 0.01;
         this.timer2 += 0.01;
@@ -320,12 +321,12 @@ class Defend extends Phaser.Scene {
         if (this.timer >= 12) {
             if(sceneCount < 2){
                 if (Math.floor(Math.random() * 2) == 0) {
-                    console.log("eyes");
+                    //a("eyes");
                     sceneCount++;
                     this.scene.start("eyesGame");
                 }
                 else if (Math.floor(Math.random() * 2) == 1) {
-                    console.log("maze");
+                    //a("maze");
                     sceneCount++;
                     this.scene.start("mazeGame");
                 }
@@ -386,15 +387,15 @@ class Defend extends Phaser.Scene {
         // still has some bugs
         this.random= Math.floor(Math.random() * 3);
         if(this.random == 0) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile');
         }
         else if(this.random == 1) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile2');
         }
         else if (this.random == 2) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile3');
         }
         projectile.x = -100;
@@ -402,22 +403,23 @@ class Defend extends Phaser.Scene {
         player.disableBody(true,true);
         this.shooting = false;
         this.coolDown = 0;
-        health = health - 3;
+        health = health - 2;
+        this.damageNoise.play();
     }
 
     blockedProjectile (block, projectile) {
         //still has some bugs
         this.random= Math.floor(Math.random() * 3);
         if(this.random == 0) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile');
         }
         else if(this.random == 1) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile2');
         }
         else if (this.random == 2) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile3');
         }
         projectile.x = -100;
@@ -433,37 +435,38 @@ class Defend extends Phaser.Scene {
         // still has some bugs
         this.random= Math.floor(Math.random() * 3);
         if(this.random == 0) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile');
         }
         else if(this.random == 1) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile2');
         }
         else if (this.random == 2) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile3');
         }
         projectile.x = -100;
         projectile.y = -100;
         player.disableBody(true,true);
         this.shootingTwo = false;
-        health = health - 3;
+        health = health - 2;
+        this.damageNoise.play();
     }
 
     blockedProjectile2 (block, projectile) {
         //still has some bugs
         this.random= Math.floor(Math.random() * 3);
         if(this.random == 0) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile');
         }
         else if(this.random == 1) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile2');
         }
         else if (this.random == 2) {
-            console.log(this.random);
+            //a(this.random);
             projectile.setTexture('missile3');
         }
         projectile.x = -100;

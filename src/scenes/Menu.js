@@ -90,7 +90,7 @@ class Menu extends Phaser.Scene {
             phase5_music.play();
 
             this.scene.start("filterGame");
-            console.log(phaseCount);
+            //a(phaseCount);
             // this.scene.start("commentGame");
             // this.scene.start("mazeGame");
             // this.scene.start("blockingGame");

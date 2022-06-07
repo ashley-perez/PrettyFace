@@ -109,7 +109,7 @@ class Broken extends Phaser.Scene {
     }
 
     update() {
-        console.log("we are broken");
+        //a("we are broken");
         if(Phaser.Input.Keyboard.JustDown(this.cursors.space) && textDone) {// && textDone
             this.continuePrompt.visible = false; // prompt goes away because writing is happening
             this.text.text = ''; // reset the text box

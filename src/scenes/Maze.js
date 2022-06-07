@@ -350,7 +350,7 @@ class Maze extends Phaser.Scene {
       this.markMn.x = -10;
       this.markMn.y = -20;
 
-      console.log("phase 1"); //no mirrors or phones or texts
+      //a("phase 1"); //no mirrors or phones or texts
     } //no damage loss and no text or mirrors
     else if (phaseCount == 2) {
       this.physics.add.collider(this.player, this.maze);
@@ -369,20 +369,20 @@ class Maze extends Phaser.Scene {
           this.mirror2.setTexture("mirror");
           this.isMirror = true;
           this.holder = 1;
-          console.log(this.random + " is mirror");
+          //a(this.random + " is mirror");
         } //end set mirror
         else if (this.random == 1) {
           this.mirror.setTexture("phone");
           this.mirror2.setTexture("phone");
           this.isMirror = false;
           this.holder = 1;
-          console.log(this.random + " is phone");
+          //a(this.random + " is phone");
         } //end set phone
       } //end holder so this only happens once
 
       this.mazeEnd.x = game.config.width / 4.16;
       this.mazeEnd.y = game.config.height / 9.172;
-      console.log("phase 2"); //only mirror and phones
+      //a("phase 2"); //only mirror and phones
     }
     else if (phaseCount == 3) {
       this.background.alpha = 0.69;
@@ -399,14 +399,14 @@ class Maze extends Phaser.Scene {
             this.mirror2.setTexture("mirror");
             this.isMirror = true;
             this.holder = 1;
-            console.log(this.random + " is mirror");
+            //a(this.random + " is mirror");
           } //end set mirror
           else if (this.random == 1) {
             this.mirror.setTexture("phone");
             this.mirror2.setTexture("phone");
             this.isMirror = false;
             this.holder = 1;
-            console.log(this.random + " is phone");
+            //a(this.random + " is phone");
           } //end set phone
       } //end holder so this only happens once
       this.player.x = game.config.width / 3.657;
@@ -419,7 +419,7 @@ class Maze extends Phaser.Scene {
       // this.markMn.y=-20;
       this.mazeEnd.x = game.config.width / 1.92;
       this.mazeEnd.y = game.config.height / 1.6;
-      console.log("phase 3");
+      //a("phase 3");
     } 
     else if (phaseCount == 4) {
         this.player.setTexture("sad_heart");
@@ -439,7 +439,7 @@ class Maze extends Phaser.Scene {
       // this.markMn.y=-20;
       this.mazeEnd.x = game.config.width / 4.122;
       this.mazeEnd.y = game.config.height / 1.31;
-      console.log("phase 4");
+      //a("phase 4");
     }//end phase 4
     else if (phaseCount == 5) {
       this.player.setTexture("sad_heart");
@@ -461,7 +461,7 @@ class Maze extends Phaser.Scene {
     // this.markMn.y=-20;
     this.mazeEnd.x = game.config.width / 4.122;
     this.mazeEnd.y = game.config.height / 1.31;
-    console.log("phase 5");
+    //a("phase 5");
   }//end phase 4
 
     if (phaseCount >= 3) {
@@ -472,7 +472,7 @@ class Maze extends Phaser.Scene {
         null,
         function () {
           health = health - 2;
-          console.log(health);
+          //a(health);
           if (this.cursors.left.isDown) {
             // this.maze.flash(250);
             this.player.x = this.player.x + 20;
@@ -516,11 +516,11 @@ class Maze extends Phaser.Scene {
       function () {
         if (sceneCount < 2) {
           if (Math.floor(Math.random() * 2) == 0) {
-            console.log("defend");
+            //a("defend");
             sceneCount++;
             this.scene.start("blockingGame");
           } else if (Math.floor(Math.random() * 2) == 1) {
-            console.log("eye");
+            //a("eye");
             sceneCount++;
             this.scene.start("eyesGame");
           }
@@ -545,12 +545,12 @@ class Maze extends Phaser.Scene {
     if(health <= 0){
       this.scene.start("gameOver");
   }
-    console.log(health);
+    //a(health);
 
     this.playerPositionX = this.player.x;
     this.playerPositionY = this.player.y;
 
-    // console.log(this.timer3);
+    // //a(this.timer3);
     if (this.timer3 > 0) {
       this.timer3 = this.timer3 - 0.01;
     } //freeze the player
@@ -566,7 +566,7 @@ class Maze extends Phaser.Scene {
       this.cameras.main.setZoom(2.5);
     } //instructions
     this.player.body.setVelocity(0);
-    // console.log(this.timer3);
+    // //a(this.timer3);
     if (this.timer3 <= 0) {
       //unfreeze player to move
       this.mazeEnd.alpha = 1;
@@ -592,7 +592,7 @@ class Maze extends Phaser.Scene {
       this.testBox.text = "";
       this.timer = this.timerMax;
     } //count down timer
-    //    console.log(this.timer);
+    //    //a(this.timer);
   }
 
   writeStuff(player, object) {
@@ -623,7 +623,7 @@ class Maze extends Phaser.Scene {
             this.timer = 250;
           }
           this.index++;
-        console.log("mirror list "+this.randomMirror);
+        //a("mirror list "+this.randomMirror);
         } //end if mirror 1 and 2 array 1
         else if (this.randomMirror == 1) {
             if (this.index == 0) {
@@ -645,7 +645,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("mirror list "+this.randomMirror);
+            //a("mirror list "+this.randomMirror);
           } //end if mirror 1 and 3 array 2
           else if (this.randomMirror == 2) {
             if (this.index == 0) {
@@ -667,7 +667,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("mirror list "+this.randomMirror);
+            //a("mirror list "+this.randomMirror);
           } //end if mirror 1 and 3 array 3
           else if (this.randomMirror == 3) {
             if (this.index == 0) {
@@ -689,7 +689,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("mirror list "+this.randomMirror);
+            //a("mirror list "+this.randomMirror);
           } //end if mirror 4 array 4
       }//end if picked mirror
 
@@ -714,7 +714,7 @@ class Maze extends Phaser.Scene {
             this.timer = 250;
           }
           this.index++;
-        console.log("phone list "+this.randomPhone);
+        //a("phone list "+this.randomPhone);
         } //end if phone 2 and 4 array 5
         else if (this.randomPhone == 1) {
             if (this.index == 0) {
@@ -736,7 +736,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("phone list "+this.randomPhone);
+            //a("phone list "+this.randomPhone);
           } //end if mirror 1 and 4 array 6
       }//end if picked phones
     } //end 86 - 65
@@ -764,7 +764,7 @@ class Maze extends Phaser.Scene {
             this.timer = 250;
           }
           this.index++;
-        console.log("mirror list "+this.randomMirror);
+        //a("mirror list "+this.randomMirror);
         } //end if mirror 1 and 2 array 1
         else if (this.randomMirror == 1) {
             this.typewriteText(this.wordArray2[this.index], this.testBox, 40);
@@ -787,7 +787,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("mirror list "+this.randomMirror);
+            //a("mirror list "+this.randomMirror);
           } //end if mirror 1 and 3 array 2
           else if (this.randomMirror == 2) {
             this.typewriteText(this.wordArray3[this.index], this.testBox, 40);
@@ -810,7 +810,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("mirror list "+this.randomMirror);
+            //a("mirror list "+this.randomMirror);
           } //end if mirror 1 and 3 array 3
           else if (this.randomMirror == 3) {
             this.typewriteText(this.wordArray4[this.index], this.testBox, 40);
@@ -833,7 +833,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("mirror list "+this.randomMirror);
+            //a("mirror list "+this.randomMirror);
           } //end if mirror 4 array 4
       }//end if picked mirror
 
@@ -859,7 +859,7 @@ class Maze extends Phaser.Scene {
             this.timer = 250;
           }
           this.index++;
-        console.log("phone list "+this.randomPhone);
+        //a("phone list "+this.randomPhone);
         } //end if phone 2 and 4 array 5
         else if (this.randomPhone == 1) {
             this.typewriteText(this.wordArray6[this.index], this.testBox, 40);
@@ -882,7 +882,7 @@ class Maze extends Phaser.Scene {
               this.timer = 250;
             }
             this.index++;
-            console.log("phone list "+this.randomPhone);
+            //a("phone list "+this.randomPhone);
           } //end if mirror 1 and 4 array 6
       }//end if picked phones
     } //mehish comments
@@ -914,7 +914,7 @@ class Maze extends Phaser.Scene {
         this.timer = 250;
       }
       this.index++;
-    console.log("mirror list "+this.randomMirror);
+    //a("mirror list "+this.randomMirror);
     } //end if mirror 5 and 6 array 7
     else if (this.randomMirror == 1) {
         this.typewriteText(this.wordArray8[this.index], this.testBox, 40);
@@ -939,7 +939,7 @@ class Maze extends Phaser.Scene {
         this.timer = 250;
       }
       this.index++;
-    console.log("mirror list "+this.randomMirror);
+    //a("mirror list "+this.randomMirror);
     } //end if mirror 5 and 6 array 8
     } //not bueno comments
     else if (phaseCount == 5) {
@@ -969,11 +969,11 @@ class Maze extends Phaser.Scene {
         this.timer = 250;
       }
       this.index++;
-    console.log("mirror list "+this.randomMirror);
+    //a("mirror list "+this.randomMirror);
     } //end if 
     } //bad bad phase 5
   typewriteText(text, textbox, speed) {
-    console.log("the passed in text: " + text);
+    //a("the passed in text: " + text);
     const length = text.length; // how many times the loop should repeat (based on sentence length)
     let i = 0;
     //textDone = false;
