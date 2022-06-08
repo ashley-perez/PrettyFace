@@ -71,7 +71,7 @@ class Menu extends Phaser.Scene {
         this.add.text(game.config.width/2, (game.config.height/2)+30, 'Pretty Face', title2Config).setOrigin(0.5, -0.49);
         this.add.rectangle(644, 649, 600, 105, 0x5c4ae4);
         this.add.text(game.config.width/2, (game.config.height/2)-70, 'Press S to Start', startConfig).setOrigin(0.5,-5.4);
-        this.add.text(game.config.width/2, (game.config.height/2)+48, "TW: Body Dysmorphia, Mature Language," , smallest).setOrigin(0.5,-5.4); 
+        this.add.text(game.config.width/2, (game.config.height/2)+48, "TW: Body Dysmorphia, Mature Language," , smallest).setOrigin(0.5,-5.4);
         this.add.text(game.config.width/2, (game.config.height/2)+77,"Some Blood, Flashing Images", smallest).setOrigin(0.5,-5.4);
 
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);

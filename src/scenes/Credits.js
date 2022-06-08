@@ -50,9 +50,9 @@ class Credits extends Phaser.Scene {
 
       // text boxes
       this.credits = this.add.text(450, 60, 'CREDITS', normalWriting);
-      this.one = this.add.text(85, 270, 'Andrew Dresel-Kurtz    Art & Programming', smaller);
+      this.one = this.add.text(85, 260, 'Andrew Dresel-Kurtz    Art & Programming', smaller);
       this.two = this.add.text(75, 320, '             Ashley Perez    Programming', smaller);
-      this.three=this.add.text(85, 370, '                 Jane Tran    Art & Programming', smaller);
+      this.three=this.add.text(85, 380, '                 Jane Tran    Art & Programming', smaller);
       this.add.rectangle(644, 649, 480, 85, 0x5c4ae4);
       this.menuPrompt = this.add.text(440, 620, 'Press M for Menu', evenSmaller);
 

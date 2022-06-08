@@ -68,7 +68,7 @@ class Filter extends Phaser.Scene {
     create() {
         this.index = 0;
         this.crackScreen = 0;
-        
+
 
         this.input.setDefaultCursor("url(./assets/testFingerPointer.png), pointer");
 
@@ -191,6 +191,10 @@ class Filter extends Phaser.Scene {
         });
     }
         this.background = this.add.tileSprite(0, 0, 1280, 720, this.bgPhases[this.index]).setOrigin(0, 0);
+        if (this.crackScreen > 0) {
+            this.add.image(637, 360, 'crack1');
+            //a("inside");
+        }
 
         this.player = this.physics.add.sprite(config.width/2.99, config.height/1.78, this.playerPhases[this.index], 0);
 
@@ -201,11 +205,6 @@ class Filter extends Phaser.Scene {
 
         this.postButton = this.physics.add.sprite(config.width/3, (config.height/2)+228, 'post',0).setInteractive();
         this.postButton.alpha=0;
-
-        if (this.crackScreen > 0) {
-            this.add.image(637, 360, 'crack1');
-            //a("inside");
-        }
 
         this.score1 = this.physics.add.sprite(config.width/6, config.height/3, 'score_+000', 0);
         this.score2 = this.physics.add.sprite(config.width/2, config.height/2.4, 'score_+000', 0);
