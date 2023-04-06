@@ -7,11 +7,8 @@
 
 ### Date Completed:
 
-date
+June 7, 2022
 
 ### Link to play game:
 
 https://ashley-perez.github.io/PrettyFace/
-
-
-
